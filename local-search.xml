@@ -4,19 +4,6 @@
   
   
   <entry>
-    <title></title>
-    <link href="/yiqiangshiyia.github.io/2022/04/03/hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
-    <url>/yiqiangshiyia.github.io/2022/04/03/hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
-    
-    <content type="html"><![CDATA[<h3 id="hexo搭建博客"><a href="#hexo搭建博客" class="headerlink" title="hexo搭建博客"></a>hexo搭建博客</h3><p>本地文件部署到Github上的命令：</p><figure class="highlight ebnf"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo clean</span><br><span class="hljs-attribute">hexo g</span><br><span class="hljs-attribute">hexo d</span><br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Hello World</title>
     <link href="/yiqiangshiyia.github.io/2022/04/01/hello-world/"/>
     <url>/yiqiangshiyia.github.io/2022/04/01/hello-world/</url>
