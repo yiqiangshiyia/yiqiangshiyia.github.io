@@ -4,19 +4,25 @@
   
   
   <entry>
-    <title>C++ vector 容器浅析</title>
-    <link href="/2022/04/03/C-vector-%E5%AE%B9%E5%99%A8%E6%B5%85%E6%9E%90/"/>
-    <url>/2022/04/03/C-vector-%E5%AE%B9%E5%99%A8%E6%B5%85%E6%9E%90/</url>
+    <title>C++标准模板库（C++STL）</title>
+    <link href="/2022/04/03/C-%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88C-STL%EF%BC%89/"/>
+    <url>/2022/04/03/C-%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88C-STL%EF%BC%89/</url>
     
     <content type="html"><![CDATA[]]></content>
     
     
     <categories>
       
-      <category>LeetCode刷题</category>
+      <category>编程学习</category>
       
     </categories>
     
+    
+    <tags>
+      
+      <tag>STL</tag>
+      
+    </tags>
     
   </entry>
   
