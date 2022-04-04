@@ -16,16 +16,17 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="LeetCode 15:三数之和  前言：本题与LeetCode 1：两数之和类似，是非常经典的面试题，但是做法不尽相同。   题目大意：给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c &#x3D; 0 ？请你找出所有和为 0 且不重复的三元组。 注意：答案中不可以包含重复的三元组。   题解：方法1：排序+双指针 关键字：不可以包含重复">
+    <meta name="description" content="LeetCode 15:三数之和Note：本题与LeetCode 1：两数之和类似，是非常经典的面试题，但是做法不尽相同。   题目大意：给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c &#x3D; 0 ？请你找出所有和为 0 且不重复的三元组。 注意：答案中不可以包含重复的三元组。   题解：方法1：排序+双指针  123456关键字：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="三数之和">
 <meta property="og:url" content="https://yiqiangshiyia.github.io/2022/03/25/%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="LeetCode 15:三数之和  前言：本题与LeetCode 1：两数之和类似，是非常经典的面试题，但是做法不尽相同。   题目大意：给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c &#x3D; 0 ？请你找出所有和为 0 且不重复的三元组。 注意：答案中不可以包含重复的三元组。   题解：方法1：排序+双指针 关键字：不可以包含重复">
+<meta property="og:description" content="LeetCode 15:三数之和Note：本题与LeetCode 1：两数之和类似，是非常经典的面试题，但是做法不尽相同。   题目大意：给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c &#x3D; 0 ？请你找出所有和为 0 且不重复的三元组。 注意：答案中不可以包含重复的三元组。   题解：方法1：排序+双指针  123456关键字：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-25T13:07:52.000Z">
-<meta property="article:modified_time" content="2022-04-04T01:34:52.312Z">
+<meta property="article:modified_time" content="2022-04-04T03:47:25.427Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -196,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      1.6k 字
     </span>
   
 
@@ -205,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12 分钟
+      14 分钟
     </span>
   
 
@@ -237,65 +238,23 @@
             <h1 style="display: none">三数之和</h1>
             
             <div class="markdown-body">
-              <h2 id="LeetCode-15-三数之和"><a href="#LeetCode-15-三数之和" class="headerlink" title="LeetCode 15:三数之和"></a>LeetCode 15:三数之和</h2><p> </p>
-<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>本题与LeetCode 1：两数之和类似，是非常经典的面试题，但是做法不尽相同。  </p>
+              <h2 id="LeetCode-15-三数之和"><a href="#LeetCode-15-三数之和" class="headerlink" title="LeetCode 15:三数之和"></a>LeetCode 15:三数之和</h2><h3 id="Note："><a href="#Note：" class="headerlink" title="Note："></a>Note：</h3><p>本题与LeetCode 1：两数之和类似，是非常经典的面试题，但是做法不尽相同。  </p>
 <h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。 注意：答案中不可以包含重复的三元组。  </p>
-<h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：排序+双指针</strong> 关键字：不可以包含重复 模式识别：利用排序避免重复答案 降低复杂度变成twoSum 利用双指针找到所有解 数组有序，和为定值的两个数一定可以通过头尾指针向中间移动获得。 关键去重，每次移动跳过与当前值相同的元素，枚举第三个元素也要跳过重复元素。   AC代码：</p>
-<p>class Solution {</p>
-<p>public:</p>
-<p>    vector&lt;vector<int>&gt; threeSum(vector<int>&amp; nums) {</p>
-<p>        vector&lt;vector<int>&gt; ans;</p>
-<p>        sort(nums.begin(),nums.end());  //对数组进行排序方便去重</p>
-<p>        //枚举a</p>
-<p>        for(int i=0; i&lt;nums.size(); i++)</p>
-<p>        {</p>
-<p>            if(i&gt;0 &amp;&amp; nums[i] == nums[i-1])  continue;  //去重，需要和上次遍历的元素不同</p>
-<p>            int target = 0-nums[i];  //定义目标值target，转化为二元组问题target = b+c</p>
-<p>            int l = i+1,r = nums.size()-1;  //定义首尾指针，通过首尾指针移动获取定值target</p>
-<p>            while(l&lt;r)  //通过首尾指针获取定值target</p>
-<p>            {</p>
-<p>                if(nums[l]+nums[r] == target)</p>
-<p>                {</p>
-<p>                    ans.push_back({nums[i],nums[l],nums[r]});  //将符合的元组加入结果ans中</p>
-<p>                    while(l&lt;r &amp;&amp; nums[l] == nums[l+1])  l++;  //去除重复的左指针元素</p>
-<p>                    while(l&lt;r &amp;&amp; nums[r] == nums[r-1])  r–;  //去除重复的右指针元素</p>
-<p>                    l++;  //左指针向右移</p>
-<p>                    r–;  //右指针向左移</p>
-<p>                }</p>
-<p>                else if(nums[l]+nums[r] &gt; target)</p>
-<p>                {</p>
-<p>                    r–;  //结果大于目标值，右指针向左移</p>
-<p>                }</p>
-<p>                else</p>
-<p>                {</p>
-<p>                    l++;  //结果小于目标值，左指针向右移</p>
-<p>                }</p>
-<p>            }</p>
-<p>        }</p>
-<p>        return ans;  //返回结果</p>
-<p>    }</p>
-<p>};</p>
-<p>  <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Jq4y1A7u7?spm_id_from=333.337.search-card.all.click">B站视频讲解</a>  </p>
-<h2 id="LeetCode-1：两数之和"><a href="#LeetCode-1：两数之和" class="headerlink" title="LeetCode 1：两数之和"></a>LeetCode 1：两数之和</h2><p> </p>
-<h3 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给定一个整数数组 nums 和一个整数目标值 target ，请你在该数组中找出和为目标值 target 的那两个整数，并返回它们的数组下标。  </p>
-<h3 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：暴力枚举</strong> <strong>方法2：哈希表</strong> AC代码：</p>
-<p>class Solution {</p>
-<p>public:</p>
-<p>    vector<int> twoSum(vector<int>&amp; nums, int target) {</p>
-<p>        unordered_map&lt;int,int&gt; map1;  //键为nums[i] 值为数组下标i</p>
-<p>        int n = nums.size();</p>
-<p>        for(int i=0; i&lt;n; i++)</p>
-<p>        {</p>
-<p>            auto it = map1.find(target-nums[i]);</p>
-<p>            if(it  != map1.end())</p>
-<p>            {</p>
-<p>                return {it-&gt;second,i};</p>
-<p>            }</p>
-<p>            map1[nums[i]] = i;</p>
-<p>        }</p>
-<p>        return {};</p>
-<p>    }</p>
-<p>};</p>
+<h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：排序+双指针</strong> </p>
+<figure class="highlight"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><pre><code class="hljs">关键字：不可以包含重复 <br>模式识别：利用排序避免重复答案 <br>降低复杂度变成twoSum <br>利用双指针找到所有解 <br>数组有序，和为定值的两个数一定可以通过头尾指针向中间移动获得。 <br>关键去重，每次移动跳过与当前值相同的元素，枚举第三个元素也要跳过重复元素。<br></code></pre></td></tr></table></figure>
+
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">threeSum</span>(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums) &#123;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; ans;<br>        <span class="hljs-built_in">sort</span>(nums.<span class="hljs-built_in">begin</span>(),nums.<span class="hljs-built_in">end</span>());  <span class="hljs-comment">//对数组进行排序方便去重</span><br>        <span class="hljs-comment">//枚举a</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;nums.<span class="hljs-built_in">size</span>(); i++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(i&gt;<span class="hljs-number">0</span> &amp;&amp; nums[i] == nums[i<span class="hljs-number">-1</span>])  <span class="hljs-keyword">continue</span>;  <span class="hljs-comment">//去重，需要和上次遍历的元素不同</span><br>            <span class="hljs-type">int</span> target = <span class="hljs-number">0</span>-nums[i];  <span class="hljs-comment">//定义目标值target，转化为二元组问题target = b+c</span><br>            <span class="hljs-type">int</span> l = i+<span class="hljs-number">1</span>,r = nums.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;  <span class="hljs-comment">//定义首尾指针，通过首尾指针移动获取定值target</span><br>            <span class="hljs-keyword">while</span>(l&lt;r)  <span class="hljs-comment">//通过首尾指针获取定值target</span><br>            &#123;<br>                <span class="hljs-keyword">if</span>(nums[l]+nums[r] == target)<br>                &#123;<br>                    ans.<span class="hljs-built_in">push_back</span>(&#123;nums[i],nums[l],nums[r]&#125;);  <span class="hljs-comment">//将符合的元组加入结果ans中</span><br>                    <span class="hljs-keyword">while</span>(l&lt;r &amp;&amp; nums[l] == nums[l+<span class="hljs-number">1</span>])  l++;  <span class="hljs-comment">//去除重复的左指针元素</span><br>                    <span class="hljs-keyword">while</span>(l&lt;r &amp;&amp; nums[r] == nums[r<span class="hljs-number">-1</span>])  r--;  <span class="hljs-comment">//去除重复的右指针元素</span><br>                    l++;  <span class="hljs-comment">//左指针向右移</span><br>                    r--;  <span class="hljs-comment">//右指针向左移</span><br>                &#125;<br>                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(nums[l]+nums[r] &gt; target)<br>                &#123;<br>                    r--;  <span class="hljs-comment">//结果大于目标值，右指针向左移</span><br>                &#125;<br>                <span class="hljs-keyword">else</span><br>                &#123;<br>                    l++;  <span class="hljs-comment">//结果小于目标值，左指针向右移</span><br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;  <span class="hljs-comment">//返回结果</span><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Jq4y1A7u7?spm_id_from=333.337.search-card.all.click">B站视频讲解</a>  </p>
+<h2 id="LeetCode-1：两数之和"><a href="#LeetCode-1：两数之和" class="headerlink" title="LeetCode 1：两数之和"></a>LeetCode 1：两数之和</h2><h3 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给定一个整数数组 nums 和一个整数目标值 target ，请你在该数组中找出和为目标值 target 的那两个整数，并返回它们的数组下标。  </p>
+<h3 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：暴力枚举</strong> </p>
+<p><strong>方法2：哈希表</strong> </p>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">twoSum</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> target)</span> </span>&#123;<br>        unordered_map&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; map1;  <span class="hljs-comment">//键为nums[i] 值为数组下标i</span><br>        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)<br>        &#123;<br>            <span class="hljs-keyword">auto</span> it = map1.<span class="hljs-built_in">find</span>(target-nums[i]);<br>            <span class="hljs-keyword">if</span>(it  != map1.<span class="hljs-built_in">end</span>())<br>            &#123;<br>                <span class="hljs-keyword">return</span> &#123;it-&gt;second,i&#125;;<br>            &#125;<br>            map1[nums[i]] = i;<br>        &#125;<br>        <span class="hljs-keyword">return</span> &#123;&#125;;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
 
             </div>
             <hr>
@@ -309,6 +268,13 @@
                     
                   </div>
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
                 
               </div>
               

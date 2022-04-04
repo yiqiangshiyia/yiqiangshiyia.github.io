@@ -16,16 +16,17 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="LeetCode 112:路径总和  前言：本题核心思想是对树进行一次遍历，在遍历是记录从根节点到当前节点的路径总和，以防止重复计算。   题目大意：给你二叉树的根节点 root 和一个表示目标和的整数 targetSum 。判断该树中是否存在 根节点到叶子节点 的路径，这条路径上所有节点值相加等于目标和 targetSum 。如果存在，返回 true ；否则，返回 false 。   题解：方法">
+    <meta name="description" content="LeetCode 112:路径总和Note：本题核心思想是对树进行一次遍历，在遍历是记录从根节点到当前节点的路径总和，以防止重复计算。    题目大意：给你二叉树的根节点 root 和一个表示目标和的整数 targetSum 。判断该树中是否存在 根节点到叶子节点 的路径，这条路径上所有节点值相加等于目标和 targetSum 。如果存在，返回 true ；否则，返回 false 。   题解：方">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉树路径总和">
 <meta property="og:url" content="https://yiqiangshiyia.github.io/2022/03/19/%E4%BA%8C%E5%8F%89%E6%A0%91%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="LeetCode 112:路径总和  前言：本题核心思想是对树进行一次遍历，在遍历是记录从根节点到当前节点的路径总和，以防止重复计算。   题目大意：给你二叉树的根节点 root 和一个表示目标和的整数 targetSum 。判断该树中是否存在 根节点到叶子节点 的路径，这条路径上所有节点值相加等于目标和 targetSum 。如果存在，返回 true ；否则，返回 false 。   题解：方法">
+<meta property="og:description" content="LeetCode 112:路径总和Note：本题核心思想是对树进行一次遍历，在遍历是记录从根节点到当前节点的路径总和，以防止重复计算。    题目大意：给你二叉树的根节点 root 和一个表示目标和的整数 targetSum 。判断该树中是否存在 根节点到叶子节点 的路径，这条路径上所有节点值相加等于目标和 targetSum 。如果存在，返回 true ；否则，返回 false 。   题解：方">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-19T02:40:03.000Z">
-<meta property="article:modified_time" content="2022-04-04T01:34:52.261Z">
+<meta property="article:modified_time" content="2022-04-04T03:28:34.792Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="二叉树">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -196,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.4k 字
+      1.6k 字
     </span>
   
 
@@ -205,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12 分钟
+      14 分钟
     </span>
   
 
@@ -237,65 +238,23 @@
             <h1 style="display: none">二叉树路径总和</h1>
             
             <div class="markdown-body">
-              <h2 id="LeetCode-112-路径总和"><a href="#LeetCode-112-路径总和" class="headerlink" title="LeetCode 112:路径总和"></a>LeetCode 112:路径总和</h2><p> </p>
-<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>本题核心思想是对树进行一次遍历，在遍历是记录从根节点到当前节点的路径总和，以防止重复计算。  </p>
+              <h2 id="LeetCode-112-路径总和"><a href="#LeetCode-112-路径总和" class="headerlink" title="LeetCode 112:路径总和"></a>LeetCode 112:路径总和</h2><h3 id="Note："><a href="#Note：" class="headerlink" title="Note："></a>Note：</h3><p>本题核心思想是对树进行一次遍历，在遍历是记录从根节点到当前节点的路径总和，以防止重复计算。 </p>
+<p> </p>
 <h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你二叉树的根节点 root 和一个表示目标和的整数 targetSum 。判断该树中是否存在 根节点到叶子节点 的路径，这条路径上所有节点值相加等于目标和 targetSum 。如果存在，返回 true ；否则，返回 false 。  </p>
-<h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：广度优先搜索</strong> 使用广度优先搜索的方式，记录从根节点到当前节点的路径和，以防止重复计算。 这样我们可以使用两个队列，分别存储将要遍历的节点，以及根节点到这些节点的路径和。   AC代码：</p>
-<p>class Solution {</p>
-<p>public:</p>
-<p>    bool hasPathSum(TreeNode* root, int targetSum) {</p>
-<p>        if(root == nullptr)  //首先判断根节点是否存在</p>
-<p>        {</p>
-<p>            return false;</p>
-<p>        }</p>
-<p>        queue&lt;TreeNode*&gt; que_node;  //定义一个队列 用于存储将要遍历的结点</p>
-<p>        queue<int> que_val;  //定义一个队列 用于记录从根节点到当前节点路径和</p>
-<p>        que_node.push(root);  //将根节点加入第一个队列</p>
-<p>        que_val.push(root-&gt;val);  //将根节点的值加入第二个队列</p>
-<p>        //迭代循环队列 直到队列为空</p>
-<p>        while(!que_node.empty())</p>
-<p>        {</p>
-<p>            TreeNode* now = que_node.front();</p>
-<p>            int temp = que_val.front();</p>
-<p>            que_node.pop();</p>
-<p>            que_val.pop();</p>
-<p>            if(now-&gt;left == nullptr &amp;&amp; now-&gt;right == nullptr)  //不存在左右节点 则为叶节点</p>
-<p>            {</p>
-<p>                if(temp == targetSum)  //判断路径和与目标值是否相等</p>
-<p>                {</p>
-<p>                    return true;</p>
-<p>                }</p>
-<p>                continue;  //不相等则迭代继续</p>
-<p>            }</p>
-<p>            if(now-&gt;left != nullptr)  //存在左子节点</p>
-<p>            {</p>
-<p>                que_node.push(now-&gt;left);  //将左子节点加入第一个队列</p>
-<p>                que_val.push(now-&gt;left-&gt;val + temp);  //将左子节点值与当前路径和相加加入第二个队列</p>
-<p>            }</p>
-<p>            if(now-&gt;right != nullptr)  //存在右子节点</p>
-<p>            {</p>
-<p>                que_node.push(now-&gt;right);  //将右子节点加入第一个队列</p>
-<p>                que_val.push(now-&gt;right-val + temp);  //将右子节点值与当前路径和相加加入第二个队列</p>
-<p>            }</p>
-<p>        }</p>
-<p>        return false;  //没有满足条件的 返回false</p>
-<p>    }</p>
-<p>};</p>
-<p>  <strong>方法2：递归</strong> AC代码：</p>
-<p>class Solution {</p>
-<p>public:</p>
-<p>    bool hasPathSum(TreeNode *root, int sum) {</p>
-<p>        if (root == nullptr) {</p>
-<p>            return false;</p>
-<p>        }</p>
-<p>        if (root-&gt;left == nullptr &amp;&amp; root-&gt;right == nullptr) {</p>
-<p>            return sum == root-&gt;val;</p>
-<p>        }</p>
-<p>        return hasPathSum(root-&gt;left, sum - root-&gt;val) </p>
-<p>               hasPathSum(root-&gt;right, sum - root-&gt;val);</p>
-<p>    }</p>
-<p>};</p>
-<p>  <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/path-sum/solution/lu-jing-zong-he-by-leetcode-solution/">LeetCode题解</a></p>
+<h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：广度优先搜索</strong> </p>
+<p>使用广度优先搜索的方式，记录从根节点到当前节点的路径和，以防止重复计算。 这样我们可以使用两个队列，分别存储将要遍历的节点，以及根节点到这些节点的路径和。   </p>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">hasPathSum</span><span class="hljs-params">(TreeNode* root, <span class="hljs-type">int</span> targetSum)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)  <span class="hljs-comment">//首先判断根节点是否存在</span><br>        &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        queue&lt;TreeNode*&gt; que_node;  <span class="hljs-comment">//定义一个队列 用于存储将要遍历的结点</span><br>        queue&lt;<span class="hljs-type">int</span>&gt; que_val;  <span class="hljs-comment">//定义一个队列 用于记录从根节点到当前节点路径和</span><br>        que_node.<span class="hljs-built_in">push</span>(root);  <span class="hljs-comment">//将根节点加入第一个队列</span><br>        que_val.<span class="hljs-built_in">push</span>(root-&gt;val);  <span class="hljs-comment">//将根节点的值加入第二个队列</span><br>        <span class="hljs-comment">//迭代循环队列 直到队列为空</span><br>        <span class="hljs-keyword">while</span>(!que_node.<span class="hljs-built_in">empty</span>())<br>        &#123;<br>            TreeNode* now = que_node.<span class="hljs-built_in">front</span>();<br>            <span class="hljs-type">int</span> temp = que_val.<span class="hljs-built_in">front</span>();<br>            que_node.<span class="hljs-built_in">pop</span>();<br>            que_val.<span class="hljs-built_in">pop</span>();<br>            <span class="hljs-keyword">if</span>(now-&gt;left == <span class="hljs-literal">nullptr</span> &amp;&amp; now-&gt;right == <span class="hljs-literal">nullptr</span>)  <span class="hljs-comment">//不存在左右节点 则为叶节点</span><br>            &#123;<br>                <span class="hljs-keyword">if</span>(temp == targetSum)  <span class="hljs-comment">//判断路径和与目标值是否相等</span><br>                &#123;<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>                &#125;<br>                <span class="hljs-keyword">continue</span>;  <span class="hljs-comment">//不相等则迭代继续</span><br>            &#125;<br>            <span class="hljs-keyword">if</span>(now-&gt;left != <span class="hljs-literal">nullptr</span>)  <span class="hljs-comment">//存在左子节点</span><br>            &#123;<br>                que_node.<span class="hljs-built_in">push</span>(now-&gt;left);  <span class="hljs-comment">//将左子节点加入第一个队列</span><br>                que_val.<span class="hljs-built_in">push</span>(now-&gt;left-&gt;val + temp);<span class="hljs-comment">//将左子节点值与当前路径和相加加入第二个队列</span><br>            &#125;<br>            <span class="hljs-keyword">if</span>(now-&gt;right != <span class="hljs-literal">nullptr</span>)  <span class="hljs-comment">//存在右子节点</span><br>            &#123;<br>                que_node.<span class="hljs-built_in">push</span>(now-&gt;right);  <span class="hljs-comment">//将右子节点加入第一个队列</span><br>                que_val.<span class="hljs-built_in">push</span>(now-&gt;right-val + temp);<span class="hljs-comment">//将右子节点值与当前路径和相加加入第二个队列</span><br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;  <span class="hljs-comment">//没有满足条件的 返回false</span><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>方法2：递归</strong> </p>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">hasPathSum</span><span class="hljs-params">(TreeNode *root, <span class="hljs-type">int</span> sum)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (root-&gt;left == <span class="hljs-literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">return</span> sum == root-&gt;val;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">hasPathSum</span>(root-&gt;left, sum - root-&gt;val) <br>               <span class="hljs-built_in">hasPathSum</span>(root-&gt;right, sum - root-&gt;val);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/path-sum/solution/lu-jing-zong-he-by-leetcode-solution/">LeetCode题解</a></p>
 
             </div>
             <hr>
@@ -309,6 +268,13 @@
                     
                   </div>
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+                    
+                  </div>
                 
               </div>
               

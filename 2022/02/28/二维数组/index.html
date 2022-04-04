@@ -16,16 +16,17 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="LeetCode 566题：重塑矩阵  前言：vector容器定义二维数组   题解：将二维数组映射成一个一维数组，将这个一维数组映射回 r 行 c 列的二维数组。 对于x∈[0,mn)，第 x个元素在 nums 中对应的下标为(x &#x2F; n,x % n)，而在新的重塑矩阵中对应的下标为(x &#x2F; c,x % c)。我们直接进行赋值即可。   AC代码： class Solution { public">
+    <meta name="description" content="LeetCode 566题：重塑矩阵Note：vector容器定义二维数组   题解：将二维数组映射成一个一维数组，将这个一维数组映射回 r 行 c 列的二维数组。 对于x∈[0,mn)，第 x个元素在 nums 中对应的下标为(x &#x2F; n,x % n)，而在新的重塑矩阵中对应的下标为(x &#x2F; c,x % c)。我们直接进行赋值即可。   AC代码： 12345678910111213141516">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二维数组">
 <meta property="og:url" content="https://yiqiangshiyia.github.io/2022/02/28/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="LeetCode 566题：重塑矩阵  前言：vector容器定义二维数组   题解：将二维数组映射成一个一维数组，将这个一维数组映射回 r 行 c 列的二维数组。 对于x∈[0,mn)，第 x个元素在 nums 中对应的下标为(x &#x2F; n,x % n)，而在新的重塑矩阵中对应的下标为(x &#x2F; c,x % c)。我们直接进行赋值即可。   AC代码： class Solution { public">
+<meta property="og:description" content="LeetCode 566题：重塑矩阵Note：vector容器定义二维数组   题解：将二维数组映射成一个一维数组，将这个一维数组映射回 r 行 c 列的二维数组。 对于x∈[0,mn)，第 x个元素在 nums 中对应的下标为(x &#x2F; n,x % n)，而在新的重塑矩阵中对应的下标为(x &#x2F; c,x % c)。我们直接进行赋值即可。   AC代码： 12345678910111213141516">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-02-28T13:44:11.000Z">
-<meta property="article:modified_time" content="2022-04-04T01:34:52.143Z">
+<meta property="article:modified_time" content="2022-04-04T02:44:16.315Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -196,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      735 字
+      933 字
     </span>
   
 
@@ -205,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7 分钟
+      8 分钟
     </span>
   
 
@@ -237,45 +238,15 @@
             <h1 style="display: none">二维数组</h1>
             
             <div class="markdown-body">
-              <h2 id="LeetCode-566题：重塑矩阵"><a href="#LeetCode-566题：重塑矩阵" class="headerlink" title="LeetCode 566题：重塑矩阵"></a>LeetCode 566题：重塑矩阵</h2><p> </p>
-<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>vector容器定义二维数组  </p>
+              <h2 id="LeetCode-566题：重塑矩阵"><a href="#LeetCode-566题：重塑矩阵" class="headerlink" title="LeetCode 566题：重塑矩阵"></a>LeetCode 566题：重塑矩阵</h2><h3 id="Note："><a href="#Note：" class="headerlink" title="Note："></a>Note：</h3><p>vector容器定义二维数组  </p>
 <h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p>将二维数组映射成一个一维数组，将这个一维数组映射回 r 行 c 列的二维数组。 对于x∈[0,mn)，第 x个元素在 nums 中对应的下标为(x / n,x % n)，而在新的重塑矩阵中对应的下标为(x / c,x % c)。我们直接进行赋值即可。   AC代码：</p>
-<p>class Solution {</p>
-<p>public:</p>
-<p>    vector&lt;vector<int>&gt; matrixReshape(vector&lt;vector<int>&gt;&amp; mat, int r, int c) {</p>
-<p>        int m = mat.size(),n = mat[0].size();</p>
-<p>        if(m*n != r*c)</p>
-<p>        {</p>
-<p>            return mat;</p>
-<p>        }</p>
-<p>        vector&lt;vector<int>&gt; ans(r,vector<int>(c));  //vector容器定义一个二维数组ans</p>
-<p>        for(int i=0; i&lt;m*n; i++)</p>
-<p>        {</p>
-<p>            ans[i/c][i%c] = mat[i/n][i%n];</p>
-<p>        }</p>
-<p>        return ans;</p>
-<p>    }</p>
-<p>};</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">matrixReshape</span>(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; mat, <span class="hljs-type">int</span> r, <span class="hljs-type">int</span> c) &#123;<br>        <span class="hljs-type">int</span> m = mat.<span class="hljs-built_in">size</span>(),n = mat\[<span class="hljs-number">0</span>\].<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">if</span>(m*n != r*c)<br>        &#123;<br>            <span class="hljs-keyword">return</span> mat;<br>        &#125;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">ans</span>(r,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(c));  <span class="hljs-comment">//vector容器定义一个二维数组ans</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;m*n; i++)<br>        &#123;<br>            ans[i/c][i%c] = mat[i/n][i%n];<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
 <p> </p>
-<h2 id="LeetCode-118题：杨辉三角"><a href="#LeetCode-118题：杨辉三角" class="headerlink" title="LeetCode 118题：杨辉三角"></a>LeetCode 118题：杨辉三角</h2><p> </p>
-<h3 id="前言：-1"><a href="#前言：-1" class="headerlink" title="前言："></a>前言：</h3><p>动态规划  </p>
+<h2 id="LeetCode-118题：杨辉三角"><a href="#LeetCode-118题：杨辉三角" class="headerlink" title="LeetCode 118题：杨辉三角"></a>LeetCode 118题：杨辉三角</h2><h3 id="Note：-1"><a href="#Note：-1" class="headerlink" title="Note："></a>Note：</h3><p>动态规划  </p>
 <h3 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h3><p>AC代码：</p>
-<p>class Solution {</p>
-<p>public:</p>
-<p>    vector&lt;vector<int>&gt; generate(int numRows) {</p>
-<p>        vector&lt;vector<int>&gt; ans(numRows);</p>
-<p>        for(int i=0; i&lt;numRows; i++)</p>
-<p>        {</p>
-<p>            ans[i].resize(i + 1);  //resize 改变当前使用数据的大小，如果它比当前使用的大，则填充默认值</p>
-<p>            ans[i][0]=ans[i][i]=1;</p>
-<p>            for(int j=1; j&lt;i; j++)</p>
-<p>            {</p>
-<p>                ans[i][j] = ans[i-1][j-1]+ans[i-1][j];</p>
-<p>            }</p>
-<p>        }</p>
-<p>        return ans;</p>
-<p>    }</p>
-<p>};</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">generate</span>(<span class="hljs-type">int</span> numRows) &#123;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">ans</span>(numRows);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;numRows; i++)<br>        &#123;<br>            ans[i].<span class="hljs-built_in">resize</span>(i + <span class="hljs-number">1</span>);  <span class="hljs-comment">//resize 改变当前使用数据的大小，如果它比当前使用的大，则填充默认值</span><br>            ans[i][<span class="hljs-number">0</span>]=ans[i][i]=<span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>; j&lt;i; j++)<br>            &#123;<br>                ans[i][j] = ans[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>]+ans[i<span class="hljs-number">-1</span>][j];<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
 
             </div>
             <hr>
@@ -289,6 +260,13 @@
                     
                   </div>
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E7%BB%84/">数组</a>
+                    
+                  </div>
                 
               </div>
               

@@ -16,16 +16,17 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="LeetCode 206题：反转链表  题目大意：给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。   题解：AC代码： class Solution { public:     ListNode* reverseList(ListNode* head) {         ListNode* pre &#x3D; nullptr;  &#x2F;&#x2F;定义一个当前节点的前一个节点 初始化为空">
+    <meta name="description" content="LeetCode 206题：反转链表题目大意：给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。   题解：AC代码： 123456789101112131415class Solution &amp;#123;public:    ListNode* reverseList(ListNode* head) &amp;#123;        ListNode* pre &#x3D; nullptr;  &#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="反转链表+合并链表+移除链表元素">
 <meta property="og:url" content="https://yiqiangshiyia.github.io/2022/03/04/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="LeetCode 206题：反转链表  题目大意：给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。   题解：AC代码： class Solution { public:     ListNode* reverseList(ListNode* head) {         ListNode* pre &#x3D; nullptr;  &#x2F;&#x2F;定义一个当前节点的前一个节点 初始化为空">
+<meta property="og:description" content="LeetCode 206题：反转链表题目大意：给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。   题解：AC代码： 123456789101112131415class Solution &amp;#123;public:    ListNode* reverseList(ListNode* head) &amp;#123;        ListNode* pre &#x3D; nullptr;  &#x2F;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-04T13:10:16.000Z">
-<meta property="article:modified_time" content="2022-04-04T01:34:52.213Z">
+<meta property="article:modified_time" content="2022-04-04T02:51:10.391Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="链表">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -196,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.4k 字
+      1.6k 字
     </span>
   
 
@@ -205,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12 分钟
+      14 分钟
     </span>
   
 
@@ -237,74 +238,26 @@
             <h1 style="display: none">反转链表+合并链表+移除链表元素</h1>
             
             <div class="markdown-body">
-              <h2 id="LeetCode-206题：反转链表"><a href="#LeetCode-206题：反转链表" class="headerlink" title="LeetCode 206题：反转链表"></a>LeetCode 206题：反转链表</h2><p> </p>
-<h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。  </p>
+              <h2 id="LeetCode-206题：反转链表"><a href="#LeetCode-206题：反转链表" class="headerlink" title="LeetCode 206题：反转链表"></a>LeetCode 206题：反转链表</h2><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。  </p>
 <h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p>AC代码：</p>
-<p>class Solution {</p>
-<p>public:</p>
-<p>    ListNode* reverseList(ListNode* head) {</p>
-<p>        ListNode* pre = nullptr;  //定义一个当前节点的前一个节点 初始化为空</p>
-<p>        ListNode* cur = head;  //定义一个当前节点 初始化为头结点</p>
-<p>        while(cur != nullptr)  //当前节点不为空</p>
-<p>        {</p>
-<p>            ListNode* tmp = cur-&gt;next;  //定义一个tmp结点 用于保存当前节点的后序节点</p>
-<p>            cur-&gt;next = pre;  //反转链表 让cur节点指向pre节点</p>
-<p>            pre = cur;  //前序节点后移一位</p>
-<p>            cur = tmp;  //当前节点后移一位</p>
-<p>        }</p>
-<p>        return pre;  //返回新链表指向的头结点</p>
-<p>    }</p>
-<p>};</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">reverseList</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<br>        ListNode* pre = <span class="hljs-literal">nullptr</span>;  <span class="hljs-comment">//定义一个当前节点的前一个节点 初始化为空</span><br>        ListNode* cur = head;  <span class="hljs-comment">//定义一个当前节点 初始化为头结点</span><br>        <span class="hljs-keyword">while</span>(cur != <span class="hljs-literal">nullptr</span>)  <span class="hljs-comment">//当前节点不为空</span><br>        &#123;<br>            ListNode* tmp = cur-&gt;next;  <span class="hljs-comment">//定义一个tmp结点 用于保存当前节点的后序节点</span><br>            cur-&gt;next = pre;  <span class="hljs-comment">//反转链表 让cur节点指向pre节点</span><br>            pre = cur;  <span class="hljs-comment">//前序节点后移一位</span><br>            cur = tmp;  <span class="hljs-comment">//当前节点后移一位</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> pre;  <span class="hljs-comment">//返回新链表指向的头结点</span><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
 <p> </p>
 <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KZ4y157Up/?spm_id_from=333.788">B站反转链表讲解</a></p>
 <p> </p>
-<h2 id="LeetCode-21题：合并两个有序链表"><a href="#LeetCode-21题：合并两个有序链表" class="headerlink" title="LeetCode 21题：合并两个有序链表"></a>LeetCode 21题：合并两个有序链表</h2><p> </p>
-<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>只会迭代法 递归法有点复杂  </p>
+<h2 id="LeetCode-21题：合并两个有序链表"><a href="#LeetCode-21题：合并两个有序链表" class="headerlink" title="LeetCode 21题：合并两个有序链表"></a>LeetCode 21题：合并两个有序链表</h2><h3 id="Note："><a href="#Note：" class="headerlink" title="Note："></a>Note：</h3><p>只会迭代法 递归法有点复杂  </p>
 <h3 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h3><p>将两个升序链表合并为一个新的升序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。  </p>
-<h3 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h3><h4 id="AC代码："><a href="#AC代码：" class="headerlink" title="AC代码："></a>AC代码：</h4><p>class Solution {</p>
-<p>public:</p>
-<p>    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {</p>
-<p>        ListNode* preHead = new ListNode(-1);  //定义哨兵节点preHead</p>
-<p>        ListNode* prev = preHead;</p>
-<p>        while (l1 != nullptr &amp;&amp; l2 != nullptr) {</p>
-<p>            if (l1-&gt;val &lt; l2-&gt;val) {</p>
-<p>                prev-&gt;next = l1;</p>
-<p>                l1 = l1-&gt;next;</p>
-<p>            } else {</p>
-<p>                prev-&gt;next = l2;</p>
-<p>                l2 = l2-&gt;next;</p>
-<p>            }</p>
-<p>            prev = prev-&gt;next;</p>
-<p>        }</p>
-<p>        // 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</p>
-<p>        prev-&gt;next = l1 == nullptr ? l2 : l1;</p>
-<p>        return preHead-&gt;next;</p>
-<p>    }</p>
-<p>};</p>
+<h3 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h3><p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">mergeTwoLists</span><span class="hljs-params">(ListNode* l1, ListNode* l2)</span> </span>&#123;<br>        ListNode* preHead = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">-1</span>);  <span class="hljs-comment">//定义哨兵节点preHead</span><br>        ListNode* prev = preHead;<br>        <span class="hljs-keyword">while</span> (l1 != <span class="hljs-literal">nullptr</span> &amp;&amp; l2 != <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;<br>                prev-&gt;next = l1;<br>                l1 = l1-&gt;next;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                prev-&gt;next = l2;<br>                l2 = l2-&gt;next;<br>            &#125;<br>            prev = prev-&gt;next;<br>        &#125;<br>        <span class="hljs-comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span><br>        prev-&gt;next = l1 == <span class="hljs-literal">nullptr</span> ? l2 : l1;<br>        <span class="hljs-keyword">return</span> preHead-&gt;next;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
 <p>  LeetCode题解合并两个有序链表动画演示非常nice！ <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/">LeetCode题解</a>  </p>
-<h2 id="LeetCode-203题：移除链表元素"><a href="#LeetCode-203题：移除链表元素" class="headerlink" title="LeetCode 203题：移除链表元素"></a>LeetCode 203题：移除链表元素</h2><p> </p>
-<h3 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val  的节点,并返回新的头结点。  </p>
-<h3 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：迭代法</strong> AC代码：</p>
-<p>class Solution {</p>
-<p>public:</p>
-<p>    ListNode* removeElements(ListNode* head, int val) {</p>
-<p>        //由于链表头结点Head可能需要被删除 创建哑结点preHead 令pre-&gt;next = head</p>
-<p>        ListNode* preHead = new ListNode(0,head);</p>
-<p>        ListNode* tmp = preHead;  //定义当前节点 初始化为preHead</p>
-<p>        while(tmp-&gt;next != nullptr)</p>
-<p>        {</p>
-<p>            if(tmp-&gt;next-&gt;val == val)</p>
-<p>            {</p>
-<p>                tmp-&gt;next = tmp-&gt;next-&gt;next;</p>
-<p>            }</p>
-<p>            else</p>
-<p>            {</p>
-<p>                tmp = tmp-&gt;next;</p>
-<p>            }</p>
-<p>        }</p>
-<p>        return preHead-&gt;next;  //返回删除操作后的头结点</p>
-<p>    }</p>
-<p>};</p>
+<h2 id="LeetCode-203题：移除链表元素"><a href="#LeetCode-203题：移除链表元素" class="headerlink" title="LeetCode 203题：移除链表元素"></a>LeetCode 203题：移除链表元素</h2><h3 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val  的节点,并返回新的头结点。  </p>
+<h3 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：迭代法</strong> </p>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">removeElements</span><span class="hljs-params">(ListNode* head, <span class="hljs-type">int</span> val)</span> </span>&#123;<br>        <span class="hljs-comment">//由于链表头结点Head可能需要被删除 创建哑结点preHead 令pre-&gt;next = head</span><br>        ListNode* preHead = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">0</span>,head);<br>        ListNode* tmp = preHead;  <span class="hljs-comment">//定义当前节点 初始化为preHead</span><br>        <span class="hljs-keyword">while</span>(tmp-&gt;next != <span class="hljs-literal">nullptr</span>)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(tmp-&gt;next-&gt;val == val)<br>            &#123;<br>                tmp-&gt;next = tmp-&gt;next-&gt;next;<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                tmp = tmp-&gt;next;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> preHead-&gt;next;  <span class="hljs-comment">//返回删除操作后的头结点</span><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
 
             </div>
             <hr>
@@ -318,6 +271,13 @@
                     
                   </div>
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%93%BE%E8%A1%A8/">链表</a>
+                    
+                  </div>
                 
               </div>
               

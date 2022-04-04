@@ -16,16 +16,17 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="LeetCode 226:翻转二叉树  题目大意：给你一棵二叉树的根节点 root ，翻转这棵二叉树，并返回其根节点。   题解：从根节点开始，递归地对树进行遍历，并从叶子节点先开始翻转。如果当前遍历到的节点root 的左右两颗子树都已经翻转，那么我们只需要交换两棵子树的位置，即可完成以root 为根节点的整棵子树的翻转。   AC代码： class Solution { public:">
+    <meta name="description" content="LeetCode 226:翻转二叉树题目大意：给你一棵二叉树的根节点 root ，翻转这棵二叉树，并返回其根节点。 题解：1从根节点开始，递归地对树进行遍历，并从叶子节点先开始翻转。如果当前遍历到的节点root 的左右两颗子树都已经翻转，那么我们只需要交换两棵子树的位置，即可完成以root 为根节点的整棵子树的翻转。  AC代码： 1234567891011121314class Solution">
 <meta property="og:type" content="article">
 <meta property="og:title" content="翻转二叉树+对称二叉树">
 <meta property="og:url" content="https://yiqiangshiyia.github.io/2022/03/17/%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="LeetCode 226:翻转二叉树  题目大意：给你一棵二叉树的根节点 root ，翻转这棵二叉树，并返回其根节点。   题解：从根节点开始，递归地对树进行遍历，并从叶子节点先开始翻转。如果当前遍历到的节点root 的左右两颗子树都已经翻转，那么我们只需要交换两棵子树的位置，即可完成以root 为根节点的整棵子树的翻转。   AC代码： class Solution { public:">
+<meta property="og:description" content="LeetCode 226:翻转二叉树题目大意：给你一棵二叉树的根节点 root ，翻转这棵二叉树，并返回其根节点。 题解：1从根节点开始，递归地对树进行遍历，并从叶子节点先开始翻转。如果当前遍历到的节点root 的左右两颗子树都已经翻转，那么我们只需要交换两棵子树的位置，即可完成以root 为根节点的整棵子树的翻转。  AC代码： 1234567891011121314class Solution">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-17T12:39:58.000Z">
-<meta property="article:modified_time" content="2022-04-04T01:34:52.253Z">
+<meta property="article:modified_time" content="2022-04-04T03:24:35.980Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="二叉树">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -196,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      1.5k 字
     </span>
   
 
@@ -205,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11 分钟
+      13 分钟
     </span>
   
 
@@ -237,72 +238,24 @@
             <h1 style="display: none">翻转二叉树+对称二叉树</h1>
             
             <div class="markdown-body">
-              <h2 id="LeetCode-226-翻转二叉树"><a href="#LeetCode-226-翻转二叉树" class="headerlink" title="LeetCode 226:翻转二叉树"></a>LeetCode 226:翻转二叉树</h2><p> </p>
-<h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你一棵二叉树的根节点 root ，翻转这棵二叉树，并返回其根节点。  </p>
-<h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p>从根节点开始，递归地对树进行遍历，并从叶子节点先开始翻转。如果当前遍历到的节点root 的左右两颗子树都已经翻转，那么我们只需要交换两棵子树的位置，即可完成以root 为根节点的整棵子树的翻转。   AC代码：</p>
-<p>class Solution {</p>
-<p>public:</p>
-<p>    TreeNode* invertTree(TreeNode* root) {</p>
-<p>        if(root == nullptr)</p>
-<p>        {</p>
-<p>            return root;</p>
-<p>        }</p>
-<p>        TreeNode* left = invertTree(root-&gt;left);</p>
-<p>        TreeNode* right = invertTree(root-&gt;right);</p>
-<p>        root-&gt;left = right;</p>
-<p>        root-&gt;right = left;</p>
-<p>        return root;</p>
-<p>    }</p>
-<p>};</p>
+              <h2 id="LeetCode-226-翻转二叉树"><a href="#LeetCode-226-翻转二叉树" class="headerlink" title="LeetCode 226:翻转二叉树"></a>LeetCode 226:翻转二叉树</h2><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你一棵二叉树的根节点 root ，翻转这棵二叉树，并返回其根节点。</p>
+<h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><figure class="highlight xquery"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs xquery">从根节点开始，递归地对树进行遍历，并从叶子节点先开始翻转。如果当前遍历到的节<span class="hljs-built_in">点root</span> 的左右两颗子树都已经翻转，那么我们只需要交换两棵子树的位置，即可完成<span class="hljs-built_in">以root</span> 为根节点的整棵子树的翻转。<br></code></pre></td></tr></table></figure>
+
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">TreeNode* <span class="hljs-title">invertTree</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)<br>        &#123;<br>            <span class="hljs-keyword">return</span> root;<br>        &#125;<br>        TreeNode* left = <span class="hljs-built_in">invertTree</span>(root-&gt;left);<br>        TreeNode* right = <span class="hljs-built_in">invertTree</span>(root-&gt;right);<br>        root-&gt;left = right;<br>        root-&gt;right = left;<br>        <span class="hljs-keyword">return</span> root;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
 <p> </p>
-<h2 id="LeetCode-101-对称二叉树"><a href="#LeetCode-101-对称二叉树" class="headerlink" title="LeetCode 101:对称二叉树"></a>LeetCode 101:对称二叉树</h2><p> </p>
-<h3 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你一个二叉树的根节点 root ， 检查它是否轴对称。  </p>
-<h3 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：递归</strong> AC代码：</p>
-<p>class Solution {</p>
-<p>public:</p>
-<p>    bool isMirror(TreeNode* t1,TreeNode* t2)</p>
-<p>    {</p>
-<p>        if(t1 == nullptr &amp;&amp; t2 == nullptr)</p>
-<p>        {</p>
-<p>            return true;</p>
-<p>        }</p>
-<p>        if(t1 == nullptr  t2 == nullptr)</p>
-<p>        {</p>
-<p>            return false;</p>
-<p>        }</p>
-<p>        return t1-&gt;val == t2-&gt;val &amp;&amp; isMirror(t1-&gt;left,t2-&gt;right) &amp;&amp; isMirror(t1-&gt;right,t2-&gt;left);</p>
-<p>    }</p>
-<p>    bool isSymmetric(TreeNode* root) {</p>
-<p>        return isMirror(root-&gt;left,root-&gt;right);</p>
-<p>    }</p>
-<p>};</p>
-<p>  <strong>方法2：迭代（利用队列）</strong> AC代码：</p>
-<p>class Solution {</p>
-<p>public:</p>
-<p>    bool isMirror(TreeNode* t1,TreeNode* t2)</p>
-<p>    {</p>
-<p>        queue&lt;TreeNode*&gt; q;</p>
-<p>        q.push(t1);</p>
-<p>        q.push(t2);</p>
-<p>        while(!q.empty())</p>
-<p>        {</p>
-<p>            t1 = q.front();</p>
-<p>            q.pop();</p>
-<p>            t2 = q.front();</p>
-<p>            q.pop();</p>
-<p>            if(t1 == nullptr &amp;&amp; t2 == nullptr) continue;</p>
-<p>            if((t1 == nullptr  t2 == nullptr)  t1-&gt;val != t2-&gt;val) return false;</p>
-<p>            q.push(t1-&gt;left);</p>
-<p>            q.push(t2-&gt;right);</p>
-<p>            q.push(t1-&gt;right);</p>
-<p>            q.push(t2-&gt;left);</p>
-<p>        }</p>
-<p>        return true;</p>
-<p>    }</p>
-<p>    bool isSymmetric(TreeNode* root) {</p>
-<p>        return isMirror(root-&gt;left,root-&gt;right);</p>
-<p>    }</p>
-<p>};</p>
+<h2 id="LeetCode-101-对称二叉树"><a href="#LeetCode-101-对称二叉树" class="headerlink" title="LeetCode 101:对称二叉树"></a>LeetCode 101:对称二叉树</h2><h3 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你一个二叉树的根节点 root ， 检查它是否轴对称。 </p>
+<h3 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：递归</strong> </p>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isMirror</span><span class="hljs-params">(TreeNode* t1,TreeNode* t2)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">if</span>(t1 == <span class="hljs-literal">nullptr</span> &amp;&amp; t2 == <span class="hljs-literal">nullptr</span>)<br>        &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(t1 == <span class="hljs-literal">nullptr</span>  t2 == <span class="hljs-literal">nullptr</span>)<br>        &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> t1-&gt;val == t2-&gt;val &amp;&amp; <span class="hljs-built_in">isMirror</span>(t1-&gt;left,t2-&gt;right) &amp;&amp; <span class="hljs-built_in">isMirror</span>(t1-&gt;right,t2-&gt;left);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isSymmetric</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">isMirror</span>(root-&gt;left,root-&gt;right);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>方法2：迭代（利用队列）</strong> </p>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isMirror</span><span class="hljs-params">(TreeNode* t1,TreeNode* t2)</span></span><br><span class="hljs-function">    </span>&#123;<br>        queue&lt;TreeNode*&gt; q;<br>        q.<span class="hljs-built_in">push</span>(t1);<br>        q.<span class="hljs-built_in">push</span>(t2);<br>        <span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())<br>        &#123;<br>            t1 = q.<span class="hljs-built_in">front</span>();<br>            q.<span class="hljs-built_in">pop</span>();<br>            t2 = q.<span class="hljs-built_in">front</span>();<br>            q.<span class="hljs-built_in">pop</span>();<br>            <span class="hljs-keyword">if</span>(t1 == <span class="hljs-literal">nullptr</span> &amp;&amp; t2 == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">continue</span>;<br>            <span class="hljs-keyword">if</span>((t1 == <span class="hljs-literal">nullptr</span>  t2 == <span class="hljs-literal">nullptr</span>)  t1-&gt;val != t2-&gt;val) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            q.<span class="hljs-built_in">push</span>(t1-&gt;left);<br>            q.<span class="hljs-built_in">push</span>(t2-&gt;right);<br>            q.<span class="hljs-built_in">push</span>(t1-&gt;right);<br>            q.<span class="hljs-built_in">push</span>(t2-&gt;left);<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isSymmetric</span><span class="hljs-params">(TreeNode\* root)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">isMirror</span>(root-&gt;left,root-&gt;right);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
 <p> </p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/symmetric-tree/solution/dui-cheng-er-cha-shu-by-leetcode-solution/">LeetCode题解</a></p>
 
@@ -318,6 +271,13 @@
                     
                   </div>
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+                    
+                  </div>
                 
               </div>
               
