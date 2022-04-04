@@ -8,7 +8,7 @@
     <link href="/2022/04/03/C-%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88C-STL%EF%BC%89/"/>
     <url>/2022/04/03/C-%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88C-STL%EF%BC%89/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h2 id="1-iterator迭代器"><a href="#1-iterator迭代器" class="headerlink" title="1.iterator迭代器"></a>1.iterator迭代器</h2><h3 id="定义和初始化"><a href="#定义和初始化" class="headerlink" title="定义和初始化"></a>定义和初始化</h3><p>每种容器都定义了自己的迭代器类型，如vector</p><p>vector<int>::iterator it; //定义一个名为it的变量</p><p>每种容器都定义了一对名为begin和end的函数，用于返回迭代器</p><p>vector<int> ivec;</p><p>vector<int>::iterator it1 = ivec.begin(); //将迭代器it1指向ivec的第一个元素</p><p>vector<int>::iterator it2 = ivec.end(); //将迭代器it2指向ivec容器的最后一个元素的下一个位置</p><p>end并不指向容器的任何元素</p>]]></content>
     
     
     <categories>
