@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="LeetCode 705：设计哈希集合  前言：为了实现哈希集合这一数据结构，有以下几个关键问题需要解决： 1.哈希函数：能够将集合中任意可能的元素映射到一个固定范围的整数值，并将该元素存储到整数值对应的地址上。 2.冲突处理：由于不同元素可能映射到相同的整数值，因此需要在整数值出现冲突时，需要进行冲突处理。总的来说，有以下几种策略解决冲突： _链地址法：_为每个哈希值维护一个链表，并将具有相同哈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计哈希集合+设计哈希映射">
+<meta property="og:url" content="https://yiqiangshiyia.github.io/2022/03/31/%E8%AE%BE%E8%AE%A1%E5%93%88%E5%B8%8C%E9%9B%86%E5%90%88%E8%AE%BE%E8%AE%A1%E5%93%88%E5%B8%8C%E6%98%A0%E5%B0%84/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="LeetCode 705：设计哈希集合  前言：为了实现哈希集合这一数据结构，有以下几个关键问题需要解决： 1.哈希函数：能够将集合中任意可能的元素映射到一个固定范围的整数值，并将该元素存储到整数值对应的地址上。 2.冲突处理：由于不同元素可能映射到相同的整数值，因此需要在整数值出现冲突时，需要进行冲突处理。总的来说，有以下几种策略解决冲突： _链地址法：_为每个哈希值维护一个链表，并将具有相同哈">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-31T12:54:36.000Z">
+<meta property="article:modified_time" content="2022-04-04T01:34:52.321Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>设计哈希集合+设计哈希映射 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yiqiangshiyia.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/picture.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="设计哈希集合+设计哈希映射">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-31 20:54" pubdate>
+        2022年3月31日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">设计哈希集合+设计哈希映射</h1>
+            
+            <div class="markdown-body">
+              <h2 id="LeetCode-705：设计哈希集合"><a href="#LeetCode-705：设计哈希集合" class="headerlink" title="LeetCode 705：设计哈希集合"></a>LeetCode 705：设计哈希集合</h2><p> </p>
+<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>为了实现哈希集合这一数据结构，有以下几个关键问题需要解决： 1.哈希函数：能够将集合中任意可能的元素映射到一个固定范围的整数值，并将该元素存储到整数值对应的地址上。 2.冲突处理：由于不同元素可能映射到相同的整数值，因此需要在整数值出现冲突时，需要进行冲突处理。总的来说，有以下几种策略解决冲突： _链地址法：_为每个哈希值维护一个链表，并将具有相同哈希值的元素都放入这一链表当中。 _开放地址法：_当发现哈希值 hh 处产生冲突时，根据某种策略，从 hh 出发找到下一个不冲突的位  置。例如，一种最简单的策略是，不断地检查 h+1,h+2,h+3,… 这些整数对应的位置。 _再哈希法：_当发现哈希冲突后，使用另一个哈希函数产生一个新的地址。 3.扩容：当哈希表元素过多时，冲突的概率将越来越大，而在哈希表中查询一个元素的效率也会越来越低。因此，需要开辟一块更大的空间，来缓解哈希表中发生的冲突。  </p>
+<h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>不使用任何内建的哈希表库设计一个哈希集合（HashSet）。 实现 MyHashSet 类： void add(key) 向哈希集合中插入值 key 。 bool contains(key) 返回哈希集合中是否存在这个值 key 。 void remove(key) 将给定值 key 从哈希集合中删除。如果哈希集合中没有这个值，什么也不做。  </p>
+<h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：链地址法</strong> 设哈希表的大小为 base，则可以设计一个简单的哈希函数：hash(x) = x mod base。 开辟一个大小为 base 的数组，数组的每个位置是一个链表。当计算出哈希值之后，就插入到对应位置的链表当中。 由于使用整数除法作为哈希函数，为了尽可能避免冲突，应当将 base 取为一个质数。取 base=769。   AC代码：</p>
+<p>class MyHashSet {</p>
+<p>public:</p>
+<p>    vector&lt;list<int>&gt; data;  //定义一个数组base,数组的每一个位置是一个链表</p>
+<p>    static const int base = 769;  //定义哈希表的大小</p>
+<p>    //用链地址法设计一个哈希表</p>
+<p>    static int hash(int key)</p>
+<p>    {</p>
+<p>        return key % base;</p>
+<p>    }</p>
+<p>    MyHashSet():data(base) {}</p>
+<p>    //插入</p>
+<p>    void add(int key) {</p>
+<p>        int h = hash(key);  //找出key在哈希表中对应的位置</p>
+<p>        for(auto it=data[h].begin(); it!=data[h].end(); it++)  //迭代法遍历key在哈希表中对应位置的链表</p>
+<p>        {</p>
+<p>            //如果插入元素存在 则返回空</p>
+<p>            if(*it == key)</p>
+<p>            {</p>
+<p>                return;</p>
+<p>            }</p>
+<p>        }</p>
+<p>        //如果元素不存在则插入元素</p>
+<p>        data[h].push_back(key);</p>
+<p>    }</p>
+<p>    //删除</p>
+<p>    void remove(int key) {</p>
+<p>        int h = hash(key);</p>
+<p>        for(auto it=data[h].begin(); it!=data[h].end(); it++)</p>
+<p>        {</p>
+<p>            if(*it == key)</p>
+<p>            {</p>
+<p>                data[h].erase(it);</p>
+<p>                /*</p>
+<p>                    注意：data[h].erase(it) 这里的it不可写成*it或者key</p>
+<p>                    因为删除的是key在链表上的地址而不是值</p>
+<p>                */</p>
+<p>                return;</p>
+<p>            }</p>
+<p>        }</p>
+<p>    }</p>
+<p>    //判断key是否存在</p>
+<p>    bool contains(int key) {</p>
+<p>        int h = hash(key);</p>
+<p>        for(auto it=data[h].begin(); it!=data[h].end(); it++)</p>
+<p>        {</p>
+<p>            if(*it == key)  /* 注意：*it */</p>
+<p>            {</p>
+<p>                return true;</p>
+<p>            }</p>
+<p>        }</p>
+<p>        return false;</p>
+<p>    }</p>
+<p>};</p>
+<p> </p>
+<h2 id="LeetCode-706：设计哈希映射"><a href="#LeetCode-706：设计哈希映射" class="headerlink" title="LeetCode 706：设计哈希映射"></a>LeetCode 706：设计哈希映射</h2><p> </p>
+<h3 id="前言：-1"><a href="#前言：-1" class="headerlink" title="前言："></a>前言：</h3><p><em><strong>设计哈希映射</strong></em> 与 <em><strong>设计哈希集合</strong></em> 解法接近，唯一的区别在于哈希映射存储的不是 key 本身，而是键值对(key,value)。   哈希表增加键值对的函数：map1.insert(make_pair(n,1)); 哈希表删除键值对的函数：data[h].erase(it); 哈希表使用迭代器遍历时： i-&gt;first：表示键 i-&gt;second：表示值  </p>
+<h3 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h3><p>不使用任何内建的哈希表库设计一个哈希映射（HashMap）。 实现 MyHashMap 类： MyHashMap() 用空映射初始化对象 void put(int key, int value) 向 HashMap 插入一个键值对 (key, value) 。如果 key 已经存在于映射中，则更新其对应的值 value 。 int get(int key) 返回特定的 key 所映射的 value ；如果映射中不包含 key 的映射，返回 -1 。 void remove(key) 如果映射中存在 key 的映射，则移除 key 和它所对应的 value 。  </p>
+<h3 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h3><p>AC代码：</p>
+<p>class MyHashMap {</p>
+<p>public:</p>
+<p>    vector&lt;list&lt;pair&lt;int,int&gt;&gt;&gt; data;</p>
+<p>    static const int base = 769;</p>
+<p>    static int hash(int key)</p>
+<p>    {</p>
+<p>        return key % base;</p>
+<p>    }</p>
+<p>    MyHashMap():data(base) {}</p>
+<p>    void put(int key, int value) {</p>
+<p>        int h = hash(key);</p>
+<p>        for(auto it=data[h].begin(); it!=data[h].end(); it++)</p>
+<p>        {</p>
+<p>            if(it-&gt;first == key)</p>
+<p>            {</p>
+<p>                it-&gt;second = value;</p>
+<p>                return;</p>
+<p>            }</p>
+<p>        }</p>
+<p>        data[h].push_back(make_pair(key,value));</p>
+<p>    }</p>
+<p>    int get(int key) {</p>
+<p>        int h = hash(key);</p>
+<p>        for(auto it=data[h].begin(); it!=data[h].end(); it++)</p>
+<p>        {</p>
+<p>            if(it-&gt;first == key)</p>
+<p>            {</p>
+<p>                return it-&gt;second;</p>
+<p>            }</p>
+<p>        }</p>
+<p>        return -1;</p>
+<p>    }</p>
+<p>    void remove(int key) {</p>
+<p>        int h = hash(key);</p>
+<p>        for(auto it=data[h].begin(); it!=data[h].end(); it++)</p>
+<p>        {</p>
+<p>            if(it-&gt;first == key)</p>
+<p>            {</p>
+<p>                data[h].erase(it);</p>
+<p>                return;</p>
+<p>            }</p>
+<p>        }</p>
+<p>    }</p>
+<p>};</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/LeetCode%E5%88%B7%E9%A2%98/">LeetCode刷题</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/01/hello-world/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/25/%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">
+                        <span class="hidden-mobile">三数之和</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

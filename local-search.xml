@@ -66,5 +66,689 @@
   
   
   
+  <entry>
+    <title>设计哈希集合+设计哈希映射</title>
+    <link href="/2022/03/31/%E8%AE%BE%E8%AE%A1%E5%93%88%E5%B8%8C%E9%9B%86%E5%90%88%E8%AE%BE%E8%AE%A1%E5%93%88%E5%B8%8C%E6%98%A0%E5%B0%84/"/>
+    <url>/2022/03/31/%E8%AE%BE%E8%AE%A1%E5%93%88%E5%B8%8C%E9%9B%86%E5%90%88%E8%AE%BE%E8%AE%A1%E5%93%88%E5%B8%8C%E6%98%A0%E5%B0%84/</url>
+    
+    <content type="html"><![CDATA[<h2 id="LeetCode-705：设计哈希集合"><a href="#LeetCode-705：设计哈希集合" class="headerlink" title="LeetCode 705：设计哈希集合"></a>LeetCode 705：设计哈希集合</h2><p> </p><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>为了实现哈希集合这一数据结构，有以下几个关键问题需要解决： 1.哈希函数：能够将集合中任意可能的元素映射到一个固定范围的整数值，并将该元素存储到整数值对应的地址上。 2.冲突处理：由于不同元素可能映射到相同的整数值，因此需要在整数值出现冲突时，需要进行冲突处理。总的来说，有以下几种策略解决冲突： _链地址法：_为每个哈希值维护一个链表，并将具有相同哈希值的元素都放入这一链表当中。 _开放地址法：_当发现哈希值 hh 处产生冲突时，根据某种策略，从 hh 出发找到下一个不冲突的位  置。例如，一种最简单的策略是，不断地检查 h+1,h+2,h+3,… 这些整数对应的位置。 _再哈希法：_当发现哈希冲突后，使用另一个哈希函数产生一个新的地址。 3.扩容：当哈希表元素过多时，冲突的概率将越来越大，而在哈希表中查询一个元素的效率也会越来越低。因此，需要开辟一块更大的空间，来缓解哈希表中发生的冲突。  </p><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>不使用任何内建的哈希表库设计一个哈希集合（HashSet）。 实现 MyHashSet 类： void add(key) 向哈希集合中插入值 key 。 bool contains(key) 返回哈希集合中是否存在这个值 key 。 void remove(key) 将给定值 key 从哈希集合中删除。如果哈希集合中没有这个值，什么也不做。  </p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：链地址法</strong> 设哈希表的大小为 base，则可以设计一个简单的哈希函数：hash(x) = x mod base。 开辟一个大小为 base 的数组，数组的每个位置是一个链表。当计算出哈希值之后，就插入到对应位置的链表当中。 由于使用整数除法作为哈希函数，为了尽可能避免冲突，应当将 base 取为一个质数。取 base=769。   AC代码：</p><p>class MyHashSet {</p><p>public:</p><p>    vector&lt;list<int>&gt; data;  //定义一个数组base,数组的每一个位置是一个链表</p><p>    static const int base = 769;  //定义哈希表的大小</p><p>    //用链地址法设计一个哈希表</p><p>    static int hash(int key)</p><p>    {</p><p>        return key % base;</p><p>    }</p><p>    MyHashSet():data(base) {}</p><p>    //插入</p><p>    void add(int key) {</p><p>        int h = hash(key);  //找出key在哈希表中对应的位置</p><p>        for(auto it=data[h].begin(); it!=data[h].end(); it++)  //迭代法遍历key在哈希表中对应位置的链表</p><p>        {</p><p>            //如果插入元素存在 则返回空</p><p>            if(*it == key)</p><p>            {</p><p>                return;</p><p>            }</p><p>        }</p><p>        //如果元素不存在则插入元素</p><p>        data[h].push_back(key);</p><p>    }</p><p>    //删除</p><p>    void remove(int key) {</p><p>        int h = hash(key);</p><p>        for(auto it=data[h].begin(); it!=data[h].end(); it++)</p><p>        {</p><p>            if(*it == key)</p><p>            {</p><p>                data[h].erase(it);</p><p>                /*</p><p>                    注意：data[h].erase(it) 这里的it不可写成*it或者key</p><p>                    因为删除的是key在链表上的地址而不是值</p><p>                */</p><p>                return;</p><p>            }</p><p>        }</p><p>    }</p><p>    //判断key是否存在</p><p>    bool contains(int key) {</p><p>        int h = hash(key);</p><p>        for(auto it=data[h].begin(); it!=data[h].end(); it++)</p><p>        {</p><p>            if(*it == key)  /* 注意：*it */</p><p>            {</p><p>                return true;</p><p>            }</p><p>        }</p><p>        return false;</p><p>    }</p><p>};</p><p> </p><h2 id="LeetCode-706：设计哈希映射"><a href="#LeetCode-706：设计哈希映射" class="headerlink" title="LeetCode 706：设计哈希映射"></a>LeetCode 706：设计哈希映射</h2><p> </p><h3 id="前言：-1"><a href="#前言：-1" class="headerlink" title="前言："></a>前言：</h3><p><em><strong>设计哈希映射</strong></em> 与 <em><strong>设计哈希集合</strong></em> 解法接近，唯一的区别在于哈希映射存储的不是 key 本身，而是键值对(key,value)。   哈希表增加键值对的函数：map1.insert(make_pair(n,1)); 哈希表删除键值对的函数：data[h].erase(it); 哈希表使用迭代器遍历时： i-&gt;first：表示键 i-&gt;second：表示值  </p><h3 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h3><p>不使用任何内建的哈希表库设计一个哈希映射（HashMap）。 实现 MyHashMap 类： MyHashMap() 用空映射初始化对象 void put(int key, int value) 向 HashMap 插入一个键值对 (key, value) 。如果 key 已经存在于映射中，则更新其对应的值 value 。 int get(int key) 返回特定的 key 所映射的 value ；如果映射中不包含 key 的映射，返回 -1 。 void remove(key) 如果映射中存在 key 的映射，则移除 key 和它所对应的 value 。  </p><h3 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h3><p>AC代码：</p><p>class MyHashMap {</p><p>public:</p><p>    vector&lt;list&lt;pair&lt;int,int&gt;&gt;&gt; data;</p><p>    static const int base = 769;</p><p>    static int hash(int key)</p><p>    {</p><p>        return key % base;</p><p>    }</p><p>    MyHashMap():data(base) {}</p><p>    void put(int key, int value) {</p><p>        int h = hash(key);</p><p>        for(auto it=data[h].begin(); it!=data[h].end(); it++)</p><p>        {</p><p>            if(it-&gt;first == key)</p><p>            {</p><p>                it-&gt;second = value;</p><p>                return;</p><p>            }</p><p>        }</p><p>        data[h].push_back(make_pair(key,value));</p><p>    }</p><p>    int get(int key) {</p><p>        int h = hash(key);</p><p>        for(auto it=data[h].begin(); it!=data[h].end(); it++)</p><p>        {</p><p>            if(it-&gt;first == key)</p><p>            {</p><p>                return it-&gt;second;</p><p>            }</p><p>        }</p><p>        return -1;</p><p>    }</p><p>    void remove(int key) {</p><p>        int h = hash(key);</p><p>        for(auto it=data[h].begin(); it!=data[h].end(); it++)</p><p>        {</p><p>            if(it-&gt;first == key)</p><p>            {</p><p>                data[h].erase(it);</p><p>                return;</p><p>            }</p><p>        }</p><p>    }</p><p>};</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>三数之和</title>
+    <link href="/2022/03/25/%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
+    <url>/2022/03/25/%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/</url>
+    
+    <content type="html"><![CDATA[<h2 id="LeetCode-15-三数之和"><a href="#LeetCode-15-三数之和" class="headerlink" title="LeetCode 15:三数之和"></a>LeetCode 15:三数之和</h2><p> </p><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>本题与LeetCode 1：两数之和类似，是非常经典的面试题，但是做法不尽相同。  </p><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。 注意：答案中不可以包含重复的三元组。  </p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：排序+双指针</strong> 关键字：不可以包含重复 模式识别：利用排序避免重复答案 降低复杂度变成twoSum 利用双指针找到所有解 数组有序，和为定值的两个数一定可以通过头尾指针向中间移动获得。 关键去重，每次移动跳过与当前值相同的元素，枚举第三个元素也要跳过重复元素。   AC代码：</p><p>class Solution {</p><p>public:</p><p>    vector&lt;vector<int>&gt; threeSum(vector<int>&amp; nums) {</p><p>        vector&lt;vector<int>&gt; ans;</p><p>        sort(nums.begin(),nums.end());  //对数组进行排序方便去重</p><p>        //枚举a</p><p>        for(int i=0; i&lt;nums.size(); i++)</p><p>        {</p><p>            if(i&gt;0 &amp;&amp; nums[i] == nums[i-1])  continue;  //去重，需要和上次遍历的元素不同</p><p>            int target = 0-nums[i];  //定义目标值target，转化为二元组问题target = b+c</p><p>            int l = i+1,r = nums.size()-1;  //定义首尾指针，通过首尾指针移动获取定值target</p><p>            while(l&lt;r)  //通过首尾指针获取定值target</p><p>            {</p><p>                if(nums[l]+nums[r] == target)</p><p>                {</p><p>                    ans.push_back({nums[i],nums[l],nums[r]});  //将符合的元组加入结果ans中</p><p>                    while(l&lt;r &amp;&amp; nums[l] == nums[l+1])  l++;  //去除重复的左指针元素</p><p>                    while(l&lt;r &amp;&amp; nums[r] == nums[r-1])  r–;  //去除重复的右指针元素</p><p>                    l++;  //左指针向右移</p><p>                    r–;  //右指针向左移</p><p>                }</p><p>                else if(nums[l]+nums[r] &gt; target)</p><p>                {</p><p>                    r–;  //结果大于目标值，右指针向左移</p><p>                }</p><p>                else</p><p>                {</p><p>                    l++;  //结果小于目标值，左指针向右移</p><p>                }</p><p>            }</p><p>        }</p><p>        return ans;  //返回结果</p><p>    }</p><p>};</p><p>  <a href="https://www.bilibili.com/video/BV1Jq4y1A7u7?spm_id_from=333.337.search-card.all.click">B站视频讲解</a>  </p><h2 id="LeetCode-1：两数之和"><a href="#LeetCode-1：两数之和" class="headerlink" title="LeetCode 1：两数之和"></a>LeetCode 1：两数之和</h2><p> </p><h3 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给定一个整数数组 nums 和一个整数目标值 target ，请你在该数组中找出和为目标值 target 的那两个整数，并返回它们的数组下标。  </p><h3 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：暴力枚举</strong> <strong>方法2：哈希表</strong> AC代码：</p><p>class Solution {</p><p>public:</p><p>    vector<int> twoSum(vector<int>&amp; nums, int target) {</p><p>        unordered_map&lt;int,int&gt; map1;  //键为nums[i] 值为数组下标i</p><p>        int n = nums.size();</p><p>        for(int i=0; i&lt;n; i++)</p><p>        {</p><p>            auto it = map1.find(target-nums[i]);</p><p>            if(it  != map1.end())</p><p>            {</p><p>                return {it-&gt;second,i};</p><p>            }</p><p>            map1[nums[i]] = i;</p><p>        }</p><p>        return {};</p><p>    }</p><p>};</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>一题四解：排序 集合 哈希表 位运算</title>
+    <link href="/2022/03/25/%E4%B8%80%E9%A2%98%E5%9B%9B%E8%A7%A3%EF%BC%9A%E6%8E%92%E5%BA%8F-%E9%9B%86%E5%90%88-%E5%93%88%E5%B8%8C%E8%A1%A8-%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    <url>/2022/03/25/%E4%B8%80%E9%A2%98%E5%9B%9B%E8%A7%A3%EF%BC%9A%E6%8E%92%E5%BA%8F-%E9%9B%86%E5%90%88-%E5%93%88%E5%B8%8C%E8%A1%A8-%E4%BD%8D%E8%BF%90%E7%AE%97/</url>
+    
+    <content type="html"><![CDATA[<h2 id="LeetCode-136：只出现一次的数字"><a href="#LeetCode-136：只出现一次的数字" class="headerlink" title="LeetCode 136：只出现一次的数字"></a>LeetCode 136：只出现一次的数字</h2><p> </p><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>这道题 虽然是一道简单题，但是学到了很多东西。意识到大一学的C++其实有很多东西都没有学到，比如哈希表和集合的很多用法都不够了解。  </p><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。  </p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：判断排序数组前后元素是否相等</strong> AC代码：</p><p>class Solution {</p><p>public:</p><p>    int singleNumber(vector<int>&amp; nums) {</p><p>        sort(nums.begin(),nums.end());</p><p>        int n = nums.size();</p><p>        if(n == 1)  return nums[0];</p><p>        if(n&gt;=2 &amp;&amp; nums[0] !=  nums[1])  return nums[0];</p><p>        if(n&gt;=2 &amp;&amp; nums[n-1] != nums[n-2])  return nums[n-1];</p><p>        for(int i=1; i&lt;n-1; i++)</p><p>        {</p><p>            if(nums[i] != nums[i-1] &amp;&amp; nums[i] != nums[i+1])</p><p>            {</p><p>                return nums[i];</p><p>            }</p><p>        }</p><p>        return 0;</p><p>    }</p><p>};</p><p>  <strong>方法2：集合</strong> set集合只能使用迭代器遍历，不能使用下标遍历。所以只能返回set1.begin()，而不能返回下标。 auto ans = set1.begin();  //这里只能用auto 而不能用int return *ans;  //返回的必须是指针类型 因为set1.begin()是迭代器类型，所以 ans只能用auto定义，而不能用int类型定义。因此返回的值也必须是 指针类型的。   AC代码：</p><p>class Solution {</p><p>public:</p><p>    int singleNumber(vector<int>&amp; nums) {</p><p>        unordered_set<int> set1;</p><p>        for(int n : nums)</p><p>        {</p><p>            if(set1.count(n))</p><p>            {</p><p>                set1.erase(n);</p><p>            }</p><p>            else</p><p>            {</p><p>                set1.insert(n);</p><p>            }</p><p>        }</p><p>        auto ans = set1.begin();  //这里只能用auto 而不能用int</p><p>        return *ans;  //返回的必须是指针类型</p><p>    }</p><p>};</p><p>  <strong>方法3：哈希表</strong> 哈希表增加键值对的函数：map1.insert(make_pair(n,1)); 哈希表使用迭代器遍历时： i-&gt;first：表示键 i-&gt;second：表示值   AC代码：</p><p>class Solution {</p><p>public:</p><p>    int singleNumber(vector<int>&amp; nums) {</p><p>        map&lt;int,int&gt; map1;</p><p>        for(int n : nums)</p><p>        {</p><p>            if(map1.find(n) == map1.end())</p><p>            {</p><p>                map1.insert(make_pair(n,1));  //如果字典中不存在该key，则新增一个键值对(n,1)</p><p>            }</p><p>            else</p><p>            {</p><p>                map1[n]++;  //如果字典中存在该key，则将值加1</p><p>            }</p><p>        }</p><p>        for(auto i=map1.begin(); i!=map1.end(); i++)</p><p>        {</p><p>            if(i-&gt;second == 1)</p><p>            {</p><p>                return i-&gt;first;</p><p>            }</p><p>        }</p><p>        return 0;</p><p>    }</p><p>};</p><p>  <strong>相同类型的哈希表题目：</strong><a href="https://leetcode-cn.com/problems/majority-element/">LeetCode 169：多数元素</a>   <strong>方法4：位运算</strong> 这个方法太精妙了！   AC代码：</p><p>class Solution {</p><p>public:</p><p>    int singleNumber(vector<int>&amp; nums) {</p><p>        int ret = 0;</p><p>        for (auto e: nums) ret ^= e;</p><p>        return ret;</p><p>    }</p><p>};</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Untitled Post - 4</title>
+    <link href="/2022/03/25/202-trashed/"/>
+    <url>/2022/03/25/202-trashed/</url>
+    
+    <content type="html"><![CDATA[<p>赫瑟尔河畔的月光没有照进魏玛宫殿，巴赫音乐也终隐没于人海……</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>朝花夕拾</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Win10下编译geth</title>
+    <link href="/2022/03/23/win10%E4%B8%8B%E7%BC%96%E8%AF%91geth/"/>
+    <url>/2022/03/23/win10%E4%B8%8B%E7%BC%96%E8%AF%91geth/</url>
+    
+    <content type="html"><![CDATA[<p>转自简书：<a href="https://www.jianshu.com/p/fe6e9e7437dc">https://www.jianshu.com/p/fe6e9e7437dc</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>uncategorized</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>两数之和 - 输入 BST</title>
+    <link href="/2022/03/22/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-iv-%E8%BE%93%E5%85%A5-bst/"/>
+    <url>/2022/03/22/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-iv-%E8%BE%93%E5%85%A5-bst/</url>
+    
+    <content type="html"><![CDATA[<h2 id="LeetCode-653-两数之和IV-输入BST"><a href="#LeetCode-653-两数之和IV-输入BST" class="headerlink" title="LeetCode 653:两数之和IV-输入BST"></a>LeetCode 653:两数之和IV-输入BST</h2><p> </p><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给定一个二叉搜索树 root 和一个目标结果 k ，如果 BST 中存在两个元素且它们的和等于 给定的目标结果，则返回 true 。  </p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：深度优先搜索+哈希表</strong> 使用深度优先搜索的方式遍历整棵树，用哈希表记录遍历过的节点的值。 对于一个值为x的节点，我们检查哈希表中是否存在k-x即可。如果存在对应的元素，那么我们就可以在这棵树上找到两个节点的和为k，否则我们将x放入哈希表中。 如果遍历完整棵树都不存在对应的元素，那么该树上不存在两个和为k的节点   AC代码：</p><p>class Solution {</p><p>public:</p><p>    unordered_set<int> hashTable;  //哈希表要定义在函数外面</p><p>    bool findTarget(TreeNode* root, int k) {</p><p>        if(root == nullptr)</p><p>        {</p><p>            return false;</p><p>        }</p><p>        if(hashTable.count(k - root-&gt;val))</p><p>        {</p><p>            return true;</p><p>        }</p><p>        hashTable.insert(root-&gt;val);</p><p>        return findTarget(root-&gt;left,k)  findTarget(root-&gt;right,k);</p><p>    }</p><p>};</p><p>  <strong>方法2：广度优先搜索+哈希表</strong> 使用广度优先搜索的方式遍历整棵树，用哈希表记录遍历过的节点的值。 首先创建一个哈希表和一个队列，将根节点加入队列中，然后执行以下步骤： 1.从队列中取出队头，假设其值为 x 2.检查哈希表中是否存在 k - x，如果存在，返回 true 3.否则，将该节点的左右的非空子节点加入队尾 4.重复以上步骤，直到队列为空 5.如果队列为空，说明树上不存在两个和为 k的节点，返回 false   AC代码：</p><p>class Solution {</p><p>public:</p><p>    bool findTarget(TreeNode* root, int k) {</p><p>        unordered_set<int> hashTable;</p><p>        queue&lt;TreeNode*&gt; que;</p><p>        que.push(root);</p><p>        while(!que.empty())</p><p>        {</p><p>            TreeNode* node = que.front();</p><p>            que.pop();</p><p>            if(hashTable.count(k - node-&gt;val))</p><p>            {</p><p>                return true;</p><p>            }</p><p>            hashTable.insert(node-&gt;val);</p><p>            if(node-&gt;left != nullptr)</p><p>            {</p><p>                que.push(node-&gt;left);</p><p>            }</p><p>            if(node-&gt;right != nullptr)</p><p>            {</p><p>                que.push(node-&gt;right);</p><p>            }</p><p>        }</p><p>        return false;</p><p>    }</p><p>};</p><p> </p><p><strong>方法3：深度优先搜索+中序遍历+双指针</strong>   <strong>方法4：迭代+中序遍历+双指针</strong>   <a href="https://leetcode-cn.com/problems/two-sum-iv-input-is-a-bst/solution/liang-shu-zhi-he-iv-shu-ru-bst-by-leetco-b4nl/">LeetCode题解</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>验证二叉搜索树</title>
+    <link href="/2022/03/20/%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"/>
+    <url>/2022/03/20/%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</url>
+    
+    <content type="html"><![CDATA[<h2 id="LeetCode-98-验证二叉搜索树"><a href="#LeetCode-98-验证二叉搜索树" class="headerlink" title="LeetCode 98 :验证二叉搜索树"></a>LeetCode 98 :验证二叉搜索树</h2><p> </p><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p><strong>有效二叉搜索树定义 ：</strong> 1.节点左子树只包含小于当前节点的数 2.节点右子树只包含大于当前节点的数 3.所有左子树和右子树自身必须也是二叉搜索树  </p><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你一个二叉树的根节点 root ，判断其是否是一个有效的二叉搜索树。  </p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：递归法</strong> 定义一个函数bool helper(TreeNode*,long long int lower,long long int upper) 如果上界和下界存在，判断当前节点的值是否在界内，如果不在界内，返回false。将当前节点的值作为上界，继续对node-&gt;left进行递归；将当前节点作为下界，继续对node-&gt;right进行递归。   AC代码：</p><p>class Solution {</p><p>public:</p><p>    bool helper(TreeNode* root,long long int lower,long long int upper){</p><p>        if(root == nullptr)</p><p>        {</p><p>            return true;  //空节点是合理的二叉搜索树</p><p>        }</p><p>        if(root-&gt;val &lt;= lower  root-&gt;val &gt;= upper)  //节点不为空，判断节点上的值是否在上下界内</p><p>        {</p><p>            return false;</p><p>        }</p><p>        //更改上下界 递归遍历二叉树的左右子树</p><p>        return helper(root-&gt;left,lower,root-&gt;val) &amp;&amp; helper(root-&gt;right,root-&gt;val,upper);</p><p>    }</p><p>    bool isValidBST(TreeNode* root) {</p><p>        return helper(root,LONG_MIN,LONG_MAX);  //从根节点开始，上下界都为空</p><p>    }</p><p>};</p><p>  <strong>方法2：中序遍历</strong> 根据二叉搜索树的性质，得知二叉搜索树中序遍历得到的值构成的序列一定是升序的，在中序遍历的时候实时检查当前节点的值是否大于前一个中序遍历到的节点的值即可。如果均大于说明这个序列是升序的，整棵树是二叉搜索树，否则不是。</p><p>  AC代码：</p><p>class Solution {</p><p>public:</p><p>    bool isValidBST(TreeNode* root) {</p><p>        stack&lt;TreeNode*&gt; stack;  //定义栈stack来存储未拜访过的树节点</p><p>        long long inorder = (long long)INT_MIN-1;  //inorder用来存储上一个遍历到的树节点的值</p><p>        while(!stack.empty()  root != nullptr)</p><p>        {</p><p>            //不断将root的左子节点加入栈 直到没有剩余的左节点</p><p>            while(root != nullptr)</p><p>            {</p><p>                stack.push(root);</p><p>                root = root-&gt;left;</p><p>            }</p><p>            root = stack.top();</p><p>            stack.pop();  //将当前子树最左边的节点从stack中取出</p><p>            //如果中序遍历得到的节点的值小于等于前一个inorder，说明不是二叉搜索树</p><p>            if (root-&gt;val &lt;= inorder)</p><p>            {</p><p>                return false;</p><p>            }</p><p>            inorder = root-&gt;val;  //将inorder设为当前节点的值</p><p>            root = root-&gt;right;  //将root设为当前节点的右子节点，继续循环</p><p>        }</p><p>        return true;</p><p>    }</p><p>};</p><p>  <a href="https://leetcode-cn.com/problems/validate-binary-search-tree/solution/yan-zheng-er-cha-sou-suo-shu-by-leetcode-solution/">LeetCode题解</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>二叉树路径总和</title>
+    <link href="/2022/03/19/%E4%BA%8C%E5%8F%89%E6%A0%91%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C/"/>
+    <url>/2022/03/19/%E4%BA%8C%E5%8F%89%E6%A0%91%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C/</url>
+    
+    <content type="html"><![CDATA[<h2 id="LeetCode-112-路径总和"><a href="#LeetCode-112-路径总和" class="headerlink" title="LeetCode 112:路径总和"></a>LeetCode 112:路径总和</h2><p> </p><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>本题核心思想是对树进行一次遍历，在遍历是记录从根节点到当前节点的路径总和，以防止重复计算。  </p><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你二叉树的根节点 root 和一个表示目标和的整数 targetSum 。判断该树中是否存在 根节点到叶子节点 的路径，这条路径上所有节点值相加等于目标和 targetSum 。如果存在，返回 true ；否则，返回 false 。  </p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：广度优先搜索</strong> 使用广度优先搜索的方式，记录从根节点到当前节点的路径和，以防止重复计算。 这样我们可以使用两个队列，分别存储将要遍历的节点，以及根节点到这些节点的路径和。   AC代码：</p><p>class Solution {</p><p>public:</p><p>    bool hasPathSum(TreeNode* root, int targetSum) {</p><p>        if(root == nullptr)  //首先判断根节点是否存在</p><p>        {</p><p>            return false;</p><p>        }</p><p>        queue&lt;TreeNode*&gt; que_node;  //定义一个队列 用于存储将要遍历的结点</p><p>        queue<int> que_val;  //定义一个队列 用于记录从根节点到当前节点路径和</p><p>        que_node.push(root);  //将根节点加入第一个队列</p><p>        que_val.push(root-&gt;val);  //将根节点的值加入第二个队列</p><p>        //迭代循环队列 直到队列为空</p><p>        while(!que_node.empty())</p><p>        {</p><p>            TreeNode* now = que_node.front();</p><p>            int temp = que_val.front();</p><p>            que_node.pop();</p><p>            que_val.pop();</p><p>            if(now-&gt;left == nullptr &amp;&amp; now-&gt;right == nullptr)  //不存在左右节点 则为叶节点</p><p>            {</p><p>                if(temp == targetSum)  //判断路径和与目标值是否相等</p><p>                {</p><p>                    return true;</p><p>                }</p><p>                continue;  //不相等则迭代继续</p><p>            }</p><p>            if(now-&gt;left != nullptr)  //存在左子节点</p><p>            {</p><p>                que_node.push(now-&gt;left);  //将左子节点加入第一个队列</p><p>                que_val.push(now-&gt;left-&gt;val + temp);  //将左子节点值与当前路径和相加加入第二个队列</p><p>            }</p><p>            if(now-&gt;right != nullptr)  //存在右子节点</p><p>            {</p><p>                que_node.push(now-&gt;right);  //将右子节点加入第一个队列</p><p>                que_val.push(now-&gt;right-val + temp);  //将右子节点值与当前路径和相加加入第二个队列</p><p>            }</p><p>        }</p><p>        return false;  //没有满足条件的 返回false</p><p>    }</p><p>};</p><p>  <strong>方法2：递归</strong> AC代码：</p><p>class Solution {</p><p>public:</p><p>    bool hasPathSum(TreeNode *root, int sum) {</p><p>        if (root == nullptr) {</p><p>            return false;</p><p>        }</p><p>        if (root-&gt;left == nullptr &amp;&amp; root-&gt;right == nullptr) {</p><p>            return sum == root-&gt;val;</p><p>        }</p><p>        return hasPathSum(root-&gt;left, sum - root-&gt;val) </p><p>               hasPathSum(root-&gt;right, sum - root-&gt;val);</p><p>    }</p><p>};</p><p>  <a href="https://leetcode-cn.com/problems/path-sum/solution/lu-jing-zong-he-by-leetcode-solution/">LeetCode题解</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>翻转二叉树+对称二叉树</title>
+    <link href="/2022/03/17/%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    <url>/2022/03/17/%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
+    
+    <content type="html"><![CDATA[<h2 id="LeetCode-226-翻转二叉树"><a href="#LeetCode-226-翻转二叉树" class="headerlink" title="LeetCode 226:翻转二叉树"></a>LeetCode 226:翻转二叉树</h2><p> </p><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你一棵二叉树的根节点 root ，翻转这棵二叉树，并返回其根节点。  </p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p>从根节点开始，递归地对树进行遍历，并从叶子节点先开始翻转。如果当前遍历到的节点root 的左右两颗子树都已经翻转，那么我们只需要交换两棵子树的位置，即可完成以root 为根节点的整棵子树的翻转。   AC代码：</p><p>class Solution {</p><p>public:</p><p>    TreeNode* invertTree(TreeNode* root) {</p><p>        if(root == nullptr)</p><p>        {</p><p>            return root;</p><p>        }</p><p>        TreeNode* left = invertTree(root-&gt;left);</p><p>        TreeNode* right = invertTree(root-&gt;right);</p><p>        root-&gt;left = right;</p><p>        root-&gt;right = left;</p><p>        return root;</p><p>    }</p><p>};</p><p> </p><h2 id="LeetCode-101-对称二叉树"><a href="#LeetCode-101-对称二叉树" class="headerlink" title="LeetCode 101:对称二叉树"></a>LeetCode 101:对称二叉树</h2><p> </p><h3 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你一个二叉树的根节点 root ， 检查它是否轴对称。  </p><h3 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：递归</strong> AC代码：</p><p>class Solution {</p><p>public:</p><p>    bool isMirror(TreeNode* t1,TreeNode* t2)</p><p>    {</p><p>        if(t1 == nullptr &amp;&amp; t2 == nullptr)</p><p>        {</p><p>            return true;</p><p>        }</p><p>        if(t1 == nullptr  t2 == nullptr)</p><p>        {</p><p>            return false;</p><p>        }</p><p>        return t1-&gt;val == t2-&gt;val &amp;&amp; isMirror(t1-&gt;left,t2-&gt;right) &amp;&amp; isMirror(t1-&gt;right,t2-&gt;left);</p><p>    }</p><p>    bool isSymmetric(TreeNode* root) {</p><p>        return isMirror(root-&gt;left,root-&gt;right);</p><p>    }</p><p>};</p><p>  <strong>方法2：迭代（利用队列）</strong> AC代码：</p><p>class Solution {</p><p>public:</p><p>    bool isMirror(TreeNode* t1,TreeNode* t2)</p><p>    {</p><p>        queue&lt;TreeNode*&gt; q;</p><p>        q.push(t1);</p><p>        q.push(t2);</p><p>        while(!q.empty())</p><p>        {</p><p>            t1 = q.front();</p><p>            q.pop();</p><p>            t2 = q.front();</p><p>            q.pop();</p><p>            if(t1 == nullptr &amp;&amp; t2 == nullptr) continue;</p><p>            if((t1 == nullptr  t2 == nullptr)  t1-&gt;val != t2-&gt;val) return false;</p><p>            q.push(t1-&gt;left);</p><p>            q.push(t2-&gt;right);</p><p>            q.push(t1-&gt;right);</p><p>            q.push(t2-&gt;left);</p><p>        }</p><p>        return true;</p><p>    }</p><p>    bool isSymmetric(TreeNode* root) {</p><p>        return isMirror(root-&gt;left,root-&gt;right);</p><p>    }</p><p>};</p><p> </p><p><a href="https://leetcode-cn.com/problems/symmetric-tree/solution/dui-cheng-er-cha-shu-by-leetcode-solution/">LeetCode题解</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>二叉树的层序遍历</title>
+    <link href="/2022/03/12/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/"/>
+    <url>/2022/03/12/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/</url>
+    
+    <content type="html"><![CDATA[<h2 id="LeetCode-102-二叉树的层序遍历"><a href="#LeetCode-102-二叉树的层序遍历" class="headerlink" title="LeetCode 102:二叉树的层序遍历"></a>LeetCode 102:二叉树的层序遍历</h2><p> </p><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>二叉树 队列 广度优先搜索  </p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p>用广度优先搜索+队列解决二叉树的层序遍历 我们可以用一种巧妙的方法修改广度优先搜索： 首先根元素入队 当队列不为空的时候 求当前队列的长度 currentLevelSize 依次从队列中取currentLevelSize个元素进行拓展，然后进入下一次迭代 它和普通广度优先搜索的区别在于，普通广度优先搜索每次只取一个元素拓展，而这里每次取currentLevelSize个元素。在上述过程中的第 i 次迭代就得到了二叉树的第 i层的 currentLevelSize个元素。   AC代码：</p><p>class Solution {</p><p>public:</p><p>    vector&lt;vector<int>&gt; levelOrder(TreeNode* root) {</p><p>        vector&lt;vector<int>&gt; res;  //定义二维vector容器res用来存储树中元素</p><p>        if(root == nullptr)</p><p>        {</p><p>            return res;</p><p>        }</p><p>        queue&lt;TreeNode*&gt; q;  //定义队列q临时存储树中元素</p><p>        q.push(root);  //将树的根节点插入队列</p><p>        while(!q.empty())</p><p>        {</p><p>            int currentLevelSize = q.size();  //定义队列的当前长度currentLevelSize</p><p>            res.push_back(vector<int>());  //向二维vector容器res中添加一行</p><p>            for(int i=1; i&lt;=currentLevelSize; i++)</p><p>            {</p><p>                auto node = q.front();  //定义临时结点node为队列头结点</p><p>                q.pop();  //弹出队列头结点</p><p>                res.back().push_back(node-&gt;val);  //将队列头结点元素的值存入res中</p><p>                //将结点的左右儿子节点插入队列中</p><p>                if(node-&gt;left)</p><p>                {</p><p>                    q.push(node-&gt;left);</p><p>                }</p><p>                if(node-&gt;right)</p><p>                {</p><p>                    q.push(node-&gt;right);</p><p>                }</p><p>            }</p><p>        }</p><p>        return res;</p><p>    }</p><p>};</p><p> </p><h3 id="二维vector容器的使用"><a href="#二维vector容器的使用" class="headerlink" title="二维vector容器的使用"></a>二维vector容器的使用</h3><p><a href="https://www.cnblogs.com/tyty-Somnuspoppy/p/9361821.html">关于C++中vector&lt;vector<int> &gt;的使用</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>深度优先搜索（DFS）+广度优先搜索（BFS）</title>
+    <link href="/2022/03/12/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88dfs%EF%BC%89%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88bfs%EF%BC%89/"/>
+    <url>/2022/03/12/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88dfs%EF%BC%89%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88bfs%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<h2 id="深度优先搜索（DFS）"><a href="#深度优先搜索（DFS）" class="headerlink" title="深度优先搜索（DFS）"></a><strong>深度优先搜索（DFS）</strong></h2><p> </p><h2 id="广度优先搜索（BFS）"><a href="#广度优先搜索（BFS）" class="headerlink" title="广度优先搜索（BFS）"></a><strong>广度优先搜索（BFS）</strong></h2><p>  <a href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal/solution/bfs-de-shi-yong-chang-jing-zong-jie-ceng-xu-bian-l/">BFS 的使用场景总结：层序遍历、最短路径问题</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>用栈实现队列+用队列实现栈</title>
+    <link href="/2022/03/11/%E7%94%A8%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/"/>
+    <url>/2022/03/11/%E7%94%A8%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</url>
+    
+    <content type="html"><![CDATA[<h2 id="LeetCode-232-用栈实现队列"><a href="#LeetCode-232-用栈实现队列" class="headerlink" title="LeetCode 232:用栈实现队列"></a>LeetCode 232:用栈实现队列</h2><p> </p><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>栈 队列 模拟  </p><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>请你仅使用两个栈实现先入先出队列,队列支持一般队列支持的所有操作（push、pop、peek、empty） 实现 MyQueue 类： void push(int x) 将元素 x 推到队列的末尾 int pop() 从队列的开头移除并返回元素 int peek() 返回队列开头的元素 boolean empty() 如果队列为空，返回 true ；否则，返回 false  </p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p>AC代码：</p><p>class MyQueue {</p><p>public:</p><p>    stack<int> stIn;  //创建一个栈stIn 用于进栈</p><p>    stack<int> stOut; //创建一个栈stOut 用于出栈</p><p>    MyQueue() {</p><p>    }</p><p>    void push(int x) {</p><p>        stIn.push(x);  //将元素压入栈中</p><p>    }</p><p>    int pop() {</p><p>        if(stOut.empty())  //如果栈stOut为空 则将栈stIn中所有元素压入栈stOut中</p><p>        {</p><p>            while(!stIn.empty())</p><p>            {</p><p>                stOut.push(stIn.top());  //将栈stIn栈顶元素压入栈stOut中</p><p>                stIn.pop();  //栈顶元素压入栈stOut后将元素删除</p><p>            }</p><p>        }</p><p>        //当栈stOut不为空时 则直接弹出栈stOut栈顶元素</p><p>        int res = stOut.top();</p><p>        stOut.pop();</p><p>        return res;</p><p>    }</p><p>    int peek() {</p><p>        int res = this-&gt;pop();  //直接使用已有的pop函数获取栈顶元素</p><p>        stOut.push(res);  //因为pop函数弹出了元素res 所以再添加回去</p><p>        return res;</p><p>    }</p><p>    bool empty() {</p><p>        return stIn.empty() &amp;&amp; stOut.empty();  //当栈stIn和栈stOut都不为空时 队列才不为空</p><p>    }</p><p>};</p><p>  <a href="https://leetcode-cn.com/problems/implement-queue-using-stacks/solution/232-yong-zhan-shi-xian-dui-lie-liang-ge-zhan-lai-m/">LeetCode题解+动画演示</a>  </p><h2 id="LeetCode-225：用队列实现栈"><a href="#LeetCode-225：用队列实现栈" class="headerlink" title="LeetCode 225：用队列实现栈"></a>LeetCode 225：用队列实现栈</h2><p> </p><h3 id="前言：-1"><a href="#前言：-1" class="headerlink" title="前言："></a>前言：</h3><p>队列 栈 模拟  </p><h3 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h3><p>请你仅使用两个队列实现一个后入先出（LIFO）的栈，并支持普通栈的全部四种操作（push、top、 pop 和 empty）。 实现 MyStack 类： void push(int x) 将元素 x 压入栈顶。 int pop() 移除并返回栈顶元素。 int top() 返回栈顶元素。 boolean empty() 如果栈是空的，返回 true ；否则，返回 false 。  </p><h3 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：两个队列实现栈</strong> AC代码：</p><p>class MyStack {</p><p>public:</p><p>    queue<int> queue1;  //创建一个队列queue1 用于存储所有入栈元素</p><p>    queue<int> queue2;  //创建一个队列queue2 用于临时存储即将入栈的元素</p><p>    MyStack() {</p><p>    }</p><p>    //使用两个队列模拟元素入栈</p><p>    void push(int x) {</p><p>        queue2.push(x);  //将入栈元素插入临时队列queue2</p><p>        while(!queue1.empty())  //将队列queue1中所有元素插入临时队列queue2</p><p>        {</p><p>            queue2.push(queue1.front());  //将队列queue1中头元素插入队列queue2中</p><p>            queue1.pop();  //删除队列queue1头元素</p><p>        }</p><p>        swap(queue1,queue2);  //为了避免打乱元素顺序 交换队列queue1和queue2</p><p>    }</p><p>    int pop() {</p><p>        int res = queue1.front();</p><p>        queue1.pop();</p><p>        return res;</p><p>    }</p><p>    int top() {</p><p>        int res = queue1.front();</p><p>        return res;</p><p>    }</p><p>    bool empty() {</p><p>        return queue1.empty();  //因为queue1包含了栈中所有元素 所以只需要检查queue1是否为空即可</p><p>        //queue2作为临时队列 不永久存储栈中的元素</p><p>    }</p><p>};</p><p> </p><p><strong>方法二：一个队列实现栈</strong></p><p>入栈操作时，首先获得入栈前的元素个数 nn，然后将元素入队到队列，再将队列中的前 nn 个元素（即除了新入栈的元素之外的全部元素）依次出队并入队到队列，此时队列的前端的元素即为新入栈的元素，且队列的前端和后端分别对应栈顶和栈底。   AC代码：</p><p>class MyStack {</p><p>public:</p><p>    queue<int> q;</p><p>    MyStack() {</p><p>    }</p><p>    void push(int x) {</p><p>        int n = q.size();</p><p>        q.push(x);</p><p>        for (int i = 0; i &lt; n; i++) {</p><p>            q.push(q.front());</p><p>            q.pop();</p><p>        }</p><p>    }</p><p>    int pop() {</p><p>        int r = q.front();</p><p>        q.pop();</p><p>        return r;</p><p>    }</p><p>    int top() {</p><p>        int r = q.front();</p><p>        return r;</p><p>    }</p><p>    bool empty() {</p><p>        return q.empty();</p><p>    }</p><p>};</p><p> </p><p><a href="https://leetcode-cn.com/problems/implement-stack-using-queues/solution/yong-dui-lie-shi-xian-zhan-by-leetcode-solution/">LeetCode题解</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>C++STL中emplace_back()和push_back()的区别</title>
+    <link href="/2022/03/10/cstl%E4%B8%ADemplace-back%E5%92%8Cpush-back%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <url>/2022/03/10/cstl%E4%B8%ADemplace-back%E5%92%8Cpush-back%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    
+    <content type="html"><![CDATA[<h2 id="emplace-back-和push-back-的区别"><a href="#emplace-back-和push-back-的区别" class="headerlink" title="emplace_back()和push_back()的区别"></a>emplace_back()和push_back()的区别</h2><p>emplace_back() 和 push_back() 的区别，就在于底层实现的机制不同。push_back() 向容器尾部添加元素时，首先会创建这个元素，然后再将这个元素拷贝或者移动到容器中（如果是拷贝的话，事后会自行销毁先前创建的这个元素）；而 emplace_back() 在实现时，则是直接在容器尾部创建这个元素，省去了拷贝或移动元素的过程。 <a href="http://c.biancheng.net/view/6826.html">C++STL中emplace_back()和push_back()的区别</a>  </p><h2 id="LeetCode-589题：N叉树的前序遍历"><a href="#LeetCode-589题：N叉树的前序遍历" class="headerlink" title="LeetCode 589题：N叉树的前序遍历"></a>LeetCode 589题：N叉树的前序遍历</h2><p> </p><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给定一个 n 叉树的根节点  root ，返回其节点值的前序遍历。 n 叉树在输入中按层序遍历进行序列化表示，每组子节点由空值 null 分隔。  </p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p>AC代码：</p><p>class Solution {</p><p>public:</p><p>    void helper(const Node* root, vector<int> &amp; res) {</p><p>        if (root == nullptr) {</p><p>            return;</p><p>        }</p><p>        res.emplace_back(root-&gt;val);</p><p>        for (auto &amp; ch : root-&gt;children) {    //auto 类型也是 C++11 新标准中的，用来自动获取变量的类型</p><p>            helper(ch, res);</p><p>        }</p><p>    }</p><p>    vector<int> preorder(Node* root) {</p><p>        vector<int> res;</p><p>        helper(root, res);</p><p>        return res;</p><p>    }</p><p>};</p><p> </p><h2 id="C-const-关键字"><a href="#C-const-关键字" class="headerlink" title="C++ const 关键字"></a>C++ const 关键字</h2><p>const 是 constant 的缩写，本意是不变的，不易改变的意思。在 C++ 中是用来修饰内置类型变量，自定义对象，成员函数，返回值，函数参数。C++ const 允许指定一个语义约束，编译器会强制实施这个约束，允许程序员告诉编译器某值是保持不变的。如果在编程中确实有某个值保持不变，就应该明确使用const，这样可以获得编译器的帮助。 <a href="https://www.runoob.com/w3cnote/cpp-const-keyword.html">菜鸟教程：C++ const 关键字小结</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>二叉树的前序、中序、后序遍历</title>
+    <link href="/2022/03/06/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E3%80%81%E4%B8%AD%E5%BA%8F%E3%80%81%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/"/>
+    <url>/2022/03/06/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E3%80%81%E4%B8%AD%E5%BA%8F%E3%80%81%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</url>
+    
+    <content type="html"><![CDATA[<h2 id="LeetCode-144题：二叉树的前序遍历"><a href="#LeetCode-144题：二叉树的前序遍历" class="headerlink" title="LeetCode 144题：二叉树的前序遍历"></a>LeetCode 144题：二叉树的前序遍历</h2><p> </p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p>根-&gt;左-&gt;右   <strong>方法一：递归法</strong> AC代码：</p><p>class Solution {</p><p>public:</p><p>    void preorder(TreeNode* root,vector<int> &amp;res){</p><p>        if(root == nullptr)</p><p>        {</p><p>            return;</p><p>        }</p><p>        res.push_back(root-&gt;val);</p><p>        preorder(root-&gt;left,res);</p><p>        preorder(root-&gt;right,res);</p><p>    }</p><p>    vector<int> preorderTraversal(TreeNode* root) {</p><p>        vector<int> res;</p><p>        preorder(root,res);</p><p>        return res;</p><p>    }</p><p>};</p><p> </p><h3 id="参数传递时什么时候需要传入参数的引用-amp"><a href="#参数传递时什么时候需要传入参数的引用-amp" class="headerlink" title="参数传递时什么时候需要传入参数的引用&amp;"></a>参数传递时什么时候需要传入参数的引用&amp;</h3><p>当对参数的修改结果需要带回主函数时在传递参数时则需要在参数前加取地址符&amp; <a href="https://blog.csdn.net/dyw_666666/article/details/107823466">CSDN博客：（易错点）什么时候要传入参数的引用“&amp;“</a>   <strong>方法二：迭代法</strong> LeetCode题解+动画演示 <a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/solution/er-cha-shu-de-qian-xu-bian-li-by-leetcode-solution/">二叉树前序遍历 迭代法</a> AC代码：</p><p>class Solution {</p><p>public:</p><p>    vector<int> preorderTraversal(TreeNode* root) {</p><p>        vector<int> res;</p><p>        if (root == nullptr) {</p><p>            return res;</p><p>        }</p><p>        stack&lt;TreeNode*&gt; stk;</p><p>        TreeNode* node = root;</p><p>        while (!stk.empty()  node != nullptr) {</p><p>            while (node != nullptr) {</p><p>                res.emplace_back(node-&gt;val);</p><p>                stk.emplace(node);</p><p>                node = node-&gt;left;</p><p>            }</p><p>            node = stk.top();</p><p>            stk.pop();</p><p>            node = node-&gt;right;</p><p>        }</p><p>        return res;</p><p>    }</p><p>};</p><p> </p><h2 id="LeetCode-94题：二叉树的中序遍历"><a href="#LeetCode-94题：二叉树的中序遍历" class="headerlink" title="LeetCode 94题：二叉树的中序遍历"></a>LeetCode 94题：二叉树的中序遍历</h2><p> </p><h3 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h3><p>左-&gt;根-&gt;右   AC代码：</p><p>class Solution {</p><p>public:</p><p>    void inorder(TreeNode* root,vector<int> &amp;ans)</p><p>    {</p><p>        if(root == nullptr)</p><p>        {</p><p>            return;</p><p>        }</p><p>        inorder(root-&gt;left,ans);</p><p>        ans.push_back(root-&gt;val);</p><p>        inorder(root-&gt;right,ans);</p><p>    }</p><p>    vector<int> inorderTraversal(TreeNode* root) {</p><p>        vector<int> ans;</p><p>        inorder(root,ans);</p><p>        return ans;</p><p>    }</p><p>};</p><p> </p><h2 id="LeetCode-145题：二叉树的后序遍历"><a href="#LeetCode-145题：二叉树的后序遍历" class="headerlink" title="LeetCode 145题：二叉树的后序遍历"></a>LeetCode 145题：二叉树的后序遍历</h2><p> </p><h3 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h3><p>左-&gt;右-&gt;根   AC代码：</p><p>class Solution {</p><p>public:</p><p>    void postorder(TreeNode* root,vector<int> &amp;ans)</p><p>    {</p><p>        if(root == nullptr)</p><p>        {</p><p>            return;</p><p>        }</p><p>        postorder(root-&gt;left,ans);</p><p>        postorder(root-&gt;right,ans);</p><p>        ans.push_back(root-&gt;val);</p><p>    }</p><p>    vector<int> postorderTraversal(TreeNode* root) {</p><p>        vector<int> ans;</p><p>        postorder(root,ans);</p><p>        return ans;</p><p>    }</p><p>};</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>反转链表+合并链表+移除链表元素</title>
+    <link href="/2022/03/04/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/"/>
+    <url>/2022/03/04/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/</url>
+    
+    <content type="html"><![CDATA[<h2 id="LeetCode-206题：反转链表"><a href="#LeetCode-206题：反转链表" class="headerlink" title="LeetCode 206题：反转链表"></a>LeetCode 206题：反转链表</h2><p> </p><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。  </p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p>AC代码：</p><p>class Solution {</p><p>public:</p><p>    ListNode* reverseList(ListNode* head) {</p><p>        ListNode* pre = nullptr;  //定义一个当前节点的前一个节点 初始化为空</p><p>        ListNode* cur = head;  //定义一个当前节点 初始化为头结点</p><p>        while(cur != nullptr)  //当前节点不为空</p><p>        {</p><p>            ListNode* tmp = cur-&gt;next;  //定义一个tmp结点 用于保存当前节点的后序节点</p><p>            cur-&gt;next = pre;  //反转链表 让cur节点指向pre节点</p><p>            pre = cur;  //前序节点后移一位</p><p>            cur = tmp;  //当前节点后移一位</p><p>        }</p><p>        return pre;  //返回新链表指向的头结点</p><p>    }</p><p>};</p><p> </p><p><a href="https://www.bilibili.com/video/BV1KZ4y157Up/?spm_id_from=333.788">B站反转链表讲解</a></p><p> </p><h2 id="LeetCode-21题：合并两个有序链表"><a href="#LeetCode-21题：合并两个有序链表" class="headerlink" title="LeetCode 21题：合并两个有序链表"></a>LeetCode 21题：合并两个有序链表</h2><p> </p><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>只会迭代法 递归法有点复杂  </p><h3 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h3><p>将两个升序链表合并为一个新的升序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。  </p><h3 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h3><h4 id="AC代码："><a href="#AC代码：" class="headerlink" title="AC代码："></a>AC代码：</h4><p>class Solution {</p><p>public:</p><p>    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {</p><p>        ListNode* preHead = new ListNode(-1);  //定义哨兵节点preHead</p><p>        ListNode* prev = preHead;</p><p>        while (l1 != nullptr &amp;&amp; l2 != nullptr) {</p><p>            if (l1-&gt;val &lt; l2-&gt;val) {</p><p>                prev-&gt;next = l1;</p><p>                l1 = l1-&gt;next;</p><p>            } else {</p><p>                prev-&gt;next = l2;</p><p>                l2 = l2-&gt;next;</p><p>            }</p><p>            prev = prev-&gt;next;</p><p>        }</p><p>        // 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</p><p>        prev-&gt;next = l1 == nullptr ? l2 : l1;</p><p>        return preHead-&gt;next;</p><p>    }</p><p>};</p><p>  LeetCode题解合并两个有序链表动画演示非常nice！ <a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/">LeetCode题解</a>  </p><h2 id="LeetCode-203题：移除链表元素"><a href="#LeetCode-203题：移除链表元素" class="headerlink" title="LeetCode 203题：移除链表元素"></a>LeetCode 203题：移除链表元素</h2><p> </p><h3 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val  的节点,并返回新的头结点。  </p><h3 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：迭代法</strong> AC代码：</p><p>class Solution {</p><p>public:</p><p>    ListNode* removeElements(ListNode* head, int val) {</p><p>        //由于链表头结点Head可能需要被删除 创建哑结点preHead 令pre-&gt;next = head</p><p>        ListNode* preHead = new ListNode(0,head);</p><p>        ListNode* tmp = preHead;  //定义当前节点 初始化为preHead</p><p>        while(tmp-&gt;next != nullptr)</p><p>        {</p><p>            if(tmp-&gt;next-&gt;val == val)</p><p>            {</p><p>                tmp-&gt;next = tmp-&gt;next-&gt;next;</p><p>            }</p><p>            else</p><p>            {</p><p>                tmp = tmp-&gt;next;</p><p>            }</p><p>        }</p><p>        return preHead-&gt;next;  //返回删除操作后的头结点</p><p>    }</p><p>};</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>C++标准模板库（C++STL）</title>
+    <link href="/2022/03/04/c%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88cstl%EF%BC%89/"/>
+    <url>/2022/03/04/c%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88cstl%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<h2 id="1-iterator迭代器"><a href="#1-iterator迭代器" class="headerlink" title="1.iterator迭代器"></a>1.iterator迭代器</h2><p> </p><h3 id="1-定义和初始化"><a href="#1-定义和初始化" class="headerlink" title="1.定义和初始化"></a>1.定义和初始化</h3><p>每种容器都定义了自己的迭代器类型，如vector vector<int>::iterator it;  //定义一个名为it的变量 每种容器都定义了一对名为begin和end的函数，用于返回迭代器 vector<int> ivec; vector<int>::iterator it1 = ivec.begin();  //将迭代器it1指向ivec的第一个元素 vector<int>::iterator it2 = ivec.end();  //将迭代器it2指向ivec容器的最后一个元素的下一个位置 end并不指向容器的任何元素  </p><h3 id="2-常用操作"><a href="#2-常用操作" class="headerlink" title="2.常用操作"></a>2.常用操作</h3><p>vector<int>:: iterator it; 1.it +/- n; 2.it1 +/-= it2; 3.it1-it2; 4.&gt;,&gt;=,&lt;,&lt;=  </p><h2 id="2-vector容器"><a href="#2-vector容器" class="headerlink" title="2.vector容器"></a>2.vector容器</h2><p> </p><h3 id="1-创建vector对象"><a href="#1-创建vector对象" class="headerlink" title="1.创建vector对象"></a>1.创建vector对象</h3><p>创建vector容器有三种形式 1.不指定容器的个数 vector<int> v; 2.创建时指定容器的大小 vector<double> v(10); 3.创建一个具有n个元素的向量容器，每个元素具有指定的初始值 vector<double> v(10,8.6)  //v向量容器，共有10个元素，每个元素的初始值为8.6  </p><h3 id="2-尾部元素扩张"><a href="#2-尾部元素扩张" class="headerlink" title="2.尾部元素扩张"></a>2.尾部元素扩张</h3><p>v.push_back(num);  </p><h3 id="3-下标方式访问vector元素"><a href="#3-下标方式访问vector元素" class="headerlink" title="3.下标方式访问vector元素"></a>3.下标方式访问vector元素</h3><p>类似于数组的访问方式。对于vector对象，可以采用下标方式随意访问它的某个元素，也可以通过下标方式对某个元素重新赋值 vector<int> v(3); v[0]=2,v[1]=7,v[2]=9; cout&lt;&lt;v[0]&lt;&lt;” “&lt;&lt;v[1]&lt;&lt;” “&lt;&lt;v[2]&lt;&lt;endl;  </p><h3 id="4-用迭代器访问vector容器"><a href="#4-用迭代器访问vector容器" class="headerlink" title="4.用迭代器访问vector容器"></a>4.用迭代器访问vector容器</h3><p>vector<int> v(3); v[0]=2,v[1]=7,v[2]=9; vector<int>::iterator it;  //定义迭代器 变量 for(it=v.begin(); it!=v.end(); it++) { cout&lt;&lt;*it&lt;&lt;” “;  //输出迭代器上的元素值 }  </p><h3 id="5-插入元素"><a href="#5-插入元素" class="headerlink" title="5.插入元素"></a>5.插入元素</h3><p>insert()方法可以在vector对象的任意位置前插入一个新元素 insert()方法要求插入的位置是元素的迭代器的位置，而不是元素的下标 v.insert(v.begin(),8);  //在最前面插入新元素，元素值为8 v.insert(v.begin()+2,1);  //在第2个元素前插入新元素1 v.insert(v.end(),3);  //在向量末尾追加新元素3  </p><h3 id="6-元素的删除"><a href="#6-元素的删除" class="headerlink" title="6.元素的删除"></a>6.元素的删除</h3><p>erase()方法可以删除vector中迭代器所指向的一个元素或者一段区间中的所有元素 v.erase(v.begin()+2);  //删除第二个元素，从0开始计数 v.erase(v.begin()+1,v.begin()+5);  //删除迭代器第1到5区间的所有元素 clear()方法则一次性删除vector中的所有元素 v.clear();  //清空向量  </p><h3 id="7-使用reverse反向排列算法"><a href="#7-使用reverse反向排列算法" class="headerlink" title="7.使用reverse反向排列算法"></a>7.使用reverse反向排列算法</h3><p>reverse(v.begin(),v.end());  //反向排列向量从首到尾间的元素  </p><h3 id="8-使用sort算法对向量元素排序"><a href="#8-使用sort算法对向量元素排序" class="headerlink" title="8.使用sort算法对向量元素排序"></a>8.使用sort算法对向量元素排序</h3><p>sort(v.begin(),v.end());   自定义降序排列比较函数cmp bool cmp(const int &amp;a,const int &amp;b) { return a&gt;b; } sort(v.begin(),v.end(),cmp)  //按cmp函数比较规则排序  </p><h3 id="9-向量的大小"><a href="#9-向量的大小" class="headerlink" title="9.向量的大小"></a>9.向量的大小</h3><p>v.size()  //方法返回向量大小，即元素的个数 v.empty()  //方法返回向量是否为空  </p><h2 id="3-string容器"><a href="#3-string容器" class="headerlink" title="3.string容器"></a>3.string容器</h2><p> </p><h2 id="4-set容器"><a href="#4-set容器" class="headerlink" title="4.set容器"></a>4.set容器</h2><p> </p><h2 id="5-multiset容器"><a href="#5-multiset容器" class="headerlink" title="5.multiset容器"></a>5.multiset容器</h2><p> </p><h2 id="6-map容器"><a href="#6-map容器" class="headerlink" title="6.map容器"></a>6.map容器</h2><p> </p><h2 id="7-multimap容器"><a href="#7-multimap容器" class="headerlink" title="7.multimap容器"></a>7.multimap容器</h2><p> </p><h2 id="8-queue容器"><a href="#8-queue容器" class="headerlink" title="8.queue容器"></a>8.queue容器</h2><p> </p><h2 id="9-priority-queue容器"><a href="#9-priority-queue容器" class="headerlink" title="9.priority_queue容器"></a>9.priority_queue容器</h2><p> </p><h2 id="10-stack容器"><a href="#10-stack容器" class="headerlink" title="10.stack容器"></a>10.stack容器</h2><p> </p><h2 id="11-algorithm容器"><a href="#11-algorithm容器" class="headerlink" title="11.algorithm容器"></a>11.algorithm容器</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程学习</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>C++哈希表map和unordered_map的用法</title>
+    <link href="/2022/03/02/c%E5%93%88%E5%B8%8C%E8%A1%A8map%E5%92%8Cunordered-map%E7%9A%84%E7%94%A8%E6%B3%95/"/>
+    <url>/2022/03/02/c%E5%93%88%E5%B8%8C%E8%A1%A8map%E5%92%8Cunordered-map%E7%9A%84%E7%94%A8%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h2 id="LeetCode-383题：赎金信"><a href="#LeetCode-383题：赎金信" class="headerlink" title="LeetCode 383题：赎金信"></a>LeetCode 383题：赎金信</h2><p> </p><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>哈希表方法提交未过</p><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你两个字符串：ransomNote 和 magazine ，判断 ransomNote 能不能由 magazine 里面的字符构成。 如果可以，返回 true ；否则返回 false 。 magazine 中的每个字符只能在 ransomNote 中使用一次。  </p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p>AC代码：</p><p>class Solution {</p><p>public:</p><p>    bool canConstruct(string ransomNote, string magazine) {</p><p>        if(ransomNote.size()&gt;magazine.size())</p><p>        {</p><p>            return false;</p><p>        }</p><p>        vector<int> cnt(26);</p><p>        for(auto &amp;ch : ransomNote)</p><p>        {</p><p>            cnt[ch-‘a’]–;</p><p>        }</p><p>        for(auto &amp;ch : magazine)</p><p>        {</p><p>            cnt[ch-‘a’]++;</p><p>        }</p><p>        for(int i=0; i&lt;26; i++)</p><p>        {</p><p>            if(cnt[i]&lt;0)</p><p>            {</p><p>                return false;</p><p>            }</p><p>        }</p><p>        return true;</p><p>    }</p><p>};</p><p> </p><h3 id="C-哈希表map和unordered-map的用法"><a href="#C-哈希表map和unordered-map的用法" class="headerlink" title="C++哈希表map和unordered_map的用法"></a>C++哈希表map和unordered_map的用法</h3><p>1.构造函数 2.插入数据 3.判断是否有元素 4.遍历 5.查找  </p><h3 id="学习链接："><a href="#学习链接：" class="headerlink" title="学习链接："></a>学习链接：</h3><p><a href="https://blog.csdn.net/weixin_45774972/article/details/113418453?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_paycolumn_v3&utm_relevant_index=2">C++ 中使用哈希表(unordered_map)的常用操作</a> <a href="https://lover.blog.csdn.net/article/details/82633778?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3.pc_relevant_antiscan&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3.pc_relevant_antiscan&utm_relevant_index=6">简述C++中map和unordered_map的用法</a> <a href="https://blog.csdn.net/qq_30815237/article/details/91047041">C++ map set unordered_map和unorder_set的区别</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>二维数组</title>
+    <link href="/2022/02/28/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/"/>
+    <url>/2022/02/28/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/</url>
+    
+    <content type="html"><![CDATA[<h2 id="LeetCode-566题：重塑矩阵"><a href="#LeetCode-566题：重塑矩阵" class="headerlink" title="LeetCode 566题：重塑矩阵"></a>LeetCode 566题：重塑矩阵</h2><p> </p><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>vector容器定义二维数组  </p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p>将二维数组映射成一个一维数组，将这个一维数组映射回 r 行 c 列的二维数组。 对于x∈[0,mn)，第 x个元素在 nums 中对应的下标为(x / n,x % n)，而在新的重塑矩阵中对应的下标为(x / c,x % c)。我们直接进行赋值即可。   AC代码：</p><p>class Solution {</p><p>public:</p><p>    vector&lt;vector<int>&gt; matrixReshape(vector&lt;vector<int>&gt;&amp; mat, int r, int c) {</p><p>        int m = mat.size(),n = mat[0].size();</p><p>        if(m*n != r*c)</p><p>        {</p><p>            return mat;</p><p>        }</p><p>        vector&lt;vector<int>&gt; ans(r,vector<int>(c));  //vector容器定义一个二维数组ans</p><p>        for(int i=0; i&lt;m*n; i++)</p><p>        {</p><p>            ans[i/c][i%c] = mat[i/n][i%n];</p><p>        }</p><p>        return ans;</p><p>    }</p><p>};</p><p> </p><h2 id="LeetCode-118题：杨辉三角"><a href="#LeetCode-118题：杨辉三角" class="headerlink" title="LeetCode 118题：杨辉三角"></a>LeetCode 118题：杨辉三角</h2><p> </p><h3 id="前言：-1"><a href="#前言：-1" class="headerlink" title="前言："></a>前言：</h3><p>动态规划  </p><h3 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h3><p>AC代码：</p><p>class Solution {</p><p>public:</p><p>    vector&lt;vector<int>&gt; generate(int numRows) {</p><p>        vector&lt;vector<int>&gt; ans(numRows);</p><p>        for(int i=0; i&lt;numRows; i++)</p><p>        {</p><p>            ans[i].resize(i + 1);  //resize 改变当前使用数据的大小，如果它比当前使用的大，则填充默认值</p><p>            ans[i][0]=ans[i][i]=1;</p><p>            for(int j=1; j&lt;i; j++)</p><p>            {</p><p>                ans[i][j] = ans[i-1][j-1]+ans[i-1][j];</p><p>            }</p><p>        }</p><p>        return ans;</p><p>    }</p><p>};</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>C++ vector 容器浅析</title>
+    <link href="/2022/02/27/c-vector-%E5%AE%B9%E5%99%A8%E6%B5%85%E6%9E%90-0/"/>
+    <url>/2022/02/27/c-vector-%E5%AE%B9%E5%99%A8%E6%B5%85%E6%9E%90-0/</url>
+    
+    <content type="html"><![CDATA[<p>刷LeetCode有所收获的第一天！  </p><h2 id="LeetCode-350题：两个数组的交集"><a href="#LeetCode-350题：两个数组的交集" class="headerlink" title="LeetCode 350题：两个数组的交集"></a>LeetCode 350题：两个数组的交集</h2><p> </p><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你两个整数数组 nums1 和 nums2 ，请你以数组形式返回两数组的交集。返回结果中每个元素出现的次数，应与元素在两个数组中都出现的次数一致（如果出现次数不一致，则考虑取较小值）。可以不考虑输出结果的顺序。  </p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：</strong> 哈希表（不太会） 学习C++算法哈希（Hash） B站收藏   AC代码：</p><p>class Solution {</p><p>public:</p><p>    vector<int> intersect(vector<int>&amp; nums1, vector<int>&amp; nums2) {</p><p>        if(nums1.size()&gt;nums2.size())</p><p>        {</p><p>            return intersect(nums2,nums1);</p><p>        }</p><p>        unordered_map &lt;int,int&gt; m;</p><p>        for(int num : nums1)</p><p>        {</p><p>            m[num]++;</p><p>        }</p><p>        vector<int> intersection;</p><p>        for(int num : nums2)</p><p>        {</p><p>            if(m.count(num))</p><p>            {</p><p>                intersection.push_back(num);</p><p>                m[num]–;</p><p>                if(m[num] == 0)</p><p>                {</p><p>                    m.erase(num);</p><p>                }</p><p>            }</p><p>        }</p><p>        return intersection;</p><p>    }</p><p>};</p><p>  <strong>方法2：</strong> 排序+双指针（用到了C++ vector容器） 学习C++  STL标准库函数+vector 容器 <a href="https://www.runoob.com/w3cnote/cpp-vector-container-analysis.html">C++ vector 容器浅析</a>   AC代码：</p><p>class Solution {</p><p>public:</p><p>    vector<int> intersect(vector<int>&amp; nums1, vector<int>&amp; nums2) {</p><p>        sort(nums1.begin(),nums1.end());</p><p>        sort(nums2.begin(),nums2.end());</p><p>        int length1 = nums1.size(),length2 = nums2.size();</p><p>        int index1 = 0,index2 = 0;</p><p>        vector<int> result;</p><p>        while(index1&lt;length1 &amp;&amp; index2&lt;length2)</p><p>        {</p><p>            if(nums1[index1]&gt;nums2[index2])</p><p>            {</p><p>                index2++;</p><p>            }</p><p>            else if(nums1[index1]&lt;nums2[index2])</p><p>            {</p><p>                index1++;</p><p>            }</p><p>            else</p><p>            {</p><p>                result.push_back(nums1[index1]);</p><p>                index1++;</p><p>                index2++;</p><p>            }</p><p>        }</p><p>        return result;</p><p>    }</p><p>};</p><p>  <a href="https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/solution/liang-ge-shu-zu-de-jiao-ji-ii-by-leetcode-solution/">LeetCode题解</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>随笔</title>
+    <link href="/2022/02/23/128/"/>
+    <url>/2022/02/23/128/</url>
+    
+    <content type="html"><![CDATA[<p>一只小猫蹲守在路边，我想买个面包，告诉它，相逢即是缘。往前又遇见另一只，一身洁白，守着蛋糕店，它有面包，腰缠万贯。它只能揣着自由，说千金不换。我买了面包掰开喂给它，如遇知音的它跟我讲了好多话。得爱者，难免草木皆兵；孤勇者，总是动如雷霆。它好像只能继续它的旅途，我没有受过连年的风雪凄苦，又怎会看懂它的江湖。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>朝花夕拾</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>中国石油大学（华东）校园网络认证脚本</title>
+    <link href="/2022/02/23/%E4%B8%AD%E5%9B%BD%E7%9F%B3%E6%B2%B9%E5%A4%A7%E5%AD%A6%EF%BC%88%E5%8D%8E%E4%B8%9C%EF%BC%89%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%BB%9C%E8%AE%A4%E8%AF%81%E8%84%9A%E6%9C%AC/"/>
+    <url>/2022/02/23/%E4%B8%AD%E5%9B%BD%E7%9F%B3%E6%B2%B9%E5%A4%A7%E5%AD%A6%EF%BC%88%E5%8D%8E%E4%B8%9C%EF%BC%89%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%BB%9C%E8%AE%A4%E8%AF%81%E8%84%9A%E6%9C%AC/</url>
+    
+    <content type="html"><![CDATA[<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><p>本脚本采用Python3编写，依赖于</p><p>Requests urllib/urllib.parse 快速安装依赖</p><p>pip install -r requirements.txt  </p><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a><a href="https://github.com/EndangeredF1sh/UPCNet#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"></a>使用方法</h3><p>在config.py文件下输入学号、密码和运营商编号，然后运行</p><p>python3 NetworkAuth.py 运营商对应编号：</p><p>default -&gt; 校园网 unicom -&gt; 联通 cmcc -&gt; 移动 ctcc -&gt; 电信 local -&gt; 校园内网 可自动判别登录情况，引导用户交互。  </p><h3 id="目前支持的网络类型："><a href="#目前支持的网络类型：" class="headerlink" title="目前支持的网络类型："></a><a href="https://github.com/EndangeredF1sh/UPCNet#%E7%9B%AE%E5%89%8D%E6%94%AF%E6%8C%81%E7%9A%84%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B"></a>目前支持的网络类型：</h3><p>有线网络（认证IP地址:121.251.251.207) 无线网络(SSID: UPC, 认证IP地址:121.251.251.217) 802.1X网络无需使用本脚本 转载于：<a href="https://github.com/EndangeredF1sh/UPCNet">https://github.com/EndangeredF1sh/UPCNet</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>开源项目</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>UPC疫情防控通自动提交脚本——云函数实现</title>
+    <link href="/2022/02/23/upc%E7%96%AB%E6%83%85%E9%98%B2%E6%8E%A7%E9%80%9A%E8%87%AA%E5%8A%A8%E6%8F%90%E4%BA%A4%E8%84%9A%E6%9C%AC-%E4%BA%91%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0/"/>
+    <url>/2022/02/23/upc%E7%96%AB%E6%83%85%E9%98%B2%E6%8E%A7%E9%80%9A%E8%87%AA%E5%8A%A8%E6%8F%90%E4%BA%A4%E8%84%9A%E6%9C%AC-%E4%BA%91%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0/</url>
+    
+    <content type="html"><![CDATA[<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><p> </p><h3 id="1、获取Server酱的API-Key实现微信推送"><a href="#1、获取Server酱的API-Key实现微信推送" class="headerlink" title="1、获取Server酱的API Key实现微信推送"></a><a href="https://github.com/tienskowl/AutoReport#%E8%8E%B7%E5%8F%96server%E9%85%B1%E7%9A%84api-key%E5%AE%9E%E7%8E%B0%E5%BE%AE%E4%BF%A1%E6%8E%A8%E9%80%81"></a>1、获取Server酱的API Key实现微信推送</h3><p>打开<a href="http://sc.ftqq.com/3.version">Server酱主页</a>，按照页面指示获取Key并绑定微信，复制Key备用。</p><p> </p><h3 id="2、代码文件准备"><a href="#2、代码文件准备" class="headerlink" title="2、代码文件准备"></a><a href="https://github.com/tienskowl/AutoReport#%E4%BB%A3%E7%A0%81%E6%96%87%E4%BB%B6%E5%87%86%E5%A4%87"></a>2、代码文件准备</h3><p>下载本仓库的代码，修改Index.js中的代码，使用上述准备的内容替换对应内容即可，修改完后打包即可。</p><p> </p><h3 id="3、新建云函数"><a href="#3、新建云函数" class="headerlink" title="3、新建云函数"></a><a href="https://github.com/tienskowl/AutoReport#%E6%96%B0%E5%BB%BA%E4%BA%91%E5%87%BD%E6%95%B0"></a>3、新建云函数</h3><p>这里以腾讯云为例，进入<a href="https://console.cloud.tencent.com/scf">腾讯云函数页面</a>，点击侧栏的函数服务，新建一个函数。</p><p>如果需要Server酱通知，请不要选择广州地区，其他地区请自行测试</p><p>函数名称随意，运行环境选择Nodejs12.16，创建方式选择空白函数即可，点击完成。 选择函数代码标签，提交方法选择本地上传zip包，上传方式选择在线安装依赖，选择保存并测试。成功的话转下一步，失败的话请检查相关字符串是否正确。  </p><h3 id="4、设置触发器"><a href="#4、设置触发器" class="headerlink" title="4、设置触发器"></a><a href="https://github.com/tienskowl/AutoReport#%E8%AE%BE%E7%BD%AE%E8%A7%A6%E5%8F%91%E5%99%A8"></a>4、设置触发器</h3><p>选择左侧触发管理，创建一个新的触发器。选择定时触发，出发周期自定义，自己根据想要自动提交的时间输入Cron数据即可。推荐使用0 1 1,8 * * * *即可，该触发时间为每天的01:01和08:01，防止因为系统或某方面原因而失败。</p><p> </p><h3 id="5、数据配置"><a href="#5、数据配置" class="headerlink" title="5、数据配置"></a><a href="https://github.com/tienskowl/AutoReport#%E6%95%B0%E6%8D%AE%E9%85%8D%E7%BD%AE"></a>5、数据配置</h3><p>如果需要修改表单数据，在自动提交之前手动通过提交一次数据即可，第二天将会自动修正数据。</p><p> </p><p>博客转载于：<a href="https://github.com/tienskowl/AutoReport">https://github.com/tienskowl/AutoReport</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>开源项目</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>网站账号密码</title>
+    <link href="/2022/02/23/%E7%BD%91%E7%AB%99%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81/"/>
+    <url>/2022/02/23/%E7%BD%91%E7%AB%99%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81/</url>
+    
+    <content type="html"><![CDATA[<p><a href="http://www.yiqiangshiyia.cn/wp-content/uploads/2022/02/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA.zip">网站搭建</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>解忧杂货</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>网站搭建</title>
+    <link href="/2022/02/23/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/"/>
+    <url>/2022/02/23/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</url>
+    
+    <content type="html"><![CDATA[<p>2022年2月23日一腔诗意啊的个人网站正式搭建成功！ WordPress网站后台内容管理登录入口：<a href="https://www.yiqiangshiyia.cn/wp-login.php">https://www.yiqiangshiyia.cn/wp-login.php</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>解忧杂货</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>&lt;i class=\&quot;czs-qzone\&quot;&gt;&lt;/i&gt;留言版</title>
+    <link href="/2022/02/23/99/"/>
+    <url>/2022/02/23/99/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>uncategorized</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>&lt;i class=\&quot;czs-book-l\&quot;&gt;&lt;/i&gt;编程学习</title>
+    <link href="/2022/02/22/78/"/>
+    <url>/2022/02/22/78/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>uncategorized</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>&lt;i class=\&quot;czs-pen-write\&quot;&gt;&lt;/i&gt;朝花夕拾</title>
+    <link href="/2022/02/22/80/"/>
+    <url>/2022/02/22/80/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>uncategorized</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>&lt;i class=\&quot;czs-folder-l\&quot;&gt;&lt;/i&gt;解忧杂货</title>
+    <link href="/2022/02/22/79/"/>
+    <url>/2022/02/22/79/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>uncategorized</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>&lt;i class=\&quot;czs-download-l\&quot;&gt;&lt;/i&gt;开源项目</title>
+    <link href="/2022/02/22/81/"/>
+    <url>/2022/02/22/81/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>uncategorized</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>&lt;i class=\&quot;czs-paper-plane-l\&quot;&gt;&lt;/i&gt;LeetCode刷题</title>
+    <link href="/2022/02/22/82/"/>
+    <url>/2022/02/22/82/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>uncategorized</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>&lt;i class=\&quot;czs-home-l\&quot;&gt;&lt;/i&gt;首页</title>
+    <link href="/2022/02/22/%E9%A6%96%E9%A1%B5/"/>
+    <url>/2022/02/22/%E9%A6%96%E9%A1%B5/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>uncategorized</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>用CSS画一个冰墩墩</title>
+    <link href="/2022/02/21/%E7%94%A8css%E7%94%BB%E4%B8%80%E4%B8%AA%E5%86%B0%E5%A2%A9%E5%A2%A9/"/>
+    <url>/2022/02/21/%E7%94%A8css%E7%94%BB%E4%B8%80%E4%B8%AA%E5%86%B0%E5%A2%A9%E5%A2%A9/</url>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>用CSS制作一个冰墩墩  </p><h3 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h3><p>  <img src="http://www.yiqiangshiyia.cn/wp-content/uploads/2022/02/QQ%E6%88%AA%E5%9B%BE20220221231527-300x178.png">  </p><h3 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h3><p>  <img src="http://www.yiqiangshiyia.cn/wp-content/uploads/2022/02/QQ%E6%88%AA%E5%9B%BE20220329202702-300x178.png">  </p><h3 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h3><p>  <a href="http://www.yiqiangshiyia.cn/wp-content/uploads/2022/02/%E5%86%B0%E5%A2%A9%E5%A2%A9%E4%BB%A3%E7%A0%81.zip">冰墩墩源码下载</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>开源项目</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>编程学习计划</title>
+    <link href="/2022/02/21/javaweb/"/>
+    <url>/2022/02/21/javaweb/</url>
+    
+    <content type="html"><![CDATA[<p>1 学习数据结构+LeetCode刷算法题 百词斩被六级单词+考研单词 2 Java:Java基础知识→JavaWeb→数据库→Java三大框架→SpringBoot Java三大框架： Java的三大框架至少需要2个月的学习时间 Java的三大框架是Struts、Hibernate、Spring 主要用来做WEN应用 Struts：主要负责表示层的显示 Spring：利用它的IOC和AOP来处理控制业务 Hibernate：主要是数据持久化到数据库 3 前端：PHP（本学习课程修） JS（之前学的有点少） 前端框架 Vue+React+Node.js</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程学习</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode刷题！</title>
+    <link href="/2022/02/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    <url>/2022/02/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<p>立个flag 每日一道LeetCode算法题+百词斩背单词！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Custom Styles</title>
+    <link href="/2022/02/21/wp-global-styles-new-blog/"/>
+    <url>/2022/02/21/wp-global-styles-new-blog/</url>
+    
+    <content type="html"><![CDATA[<p>{“version”: 2, “isGlobalStylesUserThemeJSON”: true }</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>uncategorized</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Custom Styles</title>
+    <link href="/2022/02/21/wp-global-styles-wordpress-theme-puock-2-2/"/>
+    <url>/2022/02/21/wp-global-styles-wordpress-theme-puock-2-2/</url>
+    
+    <content type="html"><![CDATA[<p>{“version”: 2, “isGlobalStylesUserThemeJSON”: true }</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>uncategorized</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
   
 </search>
