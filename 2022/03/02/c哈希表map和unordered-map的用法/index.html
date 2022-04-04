@@ -16,15 +16,15 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="LeetCode 383题：赎金信Note：哈希表方法提交未过 题目大意：给你两个字符串：ransomNote 和 magazine ，判断 ransomNote 能不能由 magazine 里面的字符构成。 如果可以，返回 true ；否则返回 false 。 magazine 中的每个字符只能在 ransomNote 中使用一次。   题解：AC代码： 12345678910111213141">
+    <meta name="description" content="LeetCode 383题：赎金信Note哈希表方法提交未过 题目大意给你两个字符串：ransomNote 和 magazine ，判断 ransomNote 能不能由 magazine 里面的字符构成。 如果可以，返回 true ；否则返回 false 。 magazine 中的每个字符只能在 ransomNote 中使用一次。   题解AC代码： 12345678910111213141516">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++哈希表map和unordered_map的用法">
 <meta property="og:url" content="https://yiqiangshiyia.github.io/2022/03/02/c%E5%93%88%E5%B8%8C%E8%A1%A8map%E5%92%8Cunordered-map%E7%9A%84%E7%94%A8%E6%B3%95/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="LeetCode 383题：赎金信Note：哈希表方法提交未过 题目大意：给你两个字符串：ransomNote 和 magazine ，判断 ransomNote 能不能由 magazine 里面的字符构成。 如果可以，返回 true ；否则返回 false 。 magazine 中的每个字符只能在 ransomNote 中使用一次。   题解：AC代码： 12345678910111213141">
+<meta property="og:description" content="LeetCode 383题：赎金信Note哈希表方法提交未过 题目大意给你两个字符串：ransomNote 和 magazine ，判断 ransomNote 能不能由 magazine 里面的字符构成。 如果可以，返回 true ；否则返回 false 。 magazine 中的每个字符只能在 ransomNote 中使用一次。   题解AC代码： 12345678910111213141516">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-02T14:42:54.000Z">
-<meta property="article:modified_time" content="2022-04-04T02:51:32.927Z">
+<meta property="article:modified_time" content="2022-04-04T04:34:57.265Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="哈希">
 <meta name="twitter:card" content="summary_large_image">
@@ -197,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      745 字
+      741 字
     </span>
   
 
@@ -238,14 +238,16 @@
             <h1 style="display: none">C++哈希表map和unordered_map的用法</h1>
             
             <div class="markdown-body">
-              <h2 id="LeetCode-383题：赎金信"><a href="#LeetCode-383题：赎金信" class="headerlink" title="LeetCode 383题：赎金信"></a>LeetCode 383题：赎金信</h2><h3 id="Note："><a href="#Note：" class="headerlink" title="Note："></a>Note：</h3><p>哈希表方法提交未过</p>
-<h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你两个字符串：ransomNote 和 magazine ，判断 ransomNote 能不能由 magazine 里面的字符构成。 如果可以，返回 true ；否则返回 false 。 magazine 中的每个字符只能在 ransomNote 中使用一次。  </p>
-<h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p>AC代码：</p>
+              <h2 id="LeetCode-383题：赎金信"><a href="#LeetCode-383题：赎金信" class="headerlink" title="LeetCode 383题：赎金信"></a>LeetCode 383题：赎金信</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>哈希表方法提交未过</p>
+<h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给你两个字符串：ransomNote 和 magazine ，判断 ransomNote 能不能由 magazine 里面的字符构成。 如果可以，返回 true ；否则返回 false 。 magazine 中的每个字符只能在 ransomNote 中使用一次。  </p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>AC代码：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">canConstruct</span><span class="hljs-params">(string ransomNote, string magazine)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(ransomNote.<span class="hljs-built_in">size</span>()&gt;magazine.<span class="hljs-built_in">size</span>())<br>        &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">cnt</span><span class="hljs-params">(<span class="hljs-number">26</span>)</span></span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> &amp;ch : ransomNote)<br>        &#123;<br>            cnt[ch-<span class="hljs-string">&#x27;a&#x27;</span>]--;<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> &amp;ch : magazine)<br>        &#123;<br>            cnt[ch-<span class="hljs-string">&#x27;a&#x27;</span>]++;<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">26</span>; i++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(cnt[i]&lt;<span class="hljs-number">0</span>)<br>            &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 <p> </p>
 <h3 id="C-哈希表map和unordered-map的用法"><a href="#C-哈希表map和unordered-map的用法" class="headerlink" title="C++哈希表map和unordered_map的用法"></a>C++哈希表map和unordered_map的用法</h3><p>1.构造函数 2.插入数据 3.判断是否有元素 4.遍历 5.查找  </p>
-<h3 id="学习链接："><a href="#学习链接：" class="headerlink" title="学习链接："></a>学习链接：</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45774972/article/details/113418453?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_paycolumn_v3&utm_relevant_index=2">C++ 中使用哈希表(unordered_map)的常用操作</a> <a target="_blank" rel="noopener" href="https://lover.blog.csdn.net/article/details/82633778?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3.pc_relevant_antiscan&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3.pc_relevant_antiscan&utm_relevant_index=6">简述C++中map和unordered_map的用法</a> <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30815237/article/details/91047041">C++ map set unordered_map和unorder_set的区别</a></p>
+<h3 id="学习链接"><a href="#学习链接" class="headerlink" title="学习链接"></a>学习链接</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45774972/article/details/113418453?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_paycolumn_v3&utm_relevant_index=2">C++ 中使用哈希表(unordered_map)的常用操作</a> </p>
+<p><a target="_blank" rel="noopener" href="https://lover.blog.csdn.net/article/details/82633778?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3.pc_relevant_antiscan&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3.pc_relevant_antiscan&utm_relevant_index=6">简述C++中map和unordered_map的用法</a> </p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30815237/article/details/91047041">C++ map set unordered_map和unorder_set的区别</a></p>
 
             </div>
             <hr>
