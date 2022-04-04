@@ -4,56 +4,6 @@
   
   
   <entry>
-    <title>C++标准模板库（C++STL）</title>
-    <link href="/2022/04/03/C-%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88C-STL%EF%BC%89/"/>
-    <url>/2022/04/03/C-%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88C-STL%EF%BC%89/</url>
-    
-    <content type="html"><![CDATA[<h2 id="1-iterator迭代器"><a href="#1-iterator迭代器" class="headerlink" title="1.iterator迭代器"></a>1.iterator迭代器</h2><h3 id="定义和初始化"><a href="#定义和初始化" class="headerlink" title="定义和初始化"></a>定义和初始化</h3><p>每种容器都定义了自己的迭代器类型，如vector</p><p>vector<int>::iterator it; //定义一个名为it的变量</p><p>每种容器都定义了一对名为begin和end的函数，用于返回迭代器</p><p>vector<int> ivec;</p><p>vector<int>::iterator it1 = ivec.begin(); //将迭代器it1指向ivec的第一个元素</p><p>vector<int>::iterator it2 = ivec.end(); //将迭代器it2指向ivec容器的最后一个元素的下一个位置</p><p>end并不指向容器的任何元素</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>编程学习</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>STL</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>C++ vector 容器浅析</title>
-    <link href="/2022/04/03/C-vector-%E5%AE%B9%E5%99%A8%E6%B5%85%E6%9E%90/"/>
-    <url>/2022/04/03/C-vector-%E5%AE%B9%E5%99%A8%E6%B5%85%E6%9E%90/</url>
-    
-    <content type="html"><![CDATA[<p>测试</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>LeetCode刷题</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>STL</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Hello World</title>
     <link href="/2022/04/01/hello-world/"/>
     <url>/2022/04/01/hello-world/</url>
@@ -410,10 +360,10 @@
   
   <entry>
     <title>C++ vector 容器浅析</title>
-    <link href="/2022/02/27/c-vector-%E5%AE%B9%E5%99%A8%E6%B5%85%E6%9E%90-0/"/>
-    <url>/2022/02/27/c-vector-%E5%AE%B9%E5%99%A8%E6%B5%85%E6%9E%90-0/</url>
+    <link href="/2022/02/27/c-vector-%E5%AE%B9%E5%99%A8%E6%B5%85%E6%9E%90/"/>
+    <url>/2022/02/27/c-vector-%E5%AE%B9%E5%99%A8%E6%B5%85%E6%9E%90/</url>
     
-    <content type="html"><![CDATA[<p>刷LeetCode有所收获的第一天！  </p><h2 id="LeetCode-350题：两个数组的交集"><a href="#LeetCode-350题：两个数组的交集" class="headerlink" title="LeetCode 350题：两个数组的交集"></a>LeetCode 350题：两个数组的交集</h2><p> </p><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你两个整数数组 nums1 和 nums2 ，请你以数组形式返回两数组的交集。返回结果中每个元素出现的次数，应与元素在两个数组中都出现的次数一致（如果出现次数不一致，则考虑取较小值）。可以不考虑输出结果的顺序。  </p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：</strong> 哈希表（不太会） 学习C++算法哈希（Hash） B站收藏   AC代码：</p><p>class Solution {</p><p>public:</p><p>    vector<int> intersect(vector<int>&amp; nums1, vector<int>&amp; nums2) {</p><p>        if(nums1.size()&gt;nums2.size())</p><p>        {</p><p>            return intersect(nums2,nums1);</p><p>        }</p><p>        unordered_map &lt;int,int&gt; m;</p><p>        for(int num : nums1)</p><p>        {</p><p>            m[num]++;</p><p>        }</p><p>        vector<int> intersection;</p><p>        for(int num : nums2)</p><p>        {</p><p>            if(m.count(num))</p><p>            {</p><p>                intersection.push_back(num);</p><p>                m[num]–;</p><p>                if(m[num] == 0)</p><p>                {</p><p>                    m.erase(num);</p><p>                }</p><p>            }</p><p>        }</p><p>        return intersection;</p><p>    }</p><p>};</p><p>  <strong>方法2：</strong> 排序+双指针（用到了C++ vector容器） 学习C++  STL标准库函数+vector 容器 <a href="https://www.runoob.com/w3cnote/cpp-vector-container-analysis.html">C++ vector 容器浅析</a>   AC代码：</p><p>class Solution {</p><p>public:</p><p>    vector<int> intersect(vector<int>&amp; nums1, vector<int>&amp; nums2) {</p><p>        sort(nums1.begin(),nums1.end());</p><p>        sort(nums2.begin(),nums2.end());</p><p>        int length1 = nums1.size(),length2 = nums2.size();</p><p>        int index1 = 0,index2 = 0;</p><p>        vector<int> result;</p><p>        while(index1&lt;length1 &amp;&amp; index2&lt;length2)</p><p>        {</p><p>            if(nums1[index1]&gt;nums2[index2])</p><p>            {</p><p>                index2++;</p><p>            }</p><p>            else if(nums1[index1]&lt;nums2[index2])</p><p>            {</p><p>                index1++;</p><p>            }</p><p>            else</p><p>            {</p><p>                result.push_back(nums1[index1]);</p><p>                index1++;</p><p>                index2++;</p><p>            }</p><p>        }</p><p>        return result;</p><p>    }</p><p>};</p><p>  <a href="https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/solution/liang-ge-shu-zu-de-jiao-ji-ii-by-leetcode-solution/">LeetCode题解</a></p>]]></content>
+    <content type="html"><![CDATA[<p>刷LeetCode有所收获的第一天！  </p><h2 id="LeetCode-350题：两个数组的交集"><a href="#LeetCode-350题：两个数组的交集" class="headerlink" title="LeetCode 350题：两个数组的交集"></a>LeetCode 350题：两个数组的交集</h2><p> </p><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>给你两个整数数组 nums1 和 nums2 ，请你以数组形式返回两数组的交集。返回结果中每个元素出现的次数，应与元素在两个数组中都出现的次数一致（如果出现次数不一致，则考虑取较小值）。可以不考虑输出结果的顺序。  </p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p><strong>方法1：</strong> 哈希表（不太会） 学习C++算法哈希（Hash） B站收藏   </p><p>AC代码：</p><figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">intersect</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums1, vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums2)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(nums1.<span class="hljs-built_in">size</span>()&gt;nums2.<span class="hljs-built_in">size</span>())<br>        &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">intersect</span>(nums2,nums1);<br>        &#125;<br>        unordered\_map &lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; m;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> num : nums1)<br>        &#123;<br>            m\[num\]++;<br>        &#125;<br>        vector&lt;<span class="hljs-type">int</span>&gt; intersection;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> num : nums2)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(m.<span class="hljs-built_in">count</span>(num))<br>            &#123;<br>                intersection.push\_back(num);<br>                m\[num\]--;<br>                <span class="hljs-keyword">if</span>(m\[num\] == <span class="hljs-number">0</span>)<br>                &#123;<br>                    m.<span class="hljs-built_in">erase</span>(num);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> intersection;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><p><strong>方法2：</strong> </p><p>排序+双指针（用到了C++ vector容器） 学习C++  STL标准库函数+vector 容器 <a href="https://www.runoob.com/w3cnote/cpp-vector-container-analysis.html">C++ vector 容器浅析</a>   </p><p>AC代码：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">intersect</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums1, vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums2)</span> </span>&#123;<br>        <span class="hljs-built_in">sort</span>(nums1.<span class="hljs-built_in">begin</span>(),nums1.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-built_in">sort</span>(nums2.<span class="hljs-built_in">begin</span>(),nums2.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-type">int</span> length1 = nums1.<span class="hljs-built_in">size</span>(),length2 = nums2.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> index1 = <span class="hljs-number">0</span>,index2 = <span class="hljs-number">0</span>;<br>        vector&lt;<span class="hljs-type">int</span>&gt; result;<br>        <span class="hljs-keyword">while</span>(index1&lt;length1 &amp;&amp; index2&lt;length2)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(nums1\[index1\]&gt;nums2\[index2\])<br>            &#123;<br>                index2++;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(nums1\[index1\]&lt;nums2\[index2\])<br>            &#123;<br>                index1++;<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                result.push\_back(nums1\[index1\]);<br>                index1++;<br>                index2++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><p>  <a href="https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/solution/liang-ge-shu-zu-de-jiao-ji-ii-by-leetcode-solution/">LeetCode题解</a></p>]]></content>
     
     
     <categories>
@@ -422,6 +372,12 @@
       
     </categories>
     
+    
+    <tags>
+      
+      <tag>STL</tag>
+      
+    </tags>
     
   </entry>
   
@@ -561,9 +517,9 @@
   
   
   <entry>
-    <title>&lt;i class=\&quot;czs-pen-write\&quot;&gt;&lt;/i&gt;朝花夕拾</title>
-    <link href="/2022/02/22/80/"/>
-    <url>/2022/02/22/80/</url>
+    <title>&lt;i class=\&quot;czs-folder-l\&quot;&gt;&lt;/i&gt;解忧杂货</title>
+    <link href="/2022/02/22/79/"/>
+    <url>/2022/02/22/79/</url>
     
     <content type="html"><![CDATA[]]></content>
     
@@ -580,9 +536,9 @@
   
   
   <entry>
-    <title>&lt;i class=\&quot;czs-folder-l\&quot;&gt;&lt;/i&gt;解忧杂货</title>
-    <link href="/2022/02/22/79/"/>
-    <url>/2022/02/22/79/</url>
+    <title>&lt;i class=\&quot;czs-pen-write\&quot;&gt;&lt;/i&gt;朝花夕拾</title>
+    <link href="/2022/02/22/80/"/>
+    <url>/2022/02/22/80/</url>
     
     <content type="html"><![CDATA[]]></content>
     
