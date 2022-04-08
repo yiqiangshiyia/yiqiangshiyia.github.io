@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>前缀和+哈希求和为K的子数组</title>
+    <link href="/2022/04/08/%E5%89%8D%E7%BC%80%E5%92%8C-%E5%93%88%E5%B8%8C%E6%B1%82%E5%92%8C%E4%B8%BAK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/"/>
+    <url>/2022/04/08/%E5%89%8D%E7%BC%80%E5%92%8C-%E5%93%88%E5%B8%8C%E6%B1%82%E5%92%8C%E4%B8%BAK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</url>
+    
+    <content type="html"><![CDATA[<h2 id="LeetCode-560：和为-K-的子数组"><a href="#LeetCode-560：和为-K-的子数组" class="headerlink" title="LeetCode 560：和为 K 的子数组"></a>LeetCode 560：和为 K 的子数组</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>解决数组问题时，如果多层循环遍历超时，多考虑前缀和的思想来减少循环次数降低时间复杂度。</p><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给你一个整数数组 nums 和一个整数 k ，请你统计并返回 该数组中和为 k 的子数组的个数 。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="方法1：枚举"><a href="#方法1：枚举" class="headerlink" title="方法1：枚举"></a>方法1：枚举</h4><p>两层循环遍历，超出时间限制</p><h4 id="方法2：前缀和-哈希表"><a href="#方法2：前缀和-哈希表" class="headerlink" title="方法2：前缀和+哈希表"></a>方法2：前缀和+哈希表</h4><p>基于方法1用前缀和和哈希表的思想优化</p><p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20220408190130821.png" alt="image-20220408190130821"></p><p>AC代码：</p><figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">subarraySum</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();<br>        unordered_map&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; mp;<br>        mp[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>        <span class="hljs-type">int</span> pre = <span class="hljs-number">0</span>,cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> num : nums)<br>        &#123;<br>            pre = pre+num;<br>            <span class="hljs-keyword">if</span>(mp.<span class="hljs-built_in">find</span>(pre-k) != mp.<span class="hljs-built_in">end</span>())<br>            &#123;<br>                cnt = cnt+mp[pre-k];<br>            &#125;<br>            mp[pre]++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cnt;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><p><a href="https://leetcode-cn.com/problems/subarray-sum-equals-k/solution/he-wei-kde-zi-shu-zu-by-leetcode-solution/">LeetCode题解</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>哈希</tag>
+      
+      <tag>前缀和</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>「数据库系统概论」期末复习</title>
     <link href="/2022/04/07/%E3%80%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E3%80%8D%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
     <url>/2022/04/07/%E3%80%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E3%80%8D%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/</url>
