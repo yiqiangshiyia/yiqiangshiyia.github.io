@@ -23,14 +23,14 @@
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
 <meta property="og:description" content="LeetCode 560：和为 K 的子数组Note解决数组问题时，如果多层循环遍历超时，多考虑前缀和的思想来减少循环次数降低时间复杂度。 题目大意给你一个整数数组 nums 和一个整数 k ，请你统计并返回 该数组中和为 k 的子数组的个数 。 题解方法1：枚举两层循环遍历，超出时间限制 方法2：前缀和+哈希表基于方法1用前缀和和哈希表的思想优化  AC代码： 12345678910111213">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20220408190130821.png">
+<meta property="og:image" content="d:/hexo/Blog/source/picture/1.png">
 <meta property="article:published_time" content="2022-04-08T10:30:50.000Z">
-<meta property="article:modified_time" content="2022-04-08T11:06:48.105Z">
+<meta property="article:modified_time" content="2022-04-08T11:16:46.742Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="哈希">
 <meta property="article:tag" content="前缀和">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20220408190130821.png">
+<meta name="twitter:image" content="d:/hexo/Blog/source/picture/1.png">
   
   
   <title>前缀和+哈希求和为K的子数组 - 一腔诗意啊 - 个人博客</title>
@@ -281,7 +281,7 @@
 <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给你一个整数数组 nums 和一个整数 k ，请你统计并返回 该数组中和为 k 的子数组的个数 。</p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="方法1：枚举"><a href="#方法1：枚举" class="headerlink" title="方法1：枚举"></a>方法1：枚举</h4><p>两层循环遍历，超出时间限制</p>
 <h4 id="方法2：前缀和-哈希表"><a href="#方法2：前缀和-哈希表" class="headerlink" title="方法2：前缀和+哈希表"></a>方法2：前缀和+哈希表</h4><p>基于方法1用前缀和和哈希表的思想优化</p>
-<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20220408190130821.png" srcset="/img/loading.gif" lazyload alt="image-20220408190130821"></p>
+<p><img src="D:\hexo\Blog\source\picture\1.png" srcset="/img/loading.gif" lazyload alt="1"></p>
 <p>AC代码：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">subarraySum</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();<br>        unordered_map&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; mp;<br>        mp[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>        <span class="hljs-type">int</span> pre = <span class="hljs-number">0</span>,cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> num : nums)<br>        &#123;<br>            pre = pre+num;<br>            <span class="hljs-keyword">if</span>(mp.<span class="hljs-built_in">find</span>(pre-k) != mp.<span class="hljs-built_in">end</span>())<br>            &#123;<br>                cnt = cnt+mp[pre-k];<br>            &#125;<br>            mp[pre]++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cnt;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
