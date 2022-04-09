@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1. 绪论 2. 关系代数和元组关系演算关系代数的五个基本操作:  关系代数中可能会用到的各个符号:  3. SQLSQL与三级模式体系结构图:  image-20201226123540167 1 | 数据定义SQL提供了专门的语言定义数据库对象, 称为DDL(数据定义语言, Data Definition Language)  image-20201226123755751 创建数据库1CRE">
+    <meta name="description" content="1. 绪论 2. 关系数据库关系数据结构及形式化定义关系模型中数据的逻辑结构是一张扁平的二维表 关系是笛卡尔积的有限子集，所以关系也是一张二维表 候选码：若关系中某一属性的值能唯一标识一个元组，而其子集不能，则称该属性组为候选码 主码：若一个关系中有多个候选码，则选定其中一个为主码 主属性：候选码的诸属性称为主属性 非主属性：不包含在任何候选码中的属性称为非主属性或非码属性 全码：关系模式的所有属">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「数据库系统概论」期末复习">
 <meta property="og:url" content="https://yiqiangshiyia.github.io/2022/04/07/%E3%80%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E3%80%8D%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
-<meta property="og:description" content="1. 绪论 2. 关系代数和元组关系演算关系代数的五个基本操作:  关系代数中可能会用到的各个符号:  3. SQLSQL与三级模式体系结构图:  image-20201226123540167 1 | 数据定义SQL提供了专门的语言定义数据库对象, 称为DDL(数据定义语言, Data Definition Language)  image-20201226123755751 创建数据库1CRE">
+<meta property="og:description" content="1. 绪论 2. 关系数据库关系数据结构及形式化定义关系模型中数据的逻辑结构是一张扁平的二维表 关系是笛卡尔积的有限子集，所以关系也是一张二维表 候选码：若关系中某一属性的值能唯一标识一个元组，而其子集不能，则称该属性组为候选码 主码：若一个关系中有多个候选码，则选定其中一个为主码 主属性：候选码的诸属性称为主属性 非主属性：不包含在任何候选码中的属性称为非主属性或非码属性 全码：关系模式的所有属">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://youpai.roccoshi.top/img/20210107010414.png">
 <meta property="og:image" content="https://youpai.roccoshi.top/img/20210107010534.png">
@@ -49,7 +49,7 @@
 <meta property="og:image" content="https://youpai.roccoshi.top/img/20210102192837.png">
 <meta property="og:image" content="https://youpai.roccoshi.top/img/20210102192838.png">
 <meta property="article:published_time" content="2022-04-07T04:59:24.000Z">
-<meta property="article:modified_time" content="2022-04-07T10:02:03.435Z">
+<meta property="article:modified_time" content="2022-04-09T03:50:26.892Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary_large_image">
@@ -259,7 +259,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      7.7k 字
+      8.1k 字
     </span>
   
 
@@ -268,7 +268,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      64 分钟
+      68 分钟
     </span>
   
 
@@ -301,38 +301,69 @@
             
             <div class="markdown-body">
               <h1 id="1-绪论"><a href="#1-绪论" class="headerlink" title="1. 绪论"></a>1. 绪论</h1><p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210107010414.png"><img src="https://youpai.roccoshi.top/img/20210107010414.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
-<h1 id="2-关系代数和元组关系演算"><a href="#2-关系代数和元组关系演算" class="headerlink" title="2. 关系代数和元组关系演算"></a>2. 关系代数和元组关系演算</h1><p>关系代数的五个基本操作:</p>
+<h1 id="2-关系数据库"><a href="#2-关系数据库" class="headerlink" title="2. 关系数据库"></a>2. 关系数据库</h1><h3 id="关系数据结构及形式化定义"><a href="#关系数据结构及形式化定义" class="headerlink" title="关系数据结构及形式化定义"></a>关系数据结构及形式化定义</h3><p>关系模型中数据的逻辑结构是一张扁平的二维表</p>
+<p>关系是笛卡尔积的有限子集，所以关系也是一张二维表</p>
+<p>候选码：若关系中某一属性的值能唯一标识一个元组，而其子集不能，则称该属性组为候选码</p>
+<p>主码：若一个关系中有多个候选码，则选定其中一个为主码</p>
+<p>主属性：候选码的诸属性称为主属性</p>
+<p>非主属性：不包含在任何候选码中的属性称为非主属性或非码属性</p>
+<p>全码：关系模式的所有属性是这个关系模式的候选码，称为全码</p>
+<h3 id="关系的完整性"><a href="#关系的完整性" class="headerlink" title="关系的完整性"></a>关系的完整性</h3><p>关系模型中有三类完整性约束：实体完整性、参照完整性和用户定义的完整性。</p>
+<h3 id="关系代数"><a href="#关系代数" class="headerlink" title="关系代数"></a>关系代数</h3><h4 id="传统的集合运算"><a href="#传统的集合运算" class="headerlink" title="传统的集合运算"></a>传统的集合运算</h4><p>并、叉、交、笛卡尔积</p>
+<h4 id="专门的关系运算"><a href="#专门的关系运算" class="headerlink" title="专门的关系运算"></a>专门的关系运算</h4><p>选择</p>
+<p>投影：投影操作 是从列的角度进行运算</p>
+<p>连接：两种常用的连接：等值连接和自然连接</p>
+<p>除运算：除法是用象集来定义的</p>
+<p>关系代数的五个基本操作：其余三种运算可以用这五种基本运算来表达</p>
 <p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210107010534.png"><img src="https://youpai.roccoshi.top/img/20210107010534.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
 <p>关系代数中可能会用到的各个符号:</p>
 <p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210107010616.png"><img src="https://youpai.roccoshi.top/img/20210107010616.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
-<h1 id="3-SQL"><a href="#3-SQL" class="headerlink" title="3. SQL"></a>3. SQL</h1><p>SQL与<strong>三级模式</strong>体系结构图:</p>
-<p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210106174625.png"><img src="https://youpai.roccoshi.top/img/20210106174625.png" srcset="/img/loading.gif" lazyload alt="image-20201226123540167"></a></p>
+<h1 id="3-关系数据库标准语言SQL"><a href="#3-关系数据库标准语言SQL" class="headerlink" title="3. 关系数据库标准语言SQL"></a>3. 关系数据库标准语言SQL</h1><h2 id="1-SQL概述"><a href="#1-SQL概述" class="headerlink" title="1 | SQL概述"></a>1 | SQL概述</h2><h3 id="1-1-SQL的特点"><a href="#1-1-SQL的特点" class="headerlink" title="1-1 | SQL的特点"></a>1-1 | SQL的特点</h3><p>1、综合统一 </p>
+<p>2、高度非过程化</p>
+<p>3、面向集合的操作方式</p>
+<p>4、以同一种语法结构提供多种使用方式</p>
+<p>5、语言简洁，易学易用</p>
+<h3 id="1-2-SQL与三级模式体系结构图"><a href="#1-2-SQL与三级模式体系结构图" class="headerlink" title="1-2 | SQL与三级模式体系结构图"></a>1-2 | SQL与<strong>三级模式</strong>体系结构图</h3><p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210106174625.png"><img src="https://youpai.roccoshi.top/img/20210106174625.png" srcset="/img/loading.gif" lazyload alt="image-20201226123540167"></a></p>
 <p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210106174625.png">image-20201226123540167</a></p>
-<h2 id="1-数据定义"><a href="#1-数据定义" class="headerlink" title="1 | 数据定义"></a>1 | 数据定义</h2><p>SQL提供了专门的语言定义数据库对象, 称为<strong>DDL</strong>(数据定义语言, Data Definition Language)</p>
+<p>模式：模式也称逻辑模式，是数据库中全体数据的逻辑结构和特征描述，是所有用户的公共数据视图</p>
+<p>外模式：外模式也称子模式或用户模式，它是数据库用户能够看见和使用的局部数据的逻辑结构和特征的描述，是数据库用户的数据视图，是与某一应用有关的数据的逻辑表示</p>
+<p>内模式：内模式也称存储模式，一个数据库只有一个内模式。它是数据物理结构和存储方式的描述，是数据在数据库内部的组织方式</p>
+<h2 id="2-数据定义"><a href="#2-数据定义" class="headerlink" title="2 | 数据定义"></a>2 | 数据定义</h2><p>SQL数据的定义功能：定义各种数据库的对象</p>
+<p>SQL数据库定义功能包括模式定义、表定义、视图定义和索引定义</p>
 <p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210106174626.png"><img src="https://youpai.roccoshi.top/img/20210106174626.png" srcset="/img/loading.gif" lazyload alt="image-20201226123755751"></a></p>
 <p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210106174626.png">image-20201226123755751</a></p>
-<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><figure class="highlight pgsql"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">DATABASE</span> &lt;<span class="hljs-type">name</span>&gt;<br></code></pre></td></tr></table></figure>
+<h3 id="2-1-模式的定义与删除"><a href="#2-1-模式的定义与删除" class="headerlink" title="2-1 | 模式的定义与删除"></a>2-1 | 模式的定义与删除</h3><h3 id="2-2-基本表的定义、删除与修改"><a href="#2-2-基本表的定义、删除与修改" class="headerlink" title="2-2 | 基本表的定义、删除与修改"></a>2-2 | 基本表的定义、删除与修改</h3><h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><figure class="highlight sql"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> DATABASE <span class="hljs-operator">&lt;</span>name<span class="hljs-operator">&gt;</span><br></code></pre></td></tr></table></figure>
 
-<h3 id="创建基本表"><a href="#创建基本表" class="headerlink" title="创建基本表"></a>创建基本表</h3><p>格式</p>
-<figure class="highlight bnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bnf">CREATE TABLE <span class="hljs-attribute">&lt;表名&gt;</span><br>(<br>    <span class="hljs-attribute">&lt;列名&gt;</span> <span class="hljs-attribute">&lt;数据类型&gt;</span> <span class="hljs-attribute">&lt;列级完整性约束条件&gt;</span>,<br>    <span class="hljs-attribute">&lt;列名&gt;</span> <span class="hljs-attribute">&lt;数据类型&gt;</span> <span class="hljs-attribute">&lt;列级完整性约束条件&gt;</span>,<br>   	...<br>    <span class="hljs-attribute">&lt;表级完整性约束条件&gt;</span><br>);<br>Copy<br></code></pre></td></tr></table></figure>
+<h4 id="创建基本表"><a href="#创建基本表" class="headerlink" title="创建基本表"></a>创建基本表</h4><p>格式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">&gt;</span><br>(<br>    <span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>数据类型<span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>列级完整性约束条件<span class="hljs-operator">&gt;</span>,<br>    <span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>数据类型<span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>列级完整性约束条件<span class="hljs-operator">&gt;</span>,<br>   	...<br>    <span class="hljs-operator">&lt;</span>表级完整性约束条件<span class="hljs-operator">&gt;</span><br>);<br></code></pre></td></tr></table></figure>
 
-<p>实例</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> S<br>    (<br>    SNO <span class="hljs-type">int</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> <span class="hljs-keyword">primary</span> key, <span class="hljs-comment">-- 列级完整性约束</span><br>    SNAME <span class="hljs-type">char</span>(<span class="hljs-number">10</span>) <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span>,<br>    SA <span class="hljs-type">int</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span>,<br>    FNAME <span class="hljs-type">char</span>(<span class="hljs-number">15</span>) <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span>,<br>    CNO <span class="hljs-type">int</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span>,	<br>    SD <span class="hljs-type">char</span>(<span class="hljs-number">10</span>),<br>    <span class="hljs-keyword">constraint</span> fk_fname1 <span class="hljs-keyword">foreign</span> key(FNAME) <span class="hljs-keyword">references</span> F(FNAME), <span class="hljs-comment">-- 表级完整性约束, 命名约束</span><br>    <span class="hljs-keyword">foreign</span> key(CNO) <span class="hljs-keyword">references</span> C(CNO) <span class="hljs-comment">-- 直接指定约束 (少了constraint xxx)</span><br>    );<br><span class="hljs-keyword">Copy</span><br></code></pre></td></tr></table></figure>
+<p>列级完整性约束条件</p>
+<p>表级完整性约束条件</p>
+<p>实例：建立一个 “课程” 表Course</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Course<br><br></code></pre></td></tr></table></figure>
 
 <p>常用的完整性约束:</p>
 <p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210106174627.png"><img src="https://youpai.roccoshi.top/img/20210106174627.png" srcset="/img/loading.gif" lazyload alt="image-20201226125004438"></a></p>
 <p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210106174627.png">image-20201226125004438</a></p>
-<h3 id="修改基本表"><a href="#修改基本表" class="headerlink" title="修改基本表"></a>修改基本表</h3><p>格式</p>
+<h4 id="修改基本表"><a href="#修改基本表" class="headerlink" title="修改基本表"></a>修改基本表</h4><p>格式</p>
 <figure class="highlight bnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bnf">ALTER TABLE <span class="hljs-attribute">&lt;表名&gt;</span><br>(<br>    ADD <span class="hljs-attribute">&lt;新列名&gt;</span> <span class="hljs-attribute">&lt;数据类型&gt;</span> <span class="hljs-attribute">&lt;完整性约束&gt;</span><br>    DROP <span class="hljs-attribute">&lt;完整性约束名&gt;</span> <span class="hljs-attribute">&lt;列名&gt;</span><br>    ALTER <span class="hljs-attribute">&lt;列名&gt;</span> <span class="hljs-attribute">&lt;数据类型&gt;</span><br>);<br>Copy<br></code></pre></td></tr></table></figure>
 
 <p>实例:</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-comment">-- 增加属性</span><br><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> student <span class="hljs-keyword">add</span> senroll <span class="hljs-type">date</span>;<br><span class="hljs-comment">-- 修改属性数据类型</span><br><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> student <span class="hljs-keyword">alter</span> sage <span class="hljs-type">smallint</span>;<br><span class="hljs-comment">-- 删除约束</span><br><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> student <span class="hljs-keyword">drop</span> <span class="hljs-keyword">unique</span>(<span class="hljs-type">name</span>);<br><span class="hljs-keyword">Copy</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="2-查询"><a href="#2-查询" class="headerlink" title="2 | 查询"></a>2 | 查询</h2><p>语法:</p>
+
+
+<h2 id="3-数据查询（重点）"><a href="#3-数据查询（重点）" class="headerlink" title="3 | 数据查询（重点）"></a>3 | 数据查询（重点）</h2><p>语法:</p>
 <p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210106174628.png"><img src="https://youpai.roccoshi.top/img/20210106174628.png" srcset="/img/loading.gif" lazyload alt="image-20201226130756283"></a></p>
 <p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210106174628.png">image-20201226130756283</a></p>
 <h3 id="where子句"><a href="#where子句" class="headerlink" title="where子句"></a>where子句</h3><p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210106174629.png"><img src="https://youpai.roccoshi.top/img/20210106174629.png" srcset="/img/loading.gif" lazyload alt="image-20201226130825216"></a></p>
 <p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210106174629.png">image-20201226130825216</a></p>
+<p>比较大小：</p>
+<p>确定范围：</p>
+<p>确定集合：</p>
+<p>字符匹配：</p>
+<p>涉及空值的查询：</p>
+<p>多重条件查询：</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-comment">-- 例子</span><br><span class="hljs-keyword">where</span> age <span class="hljs-keyword">between</span> <span class="hljs-number">20</span> <span class="hljs-keyword">and</span> <span class="hljs-number">23</span>;  <span class="hljs-comment">-- 找年龄20-23岁的</span><br><br><span class="hljs-keyword">where</span> dept <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> (<span class="hljs-string">&#x27;is&#x27;</span>, <span class="hljs-string">&#x27;ma&#x27;</span>, <span class="hljs-string">&#x27;cs&#x27;</span>); <span class="hljs-comment">--查询不是is, ma, cs系得</span><br><br><span class="hljs-keyword">where</span> <span class="hljs-type">name</span> <span class="hljs-keyword">like</span> <span class="hljs-string">&#x27;刘%&#x27;</span>; <span class="hljs-comment">-- 找姓刘的</span><br><br><span class="hljs-keyword">where</span> <span class="hljs-type">name</span> <span class="hljs-keyword">like</span> <span class="hljs-string">&#x27;__阳&#x27;</span>; <span class="hljs-comment">-- 找名字叫xx阳的</span><br><br><span class="hljs-keyword">where</span> cname <span class="hljs-keyword">like</span> <span class="hljs-string">&#x27;DB\_Design&#x27;</span> <span class="hljs-keyword">ESCAPE</span> <span class="hljs-string">&#x27;\&#x27;</span>; <span class="hljs-comment">-- escape定义转义字符, 出现在其后的第一个字符不是通配符而是字符本身</span><br><span class="hljs-keyword">Copy</span><br></code></pre></td></tr></table></figure>
 
 <p>注意点:</p>
@@ -409,7 +440,7 @@
 </tbody></table>
 <p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210106174634.png"><img src="https://youpai.roccoshi.top/img/20210106174634.png" srcset="/img/loading.gif" lazyload alt="image-20201226140459748"></a></p>
 <p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210106174634.png">image-20201226140459748</a></p>
-<h2 id="3-数据更新"><a href="#3-数据更新" class="headerlink" title="3 | 数据更新"></a>3 | 数据更新</h2><h3 id="3-1-插入数据"><a href="#3-1-插入数据" class="headerlink" title="3-1 | 插入数据"></a>3-1 | 插入数据</h3><h4 id="插入单个结果"><a href="#插入单个结果" class="headerlink" title="插入单个结果"></a>插入单个结果</h4><p>格式:</p>
+<h2 id="4-数据更新"><a href="#4-数据更新" class="headerlink" title="4 | 数据更新"></a>4 | 数据更新</h2><h3 id="3-1-插入数据"><a href="#3-1-插入数据" class="headerlink" title="3-1 | 插入数据"></a>3-1 | 插入数据</h3><h4 id="插入单个结果"><a href="#插入单个结果" class="headerlink" title="插入单个结果"></a>插入单个结果</h4><p>格式:</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span><br><span class="hljs-keyword">INTO</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>属性列s<span class="hljs-operator">&gt;</span><br><span class="hljs-keyword">VALUES</span> <span class="hljs-operator">&lt;</span>常量s<span class="hljs-operator">&gt;</span>;<br><span class="hljs-keyword">Copy</span><br></code></pre></td></tr></table></figure>
 
 <p>如果不指定属性列, 则values必须以完整的元组插入, 且属性与表中属性顺序一致</p>
@@ -441,7 +472,7 @@
 <li>不允许被删除</li>
 <li>级联删除 ( 通过CASCADE参数指定 )</li>
 </ul>
-<h2 id="4-视图"><a href="#4-视图" class="headerlink" title="4 | 视图"></a>4 | 视图</h2><p>数据库系统的<strong>三级模式</strong>: 外模式, 模式, 内模式</p>
+<h2 id="5-视图"><a href="#5-视图" class="headerlink" title="5 | 视图"></a>5 | 视图</h2><p>数据库系统的<strong>三级模式</strong>: 外模式, 模式, 内模式</p>
 <p>数据库系统的<strong>两级映像</strong>: 外模式-模式映像 模式-内模式映像</p>
 <ul>
 <li>外模式-模式映像用途: <strong>保证数据的逻辑独立性</strong></li>
@@ -702,7 +733,7 @@
 <li>遵守两段锁协议也会发生死锁</li>
 <li>遵守两段锁协议是可串行化调度的充分条件</li>
 </ul>
-<p>博客转载于：<a target="_blank" rel="noopener" href="https://blog.roccoshi.top/">https://blog.roccoshi.top/</a></p>
+<p>原博客转载于：<a target="_blank" rel="noopener" href="https://blog.roccoshi.top/">https://blog.roccoshi.top/</a> + 本人增删修改</p>
 
             </div>
             <hr>
