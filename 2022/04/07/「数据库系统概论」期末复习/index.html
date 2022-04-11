@@ -49,7 +49,7 @@
 <meta property="og:image" content="https://youpai.roccoshi.top/img/20210102192837.png">
 <meta property="og:image" content="https://youpai.roccoshi.top/img/20210102192838.png">
 <meta property="article:published_time" content="2022-04-07T04:59:24.000Z">
-<meta property="article:modified_time" content="2022-04-10T09:56:47.988Z">
+<meta property="article:modified_time" content="2022-04-11T13:15:40.609Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary_large_image">
@@ -259,7 +259,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      9.1k 字
+      9.7k 字
     </span>
   
 
@@ -268,7 +268,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      76 分钟
+      81 分钟
     </span>
   
 
@@ -303,11 +303,11 @@
               <h1 id="1-绪论"><a href="#1-绪论" class="headerlink" title="1. 绪论"></a>1. 绪论</h1><p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210107010414.png"><img src="https://youpai.roccoshi.top/img/20210107010414.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
 <h1 id="2-关系数据库"><a href="#2-关系数据库" class="headerlink" title="2. 关系数据库"></a>2. 关系数据库</h1><h2 id="1-关系数据结构及形式化定义"><a href="#1-关系数据结构及形式化定义" class="headerlink" title="1 | 关系数据结构及形式化定义"></a>1 | 关系数据结构及形式化定义</h2><p>关系模型中数据的逻辑结构是一张扁平的二维表</p>
 <p>关系是笛卡尔积的有限子集，所以关系也是一张二维表</p>
-<p>候选码：若关系中某一属性的值能唯一标识一个元组，而其子集不能，则称该属性组为候选码</p>
-<p>主码：若一个关系中有多个候选码，则选定其中一个为主码</p>
-<p>主属性：候选码的诸属性称为主属性</p>
-<p>非主属性：不包含在任何候选码中的属性称为非主属性或非码属性</p>
-<p>全码：关系模式的所有属性是这个关系模式的候选码，称为全码</p>
+<p><strong>候选码</strong>：若关系中某一属性的值能唯一标识一个元组，而其子集不能，则称该属性组为候选码</p>
+<p><strong>主码</strong>：若一个关系中有多个候选码，则选定其中一个为主码</p>
+<p><strong>主属性</strong>：候选码的诸属性称为主属性</p>
+<p><strong>非主属性</strong>：不包含在任何候选码中的属性称为非主属性或非码属性</p>
+<p><strong>全码</strong>：关系模式的所有属性是这个关系模式的候选码，称为全码</p>
 <h2 id="2-关系的完整性"><a href="#2-关系的完整性" class="headerlink" title="2 | 关系的完整性"></a>2 | 关系的完整性</h2><p>关系模型中有三类完整性约束：实体完整性、参照完整性和用户定义的完整性。</p>
 <h2 id="3-关系代数"><a href="#3-关系代数" class="headerlink" title="3| 关系代数"></a>3| 关系代数</h2><h4 id="3-1-传统的集合运算"><a href="#3-1-传统的集合运算" class="headerlink" title="3-1 | 传统的集合运算"></a>3-1 | 传统的集合运算</h4><p>并、叉、交、笛卡尔积</p>
 <h4 id="3-2-专门的关系运算"><a href="#3-2-专门的关系运算" class="headerlink" title="3-2 | 专门的关系运算"></a>3-2 | 专门的关系运算</h4><p>选择</p>
@@ -627,29 +627,56 @@
 </tbody></table>
 <h1 id="7-关系数据理论"><a href="#7-关系数据理论" class="headerlink" title="7. 关系数据理论"></a>7. 关系数据理论</h1><p><strong>关系模式的简记</strong>: <code>R&lt;U, F&gt;</code></p>
 <p>其中U表示属性集, F表示数据依赖</p>
-<h2 id="1-关系模式的存储异常"><a href="#1-关系模式的存储异常" class="headerlink" title="1 | 关系模式的存储异常"></a>1 | 关系模式的存储异常</h2><p>不满足2NF, 3NF, BCNF范式的关系模式存在下列异常</p>
+<h2 id="1-关系数据理论"><a href="#1-关系数据理论" class="headerlink" title="1 | 关系数据理论"></a>1 | 关系数据理论</h2><p>不合适的数据依赖造成以下等问题</p>
 <ul>
 <li>数据冗余</li>
 <li>更新异常</li>
 <li>插入异常</li>
 <li>删除异常</li>
 </ul>
-<h2 id="2-函数依赖"><a href="#2-函数依赖" class="headerlink" title="2 | 函数依赖"></a>2 | 函数依赖</h2><p>Functional Dependencies简写为FD</p>
+<h2 id="2-规范化"><a href="#2-规范化" class="headerlink" title="2 | 规范化"></a>2 | 规范化</h2><h3 id="2-1-函数依赖"><a href="#2-1-函数依赖" class="headerlink" title="2-1 | 函数依赖"></a>2-1 | 函数依赖</h3><p>函数依赖（Functional Dependencies）简写为FD</p>
 <ul>
-<li><strong>平凡函数依赖</strong>: (X→Y,Y⊆X) 平凡函数依赖没什么用, 不研究</li>
-<li>例如(sno, cno)-&gt;sno</li>
-<li><strong>非平凡函数依赖</strong>: (X→Y,Y⊈X) 如果不特别声明, 我们总是讨论非平凡函数依赖<ul>
-<li>例如(sno, cno)-&gt;grade</li>
-</ul>
+<li><p><strong>平凡函数依赖</strong>： (X→Y,Y⊆X) 平凡函数依赖没什么用, 不研究</p>
+<p>例如(sno, cno)→sno</p>
 </li>
-<li><strong>完全函数依赖, 部分函数依赖</strong></li>
-<li><strong>传递函数依赖</strong>: (A-&gt;B B-&gt;C), 则Z传递依赖于X, 注意Y↛X如果Y→X<br>则为直接依赖</li>
+<li><p><strong>非平凡函数依赖</strong>：(X→Y,Y⊈X) 如果不特别声明, 我们总是讨论非平凡函数依赖</p>
+<p>例如(sno, cno)→grade</p>
+<blockquote>
+<p>对于任一关系模式，平凡函数依赖都是必然成立的，它不反应新的语义，因此若不特别声明，我们总是讨论非平凡函数依赖。</p>
+</blockquote>
+</li>
+<li><p><strong>完全函数依赖</strong>：在R(U)中，如果X→Y，并且对于X的任何一个真子集X‘，都有X‘/→Y</p>
+</li>
+<li><p><strong>部分函数依赖</strong>：若X→Y，但Y不完全函数依赖于X</p>
+</li>
+<li><p><strong>传递函数依赖</strong>：在R(U)中，X→Y，Y→Z，且Y/→X，则Z传递依赖于X, 如果Y→X则为直接函数依赖</p>
+</li>
 </ul>
-<h2 id="3-范式"><a href="#3-范式" class="headerlink" title="3 | 范式"></a>3 | 范式</h2><h3 id="1NF"><a href="#1NF" class="headerlink" title="1NF"></a>1NF</h3><p>所有属性必须是原子的, 不允许表中套表</p>
+<h3 id="2-2-码"><a href="#2-2-码" class="headerlink" title="2-2 | 码"></a>2-2 | 码</h3><blockquote>
+<p>码是关系模式中的一个重要概念。在第二章关系数据库中已经给出了有关码的若干定义，这里用函数依赖的概念来定义码。</p>
+</blockquote>
+<p><strong>候选码</strong>：设K为R&lt;U,F&gt;中的属性或属性组合，若U完全函数依赖于K，则K为R的候选码。</p>
+<p><strong>超码</strong>：如果U部分函数依赖于K，则K为超码</p>
+<blockquote>
+<p>候选码是最小的超码，即K的任何一个真子集都不是候选码</p>
+<p>候选码是 一类特殊的超码，即候选码的超集一定是超码，候选码的任何真子集一定不是超码</p>
+</blockquote>
+<p><strong>主码</strong>：若关系模式R有多个候选码，则选定其中一个作为主码</p>
+<p><strong>主属性</strong>：包含在任何一个候选码中的属性称为主属性</p>
+<p><strong>非主属性</strong>：不包含在任何一个候选码中的属性称为非主属性或非码属性</p>
+<p><strong>全码</strong>：整个属性组是码，称为全码</p>
+<blockquote>
+<p>例：关系模式R(P,W,A)中，属性P表示演奏者，W表示作品，A表示听众。假设一个演奏者可以演奏多个作品，某一个作品可以被多个演奏者演奏，听众也可以欣赏不同演奏者的不同作品，这个关系模式的码为(P,W,A)，即all-key。</p>
+</blockquote>
+<p><strong>外码</strong>：关系模式R&lt;U,F&gt;，U中属性或者属性组X并非R的码，但X是另一个关系模式的码，则称X是R的外部码也称外码。</p>
+<blockquote>
+<p>主码与外码一起提供了表示关系间联系的手段</p>
+</blockquote>
+<h3 id="2-3-范式"><a href="#2-3-范式" class="headerlink" title="2-3 | 范式"></a>2-3 | 范式</h3><h3 id="1NF"><a href="#1NF" class="headerlink" title="1NF"></a>1NF</h3><p>所有属性必须是原子的, 不允许表中套表</p>
 <h3 id="2NF"><a href="#2NF" class="headerlink" title="2NF"></a>2NF</h3><p>满足1NF且不存在属性对候选码的部分函数依赖</p>
 <h3 id="3NF"><a href="#3NF" class="headerlink" title="3NF"></a>3NF</h3><p>满足2NF且不存在属性对候选码的传递函数依赖</p>
 <h3 id="BCNF"><a href="#BCNF" class="headerlink" title="BCNF"></a>BCNF</h3><p>对于R的每一个函数依赖X-&gt;Y, <strong>X必包含码</strong></p>
-<h2 id="4-Armstrong公理系统"><a href="#4-Armstrong公理系统" class="headerlink" title="4 | Armstrong公理系统"></a>4 | Armstrong公理系统</h2><h3 id="六条推理规则"><a href="#六条推理规则" class="headerlink" title="六条推理规则"></a>六条推理规则</h3><ul>
+<h2 id="3-数据库依赖的公理系统"><a href="#3-数据库依赖的公理系统" class="headerlink" title="3 | 数据库依赖的公理系统"></a>3 | 数据库依赖的公理系统</h2><h3 id="六条推理规则"><a href="#六条推理规则" class="headerlink" title="六条推理规则"></a>六条推理规则</h3><ul>
 <li>自反律</li>
 <li>增广律</li>
 <li>传递律</li>
@@ -680,7 +707,7 @@
 <p>第四步: <strong>依次取Y中的两个, 三个…属性与X组成属性组XZ, 若XZ不包含已求得的候选码, 则求其关于F的闭包(XZ)F+</strong></p>
 <p><strong>若(XZ)F+=U, 则XZ为候选码, 重复第四步直到所有Y中的属性取完为止, 算法结束</strong></p>
 <h4 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h4><p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210102192835.png"><img src="https://youpai.roccoshi.top/img/20210102192835.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
-<h2 id="5-模式分解"><a href="#5-模式分解" class="headerlink" title="5 | 模式分解"></a>5 | 模式分解</h2><p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210102192836.png"><img src="https://youpai.roccoshi.top/img/20210102192836.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<h2 id="4-模式分解"><a href="#4-模式分解" class="headerlink" title="4 | 模式分解"></a>4 | 模式分解</h2><p><a target="_blank" rel="noopener" href="https://youpai.roccoshi.top/img/20210102192836.png"><img src="https://youpai.roccoshi.top/img/20210102192836.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
 <p>分解应该考虑的问题</p>
 <ul>
 <li>分解不能丢失信息</li>
