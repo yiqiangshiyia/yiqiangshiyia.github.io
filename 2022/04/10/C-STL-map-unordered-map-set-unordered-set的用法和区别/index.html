@@ -24,7 +24,7 @@
 <meta property="og:description" content="Note   数据结构 map unordered_map set unordered_set    实现机理 红黑树 hash表 红黑树 hash表   元素格式 key+value key+value key key   存储规律 键升序 无序 键升序 无序   元素重复 键不可,值可 键不可,值可 不可重复 不可重复   头文件 #include&lt; map&gt; #include #">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-10T12:27:28.000Z">
-<meta property="article:modified_time" content="2022-04-12T08:35:00.759Z">
+<meta property="article:modified_time" content="2022-04-17T08:40:44.071Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="STL">
 <meta name="twitter:card" content="summary_large_image">
@@ -233,7 +233,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.2k 字
+      4.4k 字
     </span>
   
 
@@ -242,7 +242,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      35 分钟
+      37 分钟
     </span>
   
 
@@ -321,22 +321,27 @@
 </tr>
 </tbody></table>
 <h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><h4 id="内部实现机理"><a href="#内部实现机理" class="headerlink" title="内部实现机理"></a><strong>内部实现机理</strong></h4><p>map内部实现了一个 红黑树（红黑树是非严格平衡二叉搜索树，而AVL是严格平衡二叉搜索树）， 红黑树具有自动排序的功能，因此map内部的所有元素都是有序的，红黑树的每一个节点都代表着map的一个元素。因此，对于map进行的查找，删除，添加等一系列的操作都相当于是对红黑树进行的操作。map中的元素是按照二叉搜索树（又名二叉查找树、二叉排序树，特点就是左子树上所有节点的键值都小于根节点的键值，右子树所有节点的键值都大于根节点的键值）存储的，使用中序遍历可将键值按照从小到大遍历出来。</p>
-<h4 id="优缺点以及适用处"><a href="#优缺点以及适用处" class="headerlink" title="优缺点以及适用处"></a><strong>优缺点以及适用处</strong></h4><ol>
-<li>优点：有序性，这是map结构最大的优点，其元素的有序性在很多应用中都会简化很多的操作；红黑树，内部实现一个红黑树使得map的很多操作在O(logN)的时间复杂度下就可以实现，因此效率非常的高。</li>
-<li>缺点：空间占用率高，因为map内部实现了红黑树，虽然提高了运行效率（低于unorder_map），但是因为每一个节点都需要额外保存父节点、孩子节点和红/黑性质，使得每一个节点都占用大量的空间（但占用的内存比unorder_map低）</li>
-<li>适用处：对于那些数据存储有顺序要求的问题，用map会更高效一些</li>
-</ol>
+<h4 id="优缺点以及适用处"><a href="#优缺点以及适用处" class="headerlink" title="优缺点以及适用处"></a><strong>优缺点以及适用处</strong></h4><p>优点：有序性，这是map结构最大的优点，其元素的有序性在很多应用中都会简化很多的操作；红黑树，内部实现一个红黑树使得map的很多操作在O(logN)的时间复杂度下就可以实现，因此效率非常的高。</p>
+<p>缺点：空间占用率高，因为map内部实现了红黑树，虽然提高了运行效率（低于unorder_map），但是因为每一个节点都需要额外保存父节点、孩子节点和红/黑性质，使得每一个节点都占用大量的空间（但占用的内存比unorder_map低）</p>
+<p>适用处：对于那些数据存储有顺序要求的问题，用map会更高效一些</p>
+<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><p>1.构造函数 2.插入数据 3.判断是否有元素 4.遍历 5.查找 </p>
+<p>参考博客</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45774972/article/details/113418453?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_paycolumn_v3&utm_relevant_index=2">C++ 中使用哈希表(unordered_map)的常用操作</a> </p>
+<p><a target="_blank" rel="noopener" href="https://lover.blog.csdn.net/article/details/82633778?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3.pc_relevant_antiscan&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3.pc_relevant_antiscan&utm_relevant_index=6">简述C++中map和unordered_map的用法</a> </p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30815237/article/details/91047041">C++ map set unordered_map和unorder_set的区别</a></p>
 <h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><pre><code class="hljs c++">vector&lt;<span class="hljs-type">int</span>&gt; list = &#123; <span class="hljs-number">5</span>,<span class="hljs-number">14</span>,<span class="hljs-number">34</span>,<span class="hljs-number">22</span>,<span class="hljs-number">39</span>,<span class="hljs-number">5</span> &#125;;<br>map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; map;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = list.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>	map[i] = list[i];  <span class="hljs-comment">//倒序插入</span><br>&#125;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> i = map.<span class="hljs-built_in">begin</span>(); i != map.<span class="hljs-built_in">end</span>(); i++) &#123;<br>	cout &lt;&lt; i-&gt;first &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span> &lt;&lt; i-&gt;second &lt;&lt; endl;  <span class="hljs-comment">//输出的数是有序的且有两个5</span><br>&#125;<br><span class="hljs-keyword">if</span> (map.<span class="hljs-built_in">find</span>(<span class="hljs-number">3</span>) != map.<span class="hljs-built_in">end</span>()) &#123;<br>	cout &lt;&lt; <span class="hljs-string">&quot;find key=&quot;</span> &lt;&lt; map.<span class="hljs-built_in">find</span>(<span class="hljs-number">3</span>)-&gt;first &lt;&lt; <span class="hljs-string">&quot;, value=&quot;</span> &lt;&lt; map.<span class="hljs-built_in">find</span>(<span class="hljs-number">3</span>)-&gt;second &lt;&lt; endl;<br>&#125;<br><span class="hljs-keyword">if</span> (map.<span class="hljs-built_in">count</span>(<span class="hljs-number">5</span>) &gt; <span class="hljs-number">0</span>) &#123;  <span class="hljs-comment">//m.count(n)计算下标为n的位置有无数据，有返回1，无返回0</span><br>	cout &lt;&lt; <span class="hljs-string">&quot;count 5: &quot;</span> &lt;&lt; map.<span class="hljs-built_in">count</span>(<span class="hljs-number">5</span>) &lt;&lt; endl;  <span class="hljs-comment">//find()和count()的输入参数都是key值</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>map是基于RBT的，因此元素是有序存储的（默认按键的升序排列）。</p>
 </blockquote>
 <h2 id="unordered-map"><a href="#unordered-map" class="headerlink" title="unordered_map"></a>unordered_map</h2><h4 id="内部实现机理-1"><a href="#内部实现机理-1" class="headerlink" title="内部实现机理"></a><strong>内部实现机理</strong></h4><p>unordered_map内部实现了一个 哈希表（也叫散列表，通过把关键码值映射到Hash表中一个位置来访问记录，查找的时间复杂度可达到O(1)，其在海量数据处理中有着广泛应用）。因此， 其元素的排列顺序是无序的。</p>
-<h4 id="优缺点以及适用处-1"><a href="#优缺点以及适用处-1" class="headerlink" title="优缺点以及适用处"></a><strong>优缺点以及适用处</strong></h4><ol>
-<li>优点： 因为内部实现了哈希表，因此其查找速度非常的快（运行效率快于map）</li>
-<li>缺点： 哈希表的建立比较耗费时间（unorder_map占用的内存比map要高）</li>
-<li>适用处：对于查找问题，unordered_map会更加高效一些，因此遇到查找问题，常会考虑一下用unordered_map</li>
-</ol>
+<h4 id="优缺点以及适用处-1"><a href="#优缺点以及适用处-1" class="headerlink" title="优缺点以及适用处"></a><strong>优缺点以及适用处</strong></h4><p>优点： 因为内部实现了哈希表，因此其查找速度非常的快（运行效率快于map）</p>
+<p>缺点： 哈希表的建立比较耗费时间（unorder_map占用的内存比map要高）</p>
+<p>适用处：对于查找问题，unordered_map会更加高效一些，因此遇到查找问题，常会考虑一下用unordered_map</p>
+<h4 id="用法-1"><a href="#用法-1" class="headerlink" title="用法"></a>用法</h4><p>1.构造函数 2.插入数据 3.判断是否有元素 4.遍历 5.查找 </p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45774972/article/details/113418453?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_paycolumn_v3&utm_relevant_index=2">C++ 中使用哈希表(unordered_map)的常用操作</a> </p>
+<p><a target="_blank" rel="noopener" href="https://lover.blog.csdn.net/article/details/82633778?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3.pc_relevant_antiscan&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3.pc_relevant_antiscan&utm_relevant_index=6">简述C++中map和unordered_map的用法</a> </p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30815237/article/details/91047041">C++ map set unordered_map和unorder_set的区别</a></p>
 <h4 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs C++">vector&lt;<span class="hljs-type">int</span>&gt; list = &#123; <span class="hljs-number">5</span>,<span class="hljs-number">14</span>,<span class="hljs-number">34</span>,<span class="hljs-number">22</span>,<span class="hljs-number">39</span>,<span class="hljs-number">5</span> &#125;;<br>unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; map;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = list.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>; i&gt;=<span class="hljs-number">0</span>; i--) &#123;<br>	map[i] = list[i];  <span class="hljs-comment">//倒序插入</span><br>&#125;<br>cout &lt;&lt; map[<span class="hljs-number">0</span>] &lt;&lt; endl;<br><span class="hljs-keyword">for</span> (unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;::iterator i = map.<span class="hljs-built_in">begin</span>(); i != map.<span class="hljs-built_in">end</span>(); i++) &#123;<br>	cout &lt;&lt; i-&gt;first &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span> &lt;&lt; i-&gt;second &lt;&lt; endl;  <span class="hljs-comment">//输出的数是有序的且有两个5</span><br>&#125;<br><span class="hljs-keyword">if</span> (map.<span class="hljs-built_in">find</span>(<span class="hljs-number">3</span>) != map.<span class="hljs-built_in">end</span>()) &#123;<br>	cout &lt;&lt; <span class="hljs-string">&quot;find key=&quot;</span> &lt;&lt; map.<span class="hljs-built_in">find</span>(<span class="hljs-number">3</span>)-&gt;first &lt;&lt; <span class="hljs-string">&quot;, value=&quot;</span> &lt;&lt; map.<span class="hljs-built_in">find</span>(<span class="hljs-number">3</span>)-&gt;second &lt;&lt; endl;<br>&#125;<br><span class="hljs-keyword">if</span> (map.<span class="hljs-built_in">count</span>(<span class="hljs-number">5</span>) &gt; <span class="hljs-number">0</span>) &#123;  <span class="hljs-comment">//m.count(n)计算下标为n的位置有无数据，有返回1，无返回0</span><br>	cout &lt;&lt; <span class="hljs-string">&quot;find 5: &quot;</span> &lt;&lt; map.<span class="hljs-built_in">count</span>(<span class="hljs-number">5</span>) &lt;&lt; endl;  <span class="hljs-comment">//find()和count()的输入都是key值</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <blockquote>
