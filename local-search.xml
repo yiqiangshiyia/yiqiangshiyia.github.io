@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>while和if的区别</title>
+    <link href="/2022/04/18/while%E5%92%8Cif%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <url>/2022/04/18/while%E5%92%8Cif%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>今天做了两题都以为代码没什么问题，结果提交都没有AC，浪费了很长时间终于明白了。我原来一直有一个知识误区，在判断条件的时候一直把while和if当成等价。但其实while条件和if条件还是有一些区别的。</p></blockquote><p>while语句属于<strong>循环语句</strong>，在判断时，如果条件为true，则会继续判断，直到false为止，即会进行多次判断（除非一开始条件就是错的）</p><p>if语句属于条件判<strong>断语句</strong>，如果条件是true，则继续执行，为false则跳出语句不执行，只会进行单次判断</p><h3 id="while和if相同点"><a href="#while和if相同点" class="headerlink" title="while和if相同点"></a>while和if相同点</h3><p>while与if语句的最大的相同点是都有至少一步的判断。</p><h3 id="while和if不同点"><a href="#while和if不同点" class="headerlink" title="while和if不同点"></a>while和if不同点</h3><p>最大的不同点是：if语句运行完毕后，接着运行下面的语句。而while中的执行语句运行完毕后，还要进行继续判断条件是否符合循环条件，根据判断的条件，返回执行语句或继续运行下面的程序。</p><p>相关题目：<a href="https://leetcode-cn.com/problems/word-pattern/">https://leetcode-cn.com/problems/word-pattern/</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>4.15每日一题</title>
     <link href="/2022/04/15/4-15%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
     <url>/2022/04/15/4-15%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>

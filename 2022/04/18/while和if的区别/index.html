@@ -16,19 +16,38 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="https://yiqiangshiyia.github.io/archives/page/3/index.html">
+    <meta name="description" content="今天做了两题都以为代码没什么问题，结果提交都没有AC，浪费了很长时间终于明白了。我原来一直有一个知识误区，在判断条件的时候一直把while和if当成等价。但其实while条件和if条件还是有一些区别的。  while语句属于循环语句，在判断时，如果条件为true，则会继续判断，直到false为止，即会进行多次判断（除非一开始条件就是错的） if语句属于条件判断语句，如果条件是true，则继续执行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="while和if的区别">
+<meta property="og:url" content="https://yiqiangshiyia.github.io/2022/04/18/while%E5%92%8Cif%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
+<meta property="og:description" content="今天做了两题都以为代码没什么问题，结果提交都没有AC，浪费了很长时间终于明白了。我原来一直有一个知识误区，在判断条件的时候一直把while和if当成等价。但其实while条件和if条件还是有一些区别的。  while语句属于循环语句，在判断时，如果条件为true，则会继续判断，直到false为止，即会进行多次判断（除非一开始条件就是错的） if语句属于条件判断语句，如果条件是true，则继续执行">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-18T11:46:18.000Z">
+<meta property="article:modified_time" content="2022-04-18T11:58:47.811Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>归档 - 一腔诗意啊 - 个人博客</title>
+  <title>while和if的区别 - 一腔诗意啊 - 个人博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -55,7 +74,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -192,9 +211,43 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="while和if的区别">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-18 19:46" pubdate>
+        2022年4月18日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      411 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4 分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -207,70 +260,118 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 25 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2022</p>
-    
-    <a href="/2022/02/28/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">二维数组</span>
-      <time style="float: right;">02-28</time>
-    </a>
-  
-    
-    <a href="/2022/02/27/c-vector-%E5%AE%B9%E5%99%A8%E6%B5%85%E6%9E%90/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">C++ vector 容器浅析</span>
-      <time style="float: right;">02-27</time>
-    </a>
-  
-    
-    <a href="/2022/02/23/%E4%B8%AD%E5%9B%BD%E7%9F%B3%E6%B2%B9%E5%A4%A7%E5%AD%A6%EF%BC%88%E5%8D%8E%E4%B8%9C%EF%BC%89%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%BB%9C%E8%AE%A4%E8%AF%81%E8%84%9A%E6%9C%AC/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">中国石油大学（华东）校园网络认证脚本</span>
-      <time style="float: right;">02-23</time>
-    </a>
-  
-    
-    <a href="/2022/02/23/upc%E7%96%AB%E6%83%85%E9%98%B2%E6%8E%A7%E9%80%9A%E8%87%AA%E5%8A%A8%E6%8F%90%E4%BA%A4%E8%84%9A%E6%9C%AC-%E4%BA%91%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">UPC疫情防控通自动提交脚本—云函数实现</span>
-      <time style="float: right;">02-23</time>
-    </a>
-  
-    
-    <a href="/2022/02/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">LeetCode刷题！</span>
-      <time style="float: right;">02-21</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">while和if的区别</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>今天做了两题都以为代码没什么问题，结果提交都没有AC，浪费了很长时间终于明白了。我原来一直有一个知识误区，在判断条件的时候一直把while和if当成等价。但其实while条件和if条件还是有一些区别的。</p>
+</blockquote>
+<p>while语句属于<strong>循环语句</strong>，在判断时，如果条件为true，则会继续判断，直到false为止，即会进行多次判断（除非一开始条件就是错的）</p>
+<p>if语句属于条件判<strong>断语句</strong>，如果条件是true，则继续执行，为false则跳出语句不执行，只会进行单次判断</p>
+<h3 id="while和if相同点"><a href="#while和if相同点" class="headerlink" title="while和if相同点"></a>while和if相同点</h3><p>while与if语句的最大的相同点是都有至少一步的判断。</p>
+<h3 id="while和if不同点"><a href="#while和if不同点" class="headerlink" title="while和if不同点"></a>while和if不同点</h3><p>最大的不同点是：if语句运行完毕后，接着运行下面的语句。而while中的执行语句运行完毕后，还要进行继续判断条件是否符合循环条件，根据判断的条件，返回执行语句或继续运行下面的程序。</p>
+<p>相关题目：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/word-pattern/">https://leetcode-cn.com/problems/word-pattern/</a></p>
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/#board">2</a><span class="page-number current">3</span>
-    </span>
-  </nav>
-
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/LeetCode%E5%88%B7%E9%A2%98/">LeetCode刷题</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/15/4-15%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">
+                        <span class="hidden-mobile">4.15每日一题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"kt6NXqlOirxe2tk9uTDeEG2c-gzGzoHsz","appKey":"1kXDoTn2l7weKksvEbQNGwhF","path":"window.location.pathname","placeholder":"世界这么大发表一下你的看法~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -377,6 +478,19 @@
   
 
 
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
 
 
 
