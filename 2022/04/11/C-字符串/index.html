@@ -16,23 +16,21 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="LeetCode 385：迷你语法分析器Note 一道题做了一个多小时，人都麻了… 4.15今天日子也很特殊 哈哈哈！  这道题的 NestedInteger 其实就是定义的一个新的数据类型，相当于集合之类的。核心思想就是栈的嵌套，先把 NestedInteger 类型的数字放入栈中，然后再将栈顶的元素top嵌套入栈的top-1中。 题目大意给定一个字符串 s 表示一个整数嵌套列表，实现一个解析它">
+    <meta name="description" content="C++ 字符串字符串常用函数push_back()函数 push_back()函数的用法 函数将一个新的元素加到vector的最后面，位置为当前最后一个元素的下一个元素。  push_back()函数也同样适用于string字符串 12string str &#x3D; &quot;&quot;;str.push_back(&amp;#x27;d&amp;#x27;);  类似的： pop_back()    &#x2F;&#x2F;移除最后">
 <meta property="og:type" content="article">
-<meta property="og:title" content="4.15每日一题">
-<meta property="og:url" content="https://yiqiangshiyia.github.io/2022/04/15/4-15%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/index.html">
+<meta property="og:title" content="C++ 字符串">
+<meta property="og:url" content="https://yiqiangshiyia.github.io/2022/04/11/C-%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
-<meta property="og:description" content="LeetCode 385：迷你语法分析器Note 一道题做了一个多小时，人都麻了… 4.15今天日子也很特殊 哈哈哈！  这道题的 NestedInteger 其实就是定义的一个新的数据类型，相当于集合之类的。核心思想就是栈的嵌套，先把 NestedInteger 类型的数字放入栈中，然后再将栈顶的元素top嵌套入栈的top-1中。 题目大意给定一个字符串 s 表示一个整数嵌套列表，实现一个解析它">
+<meta property="og:description" content="C++ 字符串字符串常用函数push_back()函数 push_back()函数的用法 函数将一个新的元素加到vector的最后面，位置为当前最后一个元素的下一个元素。  push_back()函数也同样适用于string字符串 12string str &#x3D; &quot;&quot;;str.push_back(&amp;#x27;d&amp;#x27;);  类似的： pop_back()    &#x2F;&#x2F;移除最后">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/yiqiangshiyia/img/main/images/QQ%E6%88%AA%E5%9B%BE20220415164146.png">
-<meta property="article:published_time" content="2022-04-15T09:13:37.000Z">
-<meta property="article:modified_time" content="2022-04-15T09:51:27.958Z">
+<meta property="article:published_time" content="2022-04-11T15:09:04.000Z">
+<meta property="article:modified_time" content="2022-04-18T12:41:51.812Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="栈">
+<meta property="article:tag" content="字符串">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/yiqiangshiyia/img/main/images/QQ%E6%88%AA%E5%9B%BE20220415164146.png">
   
   
-  <title>4.15每日一题 - 一腔诗意啊 - 个人博客</title>
+  <title>C++ 字符串 - 一腔诗意啊 - 个人博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -214,7 +212,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="4.15每日一题">
+            <span class="h2" id="subtitle" title="C++ 字符串">
               
             </span>
 
@@ -224,8 +222,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-04-15 17:13" pubdate>
-        2022年4月15日 下午
+      <time datetime="2022-04-11 23:09" pubdate>
+        2022年4月11日 晚上
       </time>
     </span>
   
@@ -235,7 +233,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.5k 字
+      1.2k 字
     </span>
   
 
@@ -244,7 +242,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13 分钟
+      10 分钟
     </span>
   
 
@@ -273,35 +271,50 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">4.15每日一题</h1>
+            <h1 style="display: none">C++ 字符串</h1>
             
             <div class="markdown-body">
-              <h2 id="LeetCode-385：迷你语法分析器"><a href="#LeetCode-385：迷你语法分析器" class="headerlink" title="LeetCode 385：迷你语法分析器"></a>LeetCode 385：迷你语法分析器</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><blockquote>
-<p>一道题做了一个多小时，人都麻了… 4.15今天日子也很特殊 哈哈哈！</p>
+              <h2 id="C-字符串"><a href="#C-字符串" class="headerlink" title="C++ 字符串"></a>C++ 字符串</h2><h3 id="字符串常用函数"><a href="#字符串常用函数" class="headerlink" title="字符串常用函数"></a>字符串常用函数</h3><h4 id="push-back-函数"><a href="#push-back-函数" class="headerlink" title="push_back()函数"></a>push_back()函数</h4><blockquote>
+<p>push_back()函数的用法</p>
+<p>函数将一个新的元素加到vector的最后面，位置为当前最后一个元素的下一个元素。</p>
 </blockquote>
-<p>这道题的 NestedInteger 其实就是定义的一个新的数据类型，相当于集合之类的。核心思想就是栈的嵌套，先把 NestedInteger 类型的数字放入栈中，然后再将栈顶的元素top嵌套入栈的top-1中。</p>
-<h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定一个字符串 s 表示一个整数嵌套列表，实现一个解析它的语法分析器并返回解析的结果 NestedInteger 。</p>
-<p>列表中的每个元素只可能是整数或整数嵌套列表</p>
-<p>示例1</p>
-<figure class="highlight nix"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><pre><code class="hljs nix">输入：<span class="hljs-attr">s</span> = <span class="hljs-string">&quot;324&quot;</span>,<br>输出：<span class="hljs-number">324</span><br>解释：你应该返回一个 NestedInteger 对象，其中只包含整数值 <span class="hljs-number">324</span>。<br></code></pre></td></tr></table></figure>
+<p><strong>push_back()函数也同样适用于string字符串</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><pre><code class="hljs c++">string str = <span class="hljs-string">&quot;&quot;</span>;<br>str.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&#x27;d&#x27;</span>);<br></code></pre></td></tr></table></figure>
 
-<p>示例2</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">输入：s = <span class="hljs-string">&quot;[123,[456,[789]]]&quot;</span>,<br>输出：[<span class="hljs-number">123</span>,[<span class="hljs-number">456</span>,[<span class="hljs-number">789</span>]]]<br>解释：返回一个 NestedInteger 对象包含一个有两个元素的嵌套列表：<br><span class="hljs-number">1.</span> 一个 <span class="hljs-keyword">integer</span> 包含值 <span class="hljs-number">123</span><br><span class="hljs-number">2.</span> 一个包含两个元素的嵌套列表：<br>    i.  一个 <span class="hljs-keyword">integer</span> 包含值 <span class="hljs-number">456</span><br>    ii. 一个包含一个元素的嵌套列表<br>         <span class="hljs-keyword">a</span>. 一个 <span class="hljs-keyword">integer</span> 包含值 <span class="hljs-number">789</span><br></code></pre></td></tr></table></figure>
+<p>类似的：</p>
+<p>pop_back()    //移除最后一个元素</p>
+<p>clear()    //清空所有元素</p>
+<p>empty()    //判断vector是否为空，如果返回true为空</p>
+<p>erase()    // 删除指定元素</p>
+<h4 id="reverse-函数"><a href="#reverse-函数" class="headerlink" title="reverse()函数"></a>reverse()函数</h4><p>对字符串进行翻转的函数</p>
+<p>reverse(s.begin(),s.end());</p>
+<h4 id="str-‘0’"><a href="#str-‘0’" class="headerlink" title="str-‘0’"></a>str-‘0’</h4><p>实际就是减去 ‘0’ 的ASCII码值，也就是一个整数。</p>
+<p>对字符串进行类型转换（string→int）</p>
+<h4 id="isdigit-函数"><a href="#isdigit-函数" class="headerlink" title="isdigit()函数"></a>isdigit()函数</h4><p>C ++库函数 void isalpha(int c) 检查所传的字符是否是字母。</p>
+<h4 id="isalpha-函数"><a href="#isalpha-函数" class="headerlink" title="isalpha()函数"></a>isalpha()函数</h4><p>C ++库函数 void isalpha(int c) 检查所传的字符是否是字母。</p>
+<h4 id="add-函数"><a href="#add-函数" class="headerlink" title="add()函数"></a>add()函数</h4><h4 id="stoi-函数"><a href="#stoi-函数" class="headerlink" title="stoi()函数"></a>stoi()函数</h4><p>stoi函数中放入string类型的参数，可以把string类型转换成int类型</p>
+<h4 id="substr-函数"><a href="#substr-函数" class="headerlink" title="substr()函数"></a>substr()函数</h4><p>用途：一种构造string的方法，也可以用来复制字符串的一部分</p>
+<p>形式：s.substr(pos, n)</p>
+<p>解释：返回一个string，包含s中从pos开始的n个字符的拷贝（pos的默认值是0，n的默认值是s.size() - pos，即不加参数会默认拷贝整个s）</p>
+<p>补充：若pos的值超过了string的大小，则substr函数会抛出一个out_of_range异常；若pos+n的值超过了string的大小，则substr会调整n的值，只拷贝到string的末尾</p>
+<h4 id="tolower-函数"><a href="#tolower-函数" class="headerlink" title="tolower()函数"></a>tolower()函数</h4><p>C ++库函数 int tolower(int c) 把给定的字母转换为小写字母。</p>
+<h4 id="toupper-函数"><a href="#toupper-函数" class="headerlink" title="toupper()函数"></a>toupper()函数</h4><p>C ++库函数 int toupper(int c) 把给定的字母转换为大写字母。</p>
+<h3 id="C-数据类型转换"><a href="#C-数据类型转换" class="headerlink" title="C++ 数据类型转换"></a>C++ 数据类型转换</h3><h4 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h4><blockquote>
+<p>自动类型转换是指在不同类型数据进行混合运算时，系统会自动进行数据类型的转换。</p>
+</blockquote>
+<p>string→int</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++">string str;<br>cout&lt;&lt;str-<span class="hljs-string">&#x27;0&#x27;</span><br>cout&lt;&lt;str-<span class="hljs-string">&#x27;a&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>int→string</p>
+<h4 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h4><blockquote>
+<p>强制类型转换在表达式中可以根据需要把任意一个数据的类型转换成另一个数据类型。强制类型转换是靠强制类型转换控制运算符实现的。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> a = <span class="hljs-built_in">double</span>(<span class="hljs-number">2.5</span>);<br><span class="hljs-type">double</span> b = <span class="hljs-built_in">double</span>(<span class="hljs-number">12</span>);<br></code></pre></td></tr></table></figure>
 
 
 
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="方法1：深度优先搜索"><a href="#方法1：深度优先搜索" class="headerlink" title="方法1：深度优先搜索"></a>方法1：深度优先搜索</h4><p>模拟</p>
-<h4 id="方法2：栈"><a href="#方法2：栈" class="headerlink" title="方法2：栈"></a>方法2：栈</h4><p><img src="https://raw.githubusercontent.com/yiqiangshiyia/img/main/images/QQ%E6%88%AA%E5%9B%BE20220415164146.png" srcset="/img/loading.gif" lazyload alt="图示模拟栈的过程"></p>
-<p>当s[i] == ‘[‘时：建立一个’[]’，放入栈中</p>
-<p>当isdigit(s[i])时：记录数字num</p>
-<p>当s[i] == ‘,’ || s[i] == ‘]’时：如果数字不为空，将数字加入栈顶，重置数字num = 0</p>
-<p>当s[i] == ‘]’ &amp;&amp; st.size()&gt;1时，将栈顶元素加入栈顶的倒数第二个元素中，直到栈的到小为1</p>
-<p>AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">NestedInteger <span class="hljs-title">deserialize</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(s[<span class="hljs-number">0</span>] != <span class="hljs-string">&#x27;[&#x27;</span>)  <span class="hljs-keyword">return</span> <span class="hljs-built_in">NestedInteger</span>(<span class="hljs-built_in">stoi</span>(s));<br>        stack&lt;NestedInteger&gt; st;<br>        <span class="hljs-type">int</span> num = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">bool</span> flag = <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;s.<span class="hljs-built_in">size</span>(); i++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(s[i] == <span class="hljs-string">&#x27;[&#x27;</span>)<br>            &#123;<br>                st.<span class="hljs-built_in">push</span>(<span class="hljs-built_in">NestedInteger</span>());<br>            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(s[i] == <span class="hljs-string">&#x27;-&#x27;</span>)<br>            &#123;<br>                flag = <span class="hljs-literal">true</span>;<br>            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-built_in">isdigit</span>(s[i]))<br>            &#123;<br>                num = num*<span class="hljs-number">10</span> + s[i]-<span class="hljs-string">&#x27;0&#x27;</span>;<br>            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(s[i] == <span class="hljs-string">&#x27;,&#x27;</span> || s[i] == <span class="hljs-string">&#x27;]&#x27;</span>)<br>            &#123;<br>                <span class="hljs-keyword">if</span>(<span class="hljs-built_in">isdigit</span>(s[i<span class="hljs-number">-1</span>]))<br>                &#123;<br>                    <span class="hljs-keyword">if</span>(flag)  num = num*<span class="hljs-number">-1</span>;<br>                    st.<span class="hljs-built_in">top</span>().<span class="hljs-built_in">add</span>(<span class="hljs-built_in">NestedInteger</span>(num));<br>                    num = <span class="hljs-number">0</span>;<br>                    flag = <span class="hljs-literal">false</span>;<br>                &#125;<br>                <span class="hljs-keyword">if</span>(s[i] == <span class="hljs-string">&#x27;]&#x27;</span> &amp;&amp; st.<span class="hljs-built_in">size</span>() &gt; <span class="hljs-number">1</span>)<br>                &#123;<br>                    NestedInteger ni = st.<span class="hljs-built_in">top</span>();<br>                    st.<span class="hljs-built_in">pop</span>();<br>                    st.<span class="hljs-built_in">top</span>().<span class="hljs-built_in">add</span>(ni);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> st.<span class="hljs-built_in">top</span>();<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
-
-
-<p>b栈学习视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV195411U7h4?spm_id_from=333.337.search-card.all.click">https://www.bilibili.com/video/BV195411U7h4?spm_id_from=333.337.search-card.all.click</a></p>
+<p><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/208.html">http://c.biancheng.net/view/208.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46274168/article/details/117209139">https://blog.csdn.net/weixin_46274168/article/details/117209139</a></p>
 
             </div>
             <hr>
@@ -311,7 +324,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/LeetCode%E5%88%B7%E9%A2%98/">LeetCode刷题</a>
+                      <a class="hover-with-bg" href="/categories/C/">C++</a>
                     
                   </div>
                 
@@ -319,7 +332,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%A0%88/">栈</a>
+                      <a class="hover-with-bg" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
                     
                   </div>
                 
@@ -336,9 +349,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/04/18/while%E5%92%8Cif%E7%9A%84%E5%8C%BA%E5%88%AB/">
+                      <a href="/2022/04/15/4-15%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">while和if的区别</span>
+                        <span class="hidden-mobile">4.15每日一题</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -346,8 +359,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/04/11/C-%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                        <span class="hidden-mobile">C++ 字符串</span>
+                      <a href="/2022/04/10/C-STL-map-unordered-map-set-unordered-set%E7%9A%84%E7%94%A8%E6%B3%95%E5%92%8C%E5%8C%BA%E5%88%AB/">
+                        <span class="hidden-mobile">C++STL:map unordered_map set unordered_set的用法和区别</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

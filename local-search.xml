@@ -48,6 +48,31 @@
   
   
   <entry>
+    <title>C++ 字符串</title>
+    <link href="/2022/04/11/C-%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    <url>/2022/04/11/C-%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    
+    <content type="html"><![CDATA[<h2 id="C-字符串"><a href="#C-字符串" class="headerlink" title="C++ 字符串"></a>C++ 字符串</h2><h3 id="字符串常用函数"><a href="#字符串常用函数" class="headerlink" title="字符串常用函数"></a>字符串常用函数</h3><h4 id="push-back-函数"><a href="#push-back-函数" class="headerlink" title="push_back()函数"></a>push_back()函数</h4><blockquote><p>push_back()函数的用法</p><p>函数将一个新的元素加到vector的最后面，位置为当前最后一个元素的下一个元素。</p></blockquote><p><strong>push_back()函数也同样适用于string字符串</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><pre><code class="hljs c++">string str = <span class="hljs-string">&quot;&quot;</span>;<br>str.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&#x27;d&#x27;</span>);<br></code></pre></td></tr></table></figure><p>类似的：</p><p>pop_back()    //移除最后一个元素</p><p>clear()    //清空所有元素</p><p>empty()    //判断vector是否为空，如果返回true为空</p><p>erase()    // 删除指定元素</p><h4 id="reverse-函数"><a href="#reverse-函数" class="headerlink" title="reverse()函数"></a>reverse()函数</h4><p>对字符串进行翻转的函数</p><p>reverse(s.begin(),s.end());</p><h4 id="str-‘0’"><a href="#str-‘0’" class="headerlink" title="str-‘0’"></a>str-‘0’</h4><p>实际就是减去 ‘0’ 的ASCII码值，也就是一个整数。</p><p>对字符串进行类型转换（string→int）</p><h4 id="isdigit-函数"><a href="#isdigit-函数" class="headerlink" title="isdigit()函数"></a>isdigit()函数</h4><p>C ++库函数 void isalpha(int c) 检查所传的字符是否是字母。</p><h4 id="isalpha-函数"><a href="#isalpha-函数" class="headerlink" title="isalpha()函数"></a>isalpha()函数</h4><p>C ++库函数 void isalpha(int c) 检查所传的字符是否是字母。</p><h4 id="add-函数"><a href="#add-函数" class="headerlink" title="add()函数"></a>add()函数</h4><h4 id="stoi-函数"><a href="#stoi-函数" class="headerlink" title="stoi()函数"></a>stoi()函数</h4><p>stoi函数中放入string类型的参数，可以把string类型转换成int类型</p><h4 id="substr-函数"><a href="#substr-函数" class="headerlink" title="substr()函数"></a>substr()函数</h4><p>用途：一种构造string的方法，也可以用来复制字符串的一部分</p><p>形式：s.substr(pos, n)</p><p>解释：返回一个string，包含s中从pos开始的n个字符的拷贝（pos的默认值是0，n的默认值是s.size() - pos，即不加参数会默认拷贝整个s）</p><p>补充：若pos的值超过了string的大小，则substr函数会抛出一个out_of_range异常；若pos+n的值超过了string的大小，则substr会调整n的值，只拷贝到string的末尾</p><h4 id="tolower-函数"><a href="#tolower-函数" class="headerlink" title="tolower()函数"></a>tolower()函数</h4><p>C ++库函数 int tolower(int c) 把给定的字母转换为小写字母。</p><h4 id="toupper-函数"><a href="#toupper-函数" class="headerlink" title="toupper()函数"></a>toupper()函数</h4><p>C ++库函数 int toupper(int c) 把给定的字母转换为大写字母。</p><h3 id="C-数据类型转换"><a href="#C-数据类型转换" class="headerlink" title="C++ 数据类型转换"></a>C++ 数据类型转换</h3><h4 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h4><blockquote><p>自动类型转换是指在不同类型数据进行混合运算时，系统会自动进行数据类型的转换。</p></blockquote><p>string→int</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++">string str;<br>cout&lt;&lt;str-<span class="hljs-string">&#x27;0&#x27;</span><br>cout&lt;&lt;str-<span class="hljs-string">&#x27;a&#x27;</span><br></code></pre></td></tr></table></figure><p>int→string</p><h4 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h4><blockquote><p>强制类型转换在表达式中可以根据需要把任意一个数据的类型转换成另一个数据类型。强制类型转换是靠强制类型转换控制运算符实现的。</p></blockquote><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> a = <span class="hljs-built_in">double</span>(<span class="hljs-number">2.5</span>);<br><span class="hljs-type">double</span> b = <span class="hljs-built_in">double</span>(<span class="hljs-number">12</span>);<br></code></pre></td></tr></table></figure><p><a href="http://c.biancheng.net/view/208.html">http://c.biancheng.net/view/208.html</a></p><p><a href="https://blog.csdn.net/weixin_46274168/article/details/117209139">https://blog.csdn.net/weixin_46274168/article/details/117209139</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>C++</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>字符串</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>C++STL:map unordered_map set unordered_set的用法和区别</title>
     <link href="/2022/04/10/C-STL-map-unordered-map-set-unordered-set%E7%9A%84%E7%94%A8%E6%B3%95%E5%92%8C%E5%8C%BA%E5%88%AB/"/>
     <url>/2022/04/10/C-STL-map-unordered-map-set-unordered-set%E7%9A%84%E7%94%A8%E6%B3%95%E5%92%8C%E5%8C%BA%E5%88%AB/</url>
