@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yiqiangshiyia.github.io//images/image-20220420194240729.png">
 <meta property="article:published_time" content="2022-04-20T11:12:42.000Z">
-<meta property="article:modified_time" content="2022-04-20T12:02:22.108Z">
+<meta property="article:modified_time" content="2022-04-20T12:30:01.255Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary_large_image">
@@ -279,13 +279,13 @@
               <blockquote>
 <p>上传之前的Python学习笔记，顺便测试一下GitHub+PicGo搭建的图床</p>
 </blockquote>
-<h2 id="Python基础语法"><a href="#Python基础语法" class="headerlink" title="Python基础语法"></a>Python基础语法</h2><h4 id="数字类型转换"><a href="#数字类型转换" class="headerlink" title="数字类型转换"></a><strong>数字类型转换</strong></h4><p>eval()和float()函数都可以把input() 函数接收到的数值型字符串转为数值类型</p>
+<h2 id="Python基础语法"><a href="#Python基础语法" class="headerlink" title="Python基础语法"></a>Python基础语法</h2><h3 id="数字类型转换"><a href="#数字类型转换" class="headerlink" title="数字类型转换"></a><strong>数字类型转换</strong></h3><p>eval()和float()函数都可以把input() 函数接收到的数值型字符串转为数值类型</p>
 <figure class="highlight python"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><pre><code class="hljs python">a = <span class="hljs-built_in">eval</span>(<span class="hljs-built_in">input</span>())   <span class="hljs-comment">#输入整数字符串，转换为整数；输入浮点数字符串，转换为浮点数</span><br>b = <span class="hljs-built_in">float</span>(<span class="hljs-built_in">input</span>())  <span class="hljs-comment">#输入整数和浮点数，都转换为浮点数</span><br>c = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())    <span class="hljs-comment">#只接受整数输入，输出为整数</span><br></code></pre></td></tr></table></figure>
 
 <p>例：float(‘3.14’) 的结果是数值 3.14</p>
 <p>int()函数可以把整数字符串转为整数</p>
 <p>例：int(‘5’) 的结果是数值 5</p>
-<h4 id="格式化浮点数的两种方法"><a href="#格式化浮点数的两种方法" class="headerlink" title="格式化浮点数的两种方法"></a><strong>格式化浮点数的两种方法</strong></h4><p>方法一：</p>
+<h3 id="格式化浮点数的两种方法"><a href="#格式化浮点数的两种方法" class="headerlink" title="格式化浮点数的两种方法"></a><strong>格式化浮点数的两种方法</strong></h3><p>方法一：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Interest is&quot;</span>,<span class="hljs-built_in">round</span>(interest,<span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure>
 
 <p>方法二：</p>
@@ -297,7 +297,7 @@
 
 
 
-<h4 id="Python-实现一行输入多个数字-用空格隔开"><a href="#Python-实现一行输入多个数字-用空格隔开" class="headerlink" title="Python 实现一行输入多个数字(用空格隔开)"></a><strong>Python</strong> <strong>实现一行输入多个数字(用空格隔开)</strong></h4><p>很多人都会使用以下代码，来实现多个字符串的连续输入，但是这是以换行进行操作的，而有些题目需要将一些数字进行一行输入</p>
+<h3 id="Python-实现一行输入多个数字-用空格隔开"><a href="#Python-实现一行输入多个数字-用空格隔开" class="headerlink" title="Python 实现一行输入多个数字(用空格隔开)"></a><strong>Python</strong> <strong>实现一行输入多个数字(用空格隔开)</strong></h3><p>很多人都会使用以下代码，来实现多个字符串的连续输入，但是这是以换行进行操作的，而有些题目需要将一些数字进行一行输入</p>
 <p>a=input()</p>
 <p>b=input()</p>
 <p><strong>1.实现一行输入多个数字，并以空格隔开。</strong></p>
@@ -321,8 +321,7 @@
 <p>请输入报道日期，每位二进制数之间用空格隔开</p>
 <p>00010 00000 00001 00100 00100 00001</p>
 <p>2014年4月1日</p>
-<h4 id="格式化数字和字符串解题报告"><a href="#格式化数字和字符串解题报告" class="headerlink" title="格式化数字和字符串解题报告"></a><strong>格式化数字和字符串解题报告</strong></h4><p><strong>格式化数字：</strong></p>
-<p>format格式化数字:</p>
+<h3 id="格式化数字和字符串解题报告"><a href="#格式化数字和字符串解题报告" class="headerlink" title="格式化数字和字符串解题报告"></a><strong>格式化数字和字符串解题报告</strong></h3><h4 id="格式化数字："><a href="#格式化数字：" class="headerlink" title="格式化数字："></a><strong>格式化数字：</strong></h4><p>format格式化数字:</p>
 <p><img src="https://yiqiangshiyia.github.io//images/image-20220420194240729.png" srcset="/img/loading.gif" lazyload alt="image-20220420194240729"></p>
 <p>格式化浮点数的两种方法：</p>
 <p>方法一：</p>
@@ -332,8 +331,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&#123;0:10.nf&#125;&quot;</span>,<span class="hljs-built_in">format</span>(interest))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&#123;0:.nf&#125;&quot;</span>,<span class="hljs-built_in">format</span>(interest))<br></code></pre></td></tr></table></figure>
 
 <p>PS:{}中的三个数分别表示从第一个字符开始、格式化浮点数后的字符长度、保留到小数点后的第n位</p>
-<p><strong>格式化字符串</strong></p>
-<p><strong>1.format格式化字符串</strong></p>
+<h4 id="格式化字符串"><a href="#格式化字符串" class="headerlink" title="格式化字符串"></a><strong>格式化字符串</strong></h4><p><strong>1.format格式化字符串</strong></p>
 <p>format（）方法接受位置参数和关键字参数，两者均传递一个叫做replacement字段，而这个replacement字段在字符串内由大括号表示。</p>
 <p>位置参数：</p>
 <p>字符串中的{0}{1}{2}表示位置，依次被format中的三个参数代换，format中的三个参数就叫做位置参数</p>
@@ -358,7 +356,7 @@
 <p>%X格式化无符号十六进制数（大写）</p>
 <p>%f:格式化浮点数字，可指定小数点后的精度</p>
 <p>%e：用科学计数法格式化浮点数</p>
-<h4 id="lambda函数学习"><a href="#lambda函数学习" class="headerlink" title="lambda函数学习"></a>lambda函数学习</h4><p>lambda函数是一种匿名函数，python允许使用lambda 关键字来创建匿名函数，匿名函数比普通函数要简洁。</p>
+<h3 id="lambda函数学习"><a href="#lambda函数学习" class="headerlink" title="lambda函数学习"></a>lambda函数学习</h3><p>lambda函数是一种匿名函数，python允许使用lambda 关键字来创建匿名函数，匿名函数比普通函数要简洁。</p>
 <p>lambda函数的使用方法：</p>
 <p>python中lambda函数的使用非常的精简，基本语法是在冒号（：）左边放原函数的参数，可以有多个参数，用逗号（，）隔开即可：冒号右边是返回值。</p>
 <p>举例：</p>
