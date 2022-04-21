@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>4.21每日一题</title>
+    <link href="/2022/04/21/4-21%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
+    <url>/2022/04/21/4-21%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>这道题在LeetCode为简单题，但是通过不断更新两个下标i,j分割字符串的思路比较有借鉴意义。比直接遍历用split()函数分割字符串要更简单。</p></blockquote><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>string(cnt,’a’)    //字符串的一种构造函数，表示生成一个字符串，包含 cnt 个字符 ‘a’</p><p>sentence.substr(i,j-i)    //注意第一个参数为sentence下标其实位置，第二个参数为单词复制的长度而不是结束位置的下标。</p><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p><a href="https://leetcode-cn.com/problems/goat-latin/">https://leetcode-cn.com/problems/goat-latin/</a></p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><blockquote><p>我们可以对给定的字符串 sentence 进行一次遍历，找出其中的每一个单词，并根据题目的要求进行操作。</p><p>在寻找单词时，我们可以使用语言自带的 split() 函数，将空格作为分割字符，得到所有的单词。为了节省空间，我们也可以直接进行遍历：每当我们遍历到一个空格或者到达 sentence 的末尾时，我们就找到了一个单词。</p><p>当我们得到一个单词 w 后，我们首先需要判断 w 的首字母是否为元音字母。我们可以使用一个哈希集合 vowels 存储所有的元音字母 aeiouAEIOU，这样只需要判断 w 的首字母是否在 vowels 中。如果是元音字母，那么单词本身保持不变；如果是辅音字母，那么需要首字母移到末尾，这里使用语言自带的字符串切片函数即可。在这之后，我们需要在末尾添加 m 以及若干个 a，因此可以使用一个变量 cnt 记录需要添加的 a 的个数，它的初始值为 1，每当我们得到一个单词，就将它的值增加 1。</p></blockquote><p>AC代码：</p><figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">string <span class="hljs-title">toGoatLatin</span><span class="hljs-params">(string sentence)</span> </span>&#123;<br>        unordered_set&lt;<span class="hljs-type">char</span>&gt; vowels = &#123;<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;e&#x27;</span>,<span class="hljs-string">&#x27;i&#x27;</span>,<span class="hljs-string">&#x27;o&#x27;</span>,<span class="hljs-string">&#x27;u&#x27;</span>,<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;E&#x27;</span>,<span class="hljs-string">&#x27;I&#x27;</span>,<span class="hljs-string">&#x27;O&#x27;</span>,<span class="hljs-string">&#x27;U&#x27;</span>&#125;;<br>        <span class="hljs-type">int</span> n = sentence.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>,cnt = <span class="hljs-number">1</span>;<br>        string ans;<br>        <span class="hljs-keyword">while</span>(i &lt; n)<br>        &#123;<br>            <span class="hljs-type">int</span> j = i;<br>            <span class="hljs-keyword">while</span>(j &lt; n &amp;&amp; sentence[j] != <span class="hljs-string">&#x27; &#x27;</span>)  j++;<br>            cnt++;<br>            <span class="hljs-keyword">if</span>(cnt != <span class="hljs-number">2</span>)  ans = ans+<span class="hljs-string">&#x27; &#x27;</span>;<br>            <span class="hljs-keyword">if</span>(vowels.<span class="hljs-built_in">count</span>(sentence[i]))<br>            &#123;<br>                ans = ans+sentence.<span class="hljs-built_in">substr</span>(i,j-i)+<span class="hljs-string">&#x27;m&#x27;</span>+<span class="hljs-built_in">string</span>(cnt,<span class="hljs-string">&#x27;a&#x27;</span>);<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                ans = ans+sentence.<span class="hljs-built_in">substr</span>(i+<span class="hljs-number">1</span>,j-i<span class="hljs-number">-1</span>)+sentence[i]+<span class="hljs-string">&#x27;m&#x27;</span>+<span class="hljs-built_in">string</span>(cnt,<span class="hljs-string">&#x27;a&#x27;</span>);<br>            &#125;<br>            i = j+<span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>字符串</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Python图形化界面设计</title>
     <link href="/2022/04/20/Python%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1/"/>
     <url>/2022/04/20/Python%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1/</url>
