@@ -24,7 +24,7 @@
 <meta property="og:description" content="愿世间再无不让打印的半开卷考试，整理了一天终于把PHP的内容整理完了，明天开始抄！ 不过感觉这样整理的效果还挺好的，一边整理一边学比正常学的效率还要高。考完数据库和PHP再把Java整理一下，重拾Java，Java的语法啥的都快忘完了！！！  第1、2章 PHP入门 HTML和CSS简介…… 第3章 数据与变量3-1 | PHP数据类型标量类型 布尔型 用print或echo输出布尔型数据时，t">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-05T12:54:54.000Z">
-<meta property="article:modified_time" content="2022-05-06T13:47:25.612Z">
+<meta property="article:modified_time" content="2022-05-07T01:11:31.252Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="PHP">
 <meta name="twitter:card" content="summary_large_image">
@@ -242,7 +242,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      22k 字
+      23k 字
     </span>
   
 
@@ -251,7 +251,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      182 分钟
+      193 分钟
     </span>
   
 
@@ -764,7 +764,75 @@
 <p>bool <strong>rollback</strong>(void)</p>
 </li>
 </ul>
-<h2 id="8-2-使用预处理语句"><a href="#8-2-使用预处理语句" class="headerlink" title="8-2 | 使用预处理语句"></a>8-2 | 使用预处理语句</h2><h2 id="8-3-使用PDO访问数据库"><a href="#8-3-使用PDO访问数据库" class="headerlink" title="8-3 | 使用PDO访问数据库"></a>8-3 | 使用PDO访问数据库</h2><h2 id="8-4-分页显示"><a href="#8-4-分页显示" class="headerlink" title="8-4  | 分页显示"></a>8-4  | 分页显示</h2><h1 id="第9章-表单与会话"><a href="#第9章-表单与会话" class="headerlink" title="第9章 表单与会话"></a>第9章 表单与会话</h1><h2 id="9-1-表单处理"><a href="#9-1-表单处理" class="headerlink" title="9-1 | 表单处理"></a>9-1 | 表单处理</h2><h4 id="提交表单"><a href="#提交表单" class="headerlink" title="提交表单"></a>提交表单</h4><ul>
+<h2 id="8-2-使用预处理语句"><a href="#8-2-使用预处理语句" class="headerlink" title="8-2 | 使用预处理语句"></a>8-2 | 使用预处理语句</h2><h4 id="创建预处理语句"><a href="#创建预处理语句" class="headerlink" title="创建预处理语句"></a>创建预处理语句</h4><ul>
+<li>初始化语句对象</li>
+<li>准备SQL语句</li>
+</ul>
+<h4 id="执行预处理语句"><a href="#执行预处理语句" class="headerlink" title="执行预处理语句"></a>执行预处理语句</h4><ul>
+<li>绑定参数</li>
+<li>执行</li>
+<li>产生缓存结果集</li>
+<li>获取受影响的行数</li>
+</ul>
+<h4 id="处理查询结果"><a href="#处理查询结果" class="headerlink" title="处理查询结果"></a>处理查询结果</h4><ul>
+<li>获取列数和行数</li>
+<li>移动游标</li>
+<li>绑定结果</li>
+<li>获取查询结果</li>
+<li>释放缓存结果集</li>
+<li>关闭语句对象</li>
+</ul>
+<h2 id="8-3-使用PDO访问数据库"><a href="#8-3-使用PDO访问数据库" class="headerlink" title="8-3 | 使用PDO访问数据库"></a>8-3 | 使用PDO访问数据库</h2><blockquote>
+<p>PDO（PHP Data Object）是一种PHP扩展，它的使用与MySQLi扩展非常相似，但PDO不仅能用于访问MySQL数据库，也能用于访问其他的数据库。</p>
+<p>PDO是一种数据访问抽象层，它为PHP程序员提供了一个轻量级的一致的编程接口。利用它，PHP应用能够用相同的代码访问各种不同的数据库。</p>
+<p>PDO编程接口由3个类组成，包括PDO类、PDOStatement类和PDOException类。</p>
+</blockquote>
+<h4 id="建立与数据库服务器的连接"><a href="#建立与数据库服务器的连接" class="headerlink" title="建立与数据库服务器的连接"></a>建立与数据库服务器的连接</h4><p>一个PDO类的实例对象代表PHP与数据库服务器之间的一个连接。</p>
+<p>construct(string $dsn [, string $username [, string $password]])</p>
+<p>参数$dsn表示数据源名称（Data Source Name），包含与数据库连接所需的信息，如服务器的IP地址、端口号、数据库的名称等。$dsn由PDO驱动器名开头，紧跟一个冒号，后面的语法通常与具体的PDO驱动器有关。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs php">&lt;!DOCTYPE html&gt;<br><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Content-type:text/html;charset=UTF-8&quot;</span>);<br><br><span class="hljs-variable">$dsn</span> = <span class="hljs-string">&#x27;mysql:dbname=elective_manage;host=127.0.0.1&#x27;</span>;<br><span class="hljs-variable">$user</span> = <span class="hljs-string">&#x27;root&#x27;</span>;<br><span class="hljs-variable">$password</span> = <span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-variable">$pdo</span> = <span class="hljs-keyword">new</span> <span class="hljs-title function_ invoke__">PDO</span>(<span class="hljs-variable">$dsn</span>, <span class="hljs-variable">$user</span>, <span class="hljs-variable">$password</span>);<br>&#125; <span class="hljs-keyword">catch</span> (PDOException <span class="hljs-variable">$e</span>) &#123;<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;连接失败: &#x27;</span> . <span class="hljs-variable">$e</span>-&gt;<span class="hljs-title function_ invoke__">getMessage</span>();<br>    <span class="hljs-keyword">return</span>;<br>&#125;<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;成功连接至elective_manage数据库&#x27;</span>;<br><span class="hljs-variable">$pdo</span> = <span class="hljs-literal">null</span>;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="执行SQL语句"><a href="#执行SQL语句" class="headerlink" title="执行SQL语句"></a>执行SQL语句</h4><ul>
+<li>执行增删改</li>
+<li>获取错误码和错误信息</li>
+<li>执行查询</li>
+</ul>
+<h4 id="使用预处理语句"><a href="#使用预处理语句" class="headerlink" title="使用预处理语句"></a>使用预处理语句</h4><ul>
+<li>创建预处理语句</li>
+<li>绑定参数</li>
+<li>执行预处理语句</li>
+</ul>
+<h4 id="访问结果集"><a href="#访问结果集" class="headerlink" title="访问结果集"></a>访问结果集</h4><ul>
+<li>获取列数</li>
+<li>绑定列</li>
+<li>获取结果集的一行</li>
+<li>获取一行中的单列值</li>
+<li>获取所有行</li>
+</ul>
+<h4 id="管理事物"><a href="#管理事物" class="headerlink" title="管理事物"></a>管理事物</h4><ul>
+<li>初始化一个事物</li>
+<li>提交事物</li>
+<li>回滚事物</li>
+</ul>
+<h2 id="8-4-分页显示"><a href="#8-4-分页显示" class="headerlink" title="8-4  | 分页显示"></a>8-4  | 分页显示</h2><p>要显示的数据集通常通过查询数据库获得。在实现分页显示时，可以有两种策略：一是每次只从数据库获取当前页的数据并呈现；另一种是预先从数据库获取整个数据集，然后把当前页呈现出来。</p>
+<p>为实现分页显示功能，通常需要引入以下变量：</p>
+<ul>
+<li><p><strong>$rows</strong>：数据集的大小，即数据集包含的记录数。</p>
+</li>
+<li><p><strong>$pageSize</strong>：页面大小，即一次显示几条记录（行）。</p>
+</li>
+<li><p><strong>$pageCount</strong>：总页数，可根据$rows与$pageSize计算获得：</p>
+<p>$pageCount = (int)ceil($rows/$pageSize);</p>
+</li>
+<li><p><strong>$currentPage</strong>：当前页码。该变量的初值可以设置为1，之后能由用户指定。</p>
+</li>
+<li><p><strong>$first</strong>：当前页第1条记录在数据集中的索引。可以根据$currentPage和$pageSize计算获得：</p>
+<p>$first = ($currentPage-1)*$pageSize;</p>
+</li>
+</ul>
+<h1 id="第9章-表单与会话"><a href="#第9章-表单与会话" class="headerlink" title="第9章 表单与会话"></a>第9章 表单与会话</h1><h2 id="9-1-表单处理"><a href="#9-1-表单处理" class="headerlink" title="9-1 | 表单处理"></a>9-1 | 表单处理</h2><h4 id="提交表单"><a href="#提交表单" class="headerlink" title="提交表单"></a>提交表单</h4><ul>
 <li><p>GET方法</p>
 <p>GET方法适合少量数据的提交，GET方法不适合提交密码等敏感数据。</p>
 </li>
@@ -959,6 +1027,7 @@
 <h2 id="10-8-其他常用的数组函数"><a href="#10-8-其他常用的数组函数" class="headerlink" title="10-8 | 其他常用的数组函数"></a>10-8 | 其他常用的数组函数</h2><h4 id="计数与统计"><a href="#计数与统计" class="headerlink" title="计数与统计"></a>计数与统计</h4><p>①int count(array $array [, int $mode])<br> 返回数组中元素的个数。参数mode的取值如下：<br> COUNT_NORMAL：默认值。仅统计最外层数组的元素个数。<br> COUNT_RECURSIVE：递归统计各层数组的元素个数。</p>
 <p>②array array_count_values(array $array)<br> 返回一个关联数组，其元素的键是参数数组中元素的值，相应的值是该键作为元素值在参数数组中出现的次数（频度）。</p>
 <p>③number array_sum(array $array)<br> 计算参数数组中各元素值的和，返回一个整数或浮点数。<br> 对非数值型元素值，函数会将其转换成数值（大多数情况为0）。函数对内部数组的元素值不会进行递归累加。</p>
+<h1 id="第11章-PHP面向对象程序设计"><a href="#第11章-PHP面向对象程序设计" class="headerlink" title="第11章 PHP面向对象程序设计"></a>第11章 PHP面向对象程序设计</h1><p>…….</p>
 <h1 id="第12章-Ajax与jQuery"><a href="#第12章-Ajax与jQuery" class="headerlink" title="第12章 Ajax与jQuery"></a>第12章 Ajax与jQuery</h1><h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><ul>
 <li>Ajax是Asynchronous JavaScript And XML的首字母缩写，称为异步JavaScript和XML。</li>
 <li>Ajax不是一种新的编程语言或技术，而是现有的几种技术的一种结合。它产生了一种新的、强大的开发Web应用的方法。Ajax包括：<ul>
