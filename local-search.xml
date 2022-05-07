@@ -438,16 +438,10 @@
     
     <categories>
       
-      <category>编程学习</category>
+      <category>C++</category>
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>算法</tag>
-      
-    </tags>
     
   </entry>
   
@@ -495,7 +489,9 @@
     
     <tags>
       
-      <tag>算法</tag>
+      <tag>排序</tag>
+      
+      <tag>双指针</tag>
       
     </tags>
     
@@ -520,7 +516,13 @@
     
     <tags>
       
-      <tag>算法</tag>
+      <tag>排序</tag>
+      
+      <tag>集合</tag>
+      
+      <tag>哈希表</tag>
+      
+      <tag>位运算</tag>
       
     </tags>
     
@@ -765,7 +767,7 @@
     
     <categories>
       
-      <category>编程学习</category>
+      <category>C++</category>
       
     </categories>
     
