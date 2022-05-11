@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>又拍云图床测试</title>
+    <link href="/2022/05/11/%E5%8F%88%E6%8B%8D%E4%BA%91%E5%9B%BE%E5%BA%8A%E6%B5%8B%E8%AF%95/"/>
+    <url>/2022/05/11/%E5%8F%88%E6%8B%8D%E4%BA%91%E5%9B%BE%E5%BA%8A%E6%B5%8B%E8%AF%95/</url>
+    
+    <content type="html"><![CDATA[<p><img src="https://yiqiangshiyia.cn/%E9%AB%98%E6%A0%A1%E5%AD%A6%E7%B1%8D%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FE-R%E5%9B%BE.png" alt="高校学籍管理系统E-R图"></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>补5.3每日一题 字符串排序</title>
     <link href="/2022/05/10/%E8%A1%A55-3%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F/"/>
     <url>/2022/05/10/%E8%A1%A55-3%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F/</url>
@@ -904,25 +917,6 @@
       <tag>STL</tag>
       
     </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>中国石油大学（华东）校园网络认证脚本</title>
-    <link href="/2022/02/23/%E4%B8%AD%E5%9B%BD%E7%9F%B3%E6%B2%B9%E5%A4%A7%E5%AD%A6%EF%BC%88%E5%8D%8E%E4%B8%9C%EF%BC%89%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%BB%9C%E8%AE%A4%E8%AF%81%E8%84%9A%E6%9C%AC/"/>
-    <url>/2022/02/23/%E4%B8%AD%E5%9B%BD%E7%9F%B3%E6%B2%B9%E5%A4%A7%E5%AD%A6%EF%BC%88%E5%8D%8E%E4%B8%9C%EF%BC%89%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%BB%9C%E8%AE%A4%E8%AF%81%E8%84%9A%E6%9C%AC/</url>
-    
-    <content type="html"><![CDATA[<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><p>本脚本采用Python3编写，依赖于</p><p>Requests </p><p>urllib/urllib.parse </p><p>快速安装依赖</p><p>pip install -r requirements.txt  </p><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>在config.py文件下输入学号、密码和运营商编号，然后运行python3 NetworkAuth.py </p><p>运营商对应编号：</p><p>default -&gt; 校园网 unicom -&gt; 联通 cmcc -&gt; 移动 ctcc -&gt; 电信 local -&gt; 校园内网 </p><p>可自动判别登录情况，引导用户交互。  </p><h3 id="目前支持的网络类型："><a href="#目前支持的网络类型：" class="headerlink" title="目前支持的网络类型："></a>目前支持的网络类型：</h3><p>有线网络（认证IP地址:121.251.251.207) </p><p>无线网络(SSID: UPC, 认证IP地址:121.251.251.217) </p><p>802.1X网络无需使用本脚本 </p><p>转载于：<a href="https://github.com/EndangeredF1sh/UPCNet">https://github.com/EndangeredF1sh/UPCNet</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>技术分享</category>
-      
-    </categories>
-    
     
   </entry>
   
