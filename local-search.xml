@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>最长回文子串 动态规划</title>
+    <link href="/2022/05/18/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    <url>/2022/05/18/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</url>
+    
+    <content type="html"><![CDATA[<h2 id="LeetCode-5：最长回子文串"><a href="#LeetCode-5：最长回子文串" class="headerlink" title="LeetCode 5：最长回子文串"></a>LeetCode 5：最长回子文串</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>动态规划的题目很少做，最近刷几道滑动窗口的题之后就去练动态规划的题目。</p><p>动态规划类的题目重点就是动态转移方程和边界条件。</p><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给你一个字符串 s，找到 s 中最长的回文子串。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>方法1：中心扩散法</strong></p><p><strong>方法2：动态规划</strong></p><p>定义二维数组dp[length][length]，如果dp[left][right]为true，则表示字符串从left到right是回文子串，如果dp[left][right]为false，则表示字符串从left到right不是回文子串。</p><p>如果dp[left+1][right-1]为true，我们判断s.[left]和s.[right]是否相等，如果相等，那么dp[left][right]肯定也是回文子串，否则dp[left][right]一定不是回文子串。</p><p>所以我们可以找出递推公式</p><p> dp[left][right]=s.[left]==s.[right]&amp;&amp;dp[left+1][right-1]</p><p>有了递推公式，还要确定边界条件：</p><p>如果s.[left]!=s.[right]，那么字符串从left到right是不可能构成子串的，直接跳过即可。</p><p>如果s.[left]==s.[right]，字符串从left到right能不能构成回文子串还需要进一步判断</p><ul><li>如果left==right，也就是说只有一个字符，我们认为他是回文子串。即dp[left][right]=true（left==right）</li><li>如果right-left&lt;=2，类似于”aa”，或者”aba”，我们认为他是回文子串。即dp[left][right]=true（right-left&lt;=2）</li><li>如果right-left&gt;2，我们只需要判断dp[left+1][right-1]是否是回文子串，才能确定dp[left][right]是否为true还是false。即dp[left][right]=dp[left+1][right-1]</li></ul><p>AC代码：</p><figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">string <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-comment">//边界条件判断</span><br>        <span class="hljs-keyword">if</span>(s.<span class="hljs-built_in">size</span>() &lt; <span class="hljs-number">2</span>)  <span class="hljs-keyword">return</span> s;<br>        <span class="hljs-type">int</span> start = <span class="hljs-number">0</span>;  <span class="hljs-comment">//最长回文串开始的位置</span><br>        <span class="hljs-type">int</span> maxlen = <span class="hljs-number">1</span>; <span class="hljs-comment">//最长回文串的长度</span><br>        <span class="hljs-type">int</span> len = s.<span class="hljs-built_in">size</span>();<br>        vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt;&gt; <span class="hljs-built_in">dp</span>(len,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">bool</span>&gt;(len));<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> right=<span class="hljs-number">1</span>; right&lt;len; right++)<br>        &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> left=<span class="hljs-number">0</span>; left&lt;right; left++)<br>            &#123;<br>                <span class="hljs-comment">//如果两种字符不相同，肯定不能构成回文子串</span><br>                <span class="hljs-keyword">if</span>(s[left] != s[right])  <span class="hljs-keyword">continue</span>;<br>                <br>                <span class="hljs-keyword">if</span>(left == right)&#123;<br>                    dp[left][right] = <span class="hljs-literal">true</span>;<br>                &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(right-left &lt;= <span class="hljs-number">2</span>)&#123;<br>                    dp[left][right] = <span class="hljs-literal">true</span>;<br>                &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(dp[left+<span class="hljs-number">1</span>][right<span class="hljs-number">-1</span>])&#123;<br>                    dp[left][right] = <span class="hljs-literal">true</span>;<br>                &#125;<br>                <span class="hljs-keyword">if</span>(dp[left][right] &amp;&amp; right-left+<span class="hljs-number">1</span> &gt; maxlen)<br>                &#123;<br>                    start = left;<br>                    maxlen = right-left+<span class="hljs-number">1</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">//截取最长的回文子串</span><br>        <span class="hljs-keyword">return</span> s.<span class="hljs-built_in">substr</span>(start,maxlen);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>动态规划</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>重拾Java</title>
     <link href="/2022/05/16/%E9%87%8D%E6%8B%BEJava/"/>
     <url>/2022/05/16/%E9%87%8D%E6%8B%BEJava/</url>
