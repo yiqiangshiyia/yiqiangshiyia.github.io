@@ -24,7 +24,7 @@
 <meta property="og:description" content="滑动窗口基本概念滑动窗口是一种基于双指针的一种思想，两个指针指向的元素之间形成一个窗口。 分类：窗口有两类，一种是固定大小类的窗口，一类是大小动态变化的窗口。 应用：什么情况可以用滑动窗口来解决实际问题呢？  一般给出的数据结构是数组或者字符串 求取某个子串或者子序列最长最短等最值问题或者求某个目标值时 该问题本身可以通过暴力求解  核心思路窗口的形成 在具体使用之前，我们知道窗口实际是两个指针之">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-12T09:44:05.000Z">
-<meta property="article:modified_time" content="2022-05-12T11:03:35.840Z">
+<meta property="article:modified_time" content="2022-05-19T08:32:32.947Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="滑动窗口">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      2.4k 字
     </span>
   
 
@@ -250,7 +250,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15 分钟
+      21 分钟
     </span>
   
 
@@ -315,6 +315,35 @@
 <li>LeetCode 438：找到字符串中所有字母异位词</li>
 <li>LeetCode 76：最小覆盖子串</li>
 </ul>
+<h2 id="Bilibili滑动窗口学习笔记"><a href="#Bilibili滑动窗口学习笔记" class="headerlink" title="Bilibili滑动窗口学习笔记"></a>Bilibili滑动窗口学习笔记</h2><h4 id="算法应用场景："><a href="#算法应用场景：" class="headerlink" title="算法应用场景："></a>算法应用场景：</h4><p>关键字：</p>
+<p>满足XXX条件（计算结果，出现次数，同时包含）</p>
+<p>最长/最短</p>
+<p>子串/子数组/子序列</p>
+<p>例如：长度最小的子数组</p>
+<h4 id="滑动窗口使用思路（寻找最长）"><a href="#滑动窗口使用思路（寻找最长）" class="headerlink" title="滑动窗口使用思路（寻找最长）"></a>滑动窗口使用思路（寻找最长）</h4><p>核心：左右双指针（L，R）在起始点，R向右逐位滑动循环</p>
+<p>每次滑动过程中</p>
+<ul>
+<li>如果窗内元素满足条件，R向右扩大窗口，并更新最优结果</li>
+<li>如果窗内元素不满足条件，L向右缩小窗口</li>
+</ul>
+<p>直至R到达结尾</p>
+<p>代码模板</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//最长模板</span><br><span class="hljs-comment">//初始化left right result bestResult</span><br><span class="hljs-keyword">while</span>(右指针没有到达结尾)<br>&#123;<br>    窗口扩大，加入right对应元素，更新当前<span class="hljs-function">result</span><br><span class="hljs-function">    <span class="hljs-title">while</span><span class="hljs-params">(result不满足要求)</span></span><br><span class="hljs-function">    </span>&#123;<br>        窗口缩小，移除left对应元素，left右移<br>    &#125;<br>    更新最优结果bestResult<br>    right++;<br>&#125;<br>返回bestResult;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="滑动窗口使用思路（寻找最短）"><a href="#滑动窗口使用思路（寻找最短）" class="headerlink" title="滑动窗口使用思路（寻找最短）"></a>滑动窗口使用思路（寻找最短）</h4><p>核心：左右双指针（L，R）在起始点，R向右逐位滑动循环</p>
+<p>每次滑动过程中</p>
+<ul>
+<li>如果窗内元素满足条件，L向右缩小窗口 ，并更新最优结果</li>
+<li>如果窗内元素不满足条件，R向右扩大窗口</li>
+</ul>
+<p>直至R到达结尾</p>
+<p>代码模板：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//最短模板</span><br><span class="hljs-comment">//初始化left right result bestResult</span><br><span class="hljs-keyword">while</span>(右指针没有到达结尾)<br>&#123;<br>    窗口扩大，加入right对应元素，更新当前<span class="hljs-function">result</span><br><span class="hljs-function">    <span class="hljs-title">while</span><span class="hljs-params">(result满足要求)</span></span><br><span class="hljs-function">    </span>&#123;<br>        更新最优结果bestResult<br>        窗口缩小，移除left对应元素，left右移<br>    &#125;<br>    right++;<br>&#125;<br>返回bestResult;<br></code></pre></td></tr></table></figure>
+
+
+
 <h2 id="LeetCode-713：乘积小于-K-的子数组"><a href="#LeetCode-713：乘积小于-K-的子数组" class="headerlink" title="LeetCode 713：乘积小于 K 的子数组"></a>LeetCode 713：乘积小于 K 的子数组</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>这道题是一道典型的滑动窗口问题。</p>
 <blockquote>
 <p>溢出问题：</p>
