@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>代码高亮测试</title>
+    <link href="/2022/05/21/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE%E6%B5%8B%E8%AF%95/"/>
+    <url>/2022/05/21/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE%E6%B5%8B%E8%AF%95/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">function <span class="hljs-title">dfsTemplate</span><span class="hljs-params">(root)</span> </span>&#123;<br>    <span class="hljs-comment">//存储最终结果</span><br>    let res;<br>    <span class="hljs-comment">//初始化当前结果</span><br>    let start;<br>    <span class="hljs-comment">//构造递归函数dfs,通常参数为当前节点和当前结果</span><br>    let dfs = <span class="hljs-built_in">function</span> (node, currentResult) &#123;<br>        <span class="hljs-comment">//终止条件返回判断</span><br>        <span class="hljs-keyword">if</span> (node == null) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-comment">//更新当前结果currentResult</span><br><br>        <span class="hljs-comment">//若到达末尾叶子结点，进行最优结果更新</span><br>        <span class="hljs-keyword">if</span> (node.left == null &amp;&amp; node.right == null) &#123;<br>            <span class="hljs-comment">//update res</span><br>        &#125;<br>        <span class="hljs-comment">//左右子树递归</span><br>        <span class="hljs-built_in">dfs</span>(node.left, currentResult);<br>        <span class="hljs-built_in">dfs</span>(node.right, currentResult);<br>    &#125;<br>    <span class="hljs-built_in">dfs</span>(root, start);<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>二叉树问题有关的深度优先搜索</title>
     <link href="/2022/05/19/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%97%AE%E9%A2%98%E6%9C%89%E5%85%B3%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/"/>
     <url>/2022/05/19/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%97%AE%E9%A2%98%E6%9C%89%E5%85%B3%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/</url>
