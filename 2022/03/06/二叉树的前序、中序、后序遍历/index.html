@@ -18,21 +18,21 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="LeetCode 144题：二叉树的前序遍历题解根-&gt;左-&gt;右    方法一：递归法  1234567891011121314151617181920212223242526272829303132333435AC代码：class Solution &amp;#123;public:    void preorder(TreeNode* root,vector&lt;int&gt; &amp;">
+    <meta name="description" content="LeetCode 144题：二叉树的前序遍历Note参数传递时什么时候需要传入参数的引用&amp;当对参数的修改结果需要带回主函数时在传递参数时则需要在参数前加取地址符&amp;  CSDN博客：（易错点）什么时候要传入参数的引用“&amp;“：https:&#x2F;&#x2F;blog.csdn.net&#x2F;dyw_666666&#x2F;article&#x2F;details&#x2F;107823466 题解根-&gt;左-&gt;右">
 <meta property="og:type" content="article">
-<meta property="og:title" content="二叉树的前序、中序、后序遍历">
+<meta property="og:title" content="二叉树的遍历">
 <meta property="og:url" content="https://yiqiangshiyia.github.io/2022/03/06/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E3%80%81%E4%B8%AD%E5%BA%8F%E3%80%81%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
-<meta property="og:description" content="LeetCode 144题：二叉树的前序遍历题解根-&gt;左-&gt;右    方法一：递归法  1234567891011121314151617181920212223242526272829303132333435AC代码：class Solution &amp;#123;public:    void preorder(TreeNode* root,vector&lt;int&gt; &amp;">
+<meta property="og:description" content="LeetCode 144题：二叉树的前序遍历Note参数传递时什么时候需要传入参数的引用&amp;当对参数的修改结果需要带回主函数时在传递参数时则需要在参数前加取地址符&amp;  CSDN博客：（易错点）什么时候要传入参数的引用“&amp;“：https:&#x2F;&#x2F;blog.csdn.net&#x2F;dyw_666666&#x2F;article&#x2F;details&#x2F;107823466 题解根-&gt;左-&gt;右">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-06T09:12:48.000Z">
-<meta property="article:modified_time" content="2022-05-16T12:17:12.465Z">
+<meta property="article:modified_time" content="2022-05-22T09:42:52.892Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="二叉树">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>二叉树的前序、中序、后序遍历 - 一腔诗意啊 - 个人博客</title>
+  <title>二叉树的遍历 - 一腔诗意啊 - 个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -222,7 +222,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="二叉树的前序、中序、后序遍历">
+            <span class="h2" id="subtitle" title="二叉树的遍历">
               
             </span>
 
@@ -243,7 +243,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.2k 字
+      3.5k 字
     </span>
   
 
@@ -252,7 +252,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      19 分钟
+      30 分钟
     </span>
   
 
@@ -281,16 +281,15 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">二叉树的前序、中序、后序遍历</h1>
+            <h1 style="display: none">二叉树的遍历</h1>
             
             <div class="markdown-body">
-              <h2 id="LeetCode-144题：二叉树的前序遍历"><a href="#LeetCode-144题：二叉树的前序遍历" class="headerlink" title="LeetCode 144题：二叉树的前序遍历"></a>LeetCode 144题：二叉树的前序遍历</h2><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>根-&gt;左-&gt;右   </p>
+              <h2 id="LeetCode-144题：二叉树的前序遍历"><a href="#LeetCode-144题：二叉树的前序遍历" class="headerlink" title="LeetCode 144题：二叉树的前序遍历"></a>LeetCode 144题：二叉树的前序遍历</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><h4 id="参数传递时什么时候需要传入参数的引用-amp"><a href="#参数传递时什么时候需要传入参数的引用-amp" class="headerlink" title="参数传递时什么时候需要传入参数的引用&amp;"></a>参数传递时什么时候需要传入参数的引用&amp;</h4><p>当对参数的修改结果需要带回主函数时在传递参数时则需要在参数前加取地址符&amp; </p>
+<p>CSDN博客：（易错点）什么时候要传入参数的引用“&amp;“：<a target="_blank" rel="noopener" href="https://blog.csdn.net/dyw_666666/article/details/107823466">https://blog.csdn.net/dyw_666666/article/details/107823466</a></p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>根-&gt;左-&gt;右   </p>
 <p><strong>方法一：递归法</strong> </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></div></td><td class="code"><pre><code class="hljs c++">AC代码：<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><br><span class="hljs-keyword">public</span>:<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">preorder</span><span class="hljs-params">(TreeNode* root,vector&lt;<span class="hljs-type">int</span>&gt; &amp;res)</span></span>&#123;<br><br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)<br><br>        &#123;<br><br>            <span class="hljs-keyword">return</span>;<br><br>        &#125;<br><br>        res.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br><br>        <span class="hljs-built_in">preorder</span>(root-&gt;left,res);<br><br>        <span class="hljs-built_in">preorder</span>(root-&gt;right,res);<br><br>    &#125;<br><br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">preorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br><br>        vector&lt;<span class="hljs-type">int</span>&gt; res;<br><br>        <span class="hljs-built_in">preorder</span>(root,res);<br><br>        <span class="hljs-keyword">return</span> res;<br><br>    &#125;<br><br>&#125;;<br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><pre><code class="hljs c++">AC代码：<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">preorder</span><span class="hljs-params">(TreeNode* root,vector&lt;<span class="hljs-type">int</span>&gt; &amp;res)</span></span>&#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)<br>        &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        res.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>        <span class="hljs-built_in">preorder</span>(root-&gt;left,res);<br>        <span class="hljs-built_in">preorder</span>(root-&gt;right,res);<br>    &#125;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">preorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-type">int</span>&gt; res;<br>        <span class="hljs-built_in">preorder</span>(root,res);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
-<p> </p>
-<h3 id="Note：参数传递时什么时候需要传入参数的引用-amp"><a href="#Note：参数传递时什么时候需要传入参数的引用-amp" class="headerlink" title="Note：参数传递时什么时候需要传入参数的引用&amp;"></a>Note：参数传递时什么时候需要传入参数的引用&amp;</h3><p>当对参数的修改结果需要带回主函数时在传递参数时则需要在参数前加取地址符&amp; </p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dyw_666666/article/details/107823466">CSDN博客：（易错点）什么时候要传入参数的引用“&amp;“</a>   </p>
 <p><strong>方法二：迭代法</strong> </p>
 <p>方法1中的递归函数可以用迭代的方法实现，迭代法利用栈来遍历二叉树</p>
 <p>LeetCode题解+动画演示 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/solution/er-cha-shu-de-qian-xu-bian-li-by-leetcode-solution/">二叉树前序遍历 迭代法</a> </p>
@@ -311,6 +310,19 @@
 <h2 id="LeetCode-145题：二叉树的后序遍历"><a href="#LeetCode-145题：二叉树的后序遍历" class="headerlink" title="LeetCode 145题：二叉树的后序遍历"></a>LeetCode 145题：二叉树的后序遍历</h2><h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>左-&gt;右-&gt;根   </p>
 <p>AC代码：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">postorder</span><span class="hljs-params">(TreeNode* root,vector&lt;<span class="hljs-type">int</span>&gt; &amp;ans)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)<br>        &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-built_in">postorder</span>(root-&gt;left,ans);<br>        <span class="hljs-built_in">postorder</span>(root-&gt;right,ans);<br>        ans.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>    &#125;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">postorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-type">int</span>&gt; ans;<br>        <span class="hljs-built_in">postorder</span>(root,ans);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="LeetCode-102-二叉树的层序遍历"><a href="#LeetCode-102-二叉树的层序遍历" class="headerlink" title="LeetCode 102:二叉树的层序遍历"></a>LeetCode 102:二叉树的层序遍历</h2><h3 id="Note-1"><a href="#Note-1" class="headerlink" title="Note"></a>Note</h3><h4 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h4><p>二叉树 队列 广度优先搜索  </p>
+<h4 id="二维vector容器的使用"><a href="#二维vector容器的使用" class="headerlink" title="二维vector容器的使用"></a>二维vector容器的使用</h4><p>res.push_back(vector&lt;int&gt;());  //向二维vector容器res中添加一行</p>
+<p>res.back().push_back(node-&gt;val);  //向二维容器的最后一行插入一个元素node-&gt;val</p>
+<p>其中res.back()是指二维容器res的最后一行</p>
+<p>关于C++中vector&lt;vector&lt;int&gt; &gt;的使用：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/tyty-Somnuspoppy/p/9361821.html">https://www.cnblogs.com/tyty-Somnuspoppy/p/9361821.html</a></p>
+<h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><blockquote>
+<p>用广度优先搜索+队列解决二叉树的层序遍历 我们可以用一种巧妙的方法修改广度优先搜索： 首先根元素入队 当队列不为空的时候 求当前队列的长度 currentLevelSize 依次从队列中取currentLevelSize个元素进行拓展，然后进入下一次迭代 它和普通广度优先搜索的区别在于，普通广度优先搜索每次只取一个元素拓展，而这里每次取currentLevelSize个元素。在上述过程中的第 i 次迭代就得到了二叉树的第 i层的 currentLevelSize个元素。</p>
+</blockquote>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">levelOrder</span>(TreeNode* root) &#123;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; res;  <span class="hljs-comment">//定义二维vector容器res用来存储树中元素</span><br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)<br>        &#123;<br>            <span class="hljs-keyword">return</span> res;<br>        &#125;<br>        queue&lt;TreeNode*&gt; q;  <span class="hljs-comment">//定义队列q临时存储树中元素</span><br>        q.<span class="hljs-built_in">push</span>(root);  <span class="hljs-comment">//将树的根节点插入队列</span><br>        <span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())<br>        &#123;<br>            <span class="hljs-type">int</span> currentLevelSize = q.<span class="hljs-built_in">size</span>();  <span class="hljs-comment">//定义队列的当前长度currentLevelSize</span><br>            res.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;());  <span class="hljs-comment">//向二维vector容器res中添加一行</span><br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=currentLevelSize; i++)<br>            &#123;<br>                <span class="hljs-keyword">auto</span> node = q.<span class="hljs-built_in">front</span>();  <span class="hljs-comment">//定义临时结点node为队列头结点</span><br>                q.<span class="hljs-built_in">pop</span>();  <span class="hljs-comment">//弹出队列头结点</span><br>                res.<span class="hljs-built_in">back</span>().<span class="hljs-built_in">push_back</span>(node-&gt;val);  <span class="hljs-comment">//将队列头结点元素的值存入res中</span><br>                <span class="hljs-comment">//将结点的左右儿子节点插入队列中</span><br>                <span class="hljs-keyword">if</span>(node-&gt;left)<br>                &#123;<br>                    q.<span class="hljs-built_in">push</span>(node-&gt;left);<br>                &#125;<br>                <span class="hljs-keyword">if</span>(node-&gt;right)<br>                &#123;<br>                    q.<span class="hljs-built_in">push</span>(node-&gt;right);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -356,8 +368,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/04/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">
-                        <span class="hidden-mobile">反转链表+合并链表+移除链表元素</span>
+                      <a href="/2022/03/04/c%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88cstl%EF%BC%89/">
+                        <span class="hidden-mobile">C++标准模板库（C++STL）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
