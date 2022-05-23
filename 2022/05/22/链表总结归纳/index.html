@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/1774269-20191111002101989-1257105196.jpg">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/addtwonumber1.jpg">
 <meta property="article:published_time" content="2022-05-22T09:23:05.000Z">
-<meta property="article:modified_time" content="2022-05-22T11:06:29.761Z">
+<meta property="article:modified_time" content="2022-05-23T13:09:15.729Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="链表">
 <meta name="twitter:card" content="summary_large_image">
@@ -246,7 +246,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.7k 字
+      3.7k 字
     </span>
   
 
@@ -255,7 +255,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      23 分钟
+      31 分钟
     </span>
   
 
@@ -321,6 +321,24 @@
 <h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><p>力扣难度：中等 题目大致思路：模拟链表 注意进位即可</p>
 <p>AC代码：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode* l1, ListNode* l2)</span> </span>&#123;<br>        ListNode* head = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">-1</span>);  <span class="hljs-comment">//定义链表头结点</span><br>        ListNode* cur = head;  <span class="hljs-comment">//定义节点cur指向链表头结点head</span><br>        <span class="hljs-type">int</span> add = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(l1 != <span class="hljs-literal">nullptr</span> || l2 != <span class="hljs-literal">nullptr</span>)<br>        &#123;<br>            <span class="hljs-type">int</span> n1 = l1 ? l1-&gt;val : <span class="hljs-number">0</span>;<br>            <span class="hljs-type">int</span> n2 = l2 ? l2-&gt;val : <span class="hljs-number">0</span>;<br>            <span class="hljs-type">int</span> sum = n1+n2+add;<br>            cur-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(sum%<span class="hljs-number">10</span>);<br>            cur = cur-&gt;next;<br>            add = sum/<span class="hljs-number">10</span>;<br>            <span class="hljs-keyword">if</span>(l1)  l1 = l1-&gt;next;<br>            <span class="hljs-keyword">if</span>(l2)  l2 = l2-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(add &gt; <span class="hljs-number">0</span>)<br>        &#123;<br>            cur-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(add);<br>        &#125;<br>        <span class="hljs-keyword">return</span> head-&gt;next;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="LeetCode-142：环形链表"><a href="#LeetCode-142：环形链表" class="headerlink" title="LeetCode 142：环形链表"></a>LeetCode 142：环形链表</h2><h3 id="Note-1"><a href="#Note-1" class="headerlink" title="Note"></a>Note</h3><p>解决环形链表问题的两种方法：</p>
+<ul>
+<li>哈希表</li>
+<li>快慢指针</li>
+</ul>
+<h3 id="题目大意-4"><a href="#题目大意-4" class="headerlink" title="题目大意"></a>题目大意</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/linked-list-cycle-ii/">https://leetcode.cn/problems/linked-list-cycle-ii/</a></p>
+<h3 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h3><p><strong>方法1：哈希表</strong></p>
+<p>一个非常直观的思路是：我们遍历链表中的每个节点，并将它记录下来；一旦遇到了此前遍历过的节点，就可以判定链表中存在环。借助哈希表可以很方便地实现。</p>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode *<span class="hljs-title">detectCycle</span><span class="hljs-params">(ListNode *head)</span> </span>&#123;<br>        unordered_set&lt;ListNode*&gt; seen;<br>        <span class="hljs-keyword">while</span>(head != <span class="hljs-literal">nullptr</span>)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(seen.<span class="hljs-built_in">count</span>(head))<br>            &#123;<br>                <span class="hljs-keyword">return</span> head;<br>            &#125;<br>            seen.<span class="hljs-built_in">insert</span>(head);<br>            head = head-&gt;next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p><strong>方法2：快慢指针</strong></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/linked-list-cycle-ii/solution/huan-xing-lian-biao-ii-by-leetcode-solution/">https://leetcode.cn/problems/linked-list-cycle-ii/solution/huan-xing-lian-biao-ii-by-leetcode-solution/</a></p>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode *<span class="hljs-title">detectCycle</span><span class="hljs-params">(ListNode *head)</span> </span>&#123;<br>        ListNode *slow = head, *fast = head;<br>        <span class="hljs-keyword">while</span> (fast != <span class="hljs-literal">nullptr</span>) &#123;<br>            slow = slow-&gt;next;<br>            <span class="hljs-keyword">if</span> (fast-&gt;next == <span class="hljs-literal">nullptr</span>) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<br>            &#125;<br>            fast = fast-&gt;next-&gt;next;<br>            <span class="hljs-keyword">if</span> (fast == slow) &#123;<br>                ListNode *ptr = head;<br>                <span class="hljs-keyword">while</span> (ptr != slow) &#123;<br>                    ptr = ptr-&gt;next;<br>                    slow = slow-&gt;next;<br>                &#125;<br>                <span class="hljs-keyword">return</span> ptr;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
             </div>
