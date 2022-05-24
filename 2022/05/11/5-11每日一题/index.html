@@ -42,7 +42,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      
+        
+          
+        
+        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
+      
     
   
 
@@ -250,7 +258,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15 分钟
+      16 分钟
     </span>
   
 
@@ -290,7 +298,8 @@
 <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>序列化是将数据结构或对象转换为一系列位的过程，以便它可以存储在文件或内存缓冲区中，或通过网络连接链路传输，以便稍后在同一个或另一个计算机环境中重建。</p>
 <p>设计一个算法来序列化和反序列化二叉搜索树 。 对序列化/反序列化算法的工作方式没有限制。 您只需确保二叉搜索树可以序列化为字符串，并且可以将该字符串反序列化为最初的二叉搜索树。</p>
 <p>示例1：</p>
-<figure class="highlight inform7"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><pre><code class="hljs inform7">输入：root = <span class="hljs-comment">[2,1,3]</span><br>输出：<span class="hljs-comment">[2,1,3]</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：root &#x3D; [2,1,3]
+输出：[2,1,3]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div>
 
 
 
@@ -301,7 +310,74 @@
 <li>vector容器利用队列重新建成二叉搜索树</li>
 </ol>
 <p>差点AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Codec</span> &#123;<br><span class="hljs-keyword">public</span>:<br><br>    <span class="hljs-comment">// Encodes a tree to a single string.</span><br>    <span class="hljs-function">string <span class="hljs-title">serialize</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        string ans = <span class="hljs-string">&quot;&quot;</span>;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)  <span class="hljs-keyword">return</span> ans;<br>        queue&lt;TreeNode*&gt; q;<br>        q.<span class="hljs-built_in">push</span>(root);<br>        <span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())<br>        &#123;<br>            <span class="hljs-keyword">auto</span> node = q.<span class="hljs-built_in">front</span>();<br>            q.<span class="hljs-built_in">pop</span>();<br>            <span class="hljs-keyword">if</span>(node == <span class="hljs-literal">nullptr</span>)<br>            &#123;<br>                ans = ans+<span class="hljs-string">&quot;null,&quot;</span>;<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                ans = ans+<span class="hljs-built_in">to_string</span>(node-&gt;val)+<span class="hljs-string">&quot;,&quot;</span>;<br>                q.<span class="hljs-built_in">push</span>(node-&gt;left);<br>                q.<span class="hljs-built_in">push</span>(node-&gt;right);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br><br>    <span class="hljs-comment">// Decodes your encoded data to tree.</span><br>    <span class="hljs-function">TreeNode* <span class="hljs-title">deserialize</span><span class="hljs-params">(string data)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(data == <span class="hljs-string">&quot;&quot;</span>)  <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<br>        vector&lt;string&gt; temp = <span class="hljs-built_in">split</span>(data);<br>        TreeNode* root = <span class="hljs-keyword">new</span> <span class="hljs-built_in">TreeNode</span>(<span class="hljs-built_in">stoi</span>(temp[<span class="hljs-number">0</span>]));  <span class="hljs-comment">//TreeNode(int)</span><br>        queue&lt;TreeNode*&gt; q;<br>        q.<span class="hljs-built_in">push</span>(root);<br>        <span class="hljs-type">int</span> index = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())<br>        &#123;<br>            <span class="hljs-keyword">auto</span> node = q.<span class="hljs-built_in">front</span>();<br>            q.<span class="hljs-built_in">pop</span>();<br>            <span class="hljs-keyword">if</span>(temp[index] != <span class="hljs-string">&quot;null&quot;</span>)<br>            &#123;<br>                node-&gt;left = <span class="hljs-keyword">new</span> <span class="hljs-built_in">TreeNode</span>(<span class="hljs-built_in">stoi</span>(temp[index]));<br>                q.<span class="hljs-built_in">push</span>(node-&gt;left);<br>            &#125;<br>            index++;<br>            <span class="hljs-keyword">if</span>(temp[index] != <span class="hljs-string">&quot;null&quot;</span>)<br>            &#123;<br>                node-&gt;right = <span class="hljs-keyword">new</span> <span class="hljs-built_in">TreeNode</span>(<span class="hljs-built_in">stoi</span>(temp[index]));<br>                q.<span class="hljs-built_in">push</span>(node-&gt;right);<br>            &#125;<br>            index++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> root;<br>    &#125;<br><br>    <span class="hljs-function">vector&lt;string&gt; <span class="hljs-title">split</span><span class="hljs-params">(string data)</span></span><br><span class="hljs-function">    </span>&#123;<br>        vector&lt;string&gt; ans;<br>        <span class="hljs-type">int</span> from = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;data.<span class="hljs-built_in">size</span>(); i++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(data[i] == <span class="hljs-string">&#x27;,&#x27;</span>)<br>            &#123;<br>                ans.<span class="hljs-built_in">push_back</span>(data.<span class="hljs-built_in">substr</span>(from,i-from));  <span class="hljs-comment">//Note:第二个参数为复制长度而不是字符串结束位置</span><br>                from = i+<span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Codec &#123;
+public:
+
+    &#x2F;&#x2F; Encodes a tree to a single string.
+    string serialize(TreeNode* root) &#123;
+        string ans &#x3D; &quot;&quot;;
+        if(root &#x3D;&#x3D; nullptr)  return ans;
+        queue&lt;TreeNode*&gt; q;
+        q.push(root);
+        while(!q.empty())
+        &#123;
+            auto node &#x3D; q.front();
+            q.pop();
+            if(node &#x3D;&#x3D; nullptr)
+            &#123;
+                ans &#x3D; ans+&quot;null,&quot;;
+            &#125;else&#123;
+                ans &#x3D; ans+to_string(node-&gt;val)+&quot;,&quot;;
+                q.push(node-&gt;left);
+                q.push(node-&gt;right);
+            &#125;
+        &#125;
+        return ans;
+    &#125;
+
+    &#x2F;&#x2F; Decodes your encoded data to tree.
+    TreeNode* deserialize(string data) &#123;
+        if(data &#x3D;&#x3D; &quot;&quot;)  return nullptr;
+        vector&lt;string&gt; temp &#x3D; split(data);
+        TreeNode* root &#x3D; new TreeNode(stoi(temp[0]));  &#x2F;&#x2F;TreeNode(int)
+        queue&lt;TreeNode*&gt; q;
+        q.push(root);
+        int index &#x3D; 1;
+        while(!q.empty())
+        &#123;
+            auto node &#x3D; q.front();
+            q.pop();
+            if(temp[index] !&#x3D; &quot;null&quot;)
+            &#123;
+                node-&gt;left &#x3D; new TreeNode(stoi(temp[index]));
+                q.push(node-&gt;left);
+            &#125;
+            index++;
+            if(temp[index] !&#x3D; &quot;null&quot;)
+            &#123;
+                node-&gt;right &#x3D; new TreeNode(stoi(temp[index]));
+                q.push(node-&gt;right);
+            &#125;
+            index++;
+        &#125;
+        return root;
+    &#125;
+
+    vector&lt;string&gt; split(string data)
+    &#123;
+        vector&lt;string&gt; ans;
+        int from &#x3D; 0;
+        for(int i&#x3D;0; i&lt;data.size(); i++)
+        &#123;
+            if(data[i] &#x3D;&#x3D; &#39;,&#39;)
+            &#123;
+                ans.push_back(data.substr(from,i-from));  &#x2F;&#x2F;Note:第二个参数为复制长度而不是字符串结束位置
+                from &#x3D; i+1;
+            &#125;
+        &#125;
+        return ans;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 
             </div>
@@ -510,6 +586,8 @@
 
 
 
+  
+    
   
 
 

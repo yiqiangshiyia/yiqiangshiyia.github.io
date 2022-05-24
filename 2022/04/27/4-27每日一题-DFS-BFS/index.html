@@ -43,7 +43,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      
+        
+          
+        
+        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
+      
     
   
 
@@ -242,7 +250,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.4k 字
+      4.5k 字
     </span>
   
 
@@ -251,7 +259,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      37 分钟
+      38 分钟
     </span>
   
 
@@ -296,7 +304,76 @@
 <p>可以<strong>使用深度优先搜索实现反向搜索</strong>，搜索过程中需要记录每个单元格是否可以从太平洋反向到达以及是否可以从大西洋反向到达。反向搜索结束之后，遍历每个网格，如果一个网格既可以从太平洋反向到达也可以从大西洋反向到达，则该网格满足太平洋和大西洋都可以到达，将该网格添加到答案中。</p>
 </blockquote>
 <p>AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">static</span> <span class="hljs-type">const</span> <span class="hljs-type">int</span> dirs[<span class="hljs-number">4</span>][<span class="hljs-number">2</span>] = &#123;&#123;<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>&#125;,&#123;<span class="hljs-number">1</span>,<span class="hljs-number">0</span>&#125;,&#123;<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>&#125;,&#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>&#125;&#125;;  <span class="hljs-comment">//定义方向数组，分别表示向上下左右四个方向流动</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; heights;  <span class="hljs-comment">//定义一个全局数组</span><br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> row,<span class="hljs-type">int</span> col,vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt;&gt; &amp;ocean)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-type">int</span> m = ocean.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> n = ocean[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">if</span>(ocean[row][col])<br>        &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        ocean[row][col] = <span class="hljs-literal">true</span>;<br>        <span class="hljs-comment">//分别对上下左右四个方向进行搜索</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">4</span>; i++)<br>        &#123;<br>            <span class="hljs-type">int</span> newRow = row+dirs[i][<span class="hljs-number">0</span>];<br>            <span class="hljs-type">int</span> newCol = col+dirs[i][<span class="hljs-number">1</span>];<br>            <span class="hljs-keyword">if</span>(newRow &gt;= <span class="hljs-number">0</span> &amp;&amp; newRow &lt; m &amp;&amp; newCol &gt;= <span class="hljs-number">0</span> &amp;&amp; newCol &lt; n &amp;&amp; heights[newRow][newCol] &gt;= heights[row][col])<br>            &#123;<br>                <span class="hljs-built_in">dfs</span>(newRow,newCol,ocean);<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">pacificAtlantic</span>(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; heights) &#123;<br>        <span class="hljs-keyword">this</span>-&gt;heights = heights;<br>        <span class="hljs-type">int</span> m = heights.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> n = heights[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>();<br>        <span class="hljs-comment">//防止重复遍历单元格，增加时间复杂度，定义bool类型数组进行标记,默认值为false</span><br>        vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt;&gt; <span class="hljs-built_in">pacific</span>(m,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">bool</span>&gt;(n,<span class="hljs-literal">false</span>));<br>        vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt;&gt; <span class="hljs-built_in">atlantic</span>(m,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">bool</span>&gt;(n,<span class="hljs-literal">false</span>));<br>        <span class="hljs-comment">//从左边缘开始dfs可以流入太平洋的单元格</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;m; i++)<br>        &#123;<br>            <span class="hljs-built_in">dfs</span>(i,<span class="hljs-number">0</span>,pacific);<br>        &#125;<br>        <span class="hljs-comment">//从上边缘开始dfs可以流入太平洋的单元格</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>; j&lt;n; j++)<br>        &#123;<br>            <span class="hljs-built_in">dfs</span>(<span class="hljs-number">0</span>,j,pacific);<br>        &#125;<br>        <span class="hljs-comment">//从右边缘开始dfs可以流入大西洋的单元格</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;m; i++)<br>        &#123;<br>            <span class="hljs-built_in">dfs</span>(i,n<span class="hljs-number">-1</span>,atlantic);<br>        &#125;<br>        <span class="hljs-comment">//从下边缘开始dfs可以流入大西洋的单元格</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>; j&lt;n<span class="hljs-number">-1</span>; j++)<br>        &#123;<br>            <span class="hljs-built_in">dfs</span>(m<span class="hljs-number">-1</span>,j,atlantic);<br>        &#125;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; ans;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;m; i++)<br>        &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>; j&lt;n; j++)<br>            &#123;<br>                <span class="hljs-keyword">if</span>(pacific[i][j] &amp;&amp; atlantic[i][j])<br>                &#123;<br>                    vector&lt;<span class="hljs-type">int</span>&gt; cell;<br>                    cell.<span class="hljs-built_in">push_back</span>(i);<br>                    cell.<span class="hljs-built_in">push_back</span>(j);<br>                    ans.<span class="hljs-built_in">push_back</span>(cell);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">static const int dirs[4][2] &#x3D; &#123;&#123;-1,0&#125;,&#123;1,0&#125;,&#123;0,-1&#125;,&#123;0,1&#125;&#125;;  &#x2F;&#x2F;定义方向数组，分别表示向上下左右四个方向流动
+class Solution &#123;
+public:
+    vector&lt;vector&lt;int&gt;&gt; heights;  &#x2F;&#x2F;定义一个全局数组
+
+    void dfs(int row,int col,vector&lt;vector&lt;bool&gt;&gt; &amp;ocean)
+    &#123;
+        int m &#x3D; ocean.size();
+        int n &#x3D; ocean[0].size();
+        if(ocean[row][col])
+        &#123;
+            return;
+        &#125;
+        ocean[row][col] &#x3D; true;
+        &#x2F;&#x2F;分别对上下左右四个方向进行搜索
+        for(int i&#x3D;0; i&lt;4; i++)
+        &#123;
+            int newRow &#x3D; row+dirs[i][0];
+            int newCol &#x3D; col+dirs[i][1];
+            if(newRow &gt;&#x3D; 0 &amp;&amp; newRow &lt; m &amp;&amp; newCol &gt;&#x3D; 0 &amp;&amp; newCol &lt; n &amp;&amp; heights[newRow][newCol] &gt;&#x3D; heights[row][col])
+            &#123;
+                dfs(newRow,newCol,ocean);
+            &#125;
+        &#125;
+    &#125;
+
+    vector&lt;vector&lt;int&gt;&gt; pacificAtlantic(vector&lt;vector&lt;int&gt;&gt;&amp; heights) &#123;
+        this-&gt;heights &#x3D; heights;
+        int m &#x3D; heights.size();
+        int n &#x3D; heights[0].size();
+        &#x2F;&#x2F;防止重复遍历单元格，增加时间复杂度，定义bool类型数组进行标记,默认值为false
+        vector&lt;vector&lt;bool&gt;&gt; pacific(m,vector&lt;bool&gt;(n,false));
+        vector&lt;vector&lt;bool&gt;&gt; atlantic(m,vector&lt;bool&gt;(n,false));
+        &#x2F;&#x2F;从左边缘开始dfs可以流入太平洋的单元格
+        for(int i&#x3D;0; i&lt;m; i++)
+        &#123;
+            dfs(i,0,pacific);
+        &#125;
+        &#x2F;&#x2F;从上边缘开始dfs可以流入太平洋的单元格
+        for(int j&#x3D;1; j&lt;n; j++)
+        &#123;
+            dfs(0,j,pacific);
+        &#125;
+        &#x2F;&#x2F;从右边缘开始dfs可以流入大西洋的单元格
+        for(int i&#x3D;0; i&lt;m; i++)
+        &#123;
+            dfs(i,n-1,atlantic);
+        &#125;
+        &#x2F;&#x2F;从下边缘开始dfs可以流入大西洋的单元格
+        for(int j&#x3D;0; j&lt;n-1; j++)
+        &#123;
+            dfs(m-1,j,atlantic);
+        &#125;
+        vector&lt;vector&lt;int&gt;&gt; ans;
+        for(int i&#x3D;0; i&lt;m; i++)
+        &#123;
+            for(int j&#x3D;0; j&lt;n; j++)
+            &#123;
+                if(pacific[i][j] &amp;&amp; atlantic[i][j])
+                &#123;
+                    vector&lt;int&gt; cell;
+                    cell.push_back(i);
+                    cell.push_back(j);
+                    ans.push_back(cell);
+                &#125;
+            &#125;
+        &#125;
+        return ans;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 
 
@@ -304,7 +381,83 @@
 <p>反向搜索也可以使用广度优先搜索实现。搜索过程中同样需要记录每个单元格是否可以从太平洋反向到达以及是否可以从大西洋反向到达。反向搜索结束之后，遍历每个网格，如果一个网格既可以从太平洋反向到达也可以从大西洋反向到达，则该网格满足太平洋和大西洋都可以到达，将该网格添加到答案中。</p>
 </blockquote>
 <p>AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">static</span> <span class="hljs-type">const</span> <span class="hljs-type">int</span> dirs[<span class="hljs-number">4</span>][<span class="hljs-number">2</span>] = &#123;&#123;<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>&#125;,&#123;<span class="hljs-number">1</span>,<span class="hljs-number">0</span>&#125;,&#123;<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>&#125;,&#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>&#125;&#125;;  <span class="hljs-comment">//定义方向数组，分别表示向上下左右四个方向流动</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; heights;  <span class="hljs-comment">//定义一个全局数组</span><br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> row,<span class="hljs-type">int</span> col,vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt;&gt; &amp;ocean)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">if</span>(ocean[row][col])<br>        &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-type">int</span> m = ocean.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> n = ocean[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>();<br>        ocean[row][col] = <span class="hljs-literal">true</span>;<br>        queue&lt;pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt;&gt; q;  <span class="hljs-comment">//定义队列存放单元格的位置坐标</span><br>        q.<span class="hljs-built_in">emplace</span>(row,col);  <span class="hljs-comment">//note：这里只能用q.emplace()不能使用q.push()</span><br>        <span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())<br>        &#123;<br>            <span class="hljs-keyword">auto</span> [row,col] = q.<span class="hljs-built_in">front</span>();<br>            q.<span class="hljs-built_in">pop</span>();<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">4</span>; i++)<br>            &#123;<br>                <span class="hljs-type">int</span> newRow = row+dirs[i][<span class="hljs-number">0</span>];<br>                <span class="hljs-type">int</span> newCol = col+dirs[i][<span class="hljs-number">1</span>];<br>                <span class="hljs-keyword">if</span>(newRow &gt;= <span class="hljs-number">0</span> &amp;&amp; newRow &lt; m &amp;&amp; newCol &gt;=<span class="hljs-number">0</span> &amp;&amp; newCol &lt; n &amp;&amp; heights[newRow][newCol] &gt;= heights[row][col] &amp;&amp; !ocean[newRow][newCol])<br>                &#123;<br>                    ocean[newRow][newCol] = <span class="hljs-literal">true</span>;<br>                    q.<span class="hljs-built_in">emplace</span>(newRow,newCol);<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">pacificAtlantic</span>(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; heights) &#123;<br>        <span class="hljs-keyword">this</span>-&gt;heights = heights;<br>        <span class="hljs-type">int</span> m = heights.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> n = heights[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>();<br>        <span class="hljs-comment">//防止重复遍历单元格，增加时间复杂度，定义bool类型数组进行标记,默认值为false</span><br>        vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt;&gt; <span class="hljs-built_in">pacific</span>(m,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">bool</span>&gt;(n,<span class="hljs-literal">false</span>));<br>        vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt;&gt; <span class="hljs-built_in">atlantic</span>(m,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">bool</span>&gt;(n,<span class="hljs-literal">false</span>));<br>        <span class="hljs-comment">//从左边缘开始dfs可以流入太平洋的单元格</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;m; i++)<br>        &#123;<br>            <span class="hljs-built_in">dfs</span>(i,<span class="hljs-number">0</span>,pacific);<br>        &#125;<br>        <span class="hljs-comment">//从上边缘开始dfs可以流入太平洋的单元格</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>; j&lt;n; j++)<br>        &#123;<br>            <span class="hljs-built_in">dfs</span>(<span class="hljs-number">0</span>,j,pacific);<br>        &#125;<br>        <span class="hljs-comment">//从右边缘开始dfs可以流入大西洋的单元格</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;m; i++)<br>        &#123;<br>            <span class="hljs-built_in">dfs</span>(i,n<span class="hljs-number">-1</span>,atlantic);<br>        &#125;<br>        <span class="hljs-comment">//从下边缘开始dfs可以流入大西洋的单元格</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>; j&lt;n<span class="hljs-number">-1</span>; j++)<br>        &#123;<br>            <span class="hljs-built_in">dfs</span>(m<span class="hljs-number">-1</span>,j,atlantic);<br>        &#125;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; ans;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;m; i++)<br>        &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>; j&lt;n; j++)<br>            &#123;<br>                <span class="hljs-keyword">if</span>(pacific[i][j] &amp;&amp; atlantic[i][j])<br>                &#123;<br>                    vector&lt;<span class="hljs-type">int</span>&gt; cell;<br>                    cell.<span class="hljs-built_in">push_back</span>(i);<br>                    cell.<span class="hljs-built_in">push_back</span>(j);<br>                    ans.<span class="hljs-built_in">push_back</span>(cell);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">static const int dirs[4][2] &#x3D; &#123;&#123;-1,0&#125;,&#123;1,0&#125;,&#123;0,-1&#125;,&#123;0,1&#125;&#125;;  &#x2F;&#x2F;定义方向数组，分别表示向上下左右四个方向流动
+class Solution &#123;
+public:
+    vector&lt;vector&lt;int&gt;&gt; heights;  &#x2F;&#x2F;定义一个全局数组
+
+    void dfs(int row,int col,vector&lt;vector&lt;bool&gt;&gt; &amp;ocean)
+    &#123;
+        if(ocean[row][col])
+        &#123;
+            return;
+        &#125;
+        int m &#x3D; ocean.size();
+        int n &#x3D; ocean[0].size();
+        ocean[row][col] &#x3D; true;
+        queue&lt;pair&lt;int,int&gt;&gt; q;  &#x2F;&#x2F;定义队列存放单元格的位置坐标
+        q.emplace(row,col);  &#x2F;&#x2F;note：这里只能用q.emplace()不能使用q.push()
+        while(!q.empty())
+        &#123;
+            auto [row,col] &#x3D; q.front();
+            q.pop();
+            for(int i&#x3D;0; i&lt;4; i++)
+            &#123;
+                int newRow &#x3D; row+dirs[i][0];
+                int newCol &#x3D; col+dirs[i][1];
+                if(newRow &gt;&#x3D; 0 &amp;&amp; newRow &lt; m &amp;&amp; newCol &gt;&#x3D;0 &amp;&amp; newCol &lt; n &amp;&amp; heights[newRow][newCol] &gt;&#x3D; heights[row][col] &amp;&amp; !ocean[newRow][newCol])
+                &#123;
+                    ocean[newRow][newCol] &#x3D; true;
+                    q.emplace(newRow,newCol);
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+
+    vector&lt;vector&lt;int&gt;&gt; pacificAtlantic(vector&lt;vector&lt;int&gt;&gt;&amp; heights) &#123;
+        this-&gt;heights &#x3D; heights;
+        int m &#x3D; heights.size();
+        int n &#x3D; heights[0].size();
+        &#x2F;&#x2F;防止重复遍历单元格，增加时间复杂度，定义bool类型数组进行标记,默认值为false
+        vector&lt;vector&lt;bool&gt;&gt; pacific(m,vector&lt;bool&gt;(n,false));
+        vector&lt;vector&lt;bool&gt;&gt; atlantic(m,vector&lt;bool&gt;(n,false));
+        &#x2F;&#x2F;从左边缘开始dfs可以流入太平洋的单元格
+        for(int i&#x3D;0; i&lt;m; i++)
+        &#123;
+            dfs(i,0,pacific);
+        &#125;
+        &#x2F;&#x2F;从上边缘开始dfs可以流入太平洋的单元格
+        for(int j&#x3D;1; j&lt;n; j++)
+        &#123;
+            dfs(0,j,pacific);
+        &#125;
+        &#x2F;&#x2F;从右边缘开始dfs可以流入大西洋的单元格
+        for(int i&#x3D;0; i&lt;m; i++)
+        &#123;
+            dfs(i,n-1,atlantic);
+        &#125;
+        &#x2F;&#x2F;从下边缘开始dfs可以流入大西洋的单元格
+        for(int j&#x3D;0; j&lt;n-1; j++)
+        &#123;
+            dfs(m-1,j,atlantic);
+        &#125;
+        vector&lt;vector&lt;int&gt;&gt; ans;
+        for(int i&#x3D;0; i&lt;m; i++)
+        &#123;
+            for(int j&#x3D;0; j&lt;n; j++)
+            &#123;
+                if(pacific[i][j] &amp;&amp; atlantic[i][j])
+                &#123;
+                    vector&lt;int&gt; cell;
+                    cell.push_back(i);
+                    cell.push_back(j);
+                    ans.push_back(cell);
+                &#125;
+            &#125;
+        &#125;
+        return ans;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 
             </div>
@@ -515,6 +668,8 @@
 
 
 
+  
+    
   
 
 

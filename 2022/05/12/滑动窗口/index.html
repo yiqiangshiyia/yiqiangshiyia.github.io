@@ -42,7 +42,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      
+        
+          
+        
+        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
+      
     
   
 
@@ -241,7 +249,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.4k 字
+      2.5k 字
     </span>
   
 
@@ -301,7 +309,26 @@
 </ol>
 <p>这中间，窗口的更新与维护是很重要的一环，新元素加入窗口，旧元素移出窗口，都需要及时地更新与这个窗口范围相关的数据。</p>
 <p>上述说明主要是两个while循环，可以简单抽象成一个模板如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> left = <span class="hljs-number">0</span>,right =<span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span>(right指针未越界)&#123;<br>  <span class="hljs-type">char</span> ch = arr[right++];<br>  <span class="hljs-comment">//右指针移动，更新窗口</span><br>  ...<br>  <br>  <span class="hljs-comment">//窗口数据满足条件 对于固定窗口而言，就是窗口的大小&gt;=固定值；对于动态窗口，就是从left出发，窗口不断扩充，第一次满足题意的位置</span><br>  <span class="hljs-keyword">while</span>(窗口数据满足条件)&#123;<br>   <span class="hljs-comment">//记录或者更新全局数据</span><br>   ...<br>   <br>   <span class="hljs-comment">//右指针不动，左指针开始移动一位</span><br>   <span class="hljs-type">char</span> tmp = arr[left++];<br>   <br>   <span class="hljs-comment">//左指针移动，窗口缩小，更新窗口数据</span><br>   ...<br>  &#125;<br>  <span class="hljs-comment">//返回结果</span><br>  ...<br>&#125;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int left &#x3D; 0,right &#x3D;0;
+while(right指针未越界)&#123;
+  char ch &#x3D; arr[right++];
+  &#x2F;&#x2F;右指针移动，更新窗口
+  ...
+  
+  &#x2F;&#x2F;窗口数据满足条件 对于固定窗口而言，就是窗口的大小&gt;&#x3D;固定值；对于动态窗口，就是从left出发，窗口不断扩充，第一次满足题意的位置
+  while(窗口数据满足条件)&#123;
+   &#x2F;&#x2F;记录或者更新全局数据
+   ...
+   
+   &#x2F;&#x2F;右指针不动，左指针开始移动一位
+   char tmp &#x3D; arr[left++];
+   
+   &#x2F;&#x2F;左指针移动，窗口缩小，更新窗口数据
+   ...
+  &#125;
+  &#x2F;&#x2F;返回结果
+  ...
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 <p>参考文章：</p>
 <ul>
@@ -327,7 +354,19 @@
 </ul>
 <p>直至R到达结尾</p>
 <p>代码模板</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//最长模板</span><br><span class="hljs-comment">//初始化left right result bestResult</span><br><span class="hljs-keyword">while</span>(右指针没有到达结尾)<br>&#123;<br>    窗口扩大，加入right对应元素，更新当前<span class="hljs-function">result</span><br><span class="hljs-function">    <span class="hljs-title">while</span><span class="hljs-params">(result不满足要求)</span></span><br><span class="hljs-function">    </span>&#123;<br>        窗口缩小，移除left对应元素，left右移<br>    &#125;<br>    更新最优结果bestResult<br>    right++;<br>&#125;<br>返回bestResult;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;最长模板
+&#x2F;&#x2F;初始化left right result bestResult
+while(右指针没有到达结尾)
+&#123;
+    窗口扩大，加入right对应元素，更新当前result
+    while(result不满足要求)
+    &#123;
+        窗口缩小，移除left对应元素，left右移
+    &#125;
+    更新最优结果bestResult
+    right++;
+&#125;
+返回bestResult;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 
 
@@ -339,7 +378,19 @@
 </ul>
 <p>直至R到达结尾</p>
 <p>代码模板：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//最短模板</span><br><span class="hljs-comment">//初始化left right result bestResult</span><br><span class="hljs-keyword">while</span>(右指针没有到达结尾)<br>&#123;<br>    窗口扩大，加入right对应元素，更新当前<span class="hljs-function">result</span><br><span class="hljs-function">    <span class="hljs-title">while</span><span class="hljs-params">(result满足要求)</span></span><br><span class="hljs-function">    </span>&#123;<br>        更新最优结果bestResult<br>        窗口缩小，移除left对应元素，left右移<br>    &#125;<br>    right++;<br>&#125;<br>返回bestResult;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;最短模板
+&#x2F;&#x2F;初始化left right result bestResult
+while(右指针没有到达结尾)
+&#123;
+    窗口扩大，加入right对应元素，更新当前result
+    while(result满足要求)
+    &#123;
+        更新最优结果bestResult
+        窗口缩小，移除left对应元素，left右移
+    &#125;
+    right++;
+&#125;
+返回bestResult;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 
 
@@ -353,7 +404,33 @@
 <p>输入：nums = [10,5,2,6], k = 100<br>输出：8<br>解释：8 个乘积小于 100 的子数组分别为：[10]、[5]、[2],、[6]、[10,5]、[5,2]、[2,6]、[5,2,6]。<br>需要注意的是 [10,5,2] 并不是乘积小于 100 的子数组。</p>
 </blockquote>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">numSubarrayProductLessThanK</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>,r = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> cur = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span>(l&lt;=r &amp;&amp; r&lt;nums.<span class="hljs-built_in">size</span>())<br>        &#123;<br>            cur = cur*nums[r];<br>            <span class="hljs-keyword">while</span>(l &lt;= r &amp;&amp; cur &gt;= k)<br>            &#123;<br>                cur = cur/nums[l];<br>                l++;<br>            &#125;<br>            ans = ans+(r-l+<span class="hljs-number">1</span>);<br>            r++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">[10]</span><br><span class="hljs-comment">[10,5] [5]</span><br><span class="hljs-comment">[5,2] [2]</span><br><span class="hljs-comment">[5,2,6] [2,6] [6]</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+public:
+    int numSubarrayProductLessThanK(vector&lt;int&gt;&amp; nums, int k) &#123;
+        int ans &#x3D; 0;
+        int l &#x3D; 0,r &#x3D; 0;
+        int cur &#x3D; 1;
+        while(l&lt;&#x3D;r &amp;&amp; r&lt;nums.size())
+        &#123;
+            cur &#x3D; cur*nums[r];
+            while(l &lt;&#x3D; r &amp;&amp; cur &gt;&#x3D; k)
+            &#123;
+                cur &#x3D; cur&#x2F;nums[l];
+                l++;
+            &#125;
+            ans &#x3D; ans+(r-l+1);
+            r++;
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+
+&#x2F;*
+[10]
+[10,5] [5]
+[5,2] [2]
+[5,2,6] [2,6] [6]
+*&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 
 
@@ -565,6 +642,8 @@
 
 
 
+  
+    
   
 
 

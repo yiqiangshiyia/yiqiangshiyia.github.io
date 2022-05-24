@@ -43,7 +43,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      
+        
+          
+        
+        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
+      
     
   
 
@@ -242,7 +250,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.3k 字
+      2.4k 字
     </span>
   
 
@@ -251,7 +259,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      20 分钟
+      21 分钟
     </span>
   
 
@@ -290,7 +298,42 @@
 <p>int peek() 返回队列开头的元素 </p>
 <p>boolean empty() 如果队列为空，返回 true ；否则，返回 false  </p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyQueue</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    stack&lt;<span class="hljs-type">int</span>&gt; stIn;  <span class="hljs-comment">//创建一个栈stIn 用于进栈</span><br>    stack&lt;<span class="hljs-type">int</span>&gt; stOut; <span class="hljs-comment">//创建一个栈stOut 用于出栈</span><br>    <span class="hljs-built_in">MyQueue</span>() &#123;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<br>        stIn.<span class="hljs-built_in">push</span>(x);  <span class="hljs-comment">//将元素压入栈中</span><br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(stOut.<span class="hljs-built_in">empty</span>())  <span class="hljs-comment">//如果栈stOut为空 则将栈stIn中所有元素压入栈stOut中</span><br>        &#123;<br>            <span class="hljs-keyword">while</span>(!stIn.<span class="hljs-built_in">empty</span>())<br>            &#123;<br>                stOut.<span class="hljs-built_in">push</span>(stIn.<span class="hljs-built_in">top</span>());  <span class="hljs-comment">//将栈stIn栈顶元素压入栈stOut中</span><br>                stIn.<span class="hljs-built_in">pop</span>();  <span class="hljs-comment">//栈顶元素压入栈stOut后将元素删除</span><br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">//当栈stOut不为空时 则直接弹出栈stOut栈顶元素</span><br>        <span class="hljs-type">int</span> res = stOut.<span class="hljs-built_in">top</span>();<br>        stOut.<span class="hljs-built_in">pop</span>();<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">peek</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-type">int</span> res = <span class="hljs-keyword">this</span>-&gt;<span class="hljs-built_in">pop</span>();  <span class="hljs-comment">//直接使用已有的pop函数获取栈顶元素</span><br>        stOut.<span class="hljs-built_in">push</span>(res);  <span class="hljs-comment">//因为pop函数弹出了元素res 所以再添加回去</span><br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> stIn.<span class="hljs-built_in">empty</span>() &amp;&amp; stOut.<span class="hljs-built_in">empty</span>();  <span class="hljs-comment">//当栈stIn和栈stOut都不为空时 队列才不为空</span><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class MyQueue &#123;
+public:
+    stack&lt;int&gt; stIn;  &#x2F;&#x2F;创建一个栈stIn 用于进栈
+    stack&lt;int&gt; stOut; &#x2F;&#x2F;创建一个栈stOut 用于出栈
+    MyQueue() &#123;
+    &#125;
+    
+    void push(int x) &#123;
+        stIn.push(x);  &#x2F;&#x2F;将元素压入栈中
+    &#125;
+
+    int pop() &#123;
+        if(stOut.empty())  &#x2F;&#x2F;如果栈stOut为空 则将栈stIn中所有元素压入栈stOut中
+        &#123;
+            while(!stIn.empty())
+            &#123;
+                stOut.push(stIn.top());  &#x2F;&#x2F;将栈stIn栈顶元素压入栈stOut中
+                stIn.pop();  &#x2F;&#x2F;栈顶元素压入栈stOut后将元素删除
+            &#125;
+        &#125;
+        &#x2F;&#x2F;当栈stOut不为空时 则直接弹出栈stOut栈顶元素
+        int res &#x3D; stOut.top();
+        stOut.pop();
+        return res;
+    &#125;
+
+    int peek() &#123;
+        int res &#x3D; this-&gt;pop();  &#x2F;&#x2F;直接使用已有的pop函数获取栈顶元素
+        stOut.push(res);  &#x2F;&#x2F;因为pop函数弹出了元素res 所以再添加回去
+        return res;
+    &#125;
+
+    bool empty() &#123;
+        return stIn.empty() &amp;&amp; stOut.empty();  &#x2F;&#x2F;当栈stIn和栈stOut都不为空时 队列才不为空
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 
 
@@ -303,13 +346,75 @@
 <p>boolean empty() 如果栈是空的，返回 true ；否则，返回 false 。  </p>
 <h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p><strong>方法1：两个队列实现栈</strong> </p>
 <p>AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyStack</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    queue&lt;<span class="hljs-type">int</span>&gt; queue1;  <span class="hljs-comment">//创建一个队列queue1 用于存储所有入栈元素</span><br>    queue&lt;<span class="hljs-type">int</span>&gt; queue2;  <span class="hljs-comment">//创建一个队列queue2 用于临时存储即将入栈的元素</span><br>    <span class="hljs-built_in">MyStack</span>() &#123;<br>    &#125;<br>    <br>    <span class="hljs-comment">//使用两个队列模拟元素入栈</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<br>        queue2.<span class="hljs-built_in">push</span>(x);  <span class="hljs-comment">//将入栈元素插入临时队列queue2</span><br>        <span class="hljs-keyword">while</span>(!queue1.<span class="hljs-built_in">empty</span>())  <span class="hljs-comment">//将队列queue1中所有元素插入临时队列queue2</span><br>        &#123;<br>            queue2.<span class="hljs-built_in">push</span>(queue1.<span class="hljs-built_in">front</span>());  <span class="hljs-comment">//将队列queue1中头元素插入队列queue2中</span><br>            queue1.<span class="hljs-built_in">pop</span>();  <span class="hljs-comment">//删除队列queue1头元素</span><br>        &#125;<br>        <span class="hljs-built_in">swap</span>(queue1,queue2);  <span class="hljs-comment">//为了避免打乱元素顺序 交换队列queue1和queue2</span><br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-type">int</span> res = queue1.<span class="hljs-built_in">front</span>();<br>        queue1.<span class="hljs-built_in">pop</span>();<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">top</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-type">int</span> res = queue1.<span class="hljs-built_in">front</span>();<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> queue1.<span class="hljs-built_in">empty</span>();  <span class="hljs-comment">//因为queue1包含了栈中所有元素 所以只需要检查queue1是否为空即可</span><br>        <span class="hljs-comment">//queue2作为临时队列 不永久存储栈中的元素</span><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class MyStack &#123;
+public:
+    queue&lt;int&gt; queue1;  &#x2F;&#x2F;创建一个队列queue1 用于存储所有入栈元素
+    queue&lt;int&gt; queue2;  &#x2F;&#x2F;创建一个队列queue2 用于临时存储即将入栈的元素
+    MyStack() &#123;
+    &#125;
+    
+    &#x2F;&#x2F;使用两个队列模拟元素入栈
+    void push(int x) &#123;
+        queue2.push(x);  &#x2F;&#x2F;将入栈元素插入临时队列queue2
+        while(!queue1.empty())  &#x2F;&#x2F;将队列queue1中所有元素插入临时队列queue2
+        &#123;
+            queue2.push(queue1.front());  &#x2F;&#x2F;将队列queue1中头元素插入队列queue2中
+            queue1.pop();  &#x2F;&#x2F;删除队列queue1头元素
+        &#125;
+        swap(queue1,queue2);  &#x2F;&#x2F;为了避免打乱元素顺序 交换队列queue1和queue2
+    &#125;
+
+    int pop() &#123;
+        int res &#x3D; queue1.front();
+        queue1.pop();
+        return res;
+    &#125;
+
+    int top() &#123;
+        int res &#x3D; queue1.front();
+        return res;
+    &#125;
+
+    bool empty() &#123;
+        return queue1.empty();  &#x2F;&#x2F;因为queue1包含了栈中所有元素 所以只需要检查queue1是否为空即可
+        &#x2F;&#x2F;queue2作为临时队列 不永久存储栈中的元素
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 <p> </p>
 <p><strong>方法二：一个队列实现栈</strong></p>
 <p>入栈操作时，首先获得入栈前的元素个数 n，然后将元素入队到队列，再将队列中的前 n 个元素（即除了新入栈的元素之外的全部元素）依次出队并入队到队列，此时队列的前端的元素即为新入栈的元素，且队列的前端和后端分别对应栈顶和栈底。   </p>
 <p>AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyStack</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    queue&lt;<span class="hljs-type">int</span>&gt; q;<br>    <span class="hljs-built_in">MyStack</span>() &#123;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n = q.<span class="hljs-built_in">size</span>();<br>        q.<span class="hljs-built_in">push</span>(x);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            q.<span class="hljs-built_in">push</span>(q.<span class="hljs-built_in">front</span>());<br>            q.<span class="hljs-built_in">pop</span>();<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-type">int</span> r = q.<span class="hljs-built_in">front</span>();<br>        q.<span class="hljs-built_in">pop</span>();<br>        <span class="hljs-keyword">return</span> r;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">top</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-type">int</span> r = q.<span class="hljs-built_in">front</span>();<br>        <span class="hljs-keyword">return</span> r;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> q.<span class="hljs-built_in">empty</span>();<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class MyStack &#123;
+public:
+    queue&lt;int&gt; q;
+    MyStack() &#123;
+    &#125;
+
+    void push(int x) &#123;
+        int n &#x3D; q.size();
+        q.push(x);
+        for (int i &#x3D; 0; i &lt; n; i++) &#123;
+            q.push(q.front());
+            q.pop();
+        &#125;
+    &#125;
+
+    int pop() &#123;
+        int r &#x3D; q.front();
+        q.pop();
+        return r;
+    &#125;
+
+    int top() &#123;
+        int r &#x3D; q.front();
+        return r;
+    &#125;
+
+    bool empty() &#123;
+        return q.empty();
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 <p> </p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-stack-using-queues/solution/yong-dui-lie-shi-xian-zhan-by-leetcode-solution/">LeetCode题解</a></p>
@@ -522,6 +627,8 @@
 
 
 
+  
+    
   
 
 

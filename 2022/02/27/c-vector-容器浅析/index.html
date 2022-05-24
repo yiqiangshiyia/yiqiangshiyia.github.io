@@ -42,7 +42,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      
+        
+          
+        
+        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
+      
     
   
 
@@ -250,7 +258,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12 分钟
+      11 分钟
     </span>
   
 
@@ -287,7 +295,34 @@
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>方法1</strong></p>
 <p>哈希表（不太会） 学习C++算法哈希（Hash） B站收藏   </p>
 <p>AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">intersect</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums1, vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums2)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(nums1.<span class="hljs-built_in">size</span>()&gt;nums2.<span class="hljs-built_in">size</span>())<br>        &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">intersect</span>(nums2,nums1);<br>        &#125;<br>        unordered_map &lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; m;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> num : nums1)<br>        &#123;<br>            m[num]++;<br>        &#125;<br>        vector&lt;<span class="hljs-type">int</span>&gt; intersection;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> num : nums2)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(m.<span class="hljs-built_in">count</span>(num))<br>            &#123;<br>                intersection.<span class="hljs-built_in">push_back</span>(num);<br>                m[num]--;<br>                <span class="hljs-keyword">if</span>(m[num] == <span class="hljs-number">0</span>)<br>                &#123;<br>                    m.<span class="hljs-built_in">erase</span>(num);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> intersection;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+public:
+    vector&lt;int&gt; intersect(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) &#123;
+        if(nums1.size()&gt;nums2.size())
+        &#123;
+            return intersect(nums2,nums1);
+        &#125;
+        unordered_map &lt;int,int&gt; m;
+        for(int num : nums1)
+        &#123;
+            m[num]++;
+        &#125;
+        vector&lt;int&gt; intersection;
+        for(int num : nums2)
+        &#123;
+            if(m.count(num))
+            &#123;
+                intersection.push_back(num);
+                m[num]--;
+                if(m[num] &#x3D;&#x3D; 0)
+                &#123;
+                    m.erase(num);
+                &#125;
+            &#125;
+        &#125;
+        return intersection;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 
 
@@ -296,7 +331,34 @@
 <p>学习C++  STL标准库函数+vector 容器 </p>
 <p><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/cpp-vector-container-analysis.html">C++ vector 容器浅析</a>   </p>
 <p>AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">intersect</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums1, vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums2)</span> </span>&#123;<br>        <span class="hljs-built_in">sort</span>(nums1.<span class="hljs-built_in">begin</span>(),nums1.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-built_in">sort</span>(nums2.<span class="hljs-built_in">begin</span>(),nums2.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-type">int</span> length1 = nums1.<span class="hljs-built_in">size</span>(),length2 = nums2.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> index1 = <span class="hljs-number">0</span>,index2 = <span class="hljs-number">0</span>;<br>        vector&lt;<span class="hljs-type">int</span>&gt; result;<br>        <span class="hljs-keyword">while</span>(index1&lt;length1 &amp;&amp; index2&lt;length2)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(nums1[index1]&gt;nums2[index2])<br>            &#123;<br>                index2++;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(nums1[index1]&lt;nums2[index2])<br>            &#123;<br>                index1++;<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                result.<span class="hljs-built_in">push_back</span>(nums1[index1]);<br>                index1++;<br>                index2++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+public:
+    vector&lt;int&gt; intersect(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) &#123;
+        sort(nums1.begin(),nums1.end());
+        sort(nums2.begin(),nums2.end());
+        int length1 &#x3D; nums1.size(),length2 &#x3D; nums2.size();
+        int index1 &#x3D; 0,index2 &#x3D; 0;
+        vector&lt;int&gt; result;
+        while(index1&lt;length1 &amp;&amp; index2&lt;length2)
+        &#123;
+            if(nums1[index1]&gt;nums2[index2])
+            &#123;
+                index2++;
+            &#125;
+            else if(nums1[index1]&lt;nums2[index2])
+            &#123;
+                index1++;
+            &#125;
+            else
+            &#123;
+                result.push_back(nums1[index1]);
+                index1++;
+                index2++;
+            &#125;
+        &#125;
+        return result;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 
 
@@ -508,6 +570,8 @@
 
 
 
+  
+    
   
 
 

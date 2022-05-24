@@ -43,7 +43,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      
+        
+          
+        
+        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
+      
     
   
 
@@ -242,7 +250,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.4k 字
+      2.9k 字
     </span>
   
 
@@ -251,7 +259,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      29 分钟
+      24 分钟
     </span>
   
 
@@ -302,19 +310,90 @@
 <p>import re    #python的一个模块 用来将自己想要的数据取下来</p>
 <p>re模块是针对字符串这种数据格式来提取的一种方法</p>
 <p>具体代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">import</span> requests  <span class="hljs-comment">#爬取html的标准库函数</span><br>headers=&#123;<br>    <span class="hljs-string">&quot;User-Urgent&quot;</span>:<span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36&quot;</span><br>&#125;  <span class="hljs-comment">#防反爬 模拟人去访问网站 </span><br>ret=requests.get(<span class="hljs-string">&#x27;https://www.xbiquge.la/paihangbang/&#x27;</span>)   <span class="hljs-comment">#ret返回的是网页请求成功的状态码</span><br>result=ret.content.decode()   <span class="hljs-comment">#通过这段代码能够把网页的中文源代码返回给我们</span><br><span class="hljs-comment">#result是一个字符串</span><br>novel = <span class="hljs-string">&#x27;&lt;li&gt;\d&lt;a href=&quot;.+&quot;&gt;(.*?)&lt;\/a&gt;&lt;\/li&gt;&#x27;</span><br>content=re.findall(novel,result)<br><span class="hljs-comment">#re.S代表可以匹配到换行符</span><br><span class="hljs-comment">#print(content)</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;笔趣阁爬虫数据.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> content:<br>         s = i+<span class="hljs-string">&#x27;\n&#x27;</span><br>         f.write(s)<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> re
+<span class="token keyword">import</span> requests  <span class="token comment">#爬取html的标准库函数</span>
+headers<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+    <span class="token string">"User-Urgent"</span><span class="token punctuation">:</span><span class="token string">"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"</span>
+<span class="token punctuation">&#125;</span>  <span class="token comment">#防反爬 模拟人去访问网站 </span>
+ret<span class="token operator">=</span>requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://www.xbiquge.la/paihangbang/'</span><span class="token punctuation">)</span>   <span class="token comment">#ret返回的是网页请求成功的状态码</span>
+result<span class="token operator">=</span>ret<span class="token punctuation">.</span>content<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment">#通过这段代码能够把网页的中文源代码返回给我们</span>
+<span class="token comment">#result是一个字符串</span>
+novel <span class="token operator">=</span> <span class="token string">'&lt;li>\d&lt;a href=".+">(.*?)&lt;\/a>&lt;\/li>'</span>
+content<span class="token operator">=</span>re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span>novel<span class="token punctuation">,</span>result<span class="token punctuation">)</span>
+<span class="token comment">#re.S代表可以匹配到换行符</span>
+<span class="token comment">#print(content)</span>
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'笔趣阁爬虫数据.txt'</span><span class="token punctuation">,</span><span class="token string">'w'</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> content<span class="token punctuation">:</span>
+         s <span class="token operator">=</span> i<span class="token operator">+</span><span class="token string">'\n'</span>
+         f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>s<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 
 
-<h3 id="一个完整的爬虫实例（re模块解析）"><a href="#一个完整的爬虫实例（re模块解析）" class="headerlink" title="一个完整的爬虫实例（re模块解析）"></a><strong>一个完整的爬虫实例（re模块解析）</strong></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">import</span> requests<br>headers=&#123;<br>    <span class="hljs-string">&quot;User-Urgent&quot;</span>:<span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36&quot;</span><br>&#125;<br>ret=requests.get(<span class="hljs-string">&#x27;https://www.xbiquge.la/paihangbang/&#x27;</span>) <br>result=ret.content.decode() <br><span class="hljs-comment">#print(type(result))   </span><br>novel = <span class="hljs-string">&#x27;&lt;li&gt;\d&lt;a href=&quot;.+&quot;&gt;(.*?)&lt;\/a&gt;&lt;\/li&gt;&#x27;</span><br>content=re.findall(novel,result)<br><span class="hljs-comment">#print(content)</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;笔趣阁爬虫数据.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> content:<br>         s = i+<span class="hljs-string">&#x27;\n&#x27;</span><br>         f.write(s)<br></code></pre></td></tr></table></figure>
+<h3 id="一个完整的爬虫实例（re模块解析）"><a href="#一个完整的爬虫实例（re模块解析）" class="headerlink" title="一个完整的爬虫实例（re模块解析）"></a><strong>一个完整的爬虫实例（re模块解析）</strong></h3><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> re
+<span class="token keyword">import</span> requests
+headers<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+    <span class="token string">"User-Urgent"</span><span class="token punctuation">:</span><span class="token string">"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"</span>
+<span class="token punctuation">&#125;</span>
+ret<span class="token operator">=</span>requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://www.xbiquge.la/paihangbang/'</span><span class="token punctuation">)</span> 
+result<span class="token operator">=</span>ret<span class="token punctuation">.</span>content<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token comment">#print(type(result))   </span>
+novel <span class="token operator">=</span> <span class="token string">'&lt;li>\d&lt;a href=".+">(.*?)&lt;\/a>&lt;\/li>'</span>
+content<span class="token operator">=</span>re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span>novel<span class="token punctuation">,</span>result<span class="token punctuation">)</span>
+<span class="token comment">#print(content)</span>
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'笔趣阁爬虫数据.txt'</span><span class="token punctuation">,</span><span class="token string">'w'</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> content<span class="token punctuation">:</span>
+         s <span class="token operator">=</span> i<span class="token operator">+</span><span class="token string">'\n'</span>
+         f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>s<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 
 
-<h3 id="一个完整的爬虫实例（BeautifulSoup模块解析）"><a href="#一个完整的爬虫实例（BeautifulSoup模块解析）" class="headerlink" title="一个完整的爬虫实例（BeautifulSoup模块解析）"></a><strong>一个完整的爬虫实例（BeautifulSoup模块解析）</strong></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests  <br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br>headers=&#123;<br>    <span class="hljs-string">&quot;User-Urgent&quot;</span>:<span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36&quot;</span><br>&#125;<br>ret=requests.get(<span class="hljs-string">&#x27;https://www.xbiquge.la/paihangbang/&#x27;</span>) <br>result=ret.content.decode() <br><span class="hljs-comment">#print(type(result)) </span><br>soup = BeautifulSoup(result,<span class="hljs-string">&#x27;html.parser&#x27;</span>)<br><span class="hljs-comment">#print(type(soup))</span><br>content = soup.find_all(<span class="hljs-string">&#x27;li&#x27;</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> content:<br>    <span class="hljs-built_in">print</span>(i.text)<br></code></pre></td></tr></table></figure>
+<h3 id="一个完整的爬虫实例（BeautifulSoup模块解析）"><a href="#一个完整的爬虫实例（BeautifulSoup模块解析）" class="headerlink" title="一个完整的爬虫实例（BeautifulSoup模块解析）"></a><strong>一个完整的爬虫实例（BeautifulSoup模块解析）</strong></h3><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests  
+<span class="token keyword">from</span> bs4 <span class="token keyword">import</span> BeautifulSoup
+headers<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+    <span class="token string">"User-Urgent"</span><span class="token punctuation">:</span><span class="token string">"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"</span>
+<span class="token punctuation">&#125;</span>
+ret<span class="token operator">=</span>requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://www.xbiquge.la/paihangbang/'</span><span class="token punctuation">)</span> 
+result<span class="token operator">=</span>ret<span class="token punctuation">.</span>content<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token comment">#print(type(result)) </span>
+soup <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span>result<span class="token punctuation">,</span><span class="token string">'html.parser'</span><span class="token punctuation">)</span>
+<span class="token comment">#print(type(soup))</span>
+content <span class="token operator">=</span> soup<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> content<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 
 
-<h3 id="写给小吕的详细解释版"><a href="#写给小吕的详细解释版" class="headerlink" title="写给小吕的详细解释版"></a><strong>写给小吕的详细解释版</strong></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re  <span class="hljs-comment">#re为python的一个模块 用于解析网页源代码</span><br><span class="hljs-comment">#同样可以实现该功能的还有bs4 lxml等</span><br><span class="hljs-keyword">import</span> requests  <span class="hljs-comment">#爬取html的标准库函数</span><br><br>headers=&#123;<br>    <span class="hljs-string">&quot;User-Urgent&quot;</span>:<span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36&quot;</span><br>&#125;  <span class="hljs-comment">#防反爬 模拟人去访问网站 </span><br><br>ret=requests.get(<span class="hljs-string">&#x27;https://www.xbiquge.la/paihangbang/&#x27;</span>)   <span class="hljs-comment">#ret返回的是网页请求成功的状态码</span><br><span class="hljs-comment">#requests.get()可以得到该网站的代码</span><br><br>result=ret.content.decode()   <span class="hljs-comment">#对代码进行解析 通过解析能够把网页的中文源代码返回给我们</span><br><span class="hljs-comment">#得到中文源代码之后只需要提取我们所需要的的数据即可</span><br><span class="hljs-comment">#result是一个字符串</span><br><br>novel = <span class="hljs-string">&#x27;&lt;li&gt;\d&lt;a href=&quot;.+&quot;&gt;(.*?)&lt;\/a&gt;&lt;\/li&gt;&#x27;</span><br><span class="hljs-comment">#使用正则表达式去匹配代码中的关键字 小括号()前后代表所要去匹配代码的标签</span><br><span class="hljs-comment">#(.*?)代表所要提取的内容</span><br><span class="hljs-comment">#这个地方你在展示的时候如果说不明白的话 你可以这么说：</span><br><span class="hljs-comment">#正则表达式是爬虫的关键 用来提取所爬代码中我们所需要的数据 如果大家想要更深入的了解的话 可以建议大家去b站看一下这个视频</span><br><span class="hljs-comment">#b站视频链接(https://www.bilibili.com/video/BV1da4y1p7iZ)</span><br><span class="hljs-comment">#这个视频详细的介绍了正则表达式的使用 以及还推荐了一个很实用的在线的正则表达式检验的网站 同学们可以去学习一下</span><br><span class="hljs-comment">#正则表达式检验网站(https://regex101.com/)</span><br><br>content=re.findall(novel,result)  <span class="hljs-comment">#调用re模块 re.finaall是用来查找result中与novel所匹配的内容 以列表的形式返回所匹配到的字符串</span><br><span class="hljs-comment">#将所匹配到的字符串存储在content列表中</span><br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;笔趣阁爬虫数据.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:  <span class="hljs-comment">#以写入的方式将所提取的数据存入txt文件中 &#x27;w&#x27;代表写入 encoding=&#x27;utf-8&#x27;代表声明文件的编码方式</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> content:  <span class="hljs-comment">#循环遍历列表</span><br>         s = i+<span class="hljs-string">&#x27;\n&#x27;</span>    <span class="hljs-comment">#&#x27;\n&#x27;代表换行符 每写入一个列表元素之后进行换行</span><br>         f.write(s)    <span class="hljs-comment">#将列表元素写入文件中</span><br></code></pre></td></tr></table></figure>
+<h3 id="写给小吕的详细解释版"><a href="#写给小吕的详细解释版" class="headerlink" title="写给小吕的详细解释版"></a><strong>写给小吕的详细解释版</strong></h3><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> re  <span class="token comment">#re为python的一个模块 用于解析网页源代码</span>
+<span class="token comment">#同样可以实现该功能的还有bs4 lxml等</span>
+<span class="token keyword">import</span> requests  <span class="token comment">#爬取html的标准库函数</span>
+
+headers<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+    <span class="token string">"User-Urgent"</span><span class="token punctuation">:</span><span class="token string">"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"</span>
+<span class="token punctuation">&#125;</span>  <span class="token comment">#防反爬 模拟人去访问网站 </span>
+
+ret<span class="token operator">=</span>requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://www.xbiquge.la/paihangbang/'</span><span class="token punctuation">)</span>   <span class="token comment">#ret返回的是网页请求成功的状态码</span>
+<span class="token comment">#requests.get()可以得到该网站的代码</span>
+
+result<span class="token operator">=</span>ret<span class="token punctuation">.</span>content<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment">#对代码进行解析 通过解析能够把网页的中文源代码返回给我们</span>
+<span class="token comment">#得到中文源代码之后只需要提取我们所需要的的数据即可</span>
+<span class="token comment">#result是一个字符串</span>
+
+novel <span class="token operator">=</span> <span class="token string">'&lt;li>\d&lt;a href=".+">(.*?)&lt;\/a>&lt;\/li>'</span>
+<span class="token comment">#使用正则表达式去匹配代码中的关键字 小括号()前后代表所要去匹配代码的标签</span>
+<span class="token comment">#(.*?)代表所要提取的内容</span>
+<span class="token comment">#这个地方你在展示的时候如果说不明白的话 你可以这么说：</span>
+<span class="token comment">#正则表达式是爬虫的关键 用来提取所爬代码中我们所需要的数据 如果大家想要更深入的了解的话 可以建议大家去b站看一下这个视频</span>
+<span class="token comment">#b站视频链接(https://www.bilibili.com/video/BV1da4y1p7iZ)</span>
+<span class="token comment">#这个视频详细的介绍了正则表达式的使用 以及还推荐了一个很实用的在线的正则表达式检验的网站 同学们可以去学习一下</span>
+<span class="token comment">#正则表达式检验网站(https://regex101.com/)</span>
+
+content<span class="token operator">=</span>re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span>novel<span class="token punctuation">,</span>result<span class="token punctuation">)</span>  <span class="token comment">#调用re模块 re.finaall是用来查找result中与novel所匹配的内容 以列表的形式返回所匹配到的字符串</span>
+<span class="token comment">#将所匹配到的字符串存储在content列表中</span>
+
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'笔趣阁爬虫数据.txt'</span><span class="token punctuation">,</span><span class="token string">'w'</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>  <span class="token comment">#以写入的方式将所提取的数据存入txt文件中 'w'代表写入 encoding='utf-8'代表声明文件的编码方式</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> content<span class="token punctuation">:</span>  <span class="token comment">#循环遍历列表</span>
+         s <span class="token operator">=</span> i<span class="token operator">+</span><span class="token string">'\n'</span>    <span class="token comment">#'\n'代表换行符 每写入一个列表元素之后进行换行</span>
+         f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>s<span class="token punctuation">)</span>    <span class="token comment">#将列表元素写入文件中</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 
             </div>
@@ -525,6 +604,8 @@
 
 
 
+  
+    
   
 
 

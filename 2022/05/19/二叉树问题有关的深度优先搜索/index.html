@@ -42,7 +42,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      
+        
+          
+        
+        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
+      
     
   
 
@@ -241,7 +249,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      846 字
+      807 字
     </span>
   
 
@@ -250,7 +258,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8 分钟
+      7 分钟
     </span>
   
 
@@ -308,7 +316,30 @@
 </li>
 </ol>
 <p>DFS代码模板（JS版）：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">dfsTemplate</span>(<span class="hljs-params">root</span>) &#123;<br>    <span class="hljs-comment">//存储最终结果</span><br>    <span class="hljs-keyword">let</span> res;<br>    <span class="hljs-comment">//初始化当前结果</span><br>    <span class="hljs-keyword">let</span> start;<br>    <span class="hljs-comment">//构造递归函数dfs,通常参数为当前节点和当前结果</span><br>    <span class="hljs-keyword">let</span> dfs = <span class="hljs-keyword">function</span> (<span class="hljs-params">node, currentResult</span>) &#123;<br>        <span class="hljs-comment">//终止条件返回判断</span><br>        <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-comment">//更新当前结果currentResult</span><br><br>        <span class="hljs-comment">//若到达末尾叶子结点，进行最优结果更新</span><br>        <span class="hljs-keyword">if</span> (node.<span class="hljs-property">left</span> == <span class="hljs-literal">null</span> &amp;&amp; node.<span class="hljs-property">right</span> == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-comment">//update res</span><br>        &#125;<br>        <span class="hljs-comment">//左右子树递归</span><br>        <span class="hljs-title function_">dfs</span>(node.<span class="hljs-property">left</span>, currentResult);<br>        <span class="hljs-title function_">dfs</span>(node.<span class="hljs-property">right</span>, currentResult);<br>    &#125;<br>    <span class="hljs-title function_">dfs</span>(root, start);<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">dfsTemplate</span><span class="token punctuation">(</span><span class="token parameter">root</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">//存储最终结果</span>
+    <span class="token keyword">let</span> res<span class="token punctuation">;</span>
+    <span class="token comment">//初始化当前结果</span>
+    <span class="token keyword">let</span> start<span class="token punctuation">;</span>
+    <span class="token comment">//构造递归函数dfs,通常参数为当前节点和当前结果</span>
+    <span class="token keyword">let</span> <span class="token function-variable function">dfs</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">node<span class="token punctuation">,</span> currentResult</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//终止条件返回判断</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>node <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">//更新当前结果currentResult</span>
+
+        <span class="token comment">//若到达末尾叶子结点，进行最优结果更新</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> node<span class="token punctuation">.</span>right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">//update res</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">//左右子树递归</span>
+        <span class="token function">dfs</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">,</span> currentResult<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">dfs</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">,</span> currentResult<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">dfs</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> start<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 <p>相关题目：</p>
 <ul>
@@ -522,6 +553,8 @@
 
 
 
+  
+    
   
 
 

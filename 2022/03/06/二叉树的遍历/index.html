@@ -42,7 +42,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      
+        
+          
+        
+        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
+      
     
   
 
@@ -241,7 +249,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.5k 字
+      3.6k 字
     </span>
   
 
@@ -286,28 +294,120 @@
 <p>CSDN博客：（易错点）什么时候要传入参数的引用“&amp;“：<a target="_blank" rel="noopener" href="https://blog.csdn.net/dyw_666666/article/details/107823466">https://blog.csdn.net/dyw_666666/article/details/107823466</a></p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>根-&gt;左-&gt;右   </p>
 <p><strong>方法一：递归法</strong> </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><pre><code class="hljs c++">AC代码：<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">preorder</span><span class="hljs-params">(TreeNode* root,vector&lt;<span class="hljs-type">int</span>&gt; &amp;res)</span></span>&#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)<br>        &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        res.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>        <span class="hljs-built_in">preorder</span>(root-&gt;left,res);<br>        <span class="hljs-built_in">preorder</span>(root-&gt;right,res);<br>    &#125;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">preorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-type">int</span>&gt; res;<br>        <span class="hljs-built_in">preorder</span>(root,res);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">AC代码：
+class Solution &#123;
+public:
+    void preorder(TreeNode* root,vector&lt;int&gt; &amp;res)&#123;
+        if(root &#x3D;&#x3D; nullptr)
+        &#123;
+            return;
+        &#125;
+        res.push_back(root-&gt;val);
+        preorder(root-&gt;left,res);
+        preorder(root-&gt;right,res);
+    &#125;
+    vector&lt;int&gt; preorderTraversal(TreeNode* root) &#123;
+        vector&lt;int&gt; res;
+        preorder(root,res);
+        return res;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 <p><strong>方法二：迭代法</strong> </p>
 <p>方法1中的递归函数可以用迭代的方法实现，迭代法利用栈来遍历二叉树</p>
 <p>LeetCode题解+动画演示 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/solution/er-cha-shu-de-qian-xu-bian-li-by-leetcode-solution/">二叉树前序遍历 迭代法</a> </p>
 <p>AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">preorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-type">int</span>&gt; res;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">return</span> res;<br>        &#125;<br>        stack&lt;TreeNode*&gt; stk;<br>        TreeNode* node = root;<br>        <span class="hljs-keyword">while</span> (!stk.<span class="hljs-built_in">empty</span>() || node != <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">while</span> (node != <span class="hljs-literal">nullptr</span>) &#123;<br>                res.<span class="hljs-built_in">emplace_back</span>(node-&gt;val);<br>                stk.<span class="hljs-built_in">emplace</span>(node);<br>                node = node-&gt;left;<br>            &#125;<br>            node = stk.<span class="hljs-built_in">top</span>();<br>            stk.<span class="hljs-built_in">pop</span>();<br>            node = node-&gt;right;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+public:
+    vector&lt;int&gt; preorderTraversal(TreeNode* root) &#123;
+        vector&lt;int&gt; res;
+        if (root &#x3D;&#x3D; nullptr) &#123;
+            return res;
+        &#125;
+        stack&lt;TreeNode*&gt; stk;
+        TreeNode* node &#x3D; root;
+        while (!stk.empty() || node !&#x3D; nullptr) &#123;
+            while (node !&#x3D; nullptr) &#123;
+                res.emplace_back(node-&gt;val);
+                stk.emplace(node);
+                node &#x3D; node-&gt;left;
+            &#125;
+            node &#x3D; stk.top();
+            stk.pop();
+            node &#x3D; node-&gt;right;
+        &#125;
+        return res;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 <p> </p>
 <h2 id="LeetCode-94题：二叉树的中序遍历"><a href="#LeetCode-94题：二叉树的中序遍历" class="headerlink" title="LeetCode 94题：二叉树的中序遍历"></a>LeetCode 94题：二叉树的中序遍历</h2><h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p><strong>方法1：递归法</strong></p>
 <p>左-&gt;根-&gt;右   </p>
 <p>AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">inorder</span><span class="hljs-params">(TreeNode* root,vector&lt;<span class="hljs-type">int</span>&gt; &amp;ans)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)<br>        &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-built_in">inorder</span>(root-&gt;left,ans);<br>        ans.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>        <span class="hljs-built_in">inorder</span>(root-&gt;right,ans);<br>    &#125;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-type">int</span>&gt; ans;<br>        <span class="hljs-built_in">inorder</span>(root,ans);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+public:
+    void inorder(TreeNode* root,vector&lt;int&gt; &amp;ans)
+    &#123;
+        if(root &#x3D;&#x3D; nullptr)
+        &#123;
+            return;
+        &#125;
+        inorder(root-&gt;left,ans);
+        ans.push_back(root-&gt;val);
+        inorder(root-&gt;right,ans);
+    &#125;
+    vector&lt;int&gt; inorderTraversal(TreeNode* root) &#123;
+        vector&lt;int&gt; ans;
+        inorder(root,ans);
+        return ans;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 <p> <strong>方法2：迭代法</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-type">int</span>&gt; ans;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)  <span class="hljs-keyword">return</span> ans;<br>        stack&lt;TreeNode*&gt; stk;<br>        <span class="hljs-keyword">while</span>(!stk.<span class="hljs-built_in">empty</span>() || root != <span class="hljs-literal">nullptr</span>)<br>        &#123;<br>            <span class="hljs-keyword">while</span>(root != <span class="hljs-literal">nullptr</span>)<br>            &#123;<br>                stk.<span class="hljs-built_in">push</span>(root);<br>                root = root-&gt;left;<br>            &#125;<br>            root = stk.<span class="hljs-built_in">top</span>();<br>            stk.<span class="hljs-built_in">pop</span>();<br>            ans.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>            root = root-&gt;right;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+public:
+    vector&lt;int&gt; inorderTraversal(TreeNode* root) &#123;
+        vector&lt;int&gt; ans;
+        if(root &#x3D;&#x3D; nullptr)  return ans;
+        stack&lt;TreeNode*&gt; stk;
+        while(!stk.empty() || root !&#x3D; nullptr)
+        &#123;
+            while(root !&#x3D; nullptr)
+            &#123;
+                stk.push(root);
+                root &#x3D; root-&gt;left;
+            &#125;
+            root &#x3D; stk.top();
+            stk.pop();
+            ans.push_back(root-&gt;val);
+            root &#x3D; root-&gt;right;
+        &#125;
+        return ans;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 
 
 <h2 id="LeetCode-145题：二叉树的后序遍历"><a href="#LeetCode-145题：二叉树的后序遍历" class="headerlink" title="LeetCode 145题：二叉树的后序遍历"></a>LeetCode 145题：二叉树的后序遍历</h2><h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>左-&gt;右-&gt;根   </p>
 <p>AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">postorder</span><span class="hljs-params">(TreeNode* root,vector&lt;<span class="hljs-type">int</span>&gt; &amp;ans)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)<br>        &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-built_in">postorder</span>(root-&gt;left,ans);<br>        <span class="hljs-built_in">postorder</span>(root-&gt;right,ans);<br>        ans.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>    &#125;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">postorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-type">int</span>&gt; ans;<br>        <span class="hljs-built_in">postorder</span>(root,ans);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+public:
+    void postorder(TreeNode* root,vector&lt;int&gt; &amp;ans)
+    &#123;
+        if(root &#x3D;&#x3D; nullptr)
+        &#123;
+            return;
+        &#125;
+        postorder(root-&gt;left,ans);
+        postorder(root-&gt;right,ans);
+        ans.push_back(root-&gt;val);
+    &#125;
+    vector&lt;int&gt; postorderTraversal(TreeNode* root) &#123;
+        vector&lt;int&gt; ans;
+        postorder(root,ans);
+        return ans;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 
 
@@ -320,7 +420,39 @@
 <p>用广度优先搜索+队列解决二叉树的层序遍历 我们可以用一种巧妙的方法修改广度优先搜索： 首先根元素入队 当队列不为空的时候 求当前队列的长度 currentLevelSize 依次从队列中取currentLevelSize个元素进行拓展，然后进入下一次迭代 它和普通广度优先搜索的区别在于，普通广度优先搜索每次只取一个元素拓展，而这里每次取currentLevelSize个元素。在上述过程中的第 i 次迭代就得到了二叉树的第 i层的 currentLevelSize个元素。</p>
 </blockquote>
 <p>AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">levelOrder</span>(TreeNode* root) &#123;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; res;  <span class="hljs-comment">//定义二维vector容器res用来存储树中元素</span><br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)<br>        &#123;<br>            <span class="hljs-keyword">return</span> res;<br>        &#125;<br>        queue&lt;TreeNode*&gt; q;  <span class="hljs-comment">//定义队列q临时存储树中元素</span><br>        q.<span class="hljs-built_in">push</span>(root);  <span class="hljs-comment">//将树的根节点插入队列</span><br>        <span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())<br>        &#123;<br>            <span class="hljs-type">int</span> currentLevelSize = q.<span class="hljs-built_in">size</span>();  <span class="hljs-comment">//定义队列的当前长度currentLevelSize</span><br>            res.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;());  <span class="hljs-comment">//向二维vector容器res中添加一行</span><br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=currentLevelSize; i++)<br>            &#123;<br>                <span class="hljs-keyword">auto</span> node = q.<span class="hljs-built_in">front</span>();  <span class="hljs-comment">//定义临时结点node为队列头结点</span><br>                q.<span class="hljs-built_in">pop</span>();  <span class="hljs-comment">//弹出队列头结点</span><br>                res.<span class="hljs-built_in">back</span>().<span class="hljs-built_in">push_back</span>(node-&gt;val);  <span class="hljs-comment">//将队列头结点元素的值存入res中</span><br>                <span class="hljs-comment">//将结点的左右儿子节点插入队列中</span><br>                <span class="hljs-keyword">if</span>(node-&gt;left)<br>                &#123;<br>                    q.<span class="hljs-built_in">push</span>(node-&gt;left);<br>                &#125;<br>                <span class="hljs-keyword">if</span>(node-&gt;right)<br>                &#123;<br>                    q.<span class="hljs-built_in">push</span>(node-&gt;right);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+public:
+    vector&lt;vector&lt;int&gt;&gt; levelOrder(TreeNode* root) &#123;
+        vector&lt;vector&lt;int&gt;&gt; res;  &#x2F;&#x2F;定义二维vector容器res用来存储树中元素
+        if(root &#x3D;&#x3D; nullptr)
+        &#123;
+            return res;
+        &#125;
+        queue&lt;TreeNode*&gt; q;  &#x2F;&#x2F;定义队列q临时存储树中元素
+        q.push(root);  &#x2F;&#x2F;将树的根节点插入队列
+        while(!q.empty())
+        &#123;
+            int currentLevelSize &#x3D; q.size();  &#x2F;&#x2F;定义队列的当前长度currentLevelSize
+            res.push_back(vector&lt;int&gt;());  &#x2F;&#x2F;向二维vector容器res中添加一行
+            for(int i&#x3D;1; i&lt;&#x3D;currentLevelSize; i++)
+            &#123;
+                auto node &#x3D; q.front();  &#x2F;&#x2F;定义临时结点node为队列头结点
+                q.pop();  &#x2F;&#x2F;弹出队列头结点
+                res.back().push_back(node-&gt;val);  &#x2F;&#x2F;将队列头结点元素的值存入res中
+                &#x2F;&#x2F;将结点的左右儿子节点插入队列中
+                if(node-&gt;left)
+                &#123;
+                    q.push(node-&gt;left);
+                &#125;
+                if(node-&gt;right)
+                &#123;
+                    q.push(node-&gt;right);
+                &#125;
+            &#125;
+        &#125;
+        return res;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 
 
             </div>
@@ -529,6 +661,8 @@
 
 
 
+  
+    
   
 
 
