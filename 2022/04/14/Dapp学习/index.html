@@ -42,15 +42,7 @@
     
     
       
-      
-        
-          
-        
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
-      
-      
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
     
   
 
@@ -306,10 +298,7 @@
 <h3 id="Geth私链环境搭建"><a href="#Geth私链环境搭建" class="headerlink" title="Geth私链环境搭建"></a>Geth私链环境搭建</h3><p>geth是以太坊的一个客户端</p>
 <ul>
 <li><p>安装geth</p>
-<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ sudo apt-get install software-properties-common
-$ sudo add-apt-repository -y ppa:ethereum&#x2F;etherum
-$ sudo apt-get update
-$ sudo apt-get install etherum<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></li>
+<figure class="highlight smali"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><pre><code class="hljs smali">$ sudo apt-get install software-properties-common<br>$ sudo<span class="hljs-built_in"> add-apt-repository </span>-y ppa:ethereum/etherum<br>$ sudo apt-get update<br>$ sudo apt-get install etherum<br></code></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="ganache使用"><a href="#ganache使用" class="headerlink" title="ganache使用"></a>ganache使用</h3><ul>
 <li><p>ganache</p>
@@ -342,19 +331,13 @@ $ sudo apt-get install etherum<span aria-hidden="true" class="line-numbers-rows"
 </blockquote>
 </li>
 <li><p>部署合约</p>
-<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">ganache-cli
-mkdir deploy-proj
-cd deploy-proj
-npm install web3 -save<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stata">ganache-<span class="hljs-keyword">cli</span><br><span class="hljs-keyword">mkdir</span> deploy-proj<br><span class="hljs-keyword">cd</span> deploy-proj<br>npm install web3 -<span class="hljs-keyword">save</span><br></code></pre></td></tr></table></figure>
 
 <p>编写deploy.js</p>
 <p>部署</p>
-<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">node deploy.js<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></li>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-keyword">node</span> <span class="hljs-title">deploy</span>.js<br></code></pre></td></tr></table></figure></li>
 <li><p>创建工程</p>
-<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">express -e dapp4
-cd dapp4
-npm install
-npm start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></li>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">express -e dapp4<br>cd dapp4<br><span class="hljs-built_in">npm</span> install<br><span class="hljs-built_in">npm</span> start<br></code></pre></td></tr></table></figure></li>
 <li><p>修改app.js</p>
 </li>
 <li><p>修改route/index.js</p>
@@ -362,8 +345,7 @@ npm start<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 <li><p>编辑view/index.html</p>
 </li>
 <li><p>运行</p>
-<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">ganache-cli
-npm_start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></li>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">ganache-<span class="hljs-keyword">cli</span><br>npm_start<br></code></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="使用truffle"><a href="#使用truffle" class="headerlink" title="使用truffle"></a>使用truffle</h3><ul>
 <li><p>truffle介绍</p>
@@ -372,7 +354,7 @@ npm_start<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 </li>
 <li><p>安装truffle</p>
 <p>只要通过以下命令就可以安装Truffle</p>
-<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">npm install -g truffle<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></li>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> -g truffle<br></code></pre></td></tr></table></figure></li>
 <li><p>写合约</p>
 <p>写完合约之后在remix中调试</p>
 </li>
@@ -380,17 +362,12 @@ npm_start<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 <ul>
 <li>使用命令创建工程</li>
 </ul>
-<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">mkdir Vote
-cd Vote
-truffle unbox webpack<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> Vote<br><span class="hljs-built_in">cd</span> Vote<br>truffle unbox webpack<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>创建合约</li>
 </ul>
-<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">cd contracts
-rm meta.sol
-rm Lib.sol
-vim Voting.sol<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stata"><span class="hljs-keyword">cd</span> contracts<br><span class="hljs-keyword">rm</span> <span class="hljs-keyword">meta</span>.sol<br><span class="hljs-keyword">rm</span> Lib.sol<br>vim Voting.sol<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><p>将上面的合约代码复制到Voting.sol中</p>
@@ -400,11 +377,11 @@ vim Voting.sol<span aria-hidden="true" class="line-numbers-rows"><span></span><s
 </ul>
 </li>
 <li><p>编译合约</p>
-<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">truffle compile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></li>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">truffle compile</span><br></code></pre></td></tr></table></figure></li>
 <li><p>部署合约</p>
 <ul>
 <li><p>启动ganache-cli</p>
-<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">ganache-cli<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></li>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">ganache-<span class="hljs-keyword">cli</span><br></code></pre></td></tr></table></figure></li>
 <li><p>修改truffle-config.js</p>
 </li>
 <li><p>部署</p>
@@ -418,37 +395,13 @@ vim Voting.sol<span aria-hidden="true" class="line-numbers-rows"><span></span><s
 <p>修改app/src/index.js</p>
 </li>
 <li><p>运行</p>
-<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">npm run dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">npm <span class="hljs-built_in">run</span> dev<br></code></pre></td></tr></table></figure>
 
 <p>打开浏览器，输入127.0.0.1:8080</p>
 <p><strong>使用truffle完成投票dapp的开发实例</strong></p>
 <p>1、投票的智能合约</p>
 <p>投票智能合约代码：</p>
-<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">pragma solidity &gt;&#x3D;0.4.22 &lt;0.6.0;
-
-contract Voting &#123;
-    bytes32[] public candidateList;
-    mapping(bytes32 &#x3D;&gt; uint8) public votesReceived;
-    constructor(bytes32[] memory candidateListName) public  &#123;
-        candidateList &#x3D; candidateListName;
-    &#125;
-    function validateCanditate(bytes32 candidateName)internal view returns(bool) &#123;
-        for (uint8 i &#x3D;0; i &lt; candidateList.length; i++) &#123;
-            if (candidateName &#x3D;&#x3D; candidateList[i])
-                return true;
-        &#125;
-        return false;
-    
-    &#125;
-    function voteForCandidate(bytes32 candidateName) public &#123;
-        require(validateCanditate(candidateName));
-        votesReceived[candidateName] +&#x3D; 1;
-    &#125;
-    function totalVotesFor(bytes32 candidateName) view public returns(uint8) &#123;
-        require(validateCanditate(candidateName));
-        return votesReceived[candidateName];
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs typescript">pragma solidity &gt;=<span class="hljs-number">0.4</span><span class="hljs-number">.22</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;<br><br>contract <span class="hljs-title class_">Voting</span> &#123;<br>    bytes32[] <span class="hljs-keyword">public</span> candidateList;<br>    <span class="hljs-title function_">mapping</span>(<span class="hljs-function"><span class="hljs-params">bytes32</span> =&gt;</span> uint8) <span class="hljs-keyword">public</span> votesReceived;<br>    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">bytes32[] memory candidateListName</span>) <span class="hljs-keyword">public</span>  &#123;<br>        candidateList = candidateListName;<br>    &#125;<br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">validateCanditate</span>(<span class="hljs-params">bytes32 candidateName</span>)internal view <span class="hljs-title function_">returns</span>(<span class="hljs-params">bool</span>) &#123;<br>        <span class="hljs-keyword">for</span> (uint8 i =<span class="hljs-number">0</span>; i &lt; candidateList.<span class="hljs-property">length</span>; i++) &#123;<br>            <span class="hljs-keyword">if</span> (candidateName == candidateList[i])<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <br>    &#125;<br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">voteForCandidate</span>(<span class="hljs-params">bytes32 candidateName</span>) <span class="hljs-keyword">public</span> &#123;<br>        <span class="hljs-built_in">require</span>(<span class="hljs-title function_">validateCanditate</span>(candidateName));<br>        votesReceived[candidateName] += <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">totalVotesFor</span>(<span class="hljs-params">bytes32 candidateName</span>) view <span class="hljs-keyword">public</span> <span class="hljs-title function_">returns</span>(<span class="hljs-params">uint8</span>) &#123;<br>        <span class="hljs-built_in">require</span>(<span class="hljs-title function_">validateCanditate</span>(candidateName));<br>        <span class="hljs-keyword">return</span> votesReceived[candidateName];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>2、合约的编译部署</p>
 <p>3、编写前端页面</p>
@@ -664,8 +617,6 @@ contract Voting &#123;
 
 
 
-  
-    
   
 
 

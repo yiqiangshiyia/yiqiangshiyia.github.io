@@ -43,15 +43,7 @@
     
     
       
-      
-        
-          
-        
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
-      
-      
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
     
   
 
@@ -250,7 +242,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      1.6k 字
     </span>
   
 
@@ -259,7 +251,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15 分钟
+      14 分钟
     </span>
   
 
@@ -298,40 +290,7 @@
 <p>关键字：不可以包含重复<br>模式识别：利用排序避免重复答案<br>降低复杂度变成twoSum<br>利用双指针找到所有解<br>数组有序，和为定值的两个数一定可以通过头尾指针向中间移动获得。<br>关键去重，每次移动跳过与当前值相同的元素，枚举第三个元素也要跳过重复元素。</p>
 </blockquote>
 <p>AC代码：</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt;&amp; nums) &#123;
-        vector&lt;vector&lt;int&gt;&gt; ans;
-        sort(nums.begin(),nums.end());  &#x2F;&#x2F;对数组进行排序方便去重
-        &#x2F;&#x2F;枚举a
-        for(int i&#x3D;0; i&lt;nums.size(); i++)
-        &#123;
-            if(i&gt;0 &amp;&amp; nums[i] &#x3D;&#x3D; nums[i-1])  continue;  &#x2F;&#x2F;去重，需要和上次遍历的元素不同
-            int target &#x3D; 0-nums[i];  &#x2F;&#x2F;定义目标值target，转化为二元组问题target &#x3D; b+c
-            int l &#x3D; i+1,r &#x3D; nums.size()-1;  &#x2F;&#x2F;定义首尾指针，通过首尾指针移动获取定值target
-            while(l&lt;r)  &#x2F;&#x2F;通过首尾指针获取定值target
-            &#123;
-                if(nums[l]+nums[r] &#x3D;&#x3D; target)
-                &#123;
-                    ans.push_back(&#123;nums[i],nums[l],nums[r]&#125;);  &#x2F;&#x2F;将符合的元组加入结果ans中
-                    while(l&lt;r &amp;&amp; nums[l] &#x3D;&#x3D; nums[l+1])  l++;  &#x2F;&#x2F;去除重复的左指针元素
-                    while(l&lt;r &amp;&amp; nums[r] &#x3D;&#x3D; nums[r-1])  r--;  &#x2F;&#x2F;去除重复的右指针元素
-                    l++;  &#x2F;&#x2F;左指针向右移
-                    r--;  &#x2F;&#x2F;右指针向左移
-                &#125;
-                else if(nums[l]+nums[r] &gt; target)
-                &#123;
-                    r--;  &#x2F;&#x2F;结果大于目标值，右指针向左移
-                &#125;
-                else
-                &#123;
-                    l++;  &#x2F;&#x2F;结果小于目标值，左指针向右移
-                &#125;
-            &#125;
-        &#125;
-        return ans;  &#x2F;&#x2F;返回结果
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">threeSum</span>(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums) &#123;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; ans;<br>        <span class="hljs-built_in">sort</span>(nums.<span class="hljs-built_in">begin</span>(),nums.<span class="hljs-built_in">end</span>());  <span class="hljs-comment">//对数组进行排序方便去重</span><br>        <span class="hljs-comment">//枚举a</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;nums.<span class="hljs-built_in">size</span>(); i++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(i&gt;<span class="hljs-number">0</span> &amp;&amp; nums[i] == nums[i<span class="hljs-number">-1</span>])  <span class="hljs-keyword">continue</span>;  <span class="hljs-comment">//去重，需要和上次遍历的元素不同</span><br>            <span class="hljs-type">int</span> target = <span class="hljs-number">0</span>-nums[i];  <span class="hljs-comment">//定义目标值target，转化为二元组问题target = b+c</span><br>            <span class="hljs-type">int</span> l = i+<span class="hljs-number">1</span>,r = nums.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;  <span class="hljs-comment">//定义首尾指针，通过首尾指针移动获取定值target</span><br>            <span class="hljs-keyword">while</span>(l&lt;r)  <span class="hljs-comment">//通过首尾指针获取定值target</span><br>            &#123;<br>                <span class="hljs-keyword">if</span>(nums[l]+nums[r] == target)<br>                &#123;<br>                    ans.<span class="hljs-built_in">push_back</span>(&#123;nums[i],nums[l],nums[r]&#125;);  <span class="hljs-comment">//将符合的元组加入结果ans中</span><br>                    <span class="hljs-keyword">while</span>(l&lt;r &amp;&amp; nums[l] == nums[l+<span class="hljs-number">1</span>])  l++;  <span class="hljs-comment">//去除重复的左指针元素</span><br>                    <span class="hljs-keyword">while</span>(l&lt;r &amp;&amp; nums[r] == nums[r<span class="hljs-number">-1</span>])  r--;  <span class="hljs-comment">//去除重复的右指针元素</span><br>                    l++;  <span class="hljs-comment">//左指针向右移</span><br>                    r--;  <span class="hljs-comment">//右指针向左移</span><br>                &#125;<br>                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(nums[l]+nums[r] &gt; target)<br>                &#123;<br>                    r--;  <span class="hljs-comment">//结果大于目标值，右指针向左移</span><br>                &#125;<br>                <span class="hljs-keyword">else</span><br>                &#123;<br>                    l++;  <span class="hljs-comment">//结果小于目标值，左指针向右移</span><br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;  <span class="hljs-comment">//返回结果</span><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -340,23 +299,7 @@ public:
 <h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p><strong>方法1：暴力枚举</strong> </p>
 <p><strong>方法2：哈希表</strong> </p>
 <p>AC代码：</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;
-        unordered_map&lt;int,int&gt; map1;  &#x2F;&#x2F;键为nums[i] 值为数组下标i
-        int n &#x3D; nums.size();
-        for(int i&#x3D;0; i&lt;n; i++)
-        &#123;
-            auto it &#x3D; map1.find(target-nums[i]);
-            if(it  !&#x3D; map1.end())
-            &#123;
-                return &#123;it-&gt;second,i&#125;;
-            &#125;
-            map1[nums[i]] &#x3D; i;
-        &#125;
-        return &#123;&#125;;
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">twoSum</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> target)</span> </span>&#123;<br>        unordered_map&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; map1;  <span class="hljs-comment">//键为nums[i] 值为数组下标i</span><br>        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)<br>        &#123;<br>            <span class="hljs-keyword">auto</span> it = map1.<span class="hljs-built_in">find</span>(target-nums[i]);<br>            <span class="hljs-keyword">if</span>(it  != map1.<span class="hljs-built_in">end</span>())<br>            &#123;<br>                <span class="hljs-keyword">return</span> &#123;it-&gt;second,i&#125;;<br>            &#125;<br>            map1[nums[i]] = i;<br>        &#125;<br>        <span class="hljs-keyword">return</span> &#123;&#125;;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -567,8 +510,6 @@ public:
 
 
 
-  
-    
   
 
 

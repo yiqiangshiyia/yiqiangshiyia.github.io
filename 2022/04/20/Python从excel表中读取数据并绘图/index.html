@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Python从excel表中读取数据并绘图 图文教程链接：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;DchGtK_wOavZ9eSPeV8ZUQ  一、柱状图  Python代码：import pandas as pd import matplotlib.pyplot as plt #中文处理模块 from matplotlib import rcParams  #中文处理模块 解决标">
+    <meta name="description" content="Python从excel表中读取数据并绘图 图文教程链接：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;DchGtK_wOavZ9eSPeV8ZUQ  一、柱状图  Python代码：123456789101112131415import pandas as pdimport matplotlib.pyplot as plt#中文处理模块from matplotlib import rcP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python从excel表中读取数据并绘图">
 <meta property="og:url" content="https://yiqiangshiyia.github.io/2022/04/20/Python%E4%BB%8Eexcel%E8%A1%A8%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%B9%B6%E7%BB%98%E5%9B%BE/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
-<meta property="og:description" content="Python从excel表中读取数据并绘图 图文教程链接：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;DchGtK_wOavZ9eSPeV8ZUQ  一、柱状图  Python代码：import pandas as pd import matplotlib.pyplot as plt #中文处理模块 from matplotlib import rcParams  #中文处理模块 解决标">
+<meta property="og:description" content="Python从excel表中读取数据并绘图 图文教程链接：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;DchGtK_wOavZ9eSPeV8ZUQ  一、柱状图  Python代码：123456789101112131415import pandas as pdimport matplotlib.pyplot as plt#中文处理模块from matplotlib import rcP">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://github.com/yiqiangshiyia/img/blob/main/images/image-20220426105632700.png?raw=true">
 <meta property="og:image" content="https://github.com/yiqiangshiyia/img/blob/main/images/image-20220426105719236.png?raw=true">
@@ -45,15 +45,7 @@
     
     
       
-      
-        
-          
-        
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
-      
-      
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
     
   
 
@@ -252,7 +244,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      509 字
+      620 字
     </span>
   
 
@@ -261,7 +253,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5 分钟
+      6 分钟
     </span>
   
 
@@ -298,21 +290,7 @@
 </blockquote>
 <h3 id="一、柱状图"><a href="#一、柱状图" class="headerlink" title="一、柱状图"></a>一、柱状图</h3><p><img src="https://github.com/yiqiangshiyia/img/blob/main/images/image-20220426105632700.png?raw=true" srcset="/img/loading.gif" lazyload alt="Excel表中的数据"></p>
 <p><img src="https://github.com/yiqiangshiyia/img/blob/main/images/image-20220426105719236.png?raw=true" srcset="/img/loading.gif" lazyload alt="image-20220426105719236.png"></p>
-<h3 id="Python代码："><a href="#Python代码：" class="headerlink" title="Python代码："></a>Python代码：</h3><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
-<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
-<span class="token comment">#中文处理模块</span>
-<span class="token keyword">from</span> matplotlib <span class="token keyword">import</span> rcParams  <span class="token comment">#中文处理模块 解决标签文字乱码情况</span>
-rcParams<span class="token punctuation">[</span><span class="token string">'font.family'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'simhei'</span>  <span class="token comment">#中文处理模块 解决标签文字乱码情况</span>
-Vae <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">'Vae专辑.xlsx'</span><span class="token punctuation">)</span>
-<span class="token comment">#Vae.sort_values(by='歌曲数目',inplace=True,ascending=False)</span>
-<span class="token comment">#降序排列</span>
-<span class="token comment">#Vae.sort_values(by='歌曲数目',inplace=True,ascending=True)</span>
-<span class="token comment">#升序排列</span>
-<span class="token comment">#print(Vae)</span>
-Vae<span class="token punctuation">.</span>plot<span class="token punctuation">.</span>bar<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token string">'专辑'</span><span class="token punctuation">,</span>y<span class="token operator">=</span><span class="token string">'歌曲数目'</span><span class="token punctuation">,</span>color<span class="token operator">=</span><span class="token string">'blue'</span><span class="token punctuation">)</span>
-<span class="token comment">#color='blue'  统一设置柱状图颜色</span>
-plt<span class="token punctuation">.</span>xticks<span class="token punctuation">(</span>rotation<span class="token operator">=</span><span class="token number">360</span><span class="token punctuation">)</span>  <span class="token comment">#调整标签方向使其横向写</span>
-plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<h3 id="Python代码："><a href="#Python代码：" class="headerlink" title="Python代码："></a>Python代码：</h3><figure class="highlight python"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-comment">#中文处理模块</span><br><span class="hljs-keyword">from</span> matplotlib <span class="hljs-keyword">import</span> rcParams  <span class="hljs-comment">#中文处理模块 解决标签文字乱码情况</span><br>rcParams[<span class="hljs-string">&#x27;font.family&#x27;</span>] = <span class="hljs-string">&#x27;simhei&#x27;</span>  <span class="hljs-comment">#中文处理模块 解决标签文字乱码情况</span><br>Vae = pd.read_excel(<span class="hljs-string">&#x27;Vae专辑.xlsx&#x27;</span>)<br><span class="hljs-comment">#Vae.sort_values(by=&#x27;歌曲数目&#x27;,inplace=True,ascending=False)</span><br><span class="hljs-comment">#降序排列</span><br><span class="hljs-comment">#Vae.sort_values(by=&#x27;歌曲数目&#x27;,inplace=True,ascending=True)</span><br><span class="hljs-comment">#升序排列</span><br><span class="hljs-comment">#print(Vae)</span><br>Vae.plot.bar(x=<span class="hljs-string">&#x27;专辑&#x27;</span>,y=<span class="hljs-string">&#x27;歌曲数目&#x27;</span>,color=<span class="hljs-string">&#x27;blue&#x27;</span>)<br><span class="hljs-comment">#color=&#x27;blue&#x27;  统一设置柱状图颜色</span><br>plt.xticks(rotation=<span class="hljs-number">360</span>)  <span class="hljs-comment">#调整标签方向使其横向写</span><br>plt.show()<br></code></pre></td></tr></table></figure>
 
 
 
@@ -525,8 +503,6 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 
 
 
-  
-    
   
 
 

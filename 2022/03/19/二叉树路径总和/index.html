@@ -42,15 +42,7 @@
     
     
       
-      
-        
-          
-        
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
-      
-      
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
     
   
 
@@ -249,7 +241,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      1.6k 字
     </span>
   
 
@@ -258,7 +250,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15 分钟
+      14 分钟
     </span>
   
 
@@ -296,64 +288,13 @@
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>方法1：广度优先搜索</strong> </p>
 <p>使用广度优先搜索的方式，记录从根节点到当前节点的路径和，以防止重复计算。 这样我们可以使用两个队列，分别存储将要遍历的节点，以及根节点到这些节点的路径和。   </p>
 <p>AC代码：</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    bool hasPathSum(TreeNode* root, int targetSum) &#123;
-        if(root &#x3D;&#x3D; nullptr)  &#x2F;&#x2F;首先判断根节点是否存在
-        &#123;
-            return false;
-        &#125;
-        queue&lt;TreeNode*&gt; que_node;  &#x2F;&#x2F;定义一个队列 用于存储将要遍历的结点
-        queue&lt;int&gt; que_val;  &#x2F;&#x2F;定义一个队列 用于记录从根节点到当前节点路径和
-        que_node.push(root);  &#x2F;&#x2F;将根节点加入第一个队列
-        que_val.push(root-&gt;val);  &#x2F;&#x2F;将根节点的值加入第二个队列
-        &#x2F;&#x2F;迭代循环队列 直到队列为空
-        while(!que_node.empty())
-        &#123;
-            TreeNode* now &#x3D; que_node.front();
-            int temp &#x3D; que_val.front();
-            que_node.pop();
-            que_val.pop();
-            if(now-&gt;left &#x3D;&#x3D; nullptr &amp;&amp; now-&gt;right &#x3D;&#x3D; nullptr)  &#x2F;&#x2F;不存在左右节点 则为叶节点
-            &#123;
-                if(temp &#x3D;&#x3D; targetSum)  &#x2F;&#x2F;判断路径和与目标值是否相等
-                &#123;
-                    return true;
-                &#125;
-                continue;  &#x2F;&#x2F;不相等则迭代继续
-            &#125;
-            if(now-&gt;left !&#x3D; nullptr)  &#x2F;&#x2F;存在左子节点
-            &#123;
-                que_node.push(now-&gt;left);  &#x2F;&#x2F;将左子节点加入第一个队列
-                que_val.push(now-&gt;left-&gt;val + temp);&#x2F;&#x2F;将左子节点值与当前路径和相加加入第二个队列
-            &#125;
-            if(now-&gt;right !&#x3D; nullptr)  &#x2F;&#x2F;存在右子节点
-            &#123;
-                que_node.push(now-&gt;right);  &#x2F;&#x2F;将右子节点加入第一个队列
-                que_val.push(now-&gt;right-val + temp);&#x2F;&#x2F;将右子节点值与当前路径和相加加入第二个队列
-            &#125;
-        &#125;
-        return false;  &#x2F;&#x2F;没有满足条件的 返回false
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">hasPathSum</span><span class="hljs-params">(TreeNode* root, <span class="hljs-type">int</span> targetSum)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)  <span class="hljs-comment">//首先判断根节点是否存在</span><br>        &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        queue&lt;TreeNode*&gt; que_node;  <span class="hljs-comment">//定义一个队列 用于存储将要遍历的结点</span><br>        queue&lt;<span class="hljs-type">int</span>&gt; que_val;  <span class="hljs-comment">//定义一个队列 用于记录从根节点到当前节点路径和</span><br>        que_node.<span class="hljs-built_in">push</span>(root);  <span class="hljs-comment">//将根节点加入第一个队列</span><br>        que_val.<span class="hljs-built_in">push</span>(root-&gt;val);  <span class="hljs-comment">//将根节点的值加入第二个队列</span><br>        <span class="hljs-comment">//迭代循环队列 直到队列为空</span><br>        <span class="hljs-keyword">while</span>(!que_node.<span class="hljs-built_in">empty</span>())<br>        &#123;<br>            TreeNode* now = que_node.<span class="hljs-built_in">front</span>();<br>            <span class="hljs-type">int</span> temp = que_val.<span class="hljs-built_in">front</span>();<br>            que_node.<span class="hljs-built_in">pop</span>();<br>            que_val.<span class="hljs-built_in">pop</span>();<br>            <span class="hljs-keyword">if</span>(now-&gt;left == <span class="hljs-literal">nullptr</span> &amp;&amp; now-&gt;right == <span class="hljs-literal">nullptr</span>)  <span class="hljs-comment">//不存在左右节点 则为叶节点</span><br>            &#123;<br>                <span class="hljs-keyword">if</span>(temp == targetSum)  <span class="hljs-comment">//判断路径和与目标值是否相等</span><br>                &#123;<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>                &#125;<br>                <span class="hljs-keyword">continue</span>;  <span class="hljs-comment">//不相等则迭代继续</span><br>            &#125;<br>            <span class="hljs-keyword">if</span>(now-&gt;left != <span class="hljs-literal">nullptr</span>)  <span class="hljs-comment">//存在左子节点</span><br>            &#123;<br>                que_node.<span class="hljs-built_in">push</span>(now-&gt;left);  <span class="hljs-comment">//将左子节点加入第一个队列</span><br>                que_val.<span class="hljs-built_in">push</span>(now-&gt;left-&gt;val + temp);<span class="hljs-comment">//将左子节点值与当前路径和相加加入第二个队列</span><br>            &#125;<br>            <span class="hljs-keyword">if</span>(now-&gt;right != <span class="hljs-literal">nullptr</span>)  <span class="hljs-comment">//存在右子节点</span><br>            &#123;<br>                que_node.<span class="hljs-built_in">push</span>(now-&gt;right);  <span class="hljs-comment">//将右子节点加入第一个队列</span><br>                que_val.<span class="hljs-built_in">push</span>(now-&gt;right-val + temp);<span class="hljs-comment">//将右子节点值与当前路径和相加加入第二个队列</span><br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;  <span class="hljs-comment">//没有满足条件的 返回false</span><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
 
 <p><strong>方法2：递归</strong> </p>
 <p>AC代码：</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    bool hasPathSum(TreeNode *root, int sum) &#123;
-        if (root &#x3D;&#x3D; nullptr) &#123;
-            return false;
-        &#125;
-        if (root-&gt;left &#x3D;&#x3D; nullptr &amp;&amp; root-&gt;right &#x3D;&#x3D; nullptr) &#123;
-            return sum &#x3D;&#x3D; root-&gt;val;
-        &#125;
-        return hasPathSum(root-&gt;left, sum - root-&gt;val) 
-               hasPathSum(root-&gt;right, sum - root-&gt;val);
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">hasPathSum</span><span class="hljs-params">(TreeNode *root, <span class="hljs-type">int</span> sum)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (root-&gt;left == <span class="hljs-literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">return</span> sum == root-&gt;val;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">hasPathSum</span>(root-&gt;left, sum - root-&gt;val) <br>               <span class="hljs-built_in">hasPathSum</span>(root-&gt;right, sum - root-&gt;val);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -565,8 +506,6 @@ public:
 
 
 
-  
-    
   
 
 

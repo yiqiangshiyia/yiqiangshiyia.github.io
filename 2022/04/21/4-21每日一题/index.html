@@ -42,15 +42,7 @@
     
     
       
-      
-        
-          
-        
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
-      
-      
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
     
   
 
@@ -258,7 +250,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11 分钟
+      12 分钟
     </span>
   
 
@@ -302,30 +294,7 @@
 <p>当我们得到一个单词 w 后，我们首先需要判断 w 的首字母是否为元音字母。我们可以使用一个哈希集合 vowels 存储所有的元音字母 aeiouAEIOU，这样只需要判断 w 的首字母是否在 vowels 中。如果是元音字母，那么单词本身保持不变；如果是辅音字母，那么需要首字母移到末尾，这里使用语言自带的字符串切片函数即可。在这之后，我们需要在末尾添加 m 以及若干个 a，因此可以使用一个变量 cnt 记录需要添加的 a 的个数，它的初始值为 1，每当我们得到一个单词，就将它的值增加 1。</p>
 </blockquote>
 <p>AC代码：</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    string toGoatLatin(string sentence) &#123;
-        unordered_set&lt;char&gt; vowels &#x3D; &#123;&#39;a&#39;,&#39;e&#39;,&#39;i&#39;,&#39;o&#39;,&#39;u&#39;,&#39;A&#39;,&#39;E&#39;,&#39;I&#39;,&#39;O&#39;,&#39;U&#39;&#125;;
-        int n &#x3D; sentence.size();
-        int i &#x3D; 0,cnt &#x3D; 1;
-        string ans;
-        while(i &lt; n)
-        &#123;
-            int j &#x3D; i;
-            while(j &lt; n &amp;&amp; sentence[j] !&#x3D; &#39; &#39;)  j++;
-            cnt++;
-            if(cnt !&#x3D; 2)  ans &#x3D; ans+&#39; &#39;;
-            if(vowels.count(sentence[i]))
-            &#123;
-                ans &#x3D; ans+sentence.substr(i,j-i)+&#39;m&#39;+string(cnt,&#39;a&#39;);
-            &#125;else&#123;
-                ans &#x3D; ans+sentence.substr(i+1,j-i-1)+sentence[i]+&#39;m&#39;+string(cnt,&#39;a&#39;);
-            &#125;
-            i &#x3D; j+1;
-        &#125;
-        return ans;
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">string <span class="hljs-title">toGoatLatin</span><span class="hljs-params">(string sentence)</span> </span>&#123;<br>        unordered_set&lt;<span class="hljs-type">char</span>&gt; vowels = &#123;<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;e&#x27;</span>,<span class="hljs-string">&#x27;i&#x27;</span>,<span class="hljs-string">&#x27;o&#x27;</span>,<span class="hljs-string">&#x27;u&#x27;</span>,<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;E&#x27;</span>,<span class="hljs-string">&#x27;I&#x27;</span>,<span class="hljs-string">&#x27;O&#x27;</span>,<span class="hljs-string">&#x27;U&#x27;</span>&#125;;<br>        <span class="hljs-type">int</span> n = sentence.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>,cnt = <span class="hljs-number">1</span>;<br>        string ans;<br>        <span class="hljs-keyword">while</span>(i &lt; n)<br>        &#123;<br>            <span class="hljs-type">int</span> j = i;<br>            <span class="hljs-keyword">while</span>(j &lt; n &amp;&amp; sentence[j] != <span class="hljs-string">&#x27; &#x27;</span>)  j++;<br>            cnt++;<br>            <span class="hljs-keyword">if</span>(cnt != <span class="hljs-number">2</span>)  ans = ans+<span class="hljs-string">&#x27; &#x27;</span>;<br>            <span class="hljs-keyword">if</span>(vowels.<span class="hljs-built_in">count</span>(sentence[i]))<br>            &#123;<br>                ans = ans+sentence.<span class="hljs-built_in">substr</span>(i,j-i)+<span class="hljs-string">&#x27;m&#x27;</span>+<span class="hljs-built_in">string</span>(cnt,<span class="hljs-string">&#x27;a&#x27;</span>);<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                ans = ans+sentence.<span class="hljs-built_in">substr</span>(i+<span class="hljs-number">1</span>,j-i<span class="hljs-number">-1</span>)+sentence[i]+<span class="hljs-string">&#x27;m&#x27;</span>+<span class="hljs-built_in">string</span>(cnt,<span class="hljs-string">&#x27;a&#x27;</span>);<br>            &#125;<br>            i = j+<span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -534,8 +503,6 @@ public:
 
 
 
-  
-    
   
 
 

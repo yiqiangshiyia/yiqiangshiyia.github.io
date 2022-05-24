@@ -42,15 +42,7 @@
     
     
       
-      
-        
-          
-        
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
-      
-      
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
     
   
 
@@ -249,7 +241,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3k 字
+      2.9k 字
     </span>
   
 
@@ -258,7 +250,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      26 分钟
+      25 分钟
     </span>
   
 
@@ -300,63 +292,7 @@
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>方法1：链地址法</strong> </p>
 <p>设哈希表的大小为 base，则可以设计一个简单的哈希函数：hash(x) = x mod base。 开辟一个大小为 base 的数组，数组的每个位置是一个链表。当计算出哈希值之后，就插入到对应位置的链表当中。 由于使用整数除法作为哈希函数，为了尽可能避免冲突，应当将 base 取为一个质数。取 base=769。   </p>
 <p>AC代码：</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class MyHashSet &#123;
-public:
-    vector&lt;list&lt;int&gt;&gt; data;  &#x2F;&#x2F;定义一个数组base,数组的每一个位置是一个链表
-    static const int base &#x3D; 769;  &#x2F;&#x2F;定义哈希表的大小
-    &#x2F;&#x2F;用链地址法设计一个哈希表
-    static int hash(int key)
-    &#123;
-        return key % base;
-    &#125;
-
-    MyHashSet():data(base) &#123;&#125;
-
-    &#x2F;&#x2F;插入
-    void add(int key) &#123;
-        int h &#x3D; hash(key);  &#x2F;&#x2F;找出key在哈希表中对应的位置
-        for(auto it&#x3D;data[h].begin(); it!&#x3D;data[h].end(); it++)  &#x2F;&#x2F;迭代法遍历key在哈希表中对应位置的链表
-        &#123;
-            &#x2F;&#x2F;如果插入元素存在 则返回空
-            if(*it &#x3D;&#x3D; key)
-            &#123;
-                return;
-            &#125;
-        &#125;
-        &#x2F;&#x2F;如果元素不存在则插入元素
-        data[h].push_back(key);
-    &#125;
-
-    &#x2F;&#x2F;删除
-    void remove(int key) &#123;
-        int h &#x3D; hash(key);
-        for(auto it&#x3D;data[h].begin(); it!&#x3D;data[h].end(); it++)
-        &#123;
-            if(*it &#x3D;&#x3D; key)
-            &#123;
-                data[h].erase(it);
-                &#x2F;*
-                    注意：data\[h\].erase(it) 这里的it不可写成\*it或者key
-                    因为删除的是key在链表上的地址而不是值
-                *&#x2F;
-                return;
-            &#125;
-        &#125;
-    &#125;
-
-    &#x2F;&#x2F;判断key是否存在
-    bool contains(int key) &#123;
-        int h &#x3D; hash(key);
-        for(auto it&#x3D;data[h].begin(); it!&#x3D;data[h].end(); it++)
-        &#123;
-            if(*it &#x3D;&#x3D; key)  &#x2F;* 注意：*it *&#x2F;
-            &#123;
-                return true;
-            &#125;
-        &#125;
-        return false;
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyHashSet</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;list&lt;<span class="hljs-type">int</span>&gt;&gt; data;  <span class="hljs-comment">//定义一个数组base,数组的每一个位置是一个链表</span><br>    <span class="hljs-type">static</span> <span class="hljs-type">const</span> <span class="hljs-type">int</span> base = <span class="hljs-number">769</span>;  <span class="hljs-comment">//定义哈希表的大小</span><br>    <span class="hljs-comment">//用链地址法设计一个哈希表</span><br>    <span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">int</span> <span class="hljs-title">hash</span><span class="hljs-params">(<span class="hljs-type">int</span> key)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> key % base;<br>    &#125;<br><br>    <span class="hljs-built_in">MyHashSet</span>():<span class="hljs-built_in">data</span>(base) &#123;&#125;<br><br>    <span class="hljs-comment">//插入</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> key)</span> </span>&#123;<br>        <span class="hljs-type">int</span> h = <span class="hljs-built_in">hash</span>(key);  <span class="hljs-comment">//找出key在哈希表中对应的位置</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> it=data[h].<span class="hljs-built_in">begin</span>(); it!=data[h].<span class="hljs-built_in">end</span>(); it++)  <span class="hljs-comment">//迭代法遍历key在哈希表中对应位置的链表</span><br>        &#123;<br>            <span class="hljs-comment">//如果插入元素存在 则返回空</span><br>            <span class="hljs-keyword">if</span>(*it == key)<br>            &#123;<br>                <span class="hljs-keyword">return</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">//如果元素不存在则插入元素</span><br>        data[h].<span class="hljs-built_in">push_back</span>(key);<br>    &#125;<br><br>    <span class="hljs-comment">//删除</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">remove</span><span class="hljs-params">(<span class="hljs-type">int</span> key)</span> </span>&#123;<br>        <span class="hljs-type">int</span> h = <span class="hljs-built_in">hash</span>(key);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> it=data[h].<span class="hljs-built_in">begin</span>(); it!=data[h].<span class="hljs-built_in">end</span>(); it++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(*it == key)<br>            &#123;<br>                data[h].<span class="hljs-built_in">erase</span>(it);<br>                <span class="hljs-comment">/*</span><br><span class="hljs-comment">                    注意：data\[h\].erase(it) 这里的it不可写成\*it或者key</span><br><span class="hljs-comment">                    因为删除的是key在链表上的地址而不是值</span><br><span class="hljs-comment">                */</span><br>                <span class="hljs-keyword">return</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">//判断key是否存在</span><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">contains</span><span class="hljs-params">(<span class="hljs-type">int</span> key)</span> </span>&#123;<br>        <span class="hljs-type">int</span> h = <span class="hljs-built_in">hash</span>(key);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> it=data[h].<span class="hljs-built_in">begin</span>(); it!=data[h].<span class="hljs-built_in">end</span>(); it++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(*it == key)  <span class="hljs-comment">/* 注意：*it */</span><br>            &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 <p> </p>
 <h2 id="LeetCode-706：设计哈希映射"><a href="#LeetCode-706：设计哈希映射" class="headerlink" title="LeetCode 706：设计哈希映射"></a>LeetCode 706：设计哈希映射</h2><h3 id="Note-1"><a href="#Note-1" class="headerlink" title="Note"></a>Note</h3><p><em><strong>设计哈希映射</strong></em> 与 <em><strong>设计哈希集合</strong></em> 解法接近，唯一的区别在于哈希映射存储的不是 key 本身，而是键值对(key,value)。   </p>
@@ -369,54 +305,7 @@ public:
 <p>int get(int key) 返回特定的 key 所映射的 value ；如果映射中不包含 key 的映射，返回 -1 。 </p>
 <p>void remove(key) 如果映射中存在 key 的映射，则移除 key 和它所对应的 value 。  </p>
 <h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>AC代码：</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class MyHashMap &#123;
-public:
-    vector&lt;list&lt;pair&lt;int,int&gt;&gt;&gt; data;
-    static const int base &#x3D; 769;
-    static int hash(int key)
-    &#123;
-        return key % base;
-    &#125;
-
-    MyHashMap():data(base) &#123;&#125;
-
-    void put(int key, int value) &#123;
-        int h &#x3D; hash(key);
-        for(auto it&#x3D;data[h].begin(); it!&#x3D;data[h].end(); it++)
-        &#123;
-            if(it-&gt;first &#x3D;&#x3D; key)
-            &#123;
-                it-&gt;second &#x3D; value;
-                return;
-            &#125;
-        &#125;
-        data[h].push_back(make_pair(key,value));
-    &#125;
-
-    int get(int key) &#123;
-        int h &#x3D; hash(key);
-        for(auto it&#x3D;data[h].begin(); it!&#x3D;data[h].end(); it++)
-        &#123;
-            if(it-&gt;first &#x3D;&#x3D; key)
-            &#123;
-                return it-&gt;second;
-            &#125;
-        &#125;
-        return -1;
-    &#125;
-
-    void remove(int key) &#123;
-        int h &#x3D; hash(key);
-        for(auto it&#x3D;data[h].begin(); it!&#x3D;data[h].end(); it++)
-        &#123;
-            if(it-&gt;first &#x3D;&#x3D; key)
-            &#123;
-                data[h].erase(it);
-                return;
-            &#125;
-        &#125;
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyHashMap</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;list&lt;pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt;&gt;&gt; data;<br>    <span class="hljs-type">static</span> <span class="hljs-type">const</span> <span class="hljs-type">int</span> base = <span class="hljs-number">769</span>;<br>    <span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">int</span> <span class="hljs-title">hash</span><span class="hljs-params">(<span class="hljs-type">int</span> key)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> key % base;<br>    &#125;<br><br>    <span class="hljs-built_in">MyHashMap</span>():<span class="hljs-built_in">data</span>(base) &#123;&#125;<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">put</span><span class="hljs-params">(<span class="hljs-type">int</span> key, <span class="hljs-type">int</span> value)</span> </span>&#123;<br>        <span class="hljs-type">int</span> h = <span class="hljs-built_in">hash</span>(key);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> it=data[h].<span class="hljs-built_in">begin</span>(); it!=data[h].<span class="hljs-built_in">end</span>(); it++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(it-&gt;first == key)<br>            &#123;<br>                it-&gt;second = value;<br>                <span class="hljs-keyword">return</span>;<br>            &#125;<br>        &#125;<br>        data[h].<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">make_pair</span>(key,value));<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-type">int</span> key)</span> </span>&#123;<br>        <span class="hljs-type">int</span> h = <span class="hljs-built_in">hash</span>(key);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> it=data[h].<span class="hljs-built_in">begin</span>(); it!=data[h].<span class="hljs-built_in">end</span>(); it++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(it-&gt;first == key)<br>            &#123;<br>                <span class="hljs-keyword">return</span> it-&gt;second;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">remove</span><span class="hljs-params">(<span class="hljs-type">int</span> key)</span> </span>&#123;<br>        <span class="hljs-type">int</span> h = <span class="hljs-built_in">hash</span>(key);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> it=data[h].<span class="hljs-built_in">begin</span>(); it!=data[h].<span class="hljs-built_in">end</span>(); it++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(it-&gt;first == key)<br>            &#123;<br>                data[h].<span class="hljs-built_in">erase</span>(it);<br>                <span class="hljs-keyword">return</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -625,8 +514,6 @@ public:
 
 
 
-  
-    
   
 
 

@@ -42,15 +42,7 @@
     
     
       
-      
-        
-          
-        
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
-      
-      
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
     
   
 
@@ -308,40 +300,7 @@
 <li>如果right-left&gt;2，我们只需要判断dp[left+1][right-1]是否是回文子串，才能确定dp[left][right]是否为true还是false。即dp[left][right]=dp[left+1][right-1]</li>
 </ul>
 <p>AC代码：</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    string longestPalindrome(string s) &#123;
-        &#x2F;&#x2F;边界条件判断
-        if(s.size() &lt; 2)  return s;
-        int start &#x3D; 0;  &#x2F;&#x2F;最长回文串开始的位置
-        int maxlen &#x3D; 1; &#x2F;&#x2F;最长回文串的长度
-        int len &#x3D; s.size();
-        vector&lt;vector&lt;bool&gt;&gt; dp(len,vector&lt;bool&gt;(len));
-        for(int right&#x3D;1; right&lt;len; right++)
-        &#123;
-            for(int left&#x3D;0; left&lt;right; left++)
-            &#123;
-                &#x2F;&#x2F;如果两种字符不相同，肯定不能构成回文子串
-                if(s[left] !&#x3D; s[right])  continue;
-                
-                if(left &#x3D;&#x3D; right)&#123;
-                    dp[left][right] &#x3D; true;
-                &#125;else if(right-left &lt;&#x3D; 2)&#123;
-                    dp[left][right] &#x3D; true;
-                &#125;else if(dp[left+1][right-1])&#123;
-                    dp[left][right] &#x3D; true;
-                &#125;
-                if(dp[left][right] &amp;&amp; right-left+1 &gt; maxlen)
-                &#123;
-                    start &#x3D; left;
-                    maxlen &#x3D; right-left+1;
-                &#125;
-            &#125;
-        &#125;
-        &#x2F;&#x2F;截取最长的回文子串
-        return s.substr(start,maxlen);
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">string <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-comment">//边界条件判断</span><br>        <span class="hljs-keyword">if</span>(s.<span class="hljs-built_in">size</span>() &lt; <span class="hljs-number">2</span>)  <span class="hljs-keyword">return</span> s;<br>        <span class="hljs-type">int</span> start = <span class="hljs-number">0</span>;  <span class="hljs-comment">//最长回文串开始的位置</span><br>        <span class="hljs-type">int</span> maxlen = <span class="hljs-number">1</span>; <span class="hljs-comment">//最长回文串的长度</span><br>        <span class="hljs-type">int</span> len = s.<span class="hljs-built_in">size</span>();<br>        vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt;&gt; <span class="hljs-built_in">dp</span>(len,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">bool</span>&gt;(len));<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> right=<span class="hljs-number">1</span>; right&lt;len; right++)<br>        &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> left=<span class="hljs-number">0</span>; left&lt;right; left++)<br>            &#123;<br>                <span class="hljs-comment">//如果两种字符不相同，肯定不能构成回文子串</span><br>                <span class="hljs-keyword">if</span>(s[left] != s[right])  <span class="hljs-keyword">continue</span>;<br>                <br>                <span class="hljs-keyword">if</span>(left == right)&#123;<br>                    dp[left][right] = <span class="hljs-literal">true</span>;<br>                &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(right-left &lt;= <span class="hljs-number">2</span>)&#123;<br>                    dp[left][right] = <span class="hljs-literal">true</span>;<br>                &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(dp[left+<span class="hljs-number">1</span>][right<span class="hljs-number">-1</span>])&#123;<br>                    dp[left][right] = <span class="hljs-literal">true</span>;<br>                &#125;<br>                <span class="hljs-keyword">if</span>(dp[left][right] &amp;&amp; right-left+<span class="hljs-number">1</span> &gt; maxlen)<br>                &#123;<br>                    start = left;<br>                    maxlen = right-left+<span class="hljs-number">1</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">//截取最长的回文子串</span><br>        <span class="hljs-keyword">return</span> s.<span class="hljs-built_in">substr</span>(start,maxlen);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -550,8 +509,6 @@ public:
 
 
 
-  
-    
   
 
 

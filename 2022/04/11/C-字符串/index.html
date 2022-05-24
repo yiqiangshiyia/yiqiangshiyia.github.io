@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="C++ 字符串字符串常用函数push_back()函数 push_back()函数的用法 函数将一个新的元素加到vector的最后面，位置为当前最后一个元素的下一个元素。  push_back()函数也同样适用于string字符串 string str &#x3D; &quot;&quot;; str.push_back(&#39;d&#39;);  类似的： pop_back()    &#x2F;&#x2F;移除">
+    <meta name="description" content="C++ 字符串字符串常用函数push_back()函数 push_back()函数的用法 函数将一个新的元素加到vector的最后面，位置为当前最后一个元素的下一个元素。  push_back()函数也同样适用于string字符串 12string str &#x3D; &quot;&quot;;str.push_back(&amp;#x27;d&amp;#x27;);  类似的： pop_back()    &#x2F;&#x2F;移除最后">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++ 字符串">
 <meta property="og:url" content="https://yiqiangshiyia.github.io/2022/04/11/C-%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
-<meta property="og:description" content="C++ 字符串字符串常用函数push_back()函数 push_back()函数的用法 函数将一个新的元素加到vector的最后面，位置为当前最后一个元素的下一个元素。  push_back()函数也同样适用于string字符串 string str &#x3D; &quot;&quot;; str.push_back(&#39;d&#39;);  类似的： pop_back()    &#x2F;&#x2F;移除">
+<meta property="og:description" content="C++ 字符串字符串常用函数push_back()函数 push_back()函数的用法 函数将一个新的元素加到vector的最后面，位置为当前最后一个元素的下一个元素。  push_back()函数也同样适用于string字符串 12string str &#x3D; &quot;&quot;;str.push_back(&amp;#x27;d&amp;#x27;);  类似的： pop_back()    &#x2F;&#x2F;移除最后">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-11T15:09:04.000Z">
 <meta property="article:modified_time" content="2022-05-15T13:38:49.371Z">
@@ -42,15 +42,7 @@
     
     
       
-      
-        
-          
-        
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
-      
-      
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
     
   
 
@@ -295,8 +287,7 @@
 <p>函数将一个新的元素加到vector的最后面，位置为当前最后一个元素的下一个元素。</p>
 </blockquote>
 <p><strong>push_back()函数也同样适用于string字符串</strong></p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">string str &#x3D; &quot;&quot;;
-str.push_back(&#39;d&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><pre><code class="hljs c++">string str = <span class="hljs-string">&quot;&quot;</span>;<br>str.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&#x27;d&#x27;</span>);<br></code></pre></td></tr></table></figure>
 
 <p>类似的：</p>
 <p>pop_back()    //移除最后一个元素</p>
@@ -320,41 +311,23 @@ str.push_back(&#39;d&#39;);<span aria-hidden="true" class="line-numbers-rows"><s
 <h3 id="find-函数"><a href="#find-函数" class="headerlink" title="find()函数"></a>find()函数</h3><p>C++ string中的find()函数，string中find()返回值是字母在母串中的位置（下标记录），如果没有找到，那么会返回一个特别的标记npos。（返回值可以看成是一个int型的数）</p>
 <ul>
 <li><p>返回子串出现在母串中的首次出现的位置，和最后一次出现的位置。</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">flag &#x3D; &quot;c&quot;;
-position &#x3D; s.find_first_of(flag);
-printf(&quot;s.find_first_of(flag) is :%d\n&quot;,position);
-position &#x3D; s.find_last_of(flag);
-printf(&quot;s.find_last_of(flag) is :%d\n&quot;,position);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></li>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++">flag = <span class="hljs-string">&quot;c&quot;</span>;<br>position = s.<span class="hljs-built_in">find_first_of</span>(flag);<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;s.find_first_of(flag) is :%d\n&quot;</span>,position);<br>position = s.<span class="hljs-built_in">find_last_of</span>(flag);<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;s.find_last_of(flag) is :%d\n&quot;</span>,position);<br></code></pre></td></tr></table></figure></li>
 <li><p>查找某一给定位置后的子串的位置</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;从字符串s 下标5开始，查找字符串b ,返回b 在s 中的下标
-  position&#x3D;s.find(&quot;b&quot;,5);
-  cout&lt;&lt;&quot;s.find(b,5) is : &quot;&lt;&lt;position&lt;&lt;endl;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></li>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//从字符串s 下标5开始，查找字符串b ,返回b 在s 中的下标</span><br>  position=s.<span class="hljs-built_in">find</span>(<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-number">5</span>);<br>  cout&lt;&lt;<span class="hljs-string">&quot;s.find(b,5) is : &quot;</span>&lt;&lt;position&lt;&lt;endl;<br></code></pre></td></tr></table></figure></li>
 <li><p>查找所有子串在母串中出现的位置</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;查找s 中flag 出现的所有位置。
-    char flag&#x3D;&quot;a&quot;;
-    int position&#x3D;0;
-    int i&#x3D;1;
-    while((position&#x3D;s.find(flag,position))!&#x3D;string::npos)
-    &#123;
-        cout&lt;&lt;&quot;position  &quot;&lt;&lt;i&lt;&lt;&quot; : &quot;&lt;&lt;position&lt;&lt;endl;
-        position++;
-        i++;
-    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></li>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//查找s 中flag 出现的所有位置。</span><br>    <span class="hljs-type">char</span> flag=<span class="hljs-string">&quot;a&quot;</span>;<br>    <span class="hljs-type">int</span> position=<span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span>((position=s.<span class="hljs-built_in">find</span>(flag,position))!=string::npos)<br>    &#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;position  &quot;</span>&lt;&lt;i&lt;&lt;<span class="hljs-string">&quot; : &quot;</span>&lt;&lt;position&lt;&lt;endl;<br>        position++;<br>        i++;<br>    &#125;<br></code></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="C-数据类型转换"><a href="#C-数据类型转换" class="headerlink" title="C++ 数据类型转换"></a>C++ 数据类型转换</h2><h3 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h3><blockquote>
 <p>自动类型转换是指在不同类型数据进行混合运算时，系统会自动进行数据类型的转换。</p>
 </blockquote>
 <p>string→int</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">string str;
-cout&lt;&lt;str-&#39;0&#39;
-cout&lt;&lt;str-&#39;a&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++">string str;<br>cout&lt;&lt;str-<span class="hljs-string">&#x27;0&#x27;</span><br>cout&lt;&lt;str-<span class="hljs-string">&#x27;a&#x27;</span><br></code></pre></td></tr></table></figure>
 
 <p>int→string</p>
 <h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><blockquote>
 <p>强制类型转换在表达式中可以根据需要把任意一个数据的类型转换成另一个数据类型。强制类型转换是靠强制类型转换控制运算符实现的。</p>
 </blockquote>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int a &#x3D; double(2.5);
-double b &#x3D; double(12);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> a = <span class="hljs-built_in">double</span>(<span class="hljs-number">2.5</span>);<br><span class="hljs-type">double</span> b = <span class="hljs-built_in">double</span>(<span class="hljs-number">12</span>);<br></code></pre></td></tr></table></figure>
 
 
 
@@ -567,8 +540,6 @@ double b &#x3D; double(12);<span aria-hidden="true" class="line-numbers-rows"><s
 
 
 
-  
-    
   
 
 

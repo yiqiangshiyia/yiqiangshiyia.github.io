@@ -44,15 +44,7 @@
     
     
       
-      
-        
-          
-        
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
-      
-      
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
     
   
 
@@ -299,19 +291,10 @@
 <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定一个字符串 s 表示一个整数嵌套列表，实现一个解析它的语法分析器并返回解析的结果 NestedInteger 。</p>
 <p>列表中的每个元素只可能是整数或整数嵌套列表</p>
 <p>示例1</p>
-<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：s &#x3D; &quot;324&quot;,
-输出：324
-解释：你应该返回一个 NestedInteger 对象，其中只包含整数值 324。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight nix"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><pre><code class="hljs nix">输入：<span class="hljs-attr">s</span> = <span class="hljs-string">&quot;324&quot;</span>,<br>输出：<span class="hljs-number">324</span><br>解释：你应该返回一个 NestedInteger 对象，其中只包含整数值 <span class="hljs-number">324</span>。<br></code></pre></td></tr></table></figure>
 
 <p>示例2</p>
-<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">输入：s &#x3D; &quot;[123,[456,[789]]]&quot;,
-输出：[123,[456,[789]]]
-解释：返回一个 NestedInteger 对象包含一个有两个元素的嵌套列表：
-1. 一个 integer 包含值 123
-2. 一个包含两个元素的嵌套列表：
-    i.  一个 integer 包含值 456
-    ii. 一个包含一个元素的嵌套列表
-         a. 一个 integer 包含值 789<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">输入：s = <span class="hljs-string">&quot;[123,[456,[789]]]&quot;</span>,<br>输出：[<span class="hljs-number">123</span>,[<span class="hljs-number">456</span>,[<span class="hljs-number">789</span>]]]<br>解释：返回一个 NestedInteger 对象包含一个有两个元素的嵌套列表：<br><span class="hljs-number">1.</span> 一个 <span class="hljs-keyword">integer</span> 包含值 <span class="hljs-number">123</span><br><span class="hljs-number">2.</span> 一个包含两个元素的嵌套列表：<br>    i.  一个 <span class="hljs-keyword">integer</span> 包含值 <span class="hljs-number">456</span><br>    ii. 一个包含一个元素的嵌套列表<br>         <span class="hljs-keyword">a</span>. 一个 <span class="hljs-keyword">integer</span> 包含值 <span class="hljs-number">789</span><br></code></pre></td></tr></table></figure>
 
 
 
@@ -322,44 +305,7 @@
 <p>当s[i] == ‘,’ || s[i] == ‘]’时：如果数字不为空，将数字加入栈顶，重置数字num = 0</p>
 <p>当s[i] == ‘]’ &amp;&amp; st.size()&gt;1时，将栈顶元素加入栈顶的倒数第二个元素中，直到栈的到小为1</p>
 <p>AC代码：</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    NestedInteger deserialize(string s) &#123;
-        if(s[0] !&#x3D; &#39;[&#39;)  return NestedInteger(stoi(s));
-        stack&lt;NestedInteger&gt; st;
-        int num &#x3D; 0;
-        bool flag &#x3D; false;
-        for(int i&#x3D;0; i&lt;s.size(); i++)
-        &#123;
-            if(s[i] &#x3D;&#x3D; &#39;[&#39;)
-            &#123;
-                st.push(NestedInteger());
-            &#125;else if(s[i] &#x3D;&#x3D; &#39;-&#39;)
-            &#123;
-                flag &#x3D; true;
-            &#125;else if(isdigit(s[i]))
-            &#123;
-                num &#x3D; num*10 + s[i]-&#39;0&#39;;
-            &#125;else if(s[i] &#x3D;&#x3D; &#39;,&#39; || s[i] &#x3D;&#x3D; &#39;]&#39;)
-            &#123;
-                if(isdigit(s[i-1]))
-                &#123;
-                    if(flag)  num &#x3D; num*-1;
-                    st.top().add(NestedInteger(num));
-                    num &#x3D; 0;
-                    flag &#x3D; false;
-                &#125;
-                if(s[i] &#x3D;&#x3D; &#39;]&#39; &amp;&amp; st.size() &gt; 1)
-                &#123;
-                    NestedInteger ni &#x3D; st.top();
-                    st.pop();
-                    st.top().add(ni);
-                &#125;
-            &#125;
-        &#125;
-        return st.top();
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">NestedInteger <span class="hljs-title">deserialize</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(s[<span class="hljs-number">0</span>] != <span class="hljs-string">&#x27;[&#x27;</span>)  <span class="hljs-keyword">return</span> <span class="hljs-built_in">NestedInteger</span>(<span class="hljs-built_in">stoi</span>(s));<br>        stack&lt;NestedInteger&gt; st;<br>        <span class="hljs-type">int</span> num = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">bool</span> flag = <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;s.<span class="hljs-built_in">size</span>(); i++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(s[i] == <span class="hljs-string">&#x27;[&#x27;</span>)<br>            &#123;<br>                st.<span class="hljs-built_in">push</span>(<span class="hljs-built_in">NestedInteger</span>());<br>            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(s[i] == <span class="hljs-string">&#x27;-&#x27;</span>)<br>            &#123;<br>                flag = <span class="hljs-literal">true</span>;<br>            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-built_in">isdigit</span>(s[i]))<br>            &#123;<br>                num = num*<span class="hljs-number">10</span> + s[i]-<span class="hljs-string">&#x27;0&#x27;</span>;<br>            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(s[i] == <span class="hljs-string">&#x27;,&#x27;</span> || s[i] == <span class="hljs-string">&#x27;]&#x27;</span>)<br>            &#123;<br>                <span class="hljs-keyword">if</span>(<span class="hljs-built_in">isdigit</span>(s[i<span class="hljs-number">-1</span>]))<br>                &#123;<br>                    <span class="hljs-keyword">if</span>(flag)  num = num*<span class="hljs-number">-1</span>;<br>                    st.<span class="hljs-built_in">top</span>().<span class="hljs-built_in">add</span>(<span class="hljs-built_in">NestedInteger</span>(num));<br>                    num = <span class="hljs-number">0</span>;<br>                    flag = <span class="hljs-literal">false</span>;<br>                &#125;<br>                <span class="hljs-keyword">if</span>(s[i] == <span class="hljs-string">&#x27;]&#x27;</span> &amp;&amp; st.<span class="hljs-built_in">size</span>() &gt; <span class="hljs-number">1</span>)<br>                &#123;<br>                    NestedInteger ni = st.<span class="hljs-built_in">top</span>();<br>                    st.<span class="hljs-built_in">pop</span>();<br>                    st.<span class="hljs-built_in">top</span>().<span class="hljs-built_in">add</span>(ni);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> st.<span class="hljs-built_in">top</span>();<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -571,8 +517,6 @@ public:
 
 
 
-  
-    
   
 
 

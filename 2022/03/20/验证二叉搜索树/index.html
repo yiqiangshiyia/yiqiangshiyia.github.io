@@ -42,15 +42,7 @@
     
     
       
-      
-        
-          
-        
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
-      
-      
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
     
   
 
@@ -249,7 +241,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      1.5k 字
     </span>
   
 
@@ -258,7 +250,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14 分钟
+      13 分钟
     </span>
   
 
@@ -297,57 +289,14 @@
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>方法1：递归法</strong> </p>
 <p>定义一个函数bool helper(TreeNode*,long long int lower,long long int upper) 如果上界和下界存在，判断当前节点的值是否在界内，如果不在界内，返回false。将当前节点的值作为上界，继续对node-&gt;left进行递归；将当前节点作为下界，继续对node-&gt;right进行递归。   </p>
 <p>AC代码：</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    bool helper(TreeNode* root,long long int lower,long long int upper)&#123;
-        if(root &#x3D;&#x3D; nullptr)
-        &#123;
-            return true;  &#x2F;&#x2F;空节点是合理的二叉搜索树
-        &#125;
-        if(root-&gt;val &lt;&#x3D; lower  root-&gt;val &gt;&#x3D; upper)  &#x2F;&#x2F;节点不为空，判断节点上的值是否在上下界内
-        &#123;
-            return false;
-        &#125;
-        &#x2F;&#x2F;更改上下界 递归遍历二叉树的左右子树
-        return helper(root-&gt;left,lower,root-&gt;val) &amp;&amp; helper(root-&gt;right,root-&gt;val,upper);
-    &#125;
-
-    bool isValidBST(TreeNode* root) &#123;
-        return helper(root,LONG_MIN,LONG_MAX);  &#x2F;&#x2F;从根节点开始，上下界都为空
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">helper</span><span class="hljs-params">(TreeNode* root,<span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span> lower,<span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span> upper)</span></span>&#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)<br>        &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;  <span class="hljs-comment">//空节点是合理的二叉搜索树</span><br>        &#125;<br>        <span class="hljs-keyword">if</span>(root-&gt;val &lt;= lower  root-&gt;val &gt;= upper)  <span class="hljs-comment">//节点不为空，判断节点上的值是否在上下界内</span><br>        &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-comment">//更改上下界 递归遍历二叉树的左右子树</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">helper</span>(root-&gt;left,lower,root-&gt;val) &amp;&amp; <span class="hljs-built_in">helper</span>(root-&gt;right,root-&gt;val,upper);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isValidBST</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">helper</span>(root,LONG_MIN,LONG_MAX);  <span class="hljs-comment">//从根节点开始，上下界都为空</span><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
 
 <p><strong>方法2：中序遍历</strong> </p>
 <p>根据二叉搜索树的性质，得知二叉搜索树中序遍历得到的值构成的序列一定是升序的，在中序遍历的时候实时检查当前节点的值是否大于前一个中序遍历到的节点的值即可。如果均大于说明这个序列是升序的，整棵树是二叉搜索树，否则不是。</p>
 <p>AC代码：</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    bool isValidBST(TreeNode* root) &#123;
-        stack&lt;TreeNode*&gt; stack;  &#x2F;&#x2F;定义栈stack来存储未拜访过的树节点
-        long long inorder &#x3D; (long long)INT_MIN-1;  &#x2F;&#x2F;inorder用来存储上一个遍历到的树节点的值
-        while(!stack.empty() || root !&#x3D; nullptr)
-        &#123;
-            &#x2F;&#x2F;不断将root的左子节点加入栈 直到没有剩余的左节点
-            while(root !&#x3D; nullptr)
-            &#123;
-                stack.push(root);
-                root &#x3D; root-&gt;left;
-            &#125;
-            root &#x3D; stack.top();
-            stack.pop();  &#x2F;&#x2F;将当前子树最左边的节点从stack中取出
-            &#x2F;&#x2F;如果中序遍历得到的节点的值小于等于前一个inorder，说明不是二叉搜索树
-            if (root-&gt;val &lt;&#x3D; inorder)
-            &#123;
-                return false;
-            &#125;
-            inorder &#x3D; root-&gt;val;  &#x2F;&#x2F;将inorder设为当前节点的值
-            root &#x3D; root-&gt;right;  &#x2F;&#x2F;将root设为当前节点的右子节点，继续循环
-        &#125;
-        return true;
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isValidBST</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        stack&lt;TreeNode*&gt; stack;  <span class="hljs-comment">//定义栈stack来存储未拜访过的树节点</span><br>        <span class="hljs-type">long</span> <span class="hljs-type">long</span> inorder = (<span class="hljs-type">long</span> <span class="hljs-type">long</span>)INT_MIN<span class="hljs-number">-1</span>;  <span class="hljs-comment">//inorder用来存储上一个遍历到的树节点的值</span><br>        <span class="hljs-keyword">while</span>(!stack.<span class="hljs-built_in">empty</span>() || root != <span class="hljs-literal">nullptr</span>)<br>        &#123;<br>            <span class="hljs-comment">//不断将root的左子节点加入栈 直到没有剩余的左节点</span><br>            <span class="hljs-keyword">while</span>(root != <span class="hljs-literal">nullptr</span>)<br>            &#123;<br>                stack.<span class="hljs-built_in">push</span>(root);<br>                root = root-&gt;left;<br>            &#125;<br>            root = stack.<span class="hljs-built_in">top</span>();<br>            stack.<span class="hljs-built_in">pop</span>();  <span class="hljs-comment">//将当前子树最左边的节点从stack中取出</span><br>            <span class="hljs-comment">//如果中序遍历得到的节点的值小于等于前一个inorder，说明不是二叉搜索树</span><br>            <span class="hljs-keyword">if</span> (root-&gt;val &lt;= inorder)<br>            &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>            inorder = root-&gt;val;  <span class="hljs-comment">//将inorder设为当前节点的值</span><br>            root = root-&gt;right;  <span class="hljs-comment">//将root设为当前节点的右子节点，继续循环</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -559,8 +508,6 @@ public:
 
 
 
-  
-    
   
 
 

@@ -43,15 +43,7 @@
     
     
       
-      
-        
-          
-        
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
-      
-      
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
     
   
 
@@ -250,7 +242,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4k 字
+      3.9k 字
     </span>
   
 
@@ -259,7 +251,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      34 分钟
+      33 分钟
     </span>
   
 
@@ -312,34 +304,13 @@
 <blockquote>
 <p>匿名函数：格式[](){}，可以理解为中括号里面是函数名  [&amp;]代表没有名字，小括号里面是传入的参数。</p>
 </blockquote>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">vector&lt;pair&lt;int,int&gt;&gt; costs;&#x2F;&#x2F;costs的每个元素是由价值与编号组成的pair
-sort(costs.begin(), costs.end(), [&amp;](const auto &amp; a, const auto &amp; b)
-    &#123;
-        if (a.first !&#x3D; b.first)
-            return a.first &gt; b.first;&#x2F;&#x2F;价值不同时，价值大的优先
-        else
-            return a.second &lt; b.second;&#x2F;&#x2F;价值相同时，标号小的优先
-    &#125;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><pre><code class="hljs c++">vector&lt;pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt;&gt; costs;<span class="hljs-comment">//costs的每个元素是由价值与编号组成的pair</span><br><span class="hljs-built_in">sort</span>(costs.<span class="hljs-built_in">begin</span>(), costs.<span class="hljs-built_in">end</span>(), [&amp;](<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span> &amp; a, <span class="hljs-type">const</span> <span class="hljs-keyword">auto</span> &amp; b)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (a.first != b.first)<br>            <span class="hljs-keyword">return</span> a.first &gt; b.first;<span class="hljs-comment">//价值不同时，价值大的优先</span><br>        <span class="hljs-keyword">else</span><br>            <span class="hljs-keyword">return</span> a.second &lt; b.second;<span class="hljs-comment">//价值相同时，标号小的优先</span><br>    &#125;);<br></code></pre></td></tr></table></figure>
 
 <p>这种方法等价于</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">vector&lt;pair&lt;int,int&gt;&gt; costs;
-auto compare &#x3D; [&amp;](const auto&amp; a,const auto&amp; b )&#123;
-        if (a.first !&#x3D; b.first)
-            return a.first &gt; b.first;&#x2F;&#x2F;价值不同时，价值大的优先
-        else
-            return a.second &lt; b.second;&#x2F;&#x2F;价值相同时，标号小的优先
-&#125;
-sort(costs.begin(),costs.end(),compare);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++">vector&lt;pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt;&gt; costs;<br><span class="hljs-keyword">auto</span> compare = [&amp;](<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; a,<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; b )&#123;<br>        <span class="hljs-keyword">if</span> (a.first != b.first)<br>            <span class="hljs-keyword">return</span> a.first &gt; b.first;<span class="hljs-comment">//价值不同时，价值大的优先</span><br>        <span class="hljs-keyword">else</span><br>            <span class="hljs-keyword">return</span> a.second &lt; b.second;<span class="hljs-comment">//价值相同时，标号小的优先</span><br>&#125;<br><span class="hljs-built_in">sort</span>(costs.<span class="hljs-built_in">begin</span>(),costs.<span class="hljs-built_in">end</span>(),compare);<br></code></pre></td></tr></table></figure>
 
 <p>2.直接写在main函数中，与inline函数相似。</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
-using namespace std;
-int main()&#123;
-    int x&#x3D;1,y&#x3D;2,z&#x3D;0;
-    auto add &#x3D; [&amp;z](auto x,auto y)&#123;z&#x3D;x+y;return z;&#125;;
-    auto res &#x3D; add(x,y);
-    cout&lt;&lt;res&lt;&lt;z&lt;&lt;endl;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">int</span> x=<span class="hljs-number">1</span>,y=<span class="hljs-number">2</span>,z=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">auto</span> add = [&amp;z](<span class="hljs-keyword">auto</span> x,<span class="hljs-keyword">auto</span> y)&#123;z=x+y;<span class="hljs-keyword">return</span> z;&#125;;<br>    <span class="hljs-keyword">auto</span> res = <span class="hljs-built_in">add</span>(x,y);<br>    cout&lt;&lt;res&lt;&lt;z&lt;&lt;endl;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -352,10 +323,7 @@ int main()&#123;
 <li><p> sort() 函数一样，实现 stable_sort() 的函数模板也位于&lt;algorithm&gt;头文件中</p>
 </li>
 <li><p>table_sort() 函数的用法也有 2 种，其语法格式和 sort() 函数完全相同（仅函数名不同）</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;对 [first, last) 区域内的元素做默认的升序排序
-void stable_sort ( RandomAccessIterator first, RandomAccessIterator last );
-&#x2F;&#x2F;按照指定的 comp 排序规则，对 [first, last) 区域内的元素进行排序
-void stable_sort ( RandomAccessIterator first, RandomAccessIterator last, Compare comp );<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//对 [first, last) 区域内的元素做默认的升序排序</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">stable_sort</span> <span class="hljs-params">( RandomAccessIterator first, RandomAccessIterator last )</span></span>;<br><span class="hljs-comment">//按照指定的 comp 排序规则，对 [first, last) 区域内的元素进行排序</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">stable_sort</span> <span class="hljs-params">( RandomAccessIterator first, RandomAccessIterator last, Compare comp )</span></span>;<br></code></pre></td></tr></table></figure>
 
 <p>first 和 last 都为随机访问迭代器，它们的组合 [first, last) 用来指定要排序的目标区域</p>
 </li>
@@ -377,37 +345,18 @@ void stable_sort ( RandomAccessIterator first, RandomAccessIterator last, Compar
 <li><p><strong>自定义排序</strong></p>
 <ul>
 <li><p>自定义比较函数cmp</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">bool  cmp(int a,int b)
-&#123;
-        return b&lt;a;
-&#125;
-sort(a,a+n,cmp);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">bool</span>  <span class="hljs-title">cmp</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span><br><span class="hljs-function"></span>&#123;<br>        <span class="hljs-keyword">return</span> b&lt;a;<br>&#125;<br><span class="hljs-built_in">sort</span>(a,a+n,cmp);<br></code></pre></td></tr></table></figure>
 
 <p>传入的参数类型和需要排序的数据类型一致，如果认为第一个参数比第二个小，也就是第一个参数需要排在第二个参数前面时返回true，反之返回 false。系统默认a&lt;b时返回true，于是从小到大排。而上面的例子是当b小于a时，认为a小于b。所以排序的结果就是将元素按从大到小的顺序排序。</p>
 </li>
 <li><p>重载比较运算符”&lt;”</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">bool operator&lt; (const Student&amp; s1, const Student&amp; s2)
-&#123;
-        if(s1.age&#x3D;&#x3D;s2.age)
-                return s1.name &lt;s2.name;&#x2F;&#x2F;年龄相同时，按姓名小到大排
-        else  return s1.age &gt; s2.age; &#x2F;&#x2F;从年龄大到小排序
-&#125;
-sort(a,a+n);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span>&lt; (<span class="hljs-type">const</span> Student&amp; s1, <span class="hljs-type">const</span> Student&amp; s2)<br>&#123;<br>        <span class="hljs-keyword">if</span>(s1.age==s2.age)<br>                <span class="hljs-keyword">return</span> s1.name &lt;s2.name;<span class="hljs-comment">//年龄相同时，按姓名小到大排</span><br>        <span class="hljs-keyword">else</span>  <span class="hljs-keyword">return</span> s1.age &gt; s2.age; <span class="hljs-comment">//从年龄大到小排序</span><br>&#125;<br><span class="hljs-built_in">sort</span>(a,a+n);<br></code></pre></td></tr></table></figure>
 
 <p>Note：参数类型如果是自定义类型，比如自己定义的结构体、类，尽管sort函数默认是从小到大排列，但是这里必须要重载比较运算符”&lt;”</p>
 <p>和cmp函数同理，如果认为第一个参数比第二个小就返回true，反之返回 false。</p>
 </li>
 <li><p>声明比较类</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">struct cmp
-&#123;
-       bool operator() (const Student&amp; s1, const Student&amp; s2)
-       &#123;
-              if(s1.age&#x3D;&#x3D;s2.age)
-                     return s1.name &lt;s2.name;
-              else  return s1.age &lt; s2.age;
-        &#125;
-&#125;;
-sort(a,a+n,cmp());<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">cmp</span><br>&#123;<br>       <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span> <span class="hljs-params">(<span class="hljs-type">const</span> Student&amp; s1, <span class="hljs-type">const</span> Student&amp; s2)</span></span><br><span class="hljs-function">       </span>&#123;<br>              <span class="hljs-keyword">if</span>(s1.age==s2.age)<br>                     <span class="hljs-keyword">return</span> s1.name &lt;s2.name;<br>              <span class="hljs-keyword">else</span>  <span class="hljs-keyword">return</span> s1.age &lt; s2.age;<br>        &#125;<br>&#125;;<br><span class="hljs-built_in">sort</span>(a,a+n,<span class="hljs-built_in">cmp</span>());<br></code></pre></td></tr></table></figure>
 
 <p>还是同理，如果认为第一个参数比第二个小就返回true，反之返回 false。</p>
 </li>
@@ -417,34 +366,7 @@ sort(a,a+n,cmp());<span aria-hidden="true" class="line-numbers-rows"><span></spa
 <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reorder-data-in-log-files/">https://leetcode.cn/problems/reorder-data-in-log-files/</a></p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>首先对日志文件进行预处理，将字母日志和数字日志分别存储在容器digit和容器alpha中，再用匿名函数对字母日志进行排序。再将排序后的日志文件合并，返回结果。</p>
 <p>AC代码：</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    vector&lt;string&gt; reorderLogFiles(vector&lt;string&gt;&amp; logs) &#123;
-        vector&lt;string&gt; digit;
-        vector&lt;string&gt; alpha;
-        for(const auto str : logs)
-        &#123;
-            char c &#x3D; str.back();  &#x2F;&#x2F;返回字符串最后一个字符
-            if(isdigit(c))  digit.push_back(str);
-            else  alpha.push_back(str);
-        &#125;
-        sort(alpha.begin(),alpha.end(),[&amp;](const string &amp;log1,const string &amp;log2)&#123;  &#x2F;&#x2F;lambda匿名函数
-            int pos1 &#x3D; log1.find(&#39; &#39;);  &#x2F;&#x2F;返回第一次出现&#39; &#39;的位置下标
-            int pos2 &#x3D; log2.find(&#39; &#39;);
-            string s1 &#x3D; log1.substr(pos1);  &#x2F;&#x2F;从下标pos1处开始复制字符串log1
-            string s2 &#x3D; log2.substr(pos2);
-            if(s1 !&#x3D; s2)
-            &#123;
-                return s1&lt;s2;
-            &#125;
-            return log1&lt;log2;  &#x2F;&#x2F;s1&#x3D;&#x3D;s2 只有前面的标识符不同 所以直接比较整个字符串相当于比较标识符
-        &#125;);
-        vector&lt;string&gt; ans;
-        for(auto str : alpha)  ans.push_back(str);
-        for(auto str : digit)  ans.push_back(str);
-        return ans;
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;string&gt; <span class="hljs-title">reorderLogFiles</span><span class="hljs-params">(vector&lt;string&gt;&amp; logs)</span> </span>&#123;<br>        vector&lt;string&gt; digit;<br>        vector&lt;string&gt; alpha;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span> str : logs)<br>        &#123;<br>            <span class="hljs-type">char</span> c = str.<span class="hljs-built_in">back</span>();  <span class="hljs-comment">//返回字符串最后一个字符</span><br>            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">isdigit</span>(c))  digit.<span class="hljs-built_in">push_back</span>(str);<br>            <span class="hljs-keyword">else</span>  alpha.<span class="hljs-built_in">push_back</span>(str);<br>        &#125;<br>        <span class="hljs-built_in">sort</span>(alpha.<span class="hljs-built_in">begin</span>(),alpha.<span class="hljs-built_in">end</span>(),[&amp;](<span class="hljs-type">const</span> string &amp;log1,<span class="hljs-type">const</span> string &amp;log2)&#123;  <span class="hljs-comment">//lambda匿名函数</span><br>            <span class="hljs-type">int</span> pos1 = log1.<span class="hljs-built_in">find</span>(<span class="hljs-string">&#x27; &#x27;</span>);  <span class="hljs-comment">//返回第一次出现&#x27; &#x27;的位置下标</span><br>            <span class="hljs-type">int</span> pos2 = log2.<span class="hljs-built_in">find</span>(<span class="hljs-string">&#x27; &#x27;</span>);<br>            string s1 = log1.<span class="hljs-built_in">substr</span>(pos1);  <span class="hljs-comment">//从下标pos1处开始复制字符串log1</span><br>            string s2 = log2.<span class="hljs-built_in">substr</span>(pos2);<br>            <span class="hljs-keyword">if</span>(s1 != s2)<br>            &#123;<br>                <span class="hljs-keyword">return</span> s1&lt;s2;<br>            &#125;<br>            <span class="hljs-keyword">return</span> log1&lt;log2;  <span class="hljs-comment">//s1==s2 只有前面的标识符不同 所以直接比较整个字符串相当于比较标识符</span><br>        &#125;);<br>        vector&lt;string&gt; ans;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> str : alpha)  ans.<span class="hljs-built_in">push_back</span>(str);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> str : digit)  ans.<span class="hljs-built_in">push_back</span>(str);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -655,8 +577,6 @@ public:
 
 
 
-  
-    
   
 
 

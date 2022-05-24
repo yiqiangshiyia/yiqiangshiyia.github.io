@@ -42,15 +42,7 @@
     
     
       
-      
-        
-          
-        
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
-      
-      
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
     
   
 
@@ -299,45 +291,7 @@
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>解题思路没有完全按照力扣官方给出的解法，但是大体思想是一样的只有一些小的细节不太一样，都是用了广度优先搜索的方法解题的。</p>
 <p>解题思路：首先定义一个队列q用于存储变化后的gene序列和哈希表mp防止重复遍历gene序列进入死循环。只要队列不为空或者gene != end，则遍历队列中的元素（有点类似于层序遍历），利用判断条件distance(str,gene) == 1 &amp;&amp; mp[str] == false找出所有未遍历的在基因库bank中且与当前遍历gene只差一个字符的基因并将其插入队列尾部。distance()函数为判断两个不同基因序列所差字符个数的函数。每做完一层遍历之后 ans++，表示基因变化了一次</p>
 <p>AC代码：</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    int distance(string str,string gene)
-    &#123;
-        int cnt &#x3D; 0;
-        for(int i&#x3D;0; i&lt;str.size(); i++)
-        &#123;
-            if(str[i] !&#x3D; gene[i])  cnt++;
-        &#125;
-        return cnt;
-    &#125;
-    int minMutation(string start, string end, vector&lt;string&gt;&amp; bank) &#123;
-        int ans &#x3D; 0;
-        queue&lt;string&gt; q;
-        unordered_map&lt;string,bool&gt; mp;
-        q.push(start);
-        mp[start] &#x3D; true;
-        while(!q.empty())
-        &#123;
-            int n &#x3D; q.size();
-            for(int i&#x3D;0; i&lt;n; i++)
-            &#123;
-                auto gene &#x3D; q.front();
-                q.pop();
-                if(gene &#x3D;&#x3D; end)  return ans;
-                for(auto str : bank)
-                &#123;
-                    if(distance(str,gene) &#x3D;&#x3D; 1 &amp;&amp; mp[str] &#x3D;&#x3D; false)
-                    &#123;
-                        q.push(str);
-                        mp[str] &#x3D; true;
-                    &#125;
-                &#125;
-            &#125;
-            ans++;
-        &#125;
-        return -1;
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">distance</span><span class="hljs-params">(string str,string gene)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;str.<span class="hljs-built_in">size</span>(); i++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(str[i] != gene[i])  cnt++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cnt;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">minMutation</span><span class="hljs-params">(string start, string end, vector&lt;string&gt;&amp; bank)</span> </span>&#123;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        queue&lt;string&gt; q;<br>        unordered_map&lt;string,<span class="hljs-type">bool</span>&gt; mp;<br>        q.<span class="hljs-built_in">push</span>(start);<br>        mp[start] = <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())<br>        &#123;<br>            <span class="hljs-type">int</span> n = q.<span class="hljs-built_in">size</span>();<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)<br>            &#123;<br>                <span class="hljs-keyword">auto</span> gene = q.<span class="hljs-built_in">front</span>();<br>                q.<span class="hljs-built_in">pop</span>();<br>                <span class="hljs-keyword">if</span>(gene == end)  <span class="hljs-keyword">return</span> ans;<br>                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> str : bank)<br>                &#123;<br>                    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">distance</span>(str,gene) == <span class="hljs-number">1</span> &amp;&amp; mp[str] == <span class="hljs-literal">false</span>)<br>                    &#123;<br>                        q.<span class="hljs-built_in">push</span>(str);<br>                        mp[str] = <span class="hljs-literal">true</span>;<br>                    &#125;<br>                &#125;<br>            &#125;<br>            ans++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -546,8 +500,6 @@ public:
 
 
 
-  
-    
   
 
 

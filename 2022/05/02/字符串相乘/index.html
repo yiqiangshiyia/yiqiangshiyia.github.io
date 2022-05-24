@@ -45,15 +45,7 @@
     
     
       
-      
-        
-          
-        
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css" />
-      
-      
-        <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/plugins/line-numbers/prism-line-numbers.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
     
   
 
@@ -252,7 +244,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      1.7k 字
     </span>
   
 
@@ -303,69 +295,7 @@
 <p>需要注意的是，num2 除了最低位以外，其余的每一位的运算结果都需要补 0。</p>
 <p><img src="https://github.com/yiqiangshiyia/img/blob/main/images/QQ%E6%88%AA%E5%9B%BE20220502192051.png?raw=true" srcset="/img/loading.gif" lazyload alt="方法一：做加法"></p>
 <p>AC代码：</p>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    string multiply(string num1, string num2) &#123;
-        if(num1 &#x3D;&#x3D; &quot;0&quot; || num2 &#x3D;&#x3D; &quot;0&quot;)  return &quot;0&quot;;
-        string ans &#x3D; &quot;0&quot;;
-        int m &#x3D; num1.size(),n &#x3D; num2.size();
-        for(int i&#x3D;n-1; i&gt;&#x3D;0; i--)
-        &#123;
-            string cur;
-            int add &#x3D; 0;
-            &#x2F;&#x2F;末尾补0
-            for(int j&#x3D;n-1; j&gt;i; j--)
-            &#123;
-                ans.push_back(0);
-            &#125;
-            int y &#x3D; num2[i]-&#39;0&#39;;
-            for(int j&#x3D;m-1; j&gt;&#x3D;0; j--)
-            &#123;
-                int x &#x3D; num1[j]-&#39;0&#39;;
-                int sum &#x3D; x*y+add;
-                cur.push_back(&#39;0&#39;+sum%10);
-                add &#x3D; sum&#x2F;10;
-            &#125;
-            while(add !&#x3D; 0)
-            &#123;
-                cur.push_back(add%10);
-                add &#x3D; add&#x2F;10;
-            &#125;
-            reverse(cur.begin(),cur.end());  &#x2F;&#x2F;字符串翻转
-            ans &#x3D; addStrings(ans,cur);
-        &#125;
-        return ans;
-    &#125;
-    &#x2F;&#x2F;字符串相加 LeetCode 415
-    string addStrings(string &amp;num1,string &amp;num2)
-    &#123;
-        int i &#x3D; num1.size()-1,j &#x3D; num2.size()-1,add &#x3D; 0;
-        string ans;
-        while(i&gt;&#x3D;0 || j&gt;&#x3D;0 || add !&#x3D; 0)
-        &#123;
-            int x,y;
-            if(num1[i] &gt;&#x3D; 0)
-            &#123;
-                x &#x3D; num1[i] - &#39;0&#39;;
-            &#125;else&#123;
-                x &#x3D; 0;
-            &#125;
-            if(num2[j] &gt;&#x3D; 0)
-            &#123;
-                y &#x3D; num2[j] - &#39;0&#39;;
-            &#125;else&#123;
-                y &#x3D; 0;
-            &#125;
-            int sum &#x3D; x+y+add;
-            ans.push_back(&#39;0&#39;+sum%10);
-            add &#x3D; sum&#x2F;10;
-            i--;
-            j--;
-        &#125;
-        reverse(ans.begin(),ans.end());
-        return ans;
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">string <span class="hljs-title">multiply</span><span class="hljs-params">(string num1, string num2)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(num1 == <span class="hljs-string">&quot;0&quot;</span> || num2 == <span class="hljs-string">&quot;0&quot;</span>)  <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;0&quot;</span>;<br>        string ans = <span class="hljs-string">&quot;0&quot;</span>;<br>        <span class="hljs-type">int</span> m = num1.<span class="hljs-built_in">size</span>(),n = num2.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=n<span class="hljs-number">-1</span>; i&gt;=<span class="hljs-number">0</span>; i--)<br>        &#123;<br>            string cur;<br>            <span class="hljs-type">int</span> add = <span class="hljs-number">0</span>;<br>            <span class="hljs-comment">//末尾补0</span><br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=n<span class="hljs-number">-1</span>; j&gt;i; j--)<br>            &#123;<br>                ans.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">0</span>);<br>            &#125;<br>            <span class="hljs-type">int</span> y = num2[i]-<span class="hljs-string">&#x27;0&#x27;</span>;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=m<span class="hljs-number">-1</span>; j&gt;=<span class="hljs-number">0</span>; j--)<br>            &#123;<br>                <span class="hljs-type">int</span> x = num1[j]-<span class="hljs-string">&#x27;0&#x27;</span>;<br>                <span class="hljs-type">int</span> sum = x*y+add;<br>                cur.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&#x27;0&#x27;</span>+sum%<span class="hljs-number">10</span>);<br>                add = sum/<span class="hljs-number">10</span>;<br>            &#125;<br>            <span class="hljs-keyword">while</span>(add != <span class="hljs-number">0</span>)<br>            &#123;<br>                cur.<span class="hljs-built_in">push_back</span>(add%<span class="hljs-number">10</span>);<br>                add = add/<span class="hljs-number">10</span>;<br>            &#125;<br>            <span class="hljs-built_in">reverse</span>(cur.<span class="hljs-built_in">begin</span>(),cur.<span class="hljs-built_in">end</span>());  <span class="hljs-comment">//字符串翻转</span><br>            ans = <span class="hljs-built_in">addStrings</span>(ans,cur);<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>    <span class="hljs-comment">//字符串相加 LeetCode 415</span><br>    <span class="hljs-function">string <span class="hljs-title">addStrings</span><span class="hljs-params">(string &amp;num1,string &amp;num2)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-type">int</span> i = num1.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>,j = num2.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>,add = <span class="hljs-number">0</span>;<br>        string ans;<br>        <span class="hljs-keyword">while</span>(i&gt;=<span class="hljs-number">0</span> || j&gt;=<span class="hljs-number">0</span> || add != <span class="hljs-number">0</span>)<br>        &#123;<br>            <span class="hljs-type">int</span> x,y;<br>            <span class="hljs-keyword">if</span>(num1[i] &gt;= <span class="hljs-number">0</span>)<br>            &#123;<br>                x = num1[i] - <span class="hljs-string">&#x27;0&#x27;</span>;<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                x = <span class="hljs-number">0</span>;<br>            &#125;<br>            <span class="hljs-keyword">if</span>(num2[j] &gt;= <span class="hljs-number">0</span>)<br>            &#123;<br>                y = num2[j] - <span class="hljs-string">&#x27;0&#x27;</span>;<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                y = <span class="hljs-number">0</span>;<br>            &#125;<br>            <span class="hljs-type">int</span> sum = x+y+add;<br>            ans.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&#x27;0&#x27;</span>+sum%<span class="hljs-number">10</span>);<br>            add = sum/<span class="hljs-number">10</span>;<br>            i--;<br>            j--;<br>        &#125;<br>        <span class="hljs-built_in">reverse</span>(ans.<span class="hljs-built_in">begin</span>(),ans.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -579,8 +509,6 @@ public:
 
 
 
-  
-    
   
 
 
