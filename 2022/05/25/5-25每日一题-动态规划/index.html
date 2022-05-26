@@ -16,14 +16,17 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="LeetCode 467：环绕字符串中唯一的子字符串Note本题的关键是如何去重，但是由于1&lt;&#x3D;p.length&lt;&#x3D;10^5，所以去重的数量非常非常大，是一个巨额数字难以实现。以某个字符开头或结尾，采用动态规划的思路，定义一个大小为26的dp数组，这样可以有效的去重。 问题本质：以某一字符串开头或结尾，它的最长的序列长度。 题目大意https:&#x2F;&#x2F;leetcode.cn&#x2F;problem">
+<meta property="og:type" content="article">
 <meta property="og:title" content="5.25每日一题 动态规划">
 <meta property="og:url" content="https://yiqiangshiyia.github.io/2022/05/25/5-25%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
+<meta property="og:description" content="LeetCode 467：环绕字符串中唯一的子字符串Note本题的关键是如何去重，但是由于1&lt;&#x3D;p.length&lt;&#x3D;10^5，所以去重的数量非常非常大，是一个巨额数字难以实现。以某个字符开头或结尾，采用动态规划的思路，定义一个大小为26的dp数组，这样可以有效的去重。 问题本质：以某一字符串开头或结尾，它的最长的序列长度。 题目大意https:&#x2F;&#x2F;leetcode.cn&#x2F;problem">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-25T08:34:54.000Z">
-<meta property="article:modified_time" content="2022-05-25T08:34:54.710Z">
+<meta property="article:modified_time" content="2022-05-26T11:23:45.424Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -238,7 +241,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      1.3k 字
     </span>
   
 
@@ -247,7 +250,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      11 分钟
     </span>
   
 
@@ -279,12 +282,42 @@
             <h1 style="display: none">5.25每日一题 动态规划</h1>
             
             <div class="markdown-body">
-              
+              <h2 id="LeetCode-467：环绕字符串中唯一的子字符串"><a href="#LeetCode-467：环绕字符串中唯一的子字符串" class="headerlink" title="LeetCode 467：环绕字符串中唯一的子字符串"></a>LeetCode 467：环绕字符串中唯一的子字符串</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>本题的关键是如何去重，但是由于1&lt;=p.length&lt;=10^5，所以去重的数量非常非常大，是一个巨额数字难以实现。以某个字符开头或结尾，采用动态规划的思路，定义一个大小为26的dp数组，这样可以有效的去重。</p>
+<p>问题本质：以某一字符串开头或结尾，它的最长的序列长度。</p>
+<h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/unique-substrings-in-wraparound-string/">https://leetcode.cn/problems/unique-substrings-in-wraparound-string/</a></p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>方法1：动态规划</strong></p>
+<blockquote>
+<p>由于 s 是周期字符串，对于在 s 中的子串，只要知道子串的第一个字符（或最后一个字符）和子串长度，就能确定这个子串。例如子串以 ‘d’ 结尾，长度为 3，那么该子串为 “bcd”。</p>
+<p>题目要求不同的子串个数，那么对于两个以同一个字符结尾的子串，长的那个子串必然包含短的那个。例如 “abcd” 和 “bcd” 均以 ‘d’ 结尾，”bcd” 是 “abcd” 的子串。</p>
+<p>据此，我们可以定义 dp[α] 表示 p 中以字符 α 结尾且在 s 中的子串的最长长度，知道了最长长度，也就知道了不同的子串的个数。</p>
+<p>如何计算 dp[α] 呢？我们可以在遍历 p 时，维护连续递增的子串长度 k。具体来说，遍历到 p[i] 时，如果 p[i] 是 p[i-1] 在字母表中的下一个字母，则将 k 加一，否则将 k 置为 1，表示重新开始计算连续递增的子串长度。然后，用 k 更新 dp[p[i]] 的最大值。</p>
+<p>遍历结束后，p 中以字符 c 结尾且在 s 中的子串有 dp[c] 个。例如 dp[‘d’]=3 表示子串”bcd” “cd” “d”</p>
+<p>最后答案为：sum(dp[α])</p>
+</blockquote>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isNext</span><span class="hljs-params">(<span class="hljs-type">char</span> a,<span class="hljs-type">char</span> b)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> (a == <span class="hljs-string">&#x27;z&#x27;</span> &amp;&amp; b == <span class="hljs-string">&#x27;a&#x27;</span>) || b==a+<span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">findSubstringInWraproundString</span><span class="hljs-params">(string p)</span> </span>&#123;<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(<span class="hljs-number">26</span>,<span class="hljs-number">0</span>)</span></span>;<br>        <span class="hljs-type">int</span> cnt = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;p.<span class="hljs-built_in">size</span>(); i++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(i != <span class="hljs-number">0</span>)<br>            &#123;<br>                <span class="hljs-keyword">if</span>(<span class="hljs-built_in">isNext</span>(p[i<span class="hljs-number">-1</span>],p[i]))<br>                &#123;<br>                    cnt++;<br>                &#125;<span class="hljs-keyword">else</span>&#123;<br>                    cnt = <span class="hljs-number">1</span>;<br>                &#125;<br>            &#125;<br>            dp[p[i]-<span class="hljs-string">&#x27;a&#x27;</span>] = <span class="hljs-built_in">max</span>(dp[p[i]-<span class="hljs-string">&#x27;a&#x27;</span>],cnt);<br>        &#125;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;dp.<span class="hljs-built_in">size</span>(); i++)<br>        &#123;<br>            ans = ans+dp[i];<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>Bilibili学习链接：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cB4y1X7cQ?spm_id_from=333.337.search-card.all.click">https://www.bilibili.com/video/BV1cB4y1X7cQ?spm_id_from=333.337.search-card.all.click</a></p>
+
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/LeetCode%E5%88%B7%E9%A2%98/">LeetCode刷题</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+                    
+                  </div>
                 
               </div>
               
@@ -298,6 +331,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/05/26/10%E5%88%86%E9%92%9F%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">10分钟彻底搞懂动态规划算法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

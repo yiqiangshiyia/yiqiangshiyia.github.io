@@ -1,0 +1,592 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.jpg">
+  <link rel="icon" href="/img/logo.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Note 今天无意中在Bilibili上看到了一个up主讲动态规划算法的视频，动态规划的算法的题一般都比较难理解做的也比较少，所以就看了一下这个视频，看完之后讲的也太妙了吧！深入浅出了属于是，让我更好的理解了动态规划算法，我直接投币+三连好吧😂。视频中举了一个比较经典的动态规划问题，最长子序列问题，也就是LC上的第300题：最长递增子序列，LC难度为中等，学到了很多东西记录一下题解吧。   附上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10分钟彻底搞懂动态规划算法">
+<meta property="og:url" content="https://yiqiangshiyia.github.io/2022/05/26/10%E5%88%86%E9%92%9F%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="一腔诗意啊 - 个人博客">
+<meta property="og:description" content="Note 今天无意中在Bilibili上看到了一个up主讲动态规划算法的视频，动态规划的算法的题一般都比较难理解做的也比较少，所以就看了一下这个视频，看完之后讲的也太妙了吧！深入浅出了属于是，让我更好的理解了动态规划算法，我直接投币+三连好吧😂。视频中举了一个比较经典的动态规划问题，最长子序列问题，也就是LC上的第300题：最长递增子序列，LC难度为中等，学到了很多东西记录一下题解吧。   附上">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220526165818.png">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220526193003.png">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220526202358.png">
+<meta property="article:published_time" content="2022-05-26T09:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-26T12:46:13.474Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="动态规划">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220526165818.png">
+  
+  
+  <title>10分钟彻底搞懂动态规划算法 - 一腔诗意啊 - 个人博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css# 滚动条颜色.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yiqiangshiyia.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>一腔诗意啊&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                文章
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/archives/">
+                    <i class="iconfont icon-archive-fill"></i>
+                    归档
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    分类
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/tags/">
+                    <i class="iconfont icon-tags-fill"></i>
+                    标签
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/liuyan/">
+                <i class="iconfont icon-wechat2-fill"></i>
+                留言
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://travellings.link/">
+                <i class="iconfont icon-codeforces"></i>
+                开往
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/picture.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="10分钟彻底搞懂动态规划算法">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-26 17:00" pubdate>
+        2022年5月26日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      20 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">10分钟彻底搞懂动态规划算法</h1>
+            
+            <div class="markdown-body">
+              <h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><blockquote>
+<p>今天无意中在Bilibili上看到了一个up主讲动态规划算法的视频，动态规划的算法的题一般都比较难理解做的也比较少，所以就看了一下这个视频，看完之后讲的也太妙了吧！深入浅出了属于是，让我更好的理解了动态规划算法，我直接投币+三连好吧😂。视频中举了一个比较经典的动态规划问题，最长子序列问题，也就是LC上的第300题：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-increasing-subsequence/">最长递增子序列</a>，LC难度为中等，学到了很多东西记录一下题解吧。</p>
+</blockquote>
+<p><img src="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220526165818.png" srcset="/img/loading.gif" lazyload alt="QQ截图20220526165818"></p>
+<p>附上链接：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1AB4y1w7eT/?spm_id_from=333.788.recommend_more_video.1">https://www.bilibili.com/video/BV1AB4y1w7eT/?spm_id_from=333.788.recommend_more_video.1</a></p>
+<h2 id="LeetCode-300：最长递增子序列"><a href="#LeetCode-300：最长递增子序列" class="headerlink" title="LeetCode 300：最长递增子序列"></a>LeetCode 300：最长递增子序列</h2><h3 id="Note-1"><a href="#Note-1" class="headerlink" title="Note"></a>Note</h3><p>动态规划正是通过避免了重复节点的计算，来加速整个计算的过程</p>
+<h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给你一个整数数组 nums ，找到其中最长严格递增子序列的长度。</p>
+<p>子序列 是由数组派生而来的序列，删除（或不删除）数组中的元素而不改变其余元素的顺序。例如，[3,6,2,7] 是数组 [0,3,1,6,2,2,7] 的子序列。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>方法1：穷举法/暴力搜索</strong></p>
+<p><img src="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220526193003.png" srcset="/img/loading.gif" lazyload alt="QQ截图20220526193003"></p>
+<p>这个算法虽然可以算出答案，但是最大的问题在于时间复杂度，指数级别的算法，最慢的算法之一。之所以时间复杂度高代码超时是因为在递归的时候存在大量重复计算，因此时间复杂度特别高。</p>
+<p>超时代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">L</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt; nums,<span class="hljs-type">int</span> i)</span>  <span class="hljs-comment">//定义L函数，表示从nums的第i个数开始遍历的最长递增子序列</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">if</span>(i == nums.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>)  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-type">int</span> maxlen = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=i+<span class="hljs-number">1</span>; j&lt;nums.<span class="hljs-built_in">size</span>(); j++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(nums[j] &gt; nums[i])<br>            &#123;<br>                maxlen = <span class="hljs-built_in">max</span>(maxlen,<span class="hljs-built_in">L</span>(nums,j)+<span class="hljs-number">1</span>);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> maxlen;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lengthOfLIS</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;nums.<span class="hljs-built_in">size</span>(); i++)<br>        &#123;<br>            ans = <span class="hljs-built_in">max</span>(ans,<span class="hljs-built_in">L</span>(nums,i));<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>方法2：记忆化搜索/剪枝</strong></p>
+<p>为了避免重复计算，我们可以在第一次计算的时候将结果保存下来，之后遍历到相同的节点就不再需要重复计算了，直接将之前的结果返回。</p>
+<p>对暴力求解的代码进行改进，用哈希表保存计算过的节点，但是我也不知道为什么改进之后代码还是超时🤣</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    unordered_map&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; mp;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">L</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt; nums,<span class="hljs-type">int</span> i)</span>  <span class="hljs-comment">//定义L函数，表示从nums的第i个数开始遍历的最长递增子序列</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">if</span>(mp.<span class="hljs-built_in">count</span>(i))<br>        &#123;<br>            <span class="hljs-keyword">return</span> mp[i];<br>        &#125;<br>        <span class="hljs-keyword">if</span>(i == nums.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>)  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-type">int</span> maxlen = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=i+<span class="hljs-number">1</span>; j&lt;nums.<span class="hljs-built_in">size</span>(); j++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(nums[j] &gt; nums[i])<br>            &#123;<br>                maxlen = <span class="hljs-built_in">max</span>(maxlen,<span class="hljs-built_in">L</span>(nums,j)+<span class="hljs-number">1</span>);<br>            &#125;<br>        &#125;<br>        mp[i] = maxlen;<br>        <span class="hljs-keyword">return</span> maxlen;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lengthOfLIS</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;nums.<span class="hljs-built_in">size</span>(); i++)<br>        &#123;<br>            ans = <span class="hljs-built_in">max</span>(ans,<span class="hljs-built_in">L</span>(nums,i));<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>动态规划正是通过避免了重复节点的计算，来加速整个计算的过程，由于用到了字典/哈希表保存了计算的中间结果，因此我们也称之为记忆化搜索，因此动态规划是空间换时间的一种算法，动态规划也可以叫带备忘录的递归或者递归树的剪枝。</p>
+<p><strong>LC官方题解的递归算法</strong></p>
+<p>待续……</p>
+<p><strong>方法3：改写成迭代形式</strong></p>
+<p>有了递归的算法还可以将其改写成非递归的算法或者迭代，改写成迭代可以更加直观的分析算法的时间复杂度并且避免了递归时的函数调用开销。</p>
+<p><img src="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220526202358.png" srcset="/img/loading.gif" lazyload alt="QQ截图20220526202358"></p>
+<p>从公式中可以发现，我们只要从后往前依次计算就可以把答案推算出来，迭代的方法很像数学归纳法，根据列出的式子实现迭代算法。</p>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lengthOfLIS</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">ans</span><span class="hljs-params">(n,<span class="hljs-number">1</span>)</span></span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=n<span class="hljs-number">-1</span>; i&gt;=<span class="hljs-number">0</span>; i--)<br>        &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=i+<span class="hljs-number">1</span>; j&lt;n; j++)<br>            &#123;<br>                <span class="hljs-keyword">if</span>(nums[j] &gt; nums[i])<br>                &#123;<br>                    ans[i] = <span class="hljs-built_in">max</span>(ans[i],ans[j]+<span class="hljs-number">1</span>);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-type">int</span> max_ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;ans.<span class="hljs-built_in">size</span>(); i++)<br>        &#123;<br>            max_ans = <span class="hljs-built_in">max</span>(max_ans,ans[i]);<br>        &#125;<br>        <span class="hljs-keyword">return</span> max_ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/LeetCode%E5%88%B7%E9%A2%98/">LeetCode刷题</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/25/5-25%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="hidden-mobile">5.25每日一题 动态规划</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"kt6NXqlOirxe2tk9uTDeEG2c-gzGzoHsz","appKey":"1kXDoTn2l7weKksvEbQNGwhF","path":"window.location.pathname","placeholder":"世界这么大发表一下你的看法~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://yiqiangshiyia.github.io/" target="_blank" rel="nofollow noopener"><span>一腔诗意啊</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> </a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
