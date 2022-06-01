@@ -1,0 +1,589 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.jpg">
+  <link rel="icon" href="/img/logo.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="leetCode 473：火柴拼正方形Note LC刷了一百多道题第一次做回溯算法的题，当然要好好研究一下了🧐 从大到小sort排序函数：sort(matchsticks.rbegin(),matchsticks.rend());  &#x2F;&#x2F;从大到小排序  回溯算法回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。回">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6.1每日一题 回溯">
+<meta property="og:url" content="https://yiqiangshiyia.github.io/2022/06/01/6-1%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-%E5%9B%9E%E6%BA%AF/index.html">
+<meta property="og:site_name" content="一腔诗意啊 - 个人博客">
+<meta property="og:description" content="leetCode 473：火柴拼正方形Note LC刷了一百多道题第一次做回溯算法的题，当然要好好研究一下了🧐 从大到小sort排序函数：sort(matchsticks.rbegin(),matchsticks.rend());  &#x2F;&#x2F;从大到小排序  回溯算法回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。回">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-01T11:26:04.000Z">
+<meta property="article:modified_time" content="2022-06-01T12:54:37.407Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="回溯">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>6.1每日一题 回溯 - 一腔诗意啊 - 个人博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css# 滚动条颜色.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yiqiangshiyia.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>一腔诗意啊&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                文章
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/archives/">
+                    <i class="iconfont icon-archive-fill"></i>
+                    归档
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    分类
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/tags/">
+                    <i class="iconfont icon-tags-fill"></i>
+                    标签
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/liuyan/">
+                <i class="iconfont icon-wechat2-fill"></i>
+                留言
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://travellings.link/">
+                <i class="iconfont icon-codeforces"></i>
+                开往
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/picture.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="6.1每日一题 回溯">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-06-01 19:26" pubdate>
+        2022年6月1日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      17 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">6.1每日一题 回溯</h1>
+            
+            <div class="markdown-body">
+              <h2 id="leetCode-473：火柴拼正方形"><a href="#leetCode-473：火柴拼正方形" class="headerlink" title="leetCode 473：火柴拼正方形"></a>leetCode 473：火柴拼正方形</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><blockquote>
+<p>LC刷了一百多道题第一次做回溯算法的题，当然要好好研究一下了🧐</p>
+<p>从大到小sort排序函数：sort(matchsticks.rbegin(),matchsticks.rend());  //从大到小排序</p>
+</blockquote>
+<h4 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a>回溯算法</h4><p>回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。回溯法是一种选优搜索法，按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种走不通就退回再走的技术为回溯法，而满足回溯条件的某个状态的点称为“回溯点”。许多复杂的，规模较大的问题都可以使用回溯法，有“通用解题方法”的美称。</p>
+<p>bilibili回溯算法笔记总结</p>
+<ul>
+<li>回溯算法和递归算法相辅相成，有递归就会有回溯，一般递归下面就是回溯</li>
+<li>回溯算法是一种纯暴力搜索算法，时间复杂度一般比较高，可以通过剪枝等优化算法</li>
+<li>回溯算法虽然是一种纯暴力搜索算法，但是可以解决多层for循环嵌套无法解决的问题</li>
+<li>回溯算法使用题目类型：组合问题、切割问题、子集问题、排列问题、棋盘问题（N皇后问题、解数独问题）</li>
+<li>回溯都可以抽象成树形结构，递归都有终止条件</li>
+<li>回溯一般参数比较多</li>
+</ul>
+<p>待续……</p>
+<h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>你将得到一个整数数组 matchsticks ，其中 matchsticks[i] 是第 i 个火柴棒的长度。你要用 所有的火柴棍 拼成一个正方形。你 不能折断 任何一根火柴棒，但你可以把它们连在一起，而且每根火柴棒必须 使用一次 。</p>
+<p>如果你能使这个正方形，则返回 true ，否则返回 false 。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>方法1：回溯法</strong></p>
+<p>将正方形的四条边看做是四个高为1/4火柴总周长的桶，回溯的找出将火柴全部放入桶中，并且将四个桶都装满的方法就可以了，利用回溯搜索，递归的将所有火柴放入桶中</p>
+<p>暴力回溯搜索法超时</p>
+<p>需要对回溯搜索进行剪枝优化</p>
+<p>算法优化 </p>
+<ul>
+<li>将火柴数量小于4 火柴总长度无法被4整除的情况排除掉</li>
+<li>重要优化：将火柴按照从长到短的顺序排序</li>
+</ul>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">makesquare</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; matchsticks)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n = matchsticks.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">if</span>(n &lt; <span class="hljs-number">4</span>)  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>            sum = sum+matchsticks[i];<br>        &#125;<br>        <span class="hljs-keyword">if</span>(sum % <span class="hljs-number">4</span>)  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-built_in">sort</span>(matchsticks.<span class="hljs-built_in">rbegin</span>(),matchsticks.<span class="hljs-built_in">rend</span>());  <span class="hljs-comment">//从大到小排序</span><br>        <span class="hljs-type">int</span> bucket[<span class="hljs-number">4</span>] = &#123;<span class="hljs-number">0</span>&#125;; <span class="hljs-comment">//设置桶的数组</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">backtrack</span>(<span class="hljs-number">0</span>,matchsticks,sum/<span class="hljs-number">4</span>,bucket);  <span class="hljs-comment">//回溯的尝试火柴的放置</span><br>    &#125;<br>    <span class="hljs-comment">//i代表正在放置的火柴下标，nums存储火柴的长度</span><br>    <span class="hljs-comment">//edge为计算好的正方形边长，bucket存储四个桶的高度</span><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">backtrack</span><span class="hljs-params">(<span class="hljs-type">int</span> i,vector&lt;<span class="hljs-type">int</span>&gt;&amp; matchsticks,<span class="hljs-type">int</span> edge,<span class="hljs-type">int</span> bucket[<span class="hljs-number">4</span>])</span></span>&#123;<br>        <span class="hljs-keyword">if</span>(i &gt;= matchsticks.<span class="hljs-built_in">size</span>())&#123;  <span class="hljs-comment">//递归终止条件 全部的火柴都放到了桶中</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;  <span class="hljs-comment">//成功的拼成了正方形 返回true</span><br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>; j&lt;<span class="hljs-number">4</span>; j++)&#123;  <span class="hljs-comment">//遍历四个桶</span><br>            <span class="hljs-keyword">if</span>(bucket[j]+matchsticks[i] &gt; edge)&#123;  <span class="hljs-comment">//这根火柴无法放入第j个桶中</span><br>                <span class="hljs-keyword">continue</span>;  <span class="hljs-comment">//尝试下一个桶</span><br>            &#125;<br>            bucket[j] = bucket[j]+matchsticks[i];  <span class="hljs-comment">//nums[i]放入桶j</span><br>            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">backtrack</span>(i+<span class="hljs-number">1</span>,matchsticks,edge,bucket))&#123;  <span class="hljs-comment">//递归的放置下一根火柴</span><br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;  <span class="hljs-comment">//下一根火柴放置成功则直接返回true</span><br>            &#125;<br>            bucket[j] = bucket[j]-matchsticks[i];  <span class="hljs-comment">//将nums[i]从桶j中拿出</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;  <span class="hljs-comment">//nums[i]无法放入任何一个桶 函数返回false</span><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>bilibili视频讲解：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1D5411j7UE?spm_id_from=333.337.search-card.all.click">https://www.bilibili.com/video/BV1D5411j7UE?spm_id_from=333.337.search-card.all.click</a></p>
+<p><strong>方法2：状态压缩+动态规划</strong></p>
+<p>好像很难的样子 应该不是我目前能理解的 先搞懂比较基础的回溯算法吧</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/LeetCode%E5%88%B7%E9%A2%98/">LeetCode刷题</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9B%9E%E6%BA%AF/">回溯</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/26/10%E5%88%86%E9%92%9F%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/">
+                        <span class="hidden-mobile">10分钟彻底搞懂动态规划算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"kt6NXqlOirxe2tk9uTDeEG2c-gzGzoHsz","appKey":"1kXDoTn2l7weKksvEbQNGwhF","path":"window.location.pathname","placeholder":"世界这么大发表一下你的看法~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://yiqiangshiyia.github.io/" target="_blank" rel="nofollow noopener"><span>一腔诗意啊</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> </a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
