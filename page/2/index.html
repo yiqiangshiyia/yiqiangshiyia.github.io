@@ -25,15 +25,21 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
   <title>一腔诗意啊 - 个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
-<!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
@@ -42,7 +48,13 @@
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
   
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css# 滚动条颜色.css">
@@ -51,16 +63,29 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"yiqiangshiyia.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yiqiangshiyia.github.io","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+
+  
 <meta name="generator" content="Hexo 5.4.1"></head>
 
 
 <body>
-  <header style="height: 100vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
       <strong>一腔诗意啊&#39;s Blog</strong>
@@ -182,6 +207,7 @@
               &nbsp;<i class="iconfont icon-search"></i>&nbsp;
             </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
@@ -194,34 +220,40 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/picture.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="你仍是小桥河畔 我亦是此间少年">
-              
-            </span>
+  
 
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/picture.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
           
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
+            <span id="subtitle" data-typed-text="你仍是小桥河畔 我亦是此间少年"></span>
           
         </div>
+
+        
       </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
     
       <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
+        <div id="board"
+          style="margin-top: 0">
           
           <div class="container">
             <div class="row">
@@ -240,12 +272,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/05/11/5-11%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" target="_self">
-          
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/11/5-11%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" target="_self">
+        <div>
           LeetCode 449：序列化和反序列化二叉搜索树Note 差点AC代码（62个测试样例过了61个 最后一个测试样例超时了🤣） 改了好久都不理解为什么代码最后一个测试样例会超时（代码的复杂度也不高啊！！！题目给的数据也不大诶） 算算了 代码不重要 重要的是理解这题的思路和解法  题目大意序列化是将数据结构或对象转换为一系列位的过程，以便它可以存储在文件或内存缓冲区中，或通过网络连接链路传输，以
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -257,18 +289,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/LeetCode%E5%88%B7%E9%A2%98/">LeetCode刷题</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LeetCode%E5%88%B7%E9%A2%98/" class="category-chain-item">LeetCode刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+              <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">#二叉树</a>
             
           </div>
         
@@ -287,12 +333,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/05/10/%E8%A1%A55-3%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F/" target="_self">
-          
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/10/%E8%A1%A55-3%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F/" target="_self">
+        <div>
           LeetCode 937：重新排列日志文件Note 力扣难度：简单 写简单题题解是因为通过这道题补了很多知识。C++匿名函数，C++稳定排序，自定义排序函数。  C++匿名函数匿名函数 C++中的匿名函数，类似于python的lambda函数，也就是在句中定义和声明的一个临时函数，仅在调用时才会创建函数对象，无需在头文件中声明。 函数形式 [capture](parameters)-&gt;ret
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -304,20 +350,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/LeetCode%E5%88%B7%E9%A2%98/">LeetCode刷题</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LeetCode%E5%88%B7%E9%A2%98/" class="category-chain-item">LeetCode刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">#字符串</a>
             
-              <a href="/tags/%E6%8E%92%E5%BA%8F/">排序</a>
+              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
             
           </div>
         
@@ -336,12 +396,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/05/09/%E8%A1%A55-7%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-BFS/" target="_self">
-          
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/09/%E8%A1%A55-7%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-BFS/" target="_self">
+        <div>
           LeetCode 433 最小基因变化 由于复习数据库和PHP考试好几天没刷题了，今天补了三道题。  Note力扣难度：中等  经典BFS问题 BFS利用队列实现 题目大意https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;minimum-genetic-mutation&#x2F; 题解解题思路没有完全按照力扣官方给出的解法，但是大体思想是一样的只有一些小的细节不太一样，都是用了广度优先搜索的方法解
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -353,18 +413,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/LeetCode%E5%88%B7%E9%A2%98/">LeetCode刷题</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LeetCode%E5%88%B7%E9%A2%98/" class="category-chain-item">LeetCode刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/BFS/">BFS</a>
+              <a href="/tags/BFS/">#BFS</a>
             
           </div>
         
@@ -383,12 +457,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/05/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C/" target="_self">
-          
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C/" target="_self">
+        <div>
           启动数据库 net start mysql  关闭数据库 net  stop mysql  连接数据库 mysql -u root -p   管理数据库的命令 USE 数据库名; 选择要操作的Mysql数据库，使用该命令后所有Mysql命令都只针对该数据库。  SHOW DATABASES; 列出 MySQL 数据库管理系统的数据库列表。  SHOW TABLES; 显示指定数据库的所有表，使用
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -400,18 +474,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/MySQL/">MySQL</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/MySQL/">MySQL</a>
+              <a href="/tags/MySQL/">#MySQL</a>
             
           </div>
         
@@ -430,12 +518,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/05/05/%E3%80%8CPHP%E3%80%8D%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" target="_self">
-          
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/05/%E3%80%8CPHP%E3%80%8D%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" target="_self">
+        <div>
           愿世间再无不让打印的半开卷考试，整理了一天终于把PHP的内容整理完了，明天开始抄！ 不过感觉这样整理的效果还挺好的，一边整理一边学比正常学的效率还要高。考完数据库和PHP再把Java整理一下，重拾Java，Java的语法啥的都快忘完了！！！  第1、2章 PHP入门 HTML和CSS简介…… 第3章 数据与变量3-1 | PHP数据类型标量类型 布尔型 用print或echo输出布尔型数据时，t
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -447,18 +535,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E8%A7%A3%E5%BF%A7%E6%9D%82%E8%B4%A7/">解忧杂货</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%A3%E5%BF%A7%E6%9D%82%E8%B4%A7/" class="category-chain-item">解忧杂货</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/PHP/">PHP</a>
+              <a href="/tags/PHP/">#PHP</a>
             
           </div>
         
@@ -477,12 +579,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/05/02/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E4%B9%98/" target="_self">
-          
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/02/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E4%B9%98/" target="_self">
+        <div>
           LeetCode 43：字符串相乘Note 对每次得到的字符串进行累加，可以使用「415. 字符串相加」的做法。  题目大意给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。 注意：不能使用任何内置的 BigInteger 库或直接将输入转换为整数。 题解方法1如果 num1 和 num2 之一是 0，则直接将 0 作为
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -494,18 +596,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/LeetCode%E5%88%B7%E9%A2%98/">LeetCode刷题</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LeetCode%E5%88%B7%E9%A2%98/" class="category-chain-item">LeetCode刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">#字符串</a>
             
           </div>
         
@@ -524,12 +640,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/05/01/%E4%BA%94%E4%B8%80-s-Vlog/" target="_self">
-          
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/01/%E4%BA%94%E4%B8%80-s-Vlog/" target="_self">
+        <div>
           五一’s Vlog 五一’s Vlog 坐标青岛市 三万步 早九晚十 打卡东方影都 中山公园 湛山寺 八大关 海水浴场 小红楼美术馆 栈桥…  小红楼美术馆贼拉nice的一个地方 非常适合拍照 对于喜欢周杰伦的人来说真的是一种情怀   小小愿望：解封之后可以离开青岛市去泰安夜爬泰山看日出  在东方影都 第二海水浴场和小红楼美术馆拍了几张我觉得挺有艺术感和氛围感的img 浅浅留念一下
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -541,18 +657,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Vlog/">Vlog</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Vlog/" class="category-chain-item">Vlog</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Vlog/">Vlog</a>
+              <a href="/tags/Vlog/">#Vlog</a>
             
           </div>
         
@@ -571,12 +701,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/04/27/4-27%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-DFS-BFS/" target="_self">
-          
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/04/27/4-27%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-DFS-BFS/" target="_self">
+        <div>
           LeetCode 417：太平洋大西洋水流问题Note 这是一道学习BFS和DFS绝绝子的题目，之前没怎么做过BFS和DFS的题目，一直都不太会，每日一题遇到了这么典型的题目当然要搞清楚啦。4.27今天一天的任务就是搞懂这道题BFS和DFS两种解法。  DFS利用了递归的思想 BFS利用了队列的思想 题目大意https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;pacific-atla
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -588,20 +718,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/LeetCode%E5%88%B7%E9%A2%98/">LeetCode刷题</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LeetCode%E5%88%B7%E9%A2%98/" class="category-chain-item">LeetCode刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/DFS/">DFS</a>
+              <a href="/tags/DFS/">#DFS</a>
             
-              <a href="/tags/BFS/">BFS</a>
+              <a href="/tags/BFS/">#BFS</a>
             
           </div>
         
@@ -620,12 +764,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/04/21/4-21%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" target="_self">
-          
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/04/21/4-21%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" target="_self">
+        <div>
           这道题在LeetCode为简单题，但是通过不断更新两个下标i,j分割字符串的思路比较有借鉴意义。比直接遍历用split()函数分割字符串要更简单。  Notestring(cnt,’a’)    &#x2F;&#x2F;字符串的一种构造函数，表示生成一个字符串，包含 cnt 个字符 ‘a’ sentence.substr(i,j-i)    &#x2F;&#x2F;注意第一个参数为sentence下标其实位置，第二个参数为单词复制的长
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -637,18 +781,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/LeetCode%E5%88%B7%E9%A2%98/">LeetCode刷题</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LeetCode%E5%88%B7%E9%A2%98/" class="category-chain-item">LeetCode刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">#字符串</a>
             
           </div>
         
@@ -667,12 +825,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/04/20/Python%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1/" target="_self">
-          
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/04/20/Python%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1/" target="_self">
+        <div>
           Github+PicGo搭建的图床没有梯子不好用，Github经常加载不出来。最近要复习考试，考完试有空把用Github搭建的图床换成Gitee+PicGo，再重新上传之前的笔记测试一下吧。 额……  还有博客的域名没整，没绑定域名又拍云CDN加速也整不了。算算了，等考完试在腾讯云重新买一个.cn的域名再折腾吧。  Python图形化界面设计 学习链接：https:&#x2F;&#x2F;www.jianshu.c
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -684,18 +842,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Python/">Python</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Python/" class="category-chain-item">Python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Python/">Python</a>
+              <a href="/tags/Python/">#Python</a>
             
           </div>
         
@@ -740,56 +912,58 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://yiqiangshiyia.github.io/" target="_blank" rel="nofollow noopener"><span>一腔诗意啊</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> </a> 
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- 不蒜子统计PV -->
-        <span id="busuanzi_container_site_pv" style="display: none">
-            总访问量 
-            <span id="busuanzi_value_site_pv"></span>
-             次
-          </span>
-      
-      
-        <!-- 不蒜子统计UV -->
-        <span id="busuanzi_container_site_uv" style="display: none">
-            总访客数 
-            <span id="busuanzi_value_site_uv"></span>
-             人
-          </span>
-      
-    
-  </div>
-
-
+    <div class="footer-content">
+       <a href="https://yiqiangshiyia.github.io/" target="_blank" rel="nofollow noopener"><span>一腔诗意啊</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> </a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
   
 
   
-</footer>
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
 
+  
+  
+  
+</div>
 
-  <!-- SCRIPTS -->
+  </footer>
+
+  <!-- Scripts -->
   
   <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
@@ -808,10 +982,39 @@
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
 
 
-  <script  src="/js/local-search.js" ></script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
 
 
 
@@ -821,50 +1024,10 @@
 
 
 
-  
 
-
-
-
+  <script  src="/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-        typing(title);
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 
 
@@ -874,9 +1037,15 @@
 
 
 
-<!-- 主题的启动项 保持在最底部 -->
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
