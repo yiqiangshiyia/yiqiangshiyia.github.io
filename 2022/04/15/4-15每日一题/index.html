@@ -16,16 +16,16 @@
   <meta name="author" content="一腔诗意啊">
   <meta name="keywords" content="">
   
-    <meta name="description" content="LeetCode 385：迷你语法分析器Note 一道题做了一个多小时，人都麻了… 4.15今天日子也很特殊 哈哈哈！  这道题的 NestedInteger 其实就是定义的一个新的数据类型，相当于集合之类的。核心思想就是栈的嵌套，先把 NestedInteger 类型的数字放入栈中，然后再将栈顶的元素top嵌套入栈的top-1中。 题目大意给定一个字符串 s 表示一个整数嵌套列表，实现一个解析它">
+    <meta name="description" content="LC 385.迷你语法分析器Note 一道题做了一个多小时，人都麻了… 4.15今天日子也很特殊 哈哈哈！  这道题的 NestedInteger 其实就是定义的一个新的数据类型，相当于集合之类的。核心思想就是栈的嵌套，先把 NestedInteger 类型的数字放入栈中，然后再将栈顶的元素top嵌套入栈的top-1中。 题目大意给定一个字符串 s 表示一个整数嵌套列表，实现一个解析它的语法分析器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="4.15每日一题">
+<meta property="og:title" content="LC 385.迷你语法分析器">
 <meta property="og:url" content="https://yiqiangshiyia.cn/2022/04/15/4-15%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
-<meta property="og:description" content="LeetCode 385：迷你语法分析器Note 一道题做了一个多小时，人都麻了… 4.15今天日子也很特殊 哈哈哈！  这道题的 NestedInteger 其实就是定义的一个新的数据类型，相当于集合之类的。核心思想就是栈的嵌套，先把 NestedInteger 类型的数字放入栈中，然后再将栈顶的元素top嵌套入栈的top-1中。 题目大意给定一个字符串 s 表示一个整数嵌套列表，实现一个解析它">
+<meta property="og:description" content="LC 385.迷你语法分析器Note 一道题做了一个多小时，人都麻了… 4.15今天日子也很特殊 哈哈哈！  这道题的 NestedInteger 其实就是定义的一个新的数据类型，相当于集合之类的。核心思想就是栈的嵌套，先把 NestedInteger 类型的数字放入栈中，然后再将栈顶的元素top嵌套入栈的top-1中。 题目大意给定一个字符串 s 表示一个整数嵌套列表，实现一个解析它的语法分析器">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/yiqiangshiyia/img/main/images/QQ%E6%88%AA%E5%9B%BE20220415164146.png">
 <meta property="article:published_time" content="2022-04-15T09:13:37.000Z">
-<meta property="article:modified_time" content="2022-04-15T09:51:27.958Z">
+<meta property="article:modified_time" content="2022-06-07T13:44:26.444Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="栈">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>4.15每日一题 - 一腔诗意啊 - 个人博客</title>
+  <title>LC 385.迷你语法分析器 - 一腔诗意啊 - 个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -242,7 +242,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="4.15每日一题"></span>
+            <span id="subtitle" data-typed-text="LC 385.迷你语法分析器"></span>
           
         </div>
 
@@ -316,26 +316,34 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">4.15每日一题</h1>
+            <h1 style="display: none">LC 385.迷你语法分析器</h1>
             
             <div class="markdown-body">
               
-              <h2 id="LeetCode-385：迷你语法分析器"><a href="#LeetCode-385：迷你语法分析器" class="headerlink" title="LeetCode 385：迷你语法分析器"></a>LeetCode 385：迷你语法分析器</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><blockquote>
+              <h2 id="LC-385-迷你语法分析器"><a href="#LC-385-迷你语法分析器" class="headerlink" title="LC 385.迷你语法分析器"></a>LC 385.迷你语法分析器</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><blockquote>
 <p>一道题做了一个多小时，人都麻了… 4.15今天日子也很特殊 哈哈哈！</p>
 </blockquote>
 <p>这道题的 NestedInteger 其实就是定义的一个新的数据类型，相当于集合之类的。核心思想就是栈的嵌套，先把 NestedInteger 类型的数字放入栈中，然后再将栈顶的元素top嵌套入栈的top-1中。</p>
 <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定一个字符串 s 表示一个整数嵌套列表，实现一个解析它的语法分析器并返回解析的结果 NestedInteger 。</p>
 <p>列表中的每个元素只可能是整数或整数嵌套列表</p>
 <p>示例1</p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nix">输入：<span class="hljs-attr">s</span> = <span class="hljs-string">&quot;324&quot;</span>,<br>输出：<span class="hljs-number">324</span><br>解释：你应该返回一个 NestedInteger 对象，其中只包含整数值 <span class="hljs-number">324</span>。<br></code></pre></td></tr></table></figure>
-
+<blockquote>
+<p>输入：s = “324”,<br>输出：324<br>解释：你应该返回一个 NestedInteger 对象，其中只包含整数值 324。</p>
+</blockquote>
 <p>示例2</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">输入：s = <span class="hljs-string">&quot;[123,[456,[789]]]&quot;</span>,<br>输出：[<span class="hljs-number">123</span>,[<span class="hljs-number">456</span>,[<span class="hljs-number">789</span>]]]<br>解释：返回一个 NestedInteger 对象包含一个有两个元素的嵌套列表：<br><span class="hljs-number">1.</span> 一个 <span class="hljs-keyword">integer</span> 包含值 <span class="hljs-number">123</span><br><span class="hljs-number">2.</span> 一个包含两个元素的嵌套列表：<br>    i.  一个 <span class="hljs-keyword">integer</span> 包含值 <span class="hljs-number">456</span><br>    ii. 一个包含一个元素的嵌套列表<br>         <span class="hljs-keyword">a</span>. 一个 <span class="hljs-keyword">integer</span> 包含值 <span class="hljs-number">789</span><br></code></pre></td></tr></table></figure>
-
-
-
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="方法1：深度优先搜索"><a href="#方法1：深度优先搜索" class="headerlink" title="方法1：深度优先搜索"></a>方法1：深度优先搜索</h4><p>模拟</p>
-<h4 id="方法2：栈"><a href="#方法2：栈" class="headerlink" title="方法2：栈"></a>方法2：栈</h4><p><img src="https://raw.githubusercontent.com/yiqiangshiyia/img/main/images/QQ%E6%88%AA%E5%9B%BE20220415164146.png" srcset="/img/loading.gif" lazyload alt="图示模拟栈的过程"></p>
+<blockquote>
+<p>输入：s = “[123,[456,[789]]]”,<br>输出：[123,[456,[789]]]<br>解释：返回一个 NestedInteger 对象包含一个有两个元素的嵌套列表：</p>
+<ol>
+<li>一个 integer 包含值 123</li>
+<li>一个包含两个元素的嵌套列表：<br> i.  一个 integer 包含值 456<br> ii. 一个包含一个元素的嵌套列表<pre><code class="hljs">  a. 一个 integer 包含值 789
+</code></pre>
+</li>
+</ol>
+</blockquote>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>方法1：深度优先搜索</strong></p>
+<p>模拟</p>
+<p><strong>方法2：栈</strong></p>
+<p><img src="https://raw.githubusercontent.com/yiqiangshiyia/img/main/images/QQ%E6%88%AA%E5%9B%BE20220415164146.png" srcset="/img/loading.gif" lazyload alt="图示模拟栈的过程"></p>
 <p>当s[i] == ‘[‘时：建立一个’[]’，放入栈中</p>
 <p>当isdigit(s[i])时：记录数字num</p>
 <p>当s[i] == ‘,’ || s[i] == ‘]’时：如果数字不为空，将数字加入栈顶，重置数字num = 0</p>
@@ -390,7 +398,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>4.15每日一题</div>
+      <div>LC 385.迷你语法分析器</div>
       <div>https://yiqiangshiyia.cn/2022/04/15/4-15每日一题/</div>
     </div>
     <div class="license-meta">
