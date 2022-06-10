@@ -16,28 +16,26 @@
   <meta name="author" content="一腔诗意啊">
   <meta name="keywords" content="">
   
-    <meta name="description" content="LC 450.删除二叉搜索树中的节点Note二叉搜索树有以下性质：  左子树的所有节点（如果有）的值均小于当前节点的值 右子树的所有节点（如果有）的值均大于当前节点的值 左子树和右子树均为二叉搜索树 二叉搜索树的中序遍历有序  二叉搜索树的题目往往可以用递归来解决，本题 LC难度：中等，核心思想：分类讨论删除不同位置处的节点如何保持二叉树的性质 题目大意给定一个二叉搜索树的根节点 root 和一个">
+    <meta name="description" content="1 | Java数组Java数组数组的创建： 123456789101112&#x2F;*格式1：元素类型[] 数组名 &#x3D; new 元素类型[元素个数或数组长度];示例：*&#x2F;int[] arr &#x3D; new int[5];&#x2F;*格式2：元素类型[] 数组名 &#x3D; new 元素类型[]&amp;#123;元素，元素，……&amp;#125;;*&#x2F;int[] arr &#x3D; new int[]&amp;#123;3,5,1,7&amp;#125;;in">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LC 450.删除二叉搜索树中的节点">
-<meta property="og:url" content="https://yiqiangshiyia.cn/2022/06/07/LC%20450.%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/index.html">
+<meta property="og:title" content="Java-数据结构与集合框架">
+<meta property="og:url" content="https://yiqiangshiyia.cn/2022/05/16/Java-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
-<meta property="og:description" content="LC 450.删除二叉搜索树中的节点Note二叉搜索树有以下性质：  左子树的所有节点（如果有）的值均小于当前节点的值 右子树的所有节点（如果有）的值均大于当前节点的值 左子树和右子树均为二叉搜索树 二叉搜索树的中序遍历有序  二叉搜索树的题目往往可以用递归来解决，本题 LC难度：中等，核心思想：分类讨论删除不同位置处的节点如何保持二叉树的性质 题目大意给定一个二叉搜索树的根节点 root 和一个">
+<meta property="og:description" content="1 | Java数组Java数组数组的创建： 123456789101112&#x2F;*格式1：元素类型[] 数组名 &#x3D; new 元素类型[元素个数或数组长度];示例：*&#x2F;int[] arr &#x3D; new int[5];&#x2F;*格式2：元素类型[] 数组名 &#x3D; new 元素类型[]&amp;#123;元素，元素，……&amp;#125;;*&#x2F;int[] arr &#x3D; new int[]&amp;#123;3,5,1,7&amp;#125;;in">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/del_node_1.jpg">
-<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220607205952.png">
-<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220607202437.png">
-<meta property="article:published_time" content="2022-06-07T13:11:40.000Z">
-<meta property="article:modified_time" content="2022-06-08T02:28:51.484Z">
+<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/01/2243690-9cd9c896e0d512ed.gif">
+<meta property="article:published_time" content="2022-05-16T13:20:57.000Z">
+<meta property="article:modified_time" content="2022-06-10T13:00:48.414Z">
 <meta property="article:author" content="一腔诗意啊">
-<meta property="article:tag" content="二叉搜索树">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://img.yiqiangshiyia.cn/blog/del_node_1.jpg">
+<meta name="twitter:image" content="https://www.runoob.com/wp-content/uploads/2014/01/2243690-9cd9c896e0d512ed.gif">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>LC 450.删除二叉搜索树中的节点 - 一腔诗意啊 - 个人博客</title>
+  <title>Java-数据结构与集合框架 - 一腔诗意啊 - 个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -240,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="LC 450.删除二叉搜索树中的节点"></span>
+            <span id="subtitle" data-typed-text="Java-数据结构与集合框架"></span>
           
         </div>
 
@@ -251,8 +249,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-06-07 21:11" pubdate>
-          2022年6月7日 晚上
+        <time datetime="2022-05-16 21:20" pubdate>
+          2022年5月16日 晚上
         </time>
       </span>
     
@@ -264,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.7k 字
+          2.3k 字
         
       </span>
     
@@ -276,7 +274,7 @@
         
         
           <!-- compatible with older versions-->
-          23 分钟
+          20 分钟
         
       </span>
     
@@ -314,46 +312,85 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">LC 450.删除二叉搜索树中的节点</h1>
+            <h1 style="display: none">Java-数据结构与集合框架</h1>
             
             <div class="markdown-body">
               
-              <h2 id="LC-450-删除二叉搜索树中的节点"><a href="#LC-450-删除二叉搜索树中的节点" class="headerlink" title="LC 450.删除二叉搜索树中的节点"></a>LC 450.删除二叉搜索树中的节点</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>二叉搜索树有以下性质：</p>
+              <h1 id="1-Java数组"><a href="#1-Java数组" class="headerlink" title="1 | Java数组"></a>1 | Java数组</h1><h2 id="Java数组"><a href="#Java数组" class="headerlink" title="Java数组"></a>Java数组</h2><p><strong>数组的创建：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/*格式1：</span><br><span class="hljs-comment">元素类型[] 数组名 = new 元素类型[元素个数或数组长度];</span><br><span class="hljs-comment">示例：</span><br><span class="hljs-comment">*/</span><br><span class="hljs-type">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">5</span>];<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">格式2：</span><br><span class="hljs-comment">元素类型[] 数组名 = new 元素类型[]&#123;元素，元素，……&#125;;</span><br><span class="hljs-comment">*/</span><br><span class="hljs-type">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">7</span>&#125;;<br><span class="hljs-type">int</span>[] arr = &#123;<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">7</span>&#125;;<br><br></code></pre></td></tr></table></figure>
+
+<p><strong>数组的遍历：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//方式一：for循环</span><br> <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">listFor</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-type">int</span>[] arrs = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>&#125;;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; arrs.length; i++) &#123;<br>            System.out.print(arrs[i]+<span class="hljs-string">&quot; &quot;</span>);<br>        &#125;<br>    &#125;   <br><span class="hljs-comment">//方式二：for-each</span><br> <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">listFor</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-type">int</span>[] arrs = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>&#125;;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> arr : arrs) &#123;<br>            System.out.print(arr+<span class="hljs-string">&quot; &quot;</span>);<br>        &#125;<br>    &#125;<br><br></code></pre></td></tr></table></figure>
+
 <ul>
-<li>左子树的所有节点（如果有）的值均小于当前节点的值</li>
-<li>右子树的所有节点（如果有）的值均大于当前节点的值</li>
-<li>左子树和右子树均为二叉搜索树</li>
-<li>二叉搜索树的中序遍历有序</li>
+<li>菜鸟笔记：<a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-array.html">https://www.runoob.com/java/java-array.html</a></li>
 </ul>
-<p>二叉搜索树的题目往往可以用递归来解决，本题 LC难度：中等，核心思想：分类讨论删除不同位置处的节点如何保持二叉树的性质</p>
-<h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定一个二叉搜索树的根节点 root 和一个值 key，删除二叉搜索树中的 key 对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的根节点的引用。</p>
-<p>一般来说，删除节点可分为两个步骤：</p>
-<ol>
-<li>首先找到需要删除的节点；</li>
-<li>如果找到了，删除它。</li>
-</ol>
-<p><img src="https://img.yiqiangshiyia.cn/blog/del_node_1.jpg" srcset="/img/loading.gif" lazyload alt="del_node_1"></p>
-<blockquote>
-<p>输入：root = [5,3,6,2,4,null,7], key = 3<br>输出：[5,4,6,2,null,null,7]<br>解释：给定需要删除的节点值是 3，所以我们首先找到 3 这个节点，然后删除它。<br>一个正确的答案是 [5,4,6,2,null,null,7], 如下图所示。<br>另一个正确答案是 [5,2,6,null,4,null,7]。</p>
+<h2 id="Arrays类"><a href="#Arrays类" class="headerlink" title="Arrays类"></a>Arrays类</h2><p>java.util.Arrays 类能方便地操作数组，它提供的所有方法都是静态的。</p>
+<p><strong>具有以下功能：</strong></p>
+<ul>
+<li>给数组赋值：通过 fill 方法。</li>
+<li>对数组排序：通过 sort 方法,按升序。</li>
+<li>比较数组：通过 equals 方法比较数组中元素值是否相等。</li>
+<li>查找数组元素：通过 binarySearch 方法能对排序好的数组进行二分查找法操作。</li>
+</ul>
+<p><strong>实现方法：</strong></p>
+<ul>
+<li><p><strong>public static void fill(int[] a, int val)</strong></p>
+<p>将指定的 int 值分配给指定 int 型数组指定范围中的每个元素。同样的方法适用于所有的其他基本数据类型（Byte，short，Int等）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;;<br>Arrays.fill(arr,<span class="hljs-number">5</span>);<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>public static void sort(Object[] a)</strong></p>
+<p>对指定对象数组根据其元素的自然顺序进行升序排列。同样的方法适用于所有的其他基本数据类型（Byte，short，Int等）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">4</span>&#125;;<br>Arrays.sort(arr);<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>public static boolean equals(long[] a, long[] a2)</strong></p>
+<p>如果两个指定的 long 型数组彼此相等，则返回 true。如果两个数组包含相同数量的元素，并且两个数组中的所有相应元素对都是相等的，则认为这两个数组是相等的。换句话说，如果两个数组以相同顺序包含相同的元素，则两个数组是相等的。同样的方法适用于所有的其他基本数据类型（Byte，short，Int等）。</p>
+</li>
+<li><p><strong>public static int binarySearch(Object[] a, Object key)</strong></p>
+<p>用二分查找算法在给定数组中搜索给定值的对象(Byte,Int,double等)。数组在调用前必须排序好的。如果查找值包含在数组中，则返回搜索键的索引；否则返回 (-(<em>插入点</em>) - 1)。</p>
+</li>
+</ul>
+<h1 id="2-Java字符串"><a href="#2-Java字符串" class="headerlink" title="2 | Java字符串"></a>2 | Java字符串</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><ul>
+<li>菜鸟笔记：<a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-string.html">https://www.runoob.com/java/java-string.html</a></li>
+</ul>
+<h2 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h2><ul>
+<li>菜鸟笔记：<a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-stringbuffer.html">https://www.runoob.com/java/java-stringbuffer.html</a></li>
+</ul>
+<h1 id="3-Java数据结构"><a href="#3-Java数据结构" class="headerlink" title="3 | Java数据结构"></a>3 | Java数据结构</h1><ul>
+<li>菜鸟笔记：<a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-data-structures.html">https://www.runoob.com/java/java-data-structures.html</a></li>
+</ul>
+<p>Java工具包提供了强大的数据结构。在Java中的数据结构主要包括以下几种接口和类：</p>
+<ul>
+<li>枚举（Enumeration）</li>
+<li>位集合（BitSet）</li>
+<li>向量（Vector）</li>
+<li>栈（Stack）</li>
+<li>字典（Dictionary）</li>
+<li>哈希表（Hashtable）</li>
+<li>属性（Properties）</li>
+</ul>
+<h1 id="4-Java集合框架"><a href="#4-Java集合框架" class="headerlink" title="4 | Java集合框架"></a>4 | Java集合框架</h1><blockquote>
+<p>早在 Java 2 中之前，Java 就提供了特设类。比如：Dictionary, Vector, Stack, 和 Properties 这些类用来存储和操作对象组。</p>
+<p>虽然这些类都非常有用，但是它们缺少一个核心的，统一的主题。由于这个原因，使用 Vector 类的方式和使用 Properties 类的方式有着很大不同。</p>
+<p>集合框架被设计成要满足以下几个目标。</p>
+<ul>
+<li>该框架必须是高性能的。基本集合（动态数组，链表，树，哈希表）的实现也必须是高效的。</li>
+<li>该框架允许不同类型的集合，以类似的方式工作，具有高度的互操作性。</li>
+<li>对一个集合的扩展和适应必须是简单的。</li>
+</ul>
+<p>为此，整个集合框架就围绕一组标准接口而设计。你可以直接使用这些接口的标准实现，诸如： <strong>LinkedList</strong>, <strong>HashSet</strong>, 和 <strong>TreeSet</strong> 等,除此之外你也可以通过这些接口实现自己的集合。</p>
 </blockquote>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>核心思想：分类讨论删除不同位置处的节点如何保持二叉树的性质，思路很简单，两张图就能明白了</p>
-<p>删除节点后，若删除节点的左右子树均不为空，则要保持二叉搜索树的性质有两种答案</p>
-<p><img src="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220607205952.png" srcset="/img/loading.gif" lazyload alt="方式1"></p>
-<p><img src="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220607202437.png" srcset="/img/loading.gif" lazyload alt="方式2"></p>
-<p><strong>方法1：递归</strong></p>
-<p>AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">TreeNode* <span class="hljs-title">deleteNode</span><span class="hljs-params">(TreeNode* root, <span class="hljs-type">int</span> key)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)  <span class="hljs-keyword">return</span> root;<br>        <span class="hljs-keyword">if</span>(root-&gt;val &gt; key)&#123;<br>            root-&gt;left = <span class="hljs-built_in">deleteNode</span>(root-&gt;left,key);<br>            <span class="hljs-keyword">return</span> root;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(root-&gt;val &lt; key)&#123;<br>            root-&gt;right = <span class="hljs-built_in">deleteNode</span>(root-&gt;right,key);<br>            <span class="hljs-keyword">return</span> root;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(root-&gt;val == key)&#123;<br>            <span class="hljs-keyword">if</span>(root-&gt;left == <span class="hljs-literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="hljs-literal">nullptr</span>)&#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<br>            &#125;<br>            <span class="hljs-keyword">if</span>(root-&gt;left == <span class="hljs-literal">nullptr</span>)&#123;<br>                <span class="hljs-keyword">return</span> root-&gt;right;<br>            &#125;<br>            <span class="hljs-keyword">if</span>(root-&gt;right == <span class="hljs-literal">nullptr</span>)&#123;<br>                <span class="hljs-keyword">return</span> root-&gt;left;<br>            &#125;<br>            <span class="hljs-keyword">if</span>(root-&gt;left &amp;&amp; root-&gt;right)&#123;<br>                TreeNode* node = root-&gt;right;<br>                <span class="hljs-keyword">while</span>(node-&gt;left)&#123;<br>                    node = node-&gt;left;<br>                &#125;<br>                root-&gt;right = <span class="hljs-built_in">deleteNode</span>(root-&gt;right,node-&gt;val);<br>                node-&gt;left = root-&gt;left;<br>                node-&gt;right = root-&gt;right;<br>                <span class="hljs-keyword">return</span> node;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> root;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
-
-
-<p><strong>方法2：迭代</strong></p>
-<blockquote>
-<p>迭代法我没看懂在干什么😅</p>
-</blockquote>
-<p>官解思路：方法一的递归深度最多为 n，而大部分是由寻找值为 key 的节点贡献的，而寻找节点这一部分可以用迭代来优化。寻找并删除 successor 时，也可以用一个变量保存它的父节点，从而可以节省一步递归操作。</p>
-<p>官解AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">TreeNode* <span class="hljs-title">deleteNode</span><span class="hljs-params">(TreeNode* root, <span class="hljs-type">int</span> key)</span> </span>&#123;<br>        TreeNode *cur = root, *curParent = <span class="hljs-literal">nullptr</span>;<br>        <span class="hljs-keyword">while</span> (cur &amp;&amp; cur-&gt;val != key) &#123;<br>            curParent = cur;<br>            <span class="hljs-keyword">if</span> (cur-&gt;val &gt; key) &#123;<br>                cur = cur-&gt;left;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                cur = cur-&gt;right;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (!cur) &#123;<br>            <span class="hljs-keyword">return</span> root;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (!cur-&gt;left &amp;&amp; !cur-&gt;right) &#123;<br>            cur = <span class="hljs-literal">nullptr</span>;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!cur-&gt;right) &#123;<br>            cur = cur-&gt;left;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!cur-&gt;left) &#123;<br>            cur = cur-&gt;right;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            TreeNode *successor = cur-&gt;right, *successorParent = cur;<br>            <span class="hljs-keyword">while</span> (successor-&gt;left) &#123;<br>                successorParent = successor;<br>                successor = successor-&gt;left;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (successorParent-&gt;val == cur-&gt;val) &#123;<br>                successorParent-&gt;right = successor-&gt;right;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                successorParent-&gt;left = successor-&gt;right;<br>            &#125;<br>            successor-&gt;right = cur-&gt;right;<br>            successor-&gt;left = cur-&gt;left;<br>            cur = successor;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (!curParent) &#123;<br>            <span class="hljs-keyword">return</span> cur;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">if</span> (curParent-&gt;left &amp;&amp; curParent-&gt;left-&gt;val == key) &#123;<br>                curParent-&gt;left = cur;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                curParent-&gt;right = cur;<br>            &#125;<br>            <span class="hljs-keyword">return</span> root;<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/01/2243690-9cd9c896e0d512ed.gif" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h2><ul>
+<li>菜鸟笔记：<a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist.html">https://www.runoob.com/java/java-arraylist.html</a></li>
+</ul>
+<h2 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h2><ul>
+<li>菜鸟笔记：<a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-linkedlist.html">https://www.runoob.com/java/java-linkedlist.html</a></li>
+</ul>
+<h2 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h2><ul>
+<li>菜鸟笔记：<a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashset.html">https://www.runoob.com/java/java-hashset.html</a></li>
+</ul>
+<h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><ul>
+<li>菜鸟笔记：<a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap.html">https://www.runoob.com/java/java-hashmap.html</a></li>
+</ul>
 
               
             </div>
@@ -371,7 +408,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/LeetCode/" class="category-chain-item">LeetCode</a>
+  <a href="/categories/Java/" class="category-chain-item">Java</a>
   
   
 
@@ -386,7 +423,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">#二叉搜索树</a>
+        <a href="/tags/Java/">#Java</a>
       
     </div>
   
@@ -398,8 +435,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>LC 450.删除二叉搜索树中的节点</div>
-      <div>https://yiqiangshiyia.cn/2022/06/07/LC 450.删除二叉搜索树中的节点/</div>
+      <div>Java-数据结构与集合框架</div>
+      <div>https://yiqiangshiyia.cn/2022/05/16/Java-数据结构与集合框架/</div>
     </div>
     <div class="license-meta">
       
@@ -411,7 +448,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年6月7日</div>
+          <div>2022年5月16日</div>
         </div>
       
       
@@ -441,12 +478,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2022/05/16/Java-JDBC/" title="Java-JDBC">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Java-JDBC</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/06/06/SSM-MyBatis/" title="SSM-MyBatis">
-                        <span class="hidden-mobile">SSM-MyBatis</span>
+                      <a href="/2022/05/16/%E4%BD%BF%E7%94%A8Eclipse%E8%BF%9E%E6%8E%A5MySQL%E6%95%B0%E6%8D%AE%E5%BA%93/" title="使用Eclipse连接MySQL数据库">
+                        <span class="hidden-mobile">使用Eclipse连接MySQL数据库</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

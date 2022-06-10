@@ -16,33 +16,26 @@
   <meta name="author" content="一腔诗意啊">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Java基础知识Java基础知识Java数据输入Scanner使用的基本步骤：  导包 import java.util.Scanner; 导包的动作必须出现在类定义的上边  创建对象 Scanner sc &#x3D; new Scanner(System.in); 上面这个格式里面，只有sc是变量名可以变，其他的都不允许变  接受数据 int i &#x3D; sc.nextInt(); 上面这个格式里面，只有i">
+    <meta name="description" content="JDBC与MySQL数据库1 | JDBCJDBC（Java DataBase Connectivity） 是用于执行SQL语句的Java应用程序接口，由一组用Java语言编写的类与接口 组成，是一种底层API 使开发人员可以用纯Java语言编写完整的数据库应用程序 用JDBC写的程序能够自动地将SQL语句传送给几乎任何一种数据库管理系统 （DBMS） 是一种规范，它让各数据库厂商为Java程序员">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java学习笔记">
-<meta property="og:url" content="https://yiqiangshiyia.cn/2022/05/16/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="Java-JDBC">
+<meta property="og:url" content="https://yiqiangshiyia.cn/2022/05/16/Java-JDBC/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
-<meta property="og:description" content="Java基础知识Java基础知识Java数据输入Scanner使用的基本步骤：  导包 import java.util.Scanner; 导包的动作必须出现在类定义的上边  创建对象 Scanner sc &#x3D; new Scanner(System.in); 上面这个格式里面，只有sc是变量名可以变，其他的都不允许变  接受数据 int i &#x3D; sc.nextInt(); 上面这个格式里面，只有i">
+<meta property="og:description" content="JDBC与MySQL数据库1 | JDBCJDBC（Java DataBase Connectivity） 是用于执行SQL语句的Java应用程序接口，由一组用Java语言编写的类与接口 组成，是一种底层API 使开发人员可以用纯Java语言编写完整的数据库应用程序 用JDBC写的程序能够自动地将SQL语句传送给几乎任何一种数据库管理系统 （DBMS） 是一种规范，它让各数据库厂商为Java程序员">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6.jpg">
-<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/super%E5%85%B3%E9%94%AE%E5%AD%97.jpg">
-<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%89%B9%E7%82%B9.jpg">
-<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%88%90%E5%91%98%E7%89%B9%E7%82%B9.jpg">
-<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB.jpg">
-<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/Math%E7%B1%BB%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95.jpg">
 <meta property="og:image" content="http://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220517130904.png">
-<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/Collection.jpg">
 <meta property="article:published_time" content="2022-05-16T13:20:57.000Z">
-<meta property="article:modified_time" content="2022-06-08T11:41:41.856Z">
+<meta property="article:modified_time" content="2022-06-10T11:19:44.581Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://img.yiqiangshiyia.cn/blog/%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6.jpg">
+<meta name="twitter:image" content="http://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220517130904.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Java学习笔记 - 一腔诗意啊 - 个人博客</title>
+  <title>Java-JDBC - 一腔诗意啊 - 个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -245,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Java学习笔记"></span>
+            <span id="subtitle" data-typed-text="Java-JDBC"></span>
           
         </div>
 
@@ -269,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          13k 字
+          8k 字
         
       </span>
     
@@ -281,7 +274,7 @@
         
         
           <!-- compatible with older versions-->
-          107 分钟
+          67 分钟
         
       </span>
     
@@ -319,256 +312,11 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Java学习笔记</h1>
+            <h1 style="display: none">Java-JDBC</h1>
             
             <div class="markdown-body">
               
-              <h1 id="Java基础知识"><a href="#Java基础知识" class="headerlink" title="Java基础知识"></a>Java基础知识</h1><h2 id="Java基础知识-1"><a href="#Java基础知识-1" class="headerlink" title="Java基础知识"></a>Java基础知识</h2><h3 id="Java数据输入"><a href="#Java数据输入" class="headerlink" title="Java数据输入"></a>Java数据输入</h3><p><strong>Scanner使用的基本步骤：</strong></p>
-<ol>
-<li><p>导包</p>
-<p>import java.util.Scanner;</p>
-<p>导包的动作必须出现在类定义的上边</p>
-</li>
-<li><p>创建对象</p>
-<p>Scanner sc = new Scanner(System.in);</p>
-<p>上面这个格式里面，只有sc是变量名可以变，其他的都不允许变</p>
-</li>
-<li><p>接受数据</p>
-<p>int i = sc.nextInt();</p>
-<p>上面这个格式里面，只有i是变量可以变，其他的都不允许变</p>
-</li>
-</ol>
-<h3 id="Random"><a href="#Random" class="headerlink" title="Random"></a><strong>Random</strong></h3><p><strong>Random的作用和使用步骤：</strong></p>
-<p>作用：产生一个随机数</p>
-<p>使用步骤：</p>
-<ol>
-<li><p>导包</p>
-<p>Import java.util.Random;</p>
-<p>导包的动作必须出现在类定义的上边</p>
-</li>
-<li><p>创建对象</p>
-<p>Random r = new Random();</p>
-<p>上面这个格式里面，只有r是变量名可以变，其他的都不允许变</p>
-</li>
-<li><p>获取随机数</p>
-<p>int number = r.nextInt(10);  //获取数据范围：[0,10）包括0，不包括10</p>
-<p>上面这个格式里面，number是变量名可以变，数字10可以变，其他的都不允许变</p>
-</li>
-</ol>
-<h3 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h3><p><img src="https://img.yiqiangshiyia.cn/blog/%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6.jpg" srcset="/img/loading.gif" lazyload alt="权限修饰符"></p>
-<p><strong>Private关键字</strong></p>
-<p>是一个权限修饰符</p>
-<p>可以修饰成员变量</p>
-<p>作用是保护成员不被别的类使用，被Private修饰的成员只在本类中才能访问</p>
-<p>针对private修饰的成员变量，如果需要被其他类使用，提供相应的操作</p>
-<p>提供 get变量名() 方法，用于获取成员变量的值，方法用public修饰</p>
-<p>提供 set变量名(参数) 方法，用于设置成员变量的值，方法用public修饰</p>
-<h3 id="final修饰符"><a href="#final修饰符" class="headerlink" title="final修饰符"></a>final修饰符</h3><p>final关键字是最终的意思，可以修饰成员方法，成员变量，类</p>
-<p>final修饰的特点：</p>
-<ul>
-<li><p>修饰方法：表明该方法是最终方法，不能被重写</p>
-</li>
-<li><p>修饰变量：表明该变量是常量，不能被赋值</p>
-</li>
-<li><p>修饰类：表明该类是最终类，不能被继承</p>
-</li>
-</ul>
-<p>final修饰局部变量：</p>
-<ul>
-<li><p>变量是基本类型：final修饰指的是基本类型的数据值不能改变</p>
-</li>
-<li><p>变量是引用类型：final修饰指的是引用类型的地址值不能改变，但是地址里面的内容是可以改变的</p>
-</li>
-</ul>
-<h3 id="static修饰符"><a href="#static修饰符" class="headerlink" title="static修饰符"></a><strong>static修饰符</strong></h3><p>static关键字是静态的意思，可以修饰成员方法，成员变量</p>
-<p>static修饰的特点：</p>
-<ul>
-<li><p>被类的所有对象共享：这是我们判断是否使用静态关键字的条件</p>
-</li>
-<li><p>可以通过类名调用：当然也可以通过对象名调用，推荐使用类名调用</p>
-</li>
-</ul>
-<p>static访问特点：</p>
-<ul>
-<li><p>非静态的成员方法：</p>
-<ul>
-<li><p>能访问静态的成员变量</p>
-</li>
-<li><p>能访问非静态的成员变量</p>
-</li>
-<li><p>能访问静态的成员方法</p>
-</li>
-<li><p>能访问非静态的成员方法</p>
-</li>
-</ul>
-</li>
-<li><p>静态的成员方法：</p>
-<ul>
-<li><p>能访问静态的成员变量</p>
-</li>
-<li><p>能访问静态的成员方法</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="基本数据类型与数组"><a href="#基本数据类型与数组" class="headerlink" title="基本数据类型与数组"></a>基本数据类型与数组</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p><strong>数组初始化化</strong></p>
-<ul>
-<li><p>动态初始化</p>
-<p>动态初始化：初始化时只指定数组长度，由系统为数组分配初始值</p>
-<p>格式：数据类型[] 变量名 = new 数据类型[数据长度]</p>
-<p>范例：int[] arr = new int[3];</p>
-</li>
-<li><p>静态初始化</p>
-<p>静态初始化：初始化时指定每个数组元素的初始值，由系统决定数组长度</p>
-<p>格式：数据类型[] 变量名 = new 数据类型[]{数据1,数据2,数据3……};</p>
-<p>范例：int[] arr = new int[]{1,2,3};</p>
-</li>
-</ul>
-<p>简化格式：数据类型[] 变量名 = {数据1,数据2,数据3……};</p>
-<p>范例：int[] arr = {1,2,3};</p>
-<p>获取数组元素数量：arr.length</p>
-<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><h2 id="子类与继承"><a href="#子类与继承" class="headerlink" title="子类与继承"></a>子类与继承</h2><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>继承概述：</p>
-<ul>
-<li>继承是面向对象三大特征之一，可以使得子类具有父类的属性和方法，还可以在子类中重新定义，追加属性和方法。</li>
-</ul>
-<p>继承的格式：</p>
-<ul>
-<li><p>格式：public class 子类名 extends 父类名{}</p>
-</li>
-<li><p>范例：public class Zi extends Fu{}</p>
-</li>
-<li><p>Fu：是父类，也被称为基类、超类  Zi：是子类，也被称为派生类</p>
-</li>
-</ul>
-<p>继承中子类的特点：</p>
-<ul>
-<li><p>子类可以有父类的内容</p>
-</li>
-<li><p>子类还可以有自己特定的内容</p>
-</li>
-</ul>
-<p>继承的好处和弊端</p>
-<ul>
-<li><p>提高了代码的复用性（多个类相同的成员可以放到同一个类中）</p>
-</li>
-<li><p>提高了代码的维护性（如果方法的代码需要修改，修改一处即可）</p>
-</li>
-</ul>
-<p>Java中继承的注意事项</p>
-<ul>
-<li><p>Java中类只支持单继承，不支持多继承</p>
-</li>
-<li><p>Java中类支持多层继承</p>
-</li>
-</ul>
-<h3 id="Supper关键字"><a href="#Supper关键字" class="headerlink" title="Supper关键字"></a>Supper关键字</h3><p><img src="https://img.yiqiangshiyia.cn/blog/super%E5%85%B3%E9%94%AE%E5%AD%97.jpg" srcset="/img/loading.gif" lazyload alt="super关键字"></p>
-<h3 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h3><p>方法重写概述：</p>
-<ul>
-<li>子类中出现了和父类中一模一样的方法声明</li>
-</ul>
-<p>方法重写的应用：</p>
-<ul>
-<li>当子类需要父类的功能，而功能主体子类有自己特有内容时，可以重写父类中的方法，这样，即沿袭了父类的功能，又定义了子类特有的内容</li>
-</ul>
-<p>方法重写注意事项：</p>
-<ul>
-<li><p>父类中私有方法子类不可重写（父类私有成员子类是不能继承的）</p>
-</li>
-<li><p>子类方法访问权限更低（public&gt;默认&gt;私有）</p>
-</li>
-</ul>
-<h2 id="接口与实现"><a href="#接口与实现" class="headerlink" title="接口与实现"></a>接口与实现</h2><h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p><strong>接口的概述：</strong></p>
-<ul>
-<li><p>接口就是一种公共的规范标准，只要符合规范标准，大家都可以用，Java中的接口更多的体现在对行为的抽象</p>
-</li>
-<li><p>接口也是抽象的内容不能被实例化</p>
-</li>
-</ul>
-<p><strong>接口的特点</strong></p>
-<p><img src="https://img.yiqiangshiyia.cn/blog/%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%89%B9%E7%82%B9.jpg" srcset="/img/loading.gif" lazyload alt="接口的特点"></p>
-<p><strong>接口的成员特点</strong></p>
-<p><img src="https://img.yiqiangshiyia.cn/blog/%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%88%90%E5%91%98%E7%89%B9%E7%82%B9.jpg" srcset="/img/loading.gif" lazyload alt="接口的成员特点"></p>
-<p><strong>类和接口的关系</strong></p>
-<ul>
-<li><p>类和类的关系：</p>
-<p>继承关系，只能单继承，但是可以多层继承</p>
-</li>
-<li><p>类和接口的关系：</p>
-<p>实现关系，可以单实现，也可以多实现，还可以在继承一个类的同时实现多个接口</p>
-</li>
-<li><p>接口和接口的关系：</p>
-<p>继承关系，可以单继承，也可以多继承</p>
-</li>
-</ul>
-<p><strong>抽象类和接口的区别</strong></p>
-<p><img src="https://img.yiqiangshiyia.cn/blog/%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB.jpg" srcset="/img/loading.gif" lazyload alt="接口和抽象类的区别"></p>
-<p>抽象类是对事物的抽象，接口是对行为的抽象</p>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p><strong>多态：同一个对象在不同时刻表现出来的不同形态</strong></p>
-<p><strong>多态的前提和体现：</strong></p>
-<ul>
-<li><p>有继承或实现关系</p>
-</li>
-<li><p>有方法重写</p>
-</li>
-<li><p>有父类引用指向子类对象</p>
-</li>
-</ul>
-<p><strong>多态中成员访问特点：</strong></p>
-<ul>
-<li><p>成员变量：编译看左边，执行看左边</p>
-</li>
-<li><p>成员方法：编译看左边，执行看右边</p>
-</li>
-<li><p>为什么成员变量和成员方法的访问不一样呢？</p>
-<ul>
-<li>因为成员方法有重写，而成员变量没有</li>
-</ul>
-</li>
-</ul>
-<p><strong>多态的好处和弊端：</strong></p>
-<ul>
-<li><p>多态的好处：</p>
-<p>提高了程序的扩展性 具体体现：定义方法的时候，使用父类型作为参数，将来在使用的时候，使用具体的子类型参与操作。</p>
-</li>
-<li><p>多态的弊端：</p>
-<p>不能使用子类的特有功能</p>
-</li>
-</ul>
-<p><strong>多态的转型：</strong></p>
-<ul>
-<li><p>目的：为了解决多态不能使用子类的特有功能的弊端</p>
-</li>
-<li><p>向上转型：从子到父 父类引用指向子类对象</p>
-</li>
-<li><p>向下转型：从父到子 父类引用转为子类对象</p>
-</li>
-</ul>
-<h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><ul>
-<li><p><strong>封装概述</strong></p>
-<p>是面向对象三大特征之一（封装、继承、多态）</p>
-<p>是面向对象编程语言对客观世界的模拟，客观世界里成员变量都是隐藏在方法内部的，外界是无法直接操作的</p>
-</li>
-<li><p><strong>封装原则</strong></p>
-<p>将类的某些信息隐藏在类内部，不允许外部程序直接访问，而是通过该类提供的方法来对隐藏信息的操作和访问</p>
-<p>成员变量private 提供对应的setXxx() getXxx()方法</p>
-</li>
-<li><p><strong>封装好处</strong></p>
-<p>通过方法来控制成员变量的操作，提高了代码的安全性</p>
-<p>把代码用方法进行封装，提高了代码的复用性</p>
-</li>
-</ul>
-<h2 id="内部类与异常类"><a href="#内部类与异常类" class="headerlink" title="内部类与异常类"></a>内部类与异常类</h2><h2 id="常用实用类"><a href="#常用实用类" class="headerlink" title="常用实用类"></a>常用实用类</h2><h3 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h3><blockquote>
-<p>String类是不可变类，即一旦一个String对象被创建以后，包含在这个对象中的字符序列是不可改变的，直至这个对象被销毁。</p>
-<p>对不可改变的理解：赋值时，并不是对原来堆中实例对象进行重新赋值，而是生成一个新的实例对象，之前的实例对象仍然存在，如果没有被再次引用，则会被垃圾回收。</p>
-</blockquote>
-<h4 id="构造String对象"><a href="#构造String对象" class="headerlink" title="构造String对象"></a>构造String对象</h4><h4 id="String对象的并置"><a href="#String对象的并置" class="headerlink" title="String对象的并置"></a>String对象的并置</h4><h4 id="String类的常用方法"><a href="#String类的常用方法" class="headerlink" title="String类的常用方法"></a>String类的常用方法</h4><h4 id="String对象与基本数据的相互转换"><a href="#String对象与基本数据的相互转换" class="headerlink" title="String对象与基本数据的相互转换"></a>String对象与基本数据的相互转换</h4><h4 id="String对象与字符数组、字节数组"><a href="#String对象与字符数组、字节数组" class="headerlink" title="String对象与字符数组、字节数组"></a>String对象与字符数组、字节数组</h4><h3 id="StringBuffer类"><a href="#StringBuffer类" class="headerlink" title="StringBuffer类"></a>StringBuffer类</h3><blockquote>
-<p>StringBuffer对象则代表一个字符序列可变的字符串，当一个StringBuffer被创建以后，通过StringBuffer提供的append()、insert()、reverse()、setCharAt()、setLength()等方法可以改变这个字符串对象的字符序列。一旦通过StringBuffer生成了最终想要的字符串，就可以调用它的toString()方法将其转换为一个String对象。</p>
-</blockquote>
-<h4 id="StringBuffer类的对象"><a href="#StringBuffer类的对象" class="headerlink" title="StringBuffer类的对象"></a>StringBuffer类的对象</h4><h4 id="Stringbuffer类的常用方法"><a href="#Stringbuffer类的常用方法" class="headerlink" title="Stringbuffer类的常用方法"></a>Stringbuffer类的常用方法</h4><h3 id="StringBuilder类"><a href="#StringBuilder类" class="headerlink" title="StringBuilder类"></a>StringBuilder类</h3><blockquote>
-<p>StringBuilder类也代表可变字符串对象。实际上，StringBuilder和StringBuffer基本相似，两个类的构造器和方法也基本相同。不同的是：<strong>StringBuffer是线程安全的，而StringBuilder则没有实现线程安全功能，所以性能略高。</strong></p>
-</blockquote>
-<h3 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h3><p><img src="https://img.yiqiangshiyia.cn/blog/Math%E7%B1%BB%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95.jpg" srcset="/img/loading.gif" lazyload alt="Math类的常用方法"></p>
-<h1 id="JDBC与MySQL数据库"><a href="#JDBC与MySQL数据库" class="headerlink" title="JDBC与MySQL数据库"></a>JDBC与MySQL数据库</h1><h2 id="1-JDBC"><a href="#1-JDBC" class="headerlink" title="1 | JDBC"></a>1 | JDBC</h2><h3 id="JDBC（Java-DataBase-Connectivity）"><a href="#JDBC（Java-DataBase-Connectivity）" class="headerlink" title="JDBC（Java DataBase Connectivity）"></a>JDBC（Java DataBase Connectivity）</h3><ul>
+              <h1 id="JDBC与MySQL数据库"><a href="#JDBC与MySQL数据库" class="headerlink" title="JDBC与MySQL数据库"></a>JDBC与MySQL数据库</h1><h2 id="1-JDBC"><a href="#1-JDBC" class="headerlink" title="1 | JDBC"></a>1 | JDBC</h2><h3 id="JDBC（Java-DataBase-Connectivity）"><a href="#JDBC（Java-DataBase-Connectivity）" class="headerlink" title="JDBC（Java DataBase Connectivity）"></a>JDBC（Java DataBase Connectivity）</h3><ul>
 <li>是用于执行SQL语句的Java应用程序接口，由一组用Java语言编写的类与接口 组成，是一种底层API</li>
 <li>使开发人员可以用纯Java语言编写完整的数据库应用程序</li>
 <li>用JDBC写的程序能够自动地将SQL语句传送给几乎任何一种数据库管理系统 （DBMS）</li>
@@ -802,56 +550,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="泛型与集合框架"><a href="#泛型与集合框架" class="headerlink" title="泛型与集合框架"></a>泛型与集合框架</h1><h2 id="1-泛型"><a href="#1-泛型" class="headerlink" title="1 | 泛型"></a>1 | 泛型</h2><ul>
-<li>泛型（Generics）是在JDK1.5中推出的，其主要目的是可以 建立具有类型安全的集合框架，如链表、散列映射等数据结 构。</li>
-<li>“泛型”规定了集合内元素的类型，从而在编译时进行严格 的类型检查，消除了绝大多数的类型转换。</li>
-</ul>
-<h3 id="泛型类声明"><a href="#泛型类声明" class="headerlink" title="泛型类声明"></a>泛型类声明</h3><h4 id="系统提供的泛型类"><a href="#系统提供的泛型类" class="headerlink" title="系统提供的泛型类"></a>系统提供的泛型类</h4><p>在java.util包中有集合类的泛型类，比如：Collection、Map。</p>
-<h4 id="自定义泛型类"><a href="#自定义泛型类" class="headerlink" title="自定义泛型类"></a>自定义泛型类</h4><p>语法结构：class 类名&lt;泛型列表&gt;</p>
-<p>比如：class People&lt;E&gt;</p>
-<p>其中People是泛型类的名称，E是其中的泛型，也就是说我们并没有 指定E是何种类型的数据，它可以是任何类的对象或接口，但不能是基 本类型数据。</p>
-<p>例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Cone</span>&lt;E&gt; &#123; <br>	<span class="hljs-type">double</span> height;<br>	E bottom; <span class="hljs-comment">//用泛型类E声明对象bottom</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-title function_">Cone</span> <span class="hljs-params">(E b)</span> &#123;<br>		bottom=b; <br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-
-
-<h3 id="使用泛型类声明对象"><a href="#使用泛型类声明对象" class="headerlink" title="使用泛型类声明对象"></a>使用泛型类声明对象</h3><p>用泛型类声明和创建对象时，类名后多了一对“&lt;&gt;”， 而且必须要用具体的类型替换“&lt;&gt;”中的泛型。</p>
-<p>比如：Cone&lt;Circle&gt; coneone; </p>
-<p>​            coneone=new Cone&lt;Circle&gt;(new Circle());</p>
-<p>例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Circle</span> &#123;<br>	<span class="hljs-type">double</span> area,radius; <br>	Circle(<span class="hljs-type">double</span> r) &#123;<br>		radius=r;<br>	&#125; <br>	<span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">( )</span> &#123;<br>		area=radius*radius*Math.PI;<br>		<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>+area;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Example9_1</span> &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String args[])</span> &#123;<br>		Circle circle=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Circle</span>(<span class="hljs-number">10</span>);<br>		Cone&lt;Circle&gt; coneOne=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Cone</span>&lt;Circle&gt;(circle);<br>		coneOne.setHeight(<span class="hljs-number">16</span>);<br>		System.out.println(coneOne.computerVolume( ));<br>		Rect rect=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Rect</span>(<span class="hljs-number">15</span>,<span class="hljs-number">23</span>);<br>		Cone&lt;Rect&gt; coneTwo=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Cone</span>&lt;Rect&gt;(rect);<br>		coneTwo.setHeight(<span class="hljs-number">98</span>); <br>		System.out.println(coneTwo.computerVolume( ));<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="2-集合"><a href="#2-集合" class="headerlink" title="2 | 集合"></a>2 | 集合</h2><ul>
-<li>要实现存储一组对象，通过之前的学习，可以使用对象数组， 但数组长度一旦固定就不可更改。</li>
-<li>集合框架中的类克服了数组的缺点，其容量可以动态改变， 并且不同类型的集合类具有各自的特点。</li>
-</ul>
-<h3 id="对象数组"><a href="#对象数组" class="headerlink" title="对象数组"></a>对象数组</h3><h4 id="对象数组-1"><a href="#对象数组-1" class="headerlink" title="对象数组"></a>对象数组</h4><ul>
-<li>数组元素是类的对象，每个元素都是一个对象的引用</li>
-<li>所有元素具有相同的类型</li>
-<li>在Java提供的存储及随机访问对象序列的各种方法中，数组是效率最高的一种</li>
-</ul>
-<h4 id="对象数组初始化"><a href="#对象数组初始化" class="headerlink" title="对象数组初始化"></a>对象数组初始化</h4><ul>
-<li><p>静态初始化：在声明和定义数组的同时对数组元素进行初始化</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">Point[] pointArray = &#123;<br>	<span class="hljs-keyword">new</span> <span class="hljs-title class_">Point</span>(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>),<br>	<span class="hljs-keyword">new</span> <span class="hljs-title class_">Point</span>(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>), <br>	<span class="hljs-keyword">new</span> <span class="hljs-title class_">Point</span>(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>)<br>&#125;;<br></code></pre></td></tr></table></figure></li>
-<li><p>动态初始化：分两步走：首先为数组分配空间，然后初始化 其中的每个对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">Point[] pointArray = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Point</span>[size];<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; size ; i++)<br>	point[i] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">point</span>();<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="数组的优点"><a href="#数组的优点" class="headerlink" title="数组的优点"></a>数组的优点</h4><p>随机访问对象时最快</p>
-<h4 id="数组的缺点"><a href="#数组的缺点" class="headerlink" title="数组的缺点"></a>数组的缺点</h4><p>大小自创建以后就固定了</p>
-<h2 id="3-集合框架"><a href="#3-集合框架" class="headerlink" title="3 | 集合框架"></a>3 | 集合框架</h2><p><img src="https://img.yiqiangshiyia.cn/blog/Collection.jpg" srcset="/img/loading.gif" lazyload alt="Collection"></p>
-<h3 id="1、集合框架"><a href="#1、集合框架" class="headerlink" title="1、集合框架"></a>1、集合框架</h3><ul>
-<li>Java中有很多与集合有关的接口及类，它们被组织在以Collection及 Map接口为根的层次结构中，称为集合框架。</li>
-<li>集合框架中定义了一组可直接使用的具体类，如ArrayList等，它们 各有各自的特点。</li>
-</ul>
-<h3 id="2、集合框架中的接口"><a href="#2、集合框架中的接口" class="headerlink" title="2、集合框架中的接口"></a>2、集合框架中的接口</h3><ul>
-<li>声明了对各种集合类型执行的一般操作</li>
-<li>包括Collection、Set、List、SortedSet、Map、SortedMap</li>
-</ul>
-<h3 id="3、链表"><a href="#3、链表" class="headerlink" title="3、链表"></a>3、链表</h3><h3 id="4、堆栈"><a href="#4、堆栈" class="headerlink" title="4、堆栈"></a>4、堆栈</h3><h3 id="5、散列集"><a href="#5、散列集" class="headerlink" title="5、散列集"></a>5、散列集</h3><h3 id="6、散列映射"><a href="#6、散列映射" class="headerlink" title="6、散列映射"></a>6、散列映射</h3>
               
             </div>
             <hr/>
@@ -895,8 +594,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Java学习笔记</div>
-      <div>https://yiqiangshiyia.cn/2022/05/16/Java学习笔记/</div>
+      <div>Java-JDBC</div>
+      <div>https://yiqiangshiyia.cn/2022/05/16/Java-JDBC/</div>
     </div>
     <div class="license-meta">
       
@@ -948,8 +647,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/16/%E4%BD%BF%E7%94%A8Eclipse%E8%BF%9E%E6%8E%A5MySQL%E6%95%B0%E6%8D%AE%E5%BA%93/" title="使用Eclipse连接MySQL数据库">
-                        <span class="hidden-mobile">使用Eclipse连接MySQL数据库</span>
+                      <a href="/2022/05/16/Java-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/" title="Java-数据结构与集合框架">
+                        <span class="hidden-mobile">Java-数据结构与集合框架</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
