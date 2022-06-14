@@ -16,28 +16,30 @@
   <meta name="author" content="一腔诗意啊">
   <meta name="keywords" content="">
   
-    <meta name="description" content="LC 450.删除二叉搜索树中的节点Note二叉搜索树有以下性质：  左子树的所有节点（如果有）的值均小于当前节点的值 右子树的所有节点（如果有）的值均大于当前节点的值 左子树和右子树均为二叉搜索树 二叉搜索树的中序遍历有序  二叉搜索树的题目往往可以用递归来解决，本题 LC难度：中等，核心思想：分类讨论删除不同位置处的节点如何保持二叉树的性质 题目大意给定一个二叉搜索树的根节点 root 和一个">
+    <meta name="description" content="高校学籍管理系统系统要求高校学籍管理系统 功能要求：  实现学生信息、班级、院系、专业等的管理； 实现课程、学生成绩信息管理；实现学生的奖惩信息管理； 创建规则用于限制性别项只能输入“男”或“女”； 创建视图查询各个学生的学号、姓名、班级、专业、院系； 创建存储过程查询指定学生的成绩单； 创建触发器当增加、删除学生和修改学生班级信息时自动修改相应班级学生人数； 建立数据库相关表之间的参照完整性约束">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LC 450.删除二叉搜索树中的节点">
-<meta property="og:url" content="https://yiqiangshiyia.cn/2022/06/07/LC%20450.%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/index.html">
+<meta property="og:title" content="高校学籍管理系统">
+<meta property="og:url" content="https://yiqiangshiyia.cn/2022/06/14/%E9%AB%98%E6%A0%A1%E5%AD%A6%E7%B1%8D%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
-<meta property="og:description" content="LC 450.删除二叉搜索树中的节点Note二叉搜索树有以下性质：  左子树的所有节点（如果有）的值均小于当前节点的值 右子树的所有节点（如果有）的值均大于当前节点的值 左子树和右子树均为二叉搜索树 二叉搜索树的中序遍历有序  二叉搜索树的题目往往可以用递归来解决，本题 LC难度：中等，核心思想：分类讨论删除不同位置处的节点如何保持二叉树的性质 题目大意给定一个二叉搜索树的根节点 root 和一个">
+<meta property="og:description" content="高校学籍管理系统系统要求高校学籍管理系统 功能要求：  实现学生信息、班级、院系、专业等的管理； 实现课程、学生成绩信息管理；实现学生的奖惩信息管理； 创建规则用于限制性别项只能输入“男”或“女”； 创建视图查询各个学生的学号、姓名、班级、专业、院系； 创建存储过程查询指定学生的成绩单； 创建触发器当增加、删除学生和修改学生班级信息时自动修改相应班级学生人数； 建立数据库相关表之间的参照完整性约束">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/del_node_1.jpg">
-<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220607205952.png">
-<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220607202437.png">
-<meta property="article:published_time" content="2022-06-07T13:11:40.000Z">
-<meta property="article:modified_time" content="2022-06-08T02:28:51.484Z">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-06-14%20114814.png">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/%E5%88%9D%E5%A7%8B%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2.jpg">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/%E8%BF%9B%E5%85%A5%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.jpg">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/%E6%9F%A5%E8%AF%A2%E5%AD%A6%E7%94%9F%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF.jpg">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-06-14%20115014.png">
+<meta property="article:published_time" content="2022-06-14T03:32:31.000Z">
+<meta property="article:modified_time" content="2022-06-14T08:53:45.351Z">
 <meta property="article:author" content="一腔诗意啊">
-<meta property="article:tag" content="二叉搜索树">
+<meta property="article:tag" content="课设">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://img.yiqiangshiyia.cn/blog/del_node_1.jpg">
+<meta name="twitter:image" content="https://img.yiqiangshiyia.cn/blog/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-06-14%20114814.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>LC 450.删除二叉搜索树中的节点 - 一腔诗意啊 - 个人博客</title>
+  <title>高校学籍管理系统 - 一腔诗意啊 - 个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -240,7 +242,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="LC 450.删除二叉搜索树中的节点"></span>
+            <span id="subtitle" data-typed-text="高校学籍管理系统"></span>
           
         </div>
 
@@ -251,8 +253,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-06-07 21:11" pubdate>
-          2022年6月7日 晚上
+        <time datetime="2022-06-14 11:32" pubdate>
+          2022年6月14日 中午
         </time>
       </span>
     
@@ -264,7 +266,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.7k 字
+          2.5k 字
         
       </span>
     
@@ -276,7 +278,7 @@
         
         
           <!-- compatible with older versions-->
-          23 分钟
+          21 分钟
         
       </span>
     
@@ -314,45 +316,80 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">LC 450.删除二叉搜索树中的节点</h1>
+            <h1 style="display: none">高校学籍管理系统</h1>
             
             <div class="markdown-body">
               
-              <h2 id="LC-450-删除二叉搜索树中的节点"><a href="#LC-450-删除二叉搜索树中的节点" class="headerlink" title="LC 450.删除二叉搜索树中的节点"></a>LC 450.删除二叉搜索树中的节点</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>二叉搜索树有以下性质：</p>
+              <h2 id="高校学籍管理系统"><a href="#高校学籍管理系统" class="headerlink" title="高校学籍管理系统"></a>高校学籍管理系统</h2><h3 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h3><p><strong>高校学籍管理系统</strong></p>
+<p>功能要求：</p>
 <ul>
-<li>左子树的所有节点（如果有）的值均小于当前节点的值</li>
-<li>右子树的所有节点（如果有）的值均大于当前节点的值</li>
-<li>左子树和右子树均为二叉搜索树</li>
-<li>二叉搜索树的中序遍历有序</li>
+<li>实现学生信息、班级、院系、专业等的管理；</li>
+<li>实现课程、学生成绩信息管理；实现学生的奖惩信息管理；</li>
+<li>创建规则用于限制性别项只能输入“男”或“女”；</li>
+<li>创建视图查询各个学生的学号、姓名、班级、专业、院系；</li>
+<li>创建存储过程查询指定学生的成绩单；</li>
+<li>创建触发器当增加、删除学生和修改学生班级信息时自动修改相应班级学生人数；</li>
+<li>建立数据库相关表之间的参照完整性约束。</li>
 </ul>
-<p>二叉搜索树的题目往往可以用递归来解决，本题 LC难度：中等，核心思想：分类讨论删除不同位置处的节点如何保持二叉树的性质</p>
-<h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定一个二叉搜索树的根节点 root 和一个值 key，删除二叉搜索树中的 key 对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的根节点的引用。</p>
-<p>一般来说，删除节点可分为两个步骤：</p>
-<ol>
-<li>首先找到需要删除的节点；</li>
-<li>如果找到了，删除它。</li>
-</ol>
-<p><img src="https://img.yiqiangshiyia.cn/blog/del_node_1.jpg" srcset="/img/loading.gif" lazyload alt="del_node_1"></p>
-<blockquote>
-<p>输入：root = [5,3,6,2,4,null,7], key = 3<br>输出：[5,4,6,2,null,null,7]<br>解释：给定需要删除的节点值是 3，所以我们首先找到 3 这个节点，然后删除它。<br>一个正确的答案是 [5,4,6,2,null,null,7], 如下图所示。<br>另一个正确答案是 [5,2,6,null,4,null,7]。</p>
-</blockquote>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>核心思想：分类讨论删除不同位置处的节点如何保持二叉树的性质，思路很简单，两张图就能明白了</p>
-<p>删除节点后，若删除节点的左右子树均不为空，则要保持二叉搜索树的性质有两种答案</p>
-<p><img src="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220607205952.png" srcset="/img/loading.gif" lazyload alt="方式1"></p>
-<p><img src="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220607202437.png" srcset="/img/loading.gif" lazyload alt="方式2"></p>
-<p><strong>方法1：递归</strong></p>
-<p>AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">TreeNode* <span class="hljs-title">deleteNode</span><span class="hljs-params">(TreeNode* root, <span class="hljs-type">int</span> key)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)  <span class="hljs-keyword">return</span> root;<br>        <span class="hljs-keyword">if</span>(root-&gt;val &gt; key)&#123;<br>            root-&gt;left = <span class="hljs-built_in">deleteNode</span>(root-&gt;left,key);<br>            <span class="hljs-keyword">return</span> root;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(root-&gt;val &lt; key)&#123;<br>            root-&gt;right = <span class="hljs-built_in">deleteNode</span>(root-&gt;right,key);<br>            <span class="hljs-keyword">return</span> root;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(root-&gt;val == key)&#123;<br>            <span class="hljs-keyword">if</span>(root-&gt;left == <span class="hljs-literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="hljs-literal">nullptr</span>)&#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<br>            &#125;<br>            <span class="hljs-keyword">if</span>(root-&gt;left == <span class="hljs-literal">nullptr</span>)&#123;<br>                <span class="hljs-keyword">return</span> root-&gt;right;<br>            &#125;<br>            <span class="hljs-keyword">if</span>(root-&gt;right == <span class="hljs-literal">nullptr</span>)&#123;<br>                <span class="hljs-keyword">return</span> root-&gt;left;<br>            &#125;<br>            <span class="hljs-keyword">if</span>(root-&gt;left &amp;&amp; root-&gt;right)&#123;<br>                TreeNode* node = root-&gt;right;<br>                <span class="hljs-keyword">while</span>(node-&gt;left)&#123;<br>                    node = node-&gt;left;<br>                &#125;<br>                root-&gt;right = <span class="hljs-built_in">deleteNode</span>(root-&gt;right,node-&gt;val);<br>                node-&gt;left = root-&gt;left;<br>                node-&gt;right = root-&gt;right;<br>                <span class="hljs-keyword">return</span> node;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> root;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h3><p>本数据库课程设计选题为高校学籍管理系统，课程设计的系统架构为C/S架构，数据库采用的是MySQL，选用的编程语言为Java，连接数据库的方式为JDBC。课程设计报告主要包括以下内容：需求分析、概念结构设计、逻辑结构设计、数据库物理设计与实施、数据库操作要求及实现、概念结构设计、逻辑结构设计、物理设计、数据库实施、系统设计相关代码、感想及心得体会。</p>
+<h3 id="部分展示"><a href="#部分展示" class="headerlink" title="部分展示"></a>部分展示</h3><p><img src="https://img.yiqiangshiyia.cn/blog/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-06-14%20114814.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-06-14 114814"></p>
+<p><img src="https://img.yiqiangshiyia.cn/blog/%E5%88%9D%E5%A7%8B%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2.jpg" srcset="/img/loading.gif" lazyload alt="初始登录界面"></p>
+<p><img src="https://img.yiqiangshiyia.cn/blog/%E8%BF%9B%E5%85%A5%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.jpg" srcset="/img/loading.gif" lazyload alt="进入学生管理系统"></p>
+<p><img src="https://img.yiqiangshiyia.cn/blog/%E6%9F%A5%E8%AF%A2%E5%AD%A6%E7%94%9F%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF.jpg" srcset="/img/loading.gif" lazyload alt="查询学生基本信息"></p>
+<p><img src="https://img.yiqiangshiyia.cn/blog/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-06-14%20115014.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-06-14 115014"></p>
+<h3 id="数据库代码"><a href="#数据库代码" class="headerlink" title="数据库代码"></a>数据库代码</h3><h4 id="基本表创建"><a href="#基本表创建" class="headerlink" title="基本表创建"></a>基本表创建</h4><p>1.创建学生表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE student(	<br>	sno	VARCHAR(20) PRIMARY KEY,<br>	sname VARCHAR(20) NOT NULL,<br>	sex VARCHAR(6) NOT NULL,<br>	birth DATE,	<br>	tel	VARCHAR(20),<br>	qq VARCHAR(20),<br>	sdept	VARCHAR(20)	NOT NULL,<br>	class	VARCHAR(20)	NOT NULL,<br>	address	VARCHAR(50)<br>);<br></code></pre></td></tr></table></figure>
+
+<p>2.创建教师表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE teacher(<br>	tno VARCHAR(20) PRIMARY KEY,<br>	tname VARCHAR(20) NOT NULL,<br>	class	VARCHAR(20)	NOT NULL,<br>	cno	VARCHAR(20)	NOT NULL,<br>	Foreign KEY (cno) REFERENCES Course(cno)<br>);<br></code></pre></td></tr></table></figure>
+
+<p>3.创建学生成绩表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE sc(<br>	sno	VARCHAR(20),<br>	cno	VARCHAR(20),<br>	grade	FLOAT,<br>	point FLOAT,<br>	PRIMARY KEY(sno,cno),<br>	Foreign KEY (sno) REFERENCES Student(sno),<br>	Foreign KEY (cno) REFERENCES Course(cno)<br>);<br></code></pre></td></tr></table></figure>
+
+<p>4.创建学生奖惩表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE rp(<br>  	rpno VARCHAR(20),<br>	style	VARCHAR(2),<br>	sno	VARCHAR(20),<br>	sname	VARCHAR(20),<br>	repunish VARCHAR(50),<br>	PRIMARY KEY(sno,rpno),<br>	Foreign Key(sno) REFERENCES Student(sno)<br>);<br></code></pre></td></tr></table></figure>
+
+<p>5.创建课程表 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE course(	 <br>	   cno VARCHAR(20) PRIMARY KEY,<br>	   cname VARCHAR(20) NOT NULL,<br>	   cpno	VARCHAR(20) ,<br>	   credit	FLOAT NOT NULL,<br>	   tname	VARCHAR(20) NOT NULL<br>);<br></code></pre></td></tr></table></figure>
+
+<p>6.创建部门、专业和班级表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE dmc(<br>	department VARCHAR(20) NOT NULL,<br>	sdept	VARCHAR(20)	NOT NULL,<br>	class	VARCHAR(20) NOT NULL,<br>	renshu VARCHAR(20) NOT NULL<br>);<br></code></pre></td></tr></table></figure>
+
+<p>7.创建用户信息表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE user( <br>	  uname	VARCHAR(20) NOT NULL,<br>	  upass	VARCHAR(30) NOT NULL,<br>	  bs INT NOT NULL<br>);<br></code></pre></td></tr></table></figure>
 
 
 
-<p><strong>方法2：迭代</strong></p>
-<blockquote>
-<p>迭代法我没看懂在干什么😅</p>
-</blockquote>
-<p>官解思路：方法一的递归深度最多为 n，而大部分是由寻找值为 key 的节点贡献的，而寻找节点这一部分可以用迭代来优化。寻找并删除 successor 时，也可以用一个变量保存它的父节点，从而可以节省一步递归操作。</p>
-<p>官解AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">TreeNode* <span class="hljs-title">deleteNode</span><span class="hljs-params">(TreeNode* root, <span class="hljs-type">int</span> key)</span> </span>&#123;<br>        TreeNode *cur = root, *curParent = <span class="hljs-literal">nullptr</span>;<br>        <span class="hljs-keyword">while</span> (cur &amp;&amp; cur-&gt;val != key) &#123;<br>            curParent = cur;<br>            <span class="hljs-keyword">if</span> (cur-&gt;val &gt; key) &#123;<br>                cur = cur-&gt;left;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                cur = cur-&gt;right;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (!cur) &#123;<br>            <span class="hljs-keyword">return</span> root;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (!cur-&gt;left &amp;&amp; !cur-&gt;right) &#123;<br>            cur = <span class="hljs-literal">nullptr</span>;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!cur-&gt;right) &#123;<br>            cur = cur-&gt;left;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!cur-&gt;left) &#123;<br>            cur = cur-&gt;right;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            TreeNode *successor = cur-&gt;right, *successorParent = cur;<br>            <span class="hljs-keyword">while</span> (successor-&gt;left) &#123;<br>                successorParent = successor;<br>                successor = successor-&gt;left;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (successorParent-&gt;val == cur-&gt;val) &#123;<br>                successorParent-&gt;right = successor-&gt;right;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                successorParent-&gt;left = successor-&gt;right;<br>            &#125;<br>            successor-&gt;right = cur-&gt;right;<br>            successor-&gt;left = cur-&gt;left;<br>            cur = successor;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (!curParent) &#123;<br>            <span class="hljs-keyword">return</span> cur;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">if</span> (curParent-&gt;left &amp;&amp; curParent-&gt;left-&gt;val == key) &#123;<br>                curParent-&gt;left = cur;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                curParent-&gt;right = cur;<br>            &#125;<br>            <span class="hljs-keyword">return</span> root;<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h4 id="CHECK约束"><a href="#CHECK约束" class="headerlink" title="CHECK约束"></a>CHECK约束</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">ALTER TABLE student<br>	ADD CONSTRAINT C1 CHECK(sex=&#x27;男&#x27; OR sex=&#x27;女&#x27;);<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><p>为学生表的学号创建索引</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE INDEX index_id ON student(sno)<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h4><p>1.创建学生-班级视图</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE VIEW Stu_DMC<br>AS<br>SELECT sno,sname,sex,dmc.class,dmc.sdept,department<br>FROM student,dmc<br>WHERE student.class=dmc.class<br></code></pre></td></tr></table></figure>
+
+<p>2.创建学生-课程-成绩视图</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE VIEW Stu_Cou_SC<br>AS<br>SELECT sc.sno,student.sname,sc.cno,cname,credit,grade,point,tname<br>FROM student,sc,course<br>WHERE student.sno=sc.sno AND sc.cno=course.cno<br></code></pre></td></tr></table></figure>
+
+<p>3.创建教师-课程视图</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE VIEW Tea_Cou<br>AS<br>SELECT tno,teacher.tname,class,teacher.cno,cname<br>FROM teacher,course<br>WHERE teacher.cno=course.cno<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h4><p>1.创建触发器当增加学生班级信息时自动修改相应班级学生人数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TRIGGER tri_renshu_insert<br>AFTER INSERT ON student<br>FOR EACH ROW<br>BEGIN<br>	UPDATE dmc<br>	SET  renshu=renshu+1<br>	WHERE dmc.class=new.class;<br>END;<br></code></pre></td></tr></table></figure>
+
+<p>2.创建触发器当删除学生班级信息时自动修改相应班级学生人数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TRIGGER tri_renshu_delete<br>AFTER DELETE ON student<br>FOR EACH ROW<br>BEGIN<br>	UPDATE dmc<br>	SET  renshu=renshu-1<br>	WHERE dmc.class=old.class;<br>END;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h4><p>创建存储过程查询指定学生的成绩单</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE PROCEDURE show_grade(sno VARCHAR(20))<br>BEGIN<br>	SELECT grade<br>	FROM sc<br>	WHERE sc.sno=sno;<br>END<br></code></pre></td></tr></table></figure>
 
 
               
@@ -371,7 +408,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/LeetCode/" class="category-chain-item">LeetCode</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/" class="category-chain-item">数据库课程设计</a>
   
   
 
@@ -386,7 +423,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">#二叉搜索树</a>
+        <a href="/tags/%E8%AF%BE%E8%AE%BE/">#课设</a>
       
     </div>
   
@@ -398,8 +435,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>LC 450.删除二叉搜索树中的节点</div>
-      <div>https://yiqiangshiyia.cn/2022/06/07/LC 450.删除二叉搜索树中的节点/</div>
+      <div>高校学籍管理系统</div>
+      <div>https://yiqiangshiyia.cn/2022/06/14/高校学籍管理系统/</div>
     </div>
     <div class="license-meta">
       
@@ -411,7 +448,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年6月7日</div>
+          <div>2022年6月14日</div>
         </div>
       
       
@@ -441,18 +478,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/06/14/%E9%AB%98%E6%A0%A1%E5%AD%A6%E7%B1%8D%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" title="高校学籍管理系统">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">高校学籍管理系统</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/06/06/SSM-MyBatis/" title="SSM-MyBatis">
-                        <span class="hidden-mobile">SSM-MyBatis</span>
+                      <a href="/2022/06/07/LC%20450.%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/" title="LC 450.删除二叉搜索树中的节点">
+                        <span class="hidden-mobile">LC 450.删除二叉搜索树中的节点</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

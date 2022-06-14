@@ -16,15 +16,15 @@
   <meta name="author" content="一腔诗意啊">
   <meta name="keywords" content="">
   
-    <meta name="description" content="LC 566.重塑矩阵Notevector容器定义二维数组   题解将二维数组映射成一个一维数组，将这个一维数组映射回 r 行 c 列的二维数组。 对于x∈[0,mn)，第 x个元素在 nums 中对应的下标为(x &#x2F; n,x % n)，而在新的重塑矩阵中对应的下标为(x &#x2F; c,x % c)。我们直接进行赋值即可。   AC代码： 12345678910111213141516class Sol">
+    <meta name="description" content="LC 566.重塑矩阵Notevector容器定义二维数组   题解将二维数组映射成一个一维数组，将这个一维数组映射回 r 行 c 列的二维数组。 对于x∈[0,mn)，第 x个元素在 nums 中对应的下标为(x &#x2F; n,x % n)，而在新的重塑矩阵中对应的下标为(x &#x2F; c,x % c)。我们直接进行赋值即可。 AC代码： 12345678910111213141516class Solut">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LC 566.重塑矩阵">
 <meta property="og:url" content="https://yiqiangshiyia.cn/2022/02/28/LC%20566.%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
-<meta property="og:description" content="LC 566.重塑矩阵Notevector容器定义二维数组   题解将二维数组映射成一个一维数组，将这个一维数组映射回 r 行 c 列的二维数组。 对于x∈[0,mn)，第 x个元素在 nums 中对应的下标为(x &#x2F; n,x % n)，而在新的重塑矩阵中对应的下标为(x &#x2F; c,x % c)。我们直接进行赋值即可。   AC代码： 12345678910111213141516class Sol">
+<meta property="og:description" content="LC 566.重塑矩阵Notevector容器定义二维数组   题解将二维数组映射成一个一维数组，将这个一维数组映射回 r 行 c 列的二维数组。 对于x∈[0,mn)，第 x个元素在 nums 中对应的下标为(x &#x2F; n,x % n)，而在新的重塑矩阵中对应的下标为(x &#x2F; c,x % c)。我们直接进行赋值即可。 AC代码： 12345678910111213141516class Solut">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-02-28T13:44:11.000Z">
-<meta property="article:modified_time" content="2022-06-08T01:55:29.363Z">
+<meta property="article:modified_time" content="2022-06-14T07:35:06.678Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary_large_image">
@@ -260,7 +260,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          915 字
+          913 字
         
       </span>
     
@@ -315,8 +315,9 @@
             <div class="markdown-body">
               
               <h2 id="LC-566-重塑矩阵"><a href="#LC-566-重塑矩阵" class="headerlink" title="LC 566.重塑矩阵"></a>LC 566.重塑矩阵</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>vector容器定义二维数组  </p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>将二维数组映射成一个一维数组，将这个一维数组映射回 r 行 c 列的二维数组。 对于x∈[0,mn)，第 x个元素在 nums 中对应的下标为(x / n,x % n)，而在新的重塑矩阵中对应的下标为(x / c,x % c)。我们直接进行赋值即可。   AC代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">matrixReshape</span>(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; mat, <span class="hljs-type">int</span> r, <span class="hljs-type">int</span> c) &#123;<br>        <span class="hljs-type">int</span> m = mat.<span class="hljs-built_in">size</span>(),n = mat\[<span class="hljs-number">0</span>\].<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">if</span>(m*n != r*c)<br>        &#123;<br>            <span class="hljs-keyword">return</span> mat;<br>        &#125;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">ans</span>(r,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(c));  <span class="hljs-comment">//vector容器定义一个二维数组ans</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;m*n; i++)<br>        &#123;<br>            ans[i/c][i%c] = mat[i/n][i%n];<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>将二维数组映射成一个一维数组，将这个一维数组映射回 r 行 c 列的二维数组。 对于x∈[0,mn)，第 x个元素在 nums 中对应的下标为(x / n,x % n)，而在新的重塑矩阵中对应的下标为(x / c,x % c)。我们直接进行赋值即可。</p>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">matrixReshape</span>(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; mat, <span class="hljs-type">int</span> r, <span class="hljs-type">int</span> c) &#123;<br>        <span class="hljs-type">int</span> m = mat.<span class="hljs-built_in">size</span>(),n = mat[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">if</span>(m*n != r*c)<br>        &#123;<br>            <span class="hljs-keyword">return</span> mat;<br>        &#125;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">ans</span>(r,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(c));  <span class="hljs-comment">//vector容器定义一个二维数组ans</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;m*n; i++)<br>        &#123;<br>            ans[i/c][i%c] = mat[i/n][i%n];<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 <p> </p>
 <h2 id="LC-118-杨辉三角"><a href="#LC-118-杨辉三角" class="headerlink" title="LC 118.杨辉三角"></a>LC 118.杨辉三角</h2><h3 id="Note-1"><a href="#Note-1" class="headerlink" title="Note"></a>Note</h3><p>动态规划  </p>
