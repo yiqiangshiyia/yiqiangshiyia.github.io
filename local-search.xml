@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>LC 24.两两交换链表中的节点</title>
+    <link href="/2022/06/26/LC-24-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/"/>
+    <url>/2022/06/26/LC-24-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/</url>
+    
+    <content type="html"><![CDATA[<h2 id="LC-24-两两交换链表中的节点"><a href="#LC-24-两两交换链表中的节点" class="headerlink" title="LC 24.两两交换链表中的节点"></a>LC 24.两两交换链表中的节点</h2><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。你必须在不修改节点内部的值的情况下完成本题（即，只能进行节点交换）。</p><p><strong>示例 1：</strong></p><p><img src="https://assets.leetcode.com/uploads/2020/10/03/swap_ex1.jpg" alt="img"></p><blockquote><p>输入：head = [1,2,3,4]<br>输出：[2,1,4,3]</p></blockquote><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>方法1：迭代法</strong></p><p>具体题解就不写了，看一下画的图应该就理解了！</p><p><img src="https://img.yiqiangshiyia.cn/blog/IMG_20220626_162038.jpg" alt="IMG_20220626_162038"></p><p>AC代码：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">swapPairs</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<br>        ListNode* dummyhead = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">0</span>);<br>        dummyhead-&gt;next = head;<br>        ListNode* temp = dummyhead;  <span class="hljs-comment">//定义链表的指针</span><br>        <span class="hljs-keyword">while</span>(temp-&gt;next != <span class="hljs-literal">nullptr</span> &amp;&amp; temp-&gt;next-&gt;next != <span class="hljs-literal">nullptr</span>)&#123;<br>            ListNode* node1 = temp-&gt;next;<br>            ListNode* node2 = temp-&gt;next-&gt;next;<br>            temp-&gt;next = node2;<br>            node1-&gt;next = node2-&gt;next;<br>            node2-&gt;next = node1;<br>            temp = node1;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dummyhead-&gt;next;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><p><strong>方法2：递归法</strong></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LeetCode刷题</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>剑指OfferII 091.粉刷房子</title>
     <link href="/2022/06/25/%E5%89%91%E6%8C%87OfferII-091-%E7%B2%89%E5%88%B7%E6%88%BF%E5%AD%90/"/>
     <url>/2022/06/25/%E5%89%91%E6%8C%87OfferII-091-%E7%B2%89%E5%88%B7%E6%88%BF%E5%AD%90/</url>
@@ -1210,31 +1235,6 @@
     <tags>
       
       <tag>STL</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>LC 566.重塑矩阵</title>
-    <link href="/2022/02/28/LC%20566.%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/"/>
-    <url>/2022/02/28/LC%20566.%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/</url>
-    
-    <content type="html"><![CDATA[<h2 id="LC-566-重塑矩阵"><a href="#LC-566-重塑矩阵" class="headerlink" title="LC 566.重塑矩阵"></a>LC 566.重塑矩阵</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>vector容器定义二维数组  </p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>将二维数组映射成一个一维数组，将这个一维数组映射回 r 行 c 列的二维数组。 对于x∈[0,mn)，第 x个元素在 nums 中对应的下标为(x / n,x % n)，而在新的重塑矩阵中对应的下标为(x / c,x % c)。我们直接进行赋值即可。</p><p>AC代码：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">matrixReshape</span>(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; mat, <span class="hljs-type">int</span> r, <span class="hljs-type">int</span> c) &#123;<br>        <span class="hljs-type">int</span> m = mat.<span class="hljs-built_in">size</span>(),n = mat[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">if</span>(m*n != r*c)<br>        &#123;<br>            <span class="hljs-keyword">return</span> mat;<br>        &#125;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">ans</span>(r,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(c));  <span class="hljs-comment">//vector容器定义一个二维数组ans</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;m*n; i++)<br>        &#123;<br>            ans[i/c][i%c] = mat[i/n][i%n];<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><p> </p><h2 id="LC-118-杨辉三角"><a href="#LC-118-杨辉三角" class="headerlink" title="LC 118.杨辉三角"></a>LC 118.杨辉三角</h2><h3 id="Note-1"><a href="#Note-1" class="headerlink" title="Note"></a>Note</h3><p>动态规划  </p><h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>AC代码：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">generate</span>(<span class="hljs-type">int</span> numRows) &#123;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">ans</span>(numRows);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;numRows; i++)<br>        &#123;<br>            ans[i].<span class="hljs-built_in">resize</span>(i + <span class="hljs-number">1</span>);  <span class="hljs-comment">//resize 改变当前使用数据的大小，如果它比当前使用的大，则填充默认值</span><br>            ans[i][<span class="hljs-number">0</span>]=ans[i][i]=<span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>; j&lt;i; j++)<br>            &#123;<br>                ans[i][j] = ans[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>]+ans[i<span class="hljs-number">-1</span>][j];<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>LeetCode</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>数组</tag>
       
     </tags>
     
