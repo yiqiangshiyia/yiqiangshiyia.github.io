@@ -16,17 +16,17 @@
   <meta name="author" content="一腔诗意啊">
   <meta name="keywords" content="">
   
-    <meta name="description" content="LC 24.两两交换链表中的节点题目大意给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。你必须在不修改节点内部的值的情况下完成本题（即，只能进行节点交换）。 示例 1：   输入：head &#x3D; [1,2,3,4]输出：[2,1,4,3]  题解方法1：迭代法 具体题解就不写了，看一下画的图应该就理解了！  AC代码： 1234567891011121314151617class S">
+    <meta name="description" content="LC 24.两两交换链表中的节点题目大意给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。你必须在不修改节点内部的值的情况下完成本题（即，只能进行节点交换）。 示例 1：   输入：head &#x3D; [1,2,3,4]输出：[2,1,4,3]  题解方法1：迭代法 具体题解就不写了，看一下画的图应该就理解了！  当 temp &#x3D; node1 时退出循环 AC代码： 12345678910">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LC 24.两两交换链表中的节点">
 <meta property="og:url" content="https://yiqiangshiyia.cn/2022/06/26/LC-24-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
-<meta property="og:description" content="LC 24.两两交换链表中的节点题目大意给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。你必须在不修改节点内部的值的情况下完成本题（即，只能进行节点交换）。 示例 1：   输入：head &#x3D; [1,2,3,4]输出：[2,1,4,3]  题解方法1：迭代法 具体题解就不写了，看一下画的图应该就理解了！  AC代码： 1234567891011121314151617class S">
+<meta property="og:description" content="LC 24.两两交换链表中的节点题目大意给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。你必须在不修改节点内部的值的情况下完成本题（即，只能进行节点交换）。 示例 1：   输入：head &#x3D; [1,2,3,4]输出：[2,1,4,3]  题解方法1：迭代法 具体题解就不写了，看一下画的图应该就理解了！  当 temp &#x3D; node1 时退出循环 AC代码： 12345678910">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2020/10/03/swap_ex1.jpg">
-<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/IMG_20220626_162038.jpg">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/IMG_20220626_162039.jpg">
 <meta property="article:published_time" content="2022-06-26T08:22:48.000Z">
-<meta property="article:modified_time" content="2022-07-03T13:44:22.196Z">
+<meta property="article:modified_time" content="2022-07-04T07:02:25.039Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="链表">
 <meta name="twitter:card" content="summary_large_image">
@@ -263,7 +263,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          611 字
+          627 字
         
       </span>
     
@@ -325,7 +325,8 @@
 </blockquote>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>方法1：迭代法</strong></p>
 <p>具体题解就不写了，看一下画的图应该就理解了！</p>
-<p><img src="https://img.yiqiangshiyia.cn/blog/IMG_20220626_162038.jpg" srcset="/img/loading.gif" lazyload alt="IMG_20220626_162038"></p>
+<p><img src="https://img.yiqiangshiyia.cn/blog/IMG_20220626_162039.jpg" srcset="/img/loading.gif" lazyload alt="IMG_20220626_162039"></p>
+<p>当 temp = node1 时退出循环</p>
 <p>AC代码：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">swapPairs</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<br>        ListNode* dummyhead = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ListNode</span>(<span class="hljs-number">0</span>);<br>        dummyhead-&gt;next = head;<br>        ListNode* temp = dummyhead;  <span class="hljs-comment">//定义链表的指针</span><br>        <span class="hljs-keyword">while</span>(temp-&gt;next != <span class="hljs-literal">nullptr</span> &amp;&amp; temp-&gt;next-&gt;next != <span class="hljs-literal">nullptr</span>)&#123;<br>            ListNode* node1 = temp-&gt;next;<br>            ListNode* node2 = temp-&gt;next-&gt;next;<br>            temp-&gt;next = node2;<br>            node1-&gt;next = node2-&gt;next;<br>            node2-&gt;next = node1;<br>            temp = node1;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dummyhead-&gt;next;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
