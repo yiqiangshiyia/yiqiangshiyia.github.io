@@ -19,7 +19,7 @@
     <meta name="description" content="Java集合框架1. 集合的概念1.1 集合概念集合是对象的容器，定义了多个对对象进行操作的常用方法。可实现数组的功能。 1.2 集合和数组的区别 数组的长度固定，集合的长度不固定 数组可以存储基本类型和引用类型，集合只能存储引用类型 位置：java.util.*  2. Collection接口2.1 Collection体系集合 2.2 Collection父接口 public interfa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java-集合框架">
-<meta property="og:url" content="https://yiqiangshiyia.cn/2022/05/16/Java-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/index.html">
+<meta property="og:url" content="https://yiqiangshiyia.cn/2022/07/04/Java-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
 <meta property="og:description" content="Java集合框架1. 集合的概念1.1 集合概念集合是对象的容器，定义了多个对对象进行操作的常用方法。可实现数组的功能。 1.2 集合和数组的区别 数组的长度固定，集合的长度不固定 数组可以存储基本类型和引用类型，集合只能存储引用类型 位置：java.util.*  2. Collection接口2.1 Collection体系集合 2.2 Collection父接口 public interfa">
 <meta property="og:locale" content="zh_CN">
@@ -27,8 +27,9 @@
 <meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2020/06/408px-Singly-linked-list.svg_.png">
 <meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2020/06/610px-Doubly-linked-list.svg_.png">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/linkedlist.png">
-<meta property="article:published_time" content="2022-05-16T13:20:57.000Z">
-<meta property="article:modified_time" content="2022-07-03T13:37:28.875Z">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220704160627.png">
+<meta property="article:published_time" content="2022-07-04T13:20:57.000Z">
+<meta property="article:modified_time" content="2022-07-04T08:15:42.959Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
@@ -252,8 +253,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-05-16 21:20" pubdate>
-          2022年5月16日 晚上
+        <time datetime="2022-07-04 21:20" pubdate>
+          2022年7月4日 晚上
         </time>
       </span>
     
@@ -265,7 +266,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          9.8k 字
+          11k 字
         
       </span>
     
@@ -277,7 +278,7 @@
         
         
           <!-- compatible with older versions-->
-          82 分钟
+          90 分钟
         
       </span>
     
@@ -495,6 +496,7 @@
 <h3 id="3-3-LinkedList"><a href="#3-3-LinkedList" class="headerlink" title="3.3 LinkedList"></a>3.3 LinkedList</h3><blockquote>
 <p>public class LinkedList<E><br>extends AbstractSequentialList<E><br>implements List<E>, Deque<E>, Cloneable, Serializable</p>
 <p>链表（Linked list）是一种常见的基础数据结构，是一种线性表，但是并不会按线性的顺序存储数据，而是在每一个节点里存到下一个节点的地址。</p>
+<p>存储结构：双向链表</p>
 </blockquote>
 <p><strong>特点：</strong>链表结构实现，增删快，查询慢</p>
 <p><strong>分类：</strong></p>
@@ -547,18 +549,6 @@
 <td align="left">元素添加到尾部。</td>
 </tr>
 <tr>
-<td align="left">public boolean offer(E e)</td>
-<td align="left">向链表末尾添加元素，返回是否成功，成功为 true，失败为 false。</td>
-</tr>
-<tr>
-<td align="left">public boolean offerFirst(E e)</td>
-<td align="left">头部插入元素，返回是否成功，成功为 true，失败为 false。</td>
-</tr>
-<tr>
-<td align="left">public boolean offerLast(E e)</td>
-<td align="left">尾部插入元素，返回是否成功，成功为 true，失败为 false。</td>
-</tr>
-<tr>
 <td align="left">public void clear()</td>
 <td align="left">清空链表。</td>
 </tr>
@@ -577,10 +567,6 @@
 <tr>
 <td align="left">public E remove(int index)</td>
 <td align="left">删除指定位置的元素。</td>
-</tr>
-<tr>
-<td align="left">public E poll()</td>
-<td align="left">删除并返回第一个元素。</td>
 </tr>
 <tr>
 <td align="left">public E remove()</td>
@@ -611,22 +597,6 @@
 <td align="left">查找指定元素最后一次出现的索引。</td>
 </tr>
 <tr>
-<td align="left">public E peek()</td>
-<td align="left">返回第一个元素。</td>
-</tr>
-<tr>
-<td align="left">public E element()</td>
-<td align="left">返回第一个元素。</td>
-</tr>
-<tr>
-<td align="left">public E peekFirst()</td>
-<td align="left">返回头部元素。</td>
-</tr>
-<tr>
-<td align="left">public E peekLast()</td>
-<td align="left">返回尾部元素。</td>
-</tr>
-<tr>
 <td align="left">public E set(int index, E element)</td>
 <td align="left">设置指定位置的元素。</td>
 </tr>
@@ -635,28 +605,21 @@
 <td align="left">克隆该列表。</td>
 </tr>
 <tr>
-<td align="left">public Iterator descendingIterator()</td>
-<td align="left">返回倒序迭代器。</td>
-</tr>
-<tr>
 <td align="left">public int size()</td>
 <td align="left">返回链表元素个数。</td>
-</tr>
-<tr>
-<td align="left">public ListIterator listIterator(int index)</td>
-<td align="left">返回从指定位置开始到末尾的迭代器。</td>
 </tr>
 <tr>
 <td align="left">public Object[] toArray()</td>
 <td align="left">返回一个由链表元素组成的数组。</td>
 </tr>
-<tr>
-<td align="left">public T[] toArray(T[] a)</td>
-<td align="left">返回一个由链表元素转换类型而成的数组。</td>
-</tr>
 </tbody></table>
 <p><strong>LinkedList的使用：</strong></p>
-<h3 id="3-4-Vector"><a href="#3-4-Vector" class="headerlink" title="3.4 Vector"></a>3.4 Vector</h3><blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> LinkedList;<br><span class="hljs-keyword">import</span> java.util.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo1</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>&#123;<br>        <span class="hljs-comment">//创建集合</span><br>        LinkedList&lt;String&gt; sites = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;String&gt;();<br><br>        <span class="hljs-comment">//添加</span><br>        sites.add(<span class="hljs-string">&quot;Geogle&quot;</span>);<br>        sites.add(<span class="hljs-string">&quot;runoob&quot;</span>);<br>        sites.add(<span class="hljs-string">&quot;firefox&quot;</span>);<br>        sites.add(<span class="hljs-string">&quot;baidu&quot;</span>);<br>        System.out.println(sites.size());<br>        System.out.println(sites);<br>        <span class="hljs-comment">//头部添加</span><br>        sites.addFirst(<span class="hljs-string">&quot;taobao&quot;</span>);<br>        <span class="hljs-comment">//尾部添加</span><br>        sites.addLast(<span class="hljs-string">&quot;wiki&quot;</span>);<br>        System.out.println(sites);<br><br>        <span class="hljs-comment">//删除</span><br>        sites.remove(<span class="hljs-string">&quot;firefox&quot;</span>);<br>        <span class="hljs-comment">//删除头部元素</span><br>        sites.removeFirst();<br>        <span class="hljs-comment">//删除尾部元素</span><br>        sites.removeLast();<br>        System.out.println(sites);<br><br>        <span class="hljs-comment">//遍历</span><br>        <span class="hljs-comment">//遍历1</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;sites.size(); i++)&#123;<br>            System.out.println(sites.get(i));<br>        &#125;<br>        <span class="hljs-comment">//遍历2</span><br>        <span class="hljs-keyword">for</span>(Object obj : sites)&#123;<br>            System.out.println(obj);<br>        &#125;<br>        <span class="hljs-comment">//遍历3</span><br>        <span class="hljs-type">Iterator</span> <span class="hljs-variable">it</span> <span class="hljs-operator">=</span> sites.iterator();<br>        <span class="hljs-keyword">while</span>(it.hasNext())&#123;<br>            System.out.println(it.next());<br>        &#125;<br>        <br>        <span class="hljs-comment">//获取</span><br>        <span class="hljs-comment">//使用getFirst()获取头部元素</span><br>        System.out.println(sites.getFirst());<br>        <span class="hljs-comment">//使用getLast()获取尾部元素</span><br>        System.out.println(sites.getLast());<br>        <span class="hljs-comment">//获取index</span><br>        System.out.println(sites.indexOf(<span class="hljs-string">&quot;runoob&quot;</span>));<br><br>        <span class="hljs-comment">//判断</span><br>        System.out.println(sites.isEmpty());<br>        System.out.println(sites.contains(<span class="hljs-string">&quot;runoob&quot;</span>));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-4-ArrayList和LinkedList区别"><a href="#3-4-ArrayList和LinkedList区别" class="headerlink" title="3.4 ArrayList和LinkedList区别"></a>3.4 ArrayList和LinkedList区别</h3><p><img src="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220704160627.png" srcset="/img/loading.gif" lazyload alt="QQ截图20220704160627"></p>
+<h3 id="3-5-Vector"><a href="#3-5-Vector" class="headerlink" title="3.5 Vector"></a>3.5 Vector</h3><blockquote>
 <p>public class Vector<E><br>extends AbstractList<E><br>implements List<E>, RandomAccess, Cloneable, Serializable</p>
 <p>Vector类实现了可扩展的对象数组。  像数组一样，它包含可以使用整数索引访问的组件。 但是， Vector的大小可以根据需要增长或缩小，以适应在创建Vector之后添加和删除项目。</p>
 </blockquote>
@@ -666,7 +629,7 @@
 
 
 
-<h3 id="3-5-Iterator"><a href="#3-5-Iterator" class="headerlink" title="3.5 Iterator"></a>3.5 Iterator</h3><h4 id="3-5-1-Iterator"><a href="#3-5-1-Iterator" class="headerlink" title="3.5.1 Iterator"></a>3.5.1 Iterator</h4><blockquote>
+<h3 id="3-6-Iterator"><a href="#3-6-Iterator" class="headerlink" title="3.6 Iterator"></a>3.6 Iterator</h3><h4 id="3-6-1-Iterator"><a href="#3-6-1-Iterator" class="headerlink" title="3.6.1 Iterator"></a>3.6.1 Iterator</h4><blockquote>
 <p>public interface Iterator<E></p>
 <p>位于java.util包下</p>
 <p>Iterator(迭代器)不是一个集合，它是一种用于访问集合的方法，可用于迭代ArrayList和HashSet等集合。</p>
@@ -694,7 +657,17 @@
 <li>void remove()    //从列表中删除 next() 或 previous() 返回的最后一个元素。 </li>
 <li>void set(E e)    //用指定的元素替换 next() 或 previous() 返回的最后一个元素。 </li>
 </ul>
-<h2 id="4-泛型和工具类"><a href="#4-泛型和工具类" class="headerlink" title="4. 泛型和工具类"></a>4. 泛型和工具类</h2><h2 id="5-Set接口与实现类"><a href="#5-Set接口与实现类" class="headerlink" title="5. Set接口与实现类"></a>5. Set接口与实现类</h2><h2 id="6-Map接口与实现类"><a href="#6-Map接口与实现类" class="headerlink" title="6. Map接口与实现类"></a>6. Map接口与实现类</h2><h1 id="Java数组"><a href="#Java数组" class="headerlink" title="Java数组"></a>Java数组</h1><h2 id="Java数组-1"><a href="#Java数组-1" class="headerlink" title="Java数组"></a>Java数组</h2><p><strong>数组的创建：</strong></p>
+<h2 id="4-泛型和工具类"><a href="#4-泛型和工具类" class="headerlink" title="4. 泛型和工具类"></a>4. 泛型和工具类</h2><h3 id="4-1-泛型"><a href="#4-1-泛型" class="headerlink" title="4.1 泛型"></a>4.1 泛型</h3><ul>
+<li>Java泛型是JDK1.5中引入的一个新特性，其本质是参数化类型，把类型作为参数传递</li>
+<li>常见的形式有泛型类、泛型接口、泛型方法</li>
+<li>语法：&lt;E,….&gt; E称为类型占位符，表示一种引用类型</li>
+<li>好处：<ul>
+<li>提高代码的复用性</li>
+<li>防止类型转换异常，提高代码的安全性</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-Set接口与实现类"><a href="#5-Set接口与实现类" class="headerlink" title="5. Set接口与实现类"></a>5. Set接口与实现类</h2><h2 id="6-Map接口与实现类"><a href="#6-Map接口与实现类" class="headerlink" title="6. Map接口与实现类"></a>6. Map接口与实现类</h2><h1 id="Java数组"><a href="#Java数组" class="headerlink" title="Java数组"></a>Java数组</h1><h2 id="Java数组-1"><a href="#Java数组-1" class="headerlink" title="Java数组"></a>Java数组</h2><p><strong>数组的创建：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/*格式1：</span><br><span class="hljs-comment">元素类型[] 数组名 = new 元素类型[元素个数或数组长度];</span><br><span class="hljs-comment">示例：</span><br><span class="hljs-comment">*/</span><br><span class="hljs-type">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">5</span>];<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">格式2：</span><br><span class="hljs-comment">元素类型[] 数组名 = new 元素类型[]&#123;元素，元素，……&#125;;</span><br><span class="hljs-comment">*/</span><br><span class="hljs-type">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">7</span>&#125;;<br><span class="hljs-type">int</span>[] arr = &#123;<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">7</span>&#125;;<br><br></code></pre></td></tr></table></figure>
 
 <p><strong>数组的遍历：</strong></p>
@@ -777,7 +750,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Java-集合框架</div>
-      <div>https://yiqiangshiyia.cn/2022/05/16/Java-集合框架/</div>
+      <div>https://yiqiangshiyia.cn/2022/07/04/Java-集合框架/</div>
     </div>
     <div class="license-meta">
       
@@ -789,7 +762,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年5月16日</div>
+          <div>2022年7月4日</div>
         </div>
       
       
@@ -819,18 +792,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/16/Java-JDBC/" title="Java-JDBC">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Java-JDBC</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/16/%E4%BD%BF%E7%94%A8Eclipse%E8%BF%9E%E6%8E%A5MySQL%E6%95%B0%E6%8D%AE%E5%BA%93/" title="使用Eclipse连接MySQL数据库">
-                        <span class="hidden-mobile">使用Eclipse连接MySQL数据库</span>
+                      <a href="/2022/07/03/%E5%9F%BA%E4%BA%8EHyperledger-Fabric%E7%9F%B3%E6%B2%B9%E8%83%BD%E6%BA%90%E4%BA%A4%E6%98%93%E7%B3%BB%E7%BB%9F/" title="基于Hyperledger Fabric石油能源交易系统">
+                        <span class="hidden-mobile">基于Hyperledger Fabric石油能源交易系统</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
