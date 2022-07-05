@@ -1,4 +1,3 @@
-<div id="he-plugin-simple"></div>
 <script>
 WIDGET = {
   "CONFIG": {
