@@ -16,12 +16,12 @@
   <meta name="author" content="一腔诗意啊">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1. 集合的概念1.1 集合概念集合是对象的容器，定义了多个对对象进行操作的常用方法。可实现数组的功能。 1.2 集合和数组的区别 数组的长度固定，集合的长度不固定 数组可以存储基本类型和引用类型，集合只能存储引用类型 位置：java.util.*  2. Collection接口2.1 Collection体系集合 2.2 Collection父接口 public interface Colle">
+    <meta name="description" content="Java JDK11在线帮助文档：https:&#x2F;&#x2F;www.runoob.com&#x2F;manual&#x2F;jdk11api&#x2F; 1. 集合的概念1.1 集合概念集合是对象的容器，定义了多个对对象进行操作的常用方法。可实现数组的功能。 1.2 集合和数组的区别 数组的长度固定，集合的长度不固定 数组可以存储基本类型和引用类型，集合只能存储引用类型 位置：java.util.*  2. Collection接口2.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java-集合框架">
 <meta property="og:url" content="https://yiqiangshiyia.cn/2022/07/04/Java-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
-<meta property="og:description" content="1. 集合的概念1.1 集合概念集合是对象的容器，定义了多个对对象进行操作的常用方法。可实现数组的功能。 1.2 集合和数组的区别 数组的长度固定，集合的长度不固定 数组可以存储基本类型和引用类型，集合只能存储引用类型 位置：java.util.*  2. Collection接口2.1 Collection体系集合 2.2 Collection父接口 public interface Colle">
+<meta property="og:description" content="Java JDK11在线帮助文档：https:&#x2F;&#x2F;www.runoob.com&#x2F;manual&#x2F;jdk11api&#x2F; 1. 集合的概念1.1 集合概念集合是对象的容器，定义了多个对对象进行操作的常用方法。可实现数组的功能。 1.2 集合和数组的区别 数组的长度固定，集合的长度不固定 数组可以存储基本类型和引用类型，集合只能存储引用类型 位置：java.util.*  2. Collection接口2.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220628162522.png">
 <meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2020/06/408px-Singly-linked-list.svg_.png">
@@ -29,8 +29,9 @@
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/linkedlist.png">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220704160627.png">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220725161304.png">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220727214323.png">
 <meta property="article:published_time" content="2022-07-04T13:20:57.000Z">
-<meta property="article:modified_time" content="2022-07-27T09:11:34.247Z">
+<meta property="article:modified_time" content="2022-07-27T13:46:35.501Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
@@ -267,7 +268,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          30k 字
+          35k 字
         
       </span>
     
@@ -279,7 +280,7 @@
         
         
           <!-- compatible with older versions-->
-          254 分钟
+          289 分钟
         
       </span>
     
@@ -321,7 +322,8 @@
             
             <div class="markdown-body">
               
-              <h1 id="1-集合的概念"><a href="#1-集合的概念" class="headerlink" title="1. 集合的概念"></a>1. 集合的概念</h1><h2 id="1-1-集合概念"><a href="#1-1-集合概念" class="headerlink" title="1.1 集合概念"></a>1.1 集合概念</h2><p>集合是对象的容器，定义了多个对对象进行操作的常用方法。可实现数组的功能。</p>
+              <p><strong>Java JDK11在线帮助文档：<a target="_blank" rel="noopener" href="https://www.runoob.com/manual/jdk11api/">https://www.runoob.com/manual/jdk11api/</a></strong></p>
+<h1 id="1-集合的概念"><a href="#1-集合的概念" class="headerlink" title="1. 集合的概念"></a>1. 集合的概念</h1><h2 id="1-1-集合概念"><a href="#1-1-集合概念" class="headerlink" title="1.1 集合概念"></a>1.1 集合概念</h2><p>集合是对象的容器，定义了多个对对象进行操作的常用方法。可实现数组的功能。</p>
 <h2 id="1-2-集合和数组的区别"><a href="#1-2-集合和数组的区别" class="headerlink" title="1.2 集合和数组的区别"></a>1.2 集合和数组的区别</h2><ul>
 <li>数组的长度固定，集合的长度不固定</li>
 <li>数组可以存储基本类型和引用类型，集合只能存储引用类型</li>
@@ -356,19 +358,117 @@
 </blockquote>
 <p><strong>特点：</strong>有序、有下标、元素可以重复</p>
 <p><strong>方法：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">变量和类型</th>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">void</td>
+<td align="left">add(int index, E element)</td>
+<td align="left">将指定元素插入此列表中的指定位置（可选操作）。</td>
+</tr>
+<tr>
+<td align="left">boolean</td>
+<td align="left">add(E e)</td>
+<td align="left">将指定的元素追加到此列表的末尾（可选操作）。</td>
+</tr>
+<tr>
+<td align="left">void</td>
+<td align="left">clear()</td>
+<td align="left">从此列表中删除所有元素（可选操作）。</td>
+</tr>
+<tr>
+<td align="left">boolean</td>
+<td align="left">contains(Object o)</td>
+<td align="left">如果此列表包含指定的元素，则返回 true 。</td>
+</tr>
+<tr>
+<td align="left">boolean</td>
+<td align="left">equals(Object o)</td>
+<td align="left">将指定对象与此列表进行比较以获得相等性。</td>
+</tr>
+<tr>
+<td align="left">E</td>
+<td align="left">get(int index)</td>
+<td align="left">返回此列表中指定位置的元素。</td>
+</tr>
+<tr>
+<td align="left">int</td>
+<td align="left">hashCode()</td>
+<td align="left">返回此列表的哈希码值。</td>
+</tr>
+<tr>
+<td align="left">int</td>
+<td align="left">indexOf(Object o)</td>
+<td align="left">返回此列表中第一次出现的指定元素的索引，如果此列表不包含该元素，则返回-1。</td>
+</tr>
+<tr>
+<td align="left">boolean</td>
+<td align="left">isEmpty()</td>
+<td align="left">如果此列表不包含任何元素，则返回 true 。</td>
+</tr>
+<tr>
+<td align="left">Iterator&lt;E&gt;</td>
+<td align="left">iterator()</td>
+<td align="left">以适当的顺序返回此列表中元素的迭代器。</td>
+</tr>
+<tr>
+<td align="left">int</td>
+<td align="left">lastIndexOf(Object o)</td>
+<td align="left">返回此列表中指定元素最后一次出现的索引，如果此列表不包含该元素，则返回-1。</td>
+</tr>
+<tr>
+<td align="left">ListIterator&lt;E&gt;</td>
+<td align="left">listIterator()</td>
+<td align="left">返回此列表中元素的列表迭代器（按适当顺序）。</td>
+</tr>
+<tr>
+<td align="left">E</td>
+<td align="left">remove(int index)</td>
+<td align="left">删除此列表中指定位置的元素（可选操作）。</td>
+</tr>
+<tr>
+<td align="left">boolean</td>
+<td align="left">remove(Object o)</td>
+<td align="left">从该列表中删除指定元素的第一个匹配项（如果存在）（可选操作）。</td>
+</tr>
+<tr>
+<td align="left">E</td>
+<td align="left">set(int index, E element)</td>
+<td align="left">用指定的元素替换此列表中指定位置的元素（可选操作）。</td>
+</tr>
+<tr>
+<td align="left">int</td>
+<td align="left">size()</td>
+<td align="left">返回此列表中的元素数。</td>
+</tr>
+<tr>
+<td align="left">default void</td>
+<td align="left">sort(Comparator&lt;? super E&gt; c)</td>
+<td align="left">根据指定的<a target="_blank" rel="noopener" href="https://www.runoob.com/manual/jdk11api/java.base/java/util/Comparator.html">Comparator</a>引发的顺序对此列表进行排序。</td>
+</tr>
+<tr>
+<td align="left"><code>List&lt;E&gt;</code></td>
+<td align="left"><code>subList(int fromIndex, int toIndex)</code></td>
+<td align="left">返回指定的 <code>fromIndex</code> （包含）和 <code>toIndex</code> （不包括）之间的此列表部分的视图。</td>
+</tr>
+<tr>
+<td align="left">Object[]</td>
+<td align="left">toArray()</td>
+<td align="left">以适当的顺序（从第一个元素到最后一个元素）返回包含此列表中所有元素的数组。</td>
+</tr>
+<tr>
+<td align="left">&lt;T&gt; T[]</td>
+<td align="left">toArray(T[] a)</td>
+<td align="left">以适当的顺序返回包含此列表中所有元素的数组; 返回数组的运行时类型是指定数组的运行时类型。</td>
+</tr>
+</tbody></table>
 <ul>
-<li><p>void add(int index, Object o)    //在index位置插入对象o</p>
-</li>
-<li><p>boolean addAll(int index, Collection c)    //将一个集合中的元素添加到此集合中的index位置</p>
-</li>
-<li><p>Object get(int index)    //返回集合中指定位置的元素</p>
-</li>
-<li><p>int indexOf(Object o)    //返回此列表中第一次出现的指定元素的索引，如果此列表不包含该元素，则返回-1</p>
-</li>
-<li><p>List subList(int fromIndex, int toIndex)    //返回fromIndex和toIndex之间的集合元素</p>
-</li>
-<li><p>包含Collection中的所有方法</p>
-</li>
+<li>包含Collection中的所有方法</li>
 </ul>
 <p><strong>List接口使用：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> List;<br><span class="hljs-keyword">import</span> java.util.*;<br><span class="hljs-keyword">import</span> java.util.Iterator;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo1</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>&#123;<br>        <span class="hljs-type">List</span> <span class="hljs-variable">list</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>();  <span class="hljs-comment">//实例化list接口的实现类，不能实例化接口</span><br>        <span class="hljs-comment">//添加元素</span><br>        list.add(<span class="hljs-string">&quot;1&quot;</span>);<br>        list.add(<span class="hljs-string">&quot;2&quot;</span>);<br>        list.add(<span class="hljs-string">&quot;3&quot;</span>);<br>        list.add(<span class="hljs-string">&quot;5&quot;</span>);<br>        list.add(<span class="hljs-number">3</span>,<span class="hljs-string">&quot;4&quot;</span>);<br>        System.out.println(list.toString());<br><br>        <span class="hljs-comment">//删除</span><br>        list.remove(<span class="hljs-string">&quot;2&quot;</span>);<br>        list.remove(<span class="hljs-number">3</span>);<br>        System.out.println(list.toString());<br><br>        <span class="hljs-comment">//遍历1 for循环</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;list.size(); i++)&#123;<br>            System.out.println(list.get(i));  <span class="hljs-comment">//Note:和数组遍历略有区别</span><br>        &#125;<br>        <span class="hljs-comment">//遍历2 增强for循环</span><br><br>        <span class="hljs-comment">//遍历3 迭代器遍历</span><br><br>        <span class="hljs-comment">//遍历4 列表迭代器 list特有 功能更加强大 listIterator可以向前或向后遍历，添加、删除、修改元素</span><br>        <span class="hljs-type">ListIterator</span> <span class="hljs-variable">lit</span> <span class="hljs-operator">=</span> list.listIterator();<br>        <span class="hljs-keyword">while</span>(lit.hasNext())&#123;<br>            System.out.println(lit.nextIndex()+<span class="hljs-string">&quot;:&quot;</span>+lit.next());<br>        &#125;<br>        <span class="hljs-comment">//从后往前遍历</span><br>        <span class="hljs-keyword">while</span>(lit.hasPrevious())&#123;<br>            System.out.println(lit.previousIndex()+<span class="hljs-string">&quot;:&quot;</span>+lit.previous());<br>        &#125;<br><br>        <span class="hljs-comment">//获取位置</span><br>        System.out.println(list.indexOf(<span class="hljs-string">&quot;4&quot;</span>));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -1109,8 +1209,106 @@
 
 
 
+<h1 id="7-总结"><a href="#7-总结" class="headerlink" title="7. 总结"></a>7. 总结</h1><h2 id="7-1-Collections工具类"><a href="#7-1-Collections工具类" class="headerlink" title="7.1 Collections工具类"></a>7.1 Collections工具类</h2><p><strong>概念：</strong>集合工具类，定义了除了存取以外的集合常用方法，Collections是对集合进行操作的，类似于Arrays对数组进行操作</p>
+<blockquote>
+<p>public class Collections<br>extends Object</p>
+<p>此类仅包含对集合进行操作或返回集合的静态方法。 它包含对集合进行操作的多态算法，“包装器”，它返回由指定集合支持的新集合，以及其他一些可能性和结束。</p>
+</blockquote>
+<p><strong>方法：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">变量和类型</th>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">static &lt;T&gt; int</td>
+<td align="left">binarySearch(List&lt;? extends Comparable&lt;? super T&gt;&gt; list, T key)</td>
+<td align="left">使用二进制搜索算法在指定列表中搜索指定对象。</td>
+</tr>
+<tr>
+<td align="left">static &lt;T&gt; void</td>
+<td align="left">copy(List&lt;? super T&gt; dest, List&lt;? extends T&gt; src)</td>
+<td align="left">将一个列表中的所有元素复制到另一个列表中。</td>
+</tr>
+<tr>
+<td align="left">static &lt;T&gt; List&lt;T&gt;</td>
+<td align="left">emptyList()</td>
+<td align="left">返回一个空列表。</td>
+</tr>
+<tr>
+<td align="left">static &lt;K,V&gt;Map&lt;K,V&gt;</td>
+<td align="left">emptyMap()</td>
+<td align="left">返回一个空映射。</td>
+</tr>
+<tr>
+<td align="left">static &lt;T&gt; Set&lt;T&gt;</td>
+<td align="left">emptySet()</td>
+<td align="left">返回一个空集。</td>
+</tr>
+<tr>
+<td align="left">static int</td>
+<td align="left">indexOfSubList(List&lt;?&gt; source, List&lt;?&gt; target)</td>
+<td align="left">返回指定源列表中第一次出现的指定目标列表的起始位置，如果不存在，则返回-1。</td>
+</tr>
+<tr>
+<td align="left">static int</td>
+<td align="left">lastIndexOfSubList(List&lt;?&gt; source, List&lt;?&gt; target)</td>
+<td align="left">返回指定源列表中指定目标列表最后一次出现的起始位置，如果不存在，则返回-1。</td>
+</tr>
+<tr>
+<td align="left">static &lt;T extends Object &amp; Comparable&lt;? super T&gt;&gt;T</td>
+<td align="left">max(Collection&lt;? extends T&gt; coll)</td>
+<td align="left">根据元素的 <em>自然顺序</em>返回给定集合的最大元素。</td>
+</tr>
+<tr>
+<td align="left">static &lt;T extends Object &amp; Comparable&lt;? super T&gt;&gt;T</td>
+<td align="left">min(Collection&lt;? extends T&gt; coll)</td>
+<td align="left">根据元素的 <em>自然顺序</em>返回给定集合的最小元素。</td>
+</tr>
+<tr>
+<td align="left">static &lt;T&gt; boolean</td>
+<td align="left">replaceAll(List&lt;T&gt; list, T oldVal, T newVal)</td>
+<td align="left">用列表替换列表中所有出现的指定值。</td>
+</tr>
+<tr>
+<td align="left">static void</td>
+<td align="left">reverse(List&lt;?&gt; list)</td>
+<td align="left">反转指定列表中元素的顺序。</td>
+</tr>
+<tr>
+<td align="left">static void</td>
+<td align="left">shuffle(List&lt;?&gt; list)</td>
+<td align="left">使用默认的随机源随机置换指定的列表。</td>
+</tr>
+<tr>
+<td align="left">static &lt;T extends Comparable&lt;? super T&gt;&gt;void</td>
+<td align="left">sort(List&lt;T&gt; list)</td>
+<td align="left">根据其元素的<a target="_blank" rel="noopener" href="https://www.runoob.com/manual/jdk11api/java.base/java/lang/Comparable.html">natural ordering</a> ，将指定列表按升序排序。</td>
+</tr>
+<tr>
+<td align="left">static &lt;T&gt; void</td>
+<td align="left">sort(List&lt;T&gt; list, Comparator&lt;? super T&gt; c)</td>
+<td align="left">根据指定比较器引发的顺序对指定列表进行排序。</td>
+</tr>
+<tr>
+<td align="left">static void</td>
+<td align="left">swap(List&lt;?&gt; list, int i, int j)</td>
+<td align="left">交换指定列表中指定位置的元素。</td>
+</tr>
+</tbody></table>
+<p><strong>Collections工具类的使用：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> Map;<br><br><span class="hljs-keyword">import</span> java.util.ArrayList;<br><span class="hljs-keyword">import</span> java.util.Arrays;<br><span class="hljs-keyword">import</span> java.util.Collections;<br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    Collections工具类的使用</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo4</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>&#123;<br>        List&lt;Integer&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;();<br>        list.add(<span class="hljs-number">4</span>);<br>        list.add(<span class="hljs-number">3</span>);<br>        list.add(<span class="hljs-number">2</span>);<br>        list.add(<span class="hljs-number">5</span>);<br>        list.add(<span class="hljs-number">1</span>);<br><br>        <span class="hljs-comment">//sort排序</span><br>        System.out.println(<span class="hljs-string">&quot;排序前：&quot;</span>+list.toString());<br>        Collections.sort(list);<br>        System.out.println(<span class="hljs-string">&quot;排序后：&quot;</span>+list.toString());<br><br>        <span class="hljs-comment">//binarySearch：二分查找</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> Collections.binarySearch(list,<span class="hljs-number">2</span>);<br>        System.out.println(i);<br><br>        <span class="hljs-comment">//copy：复制</span><br>        List&lt;Integer&gt; list2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;();<br>        <span class="hljs-comment">/*</span><br><span class="hljs-comment">            copy()方法要求两个集合的大小相等，所以要对集合进行赋值</span><br><span class="hljs-comment">         */</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>; j&lt;list.size(); j++)&#123;<br>            list2.add(<span class="hljs-number">0</span>);<br>        &#125;<br>        Collections.copy(list2,list);<br>        System.out.println(<span class="hljs-string">&quot;复制后：&quot;</span>+list2.toString());<br><br>        <span class="hljs-comment">//reverse：反转</span><br>        Collections.reverse(list);<br>        System.out.println(<span class="hljs-string">&quot;反转之后：&quot;</span>+list);<br><br>        <span class="hljs-comment">//shuffle：打乱</span><br>        Collections.shuffle(list);<br>        System.out.println(<span class="hljs-string">&quot;打乱之后：&quot;</span>+list);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
+
+<h2 id="7-2-集合与数组互转"><a href="#7-2-集合与数组互转" class="headerlink" title="7.2 集合与数组互转"></a>7.2 集合与数组互转</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> Map;<br><br><span class="hljs-keyword">import</span> java.util.ArrayList;<br><span class="hljs-keyword">import</span> java.util.Arrays;<br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    集合与数组互转</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo5</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] arsg)</span>&#123;<br>        List&lt;Integer&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;();<br>        list.add(<span class="hljs-number">4</span>);<br>        list.add(<span class="hljs-number">3</span>);<br>        list.add(<span class="hljs-number">2</span>);<br>        list.add(<span class="hljs-number">5</span>);<br>        list.add(<span class="hljs-number">1</span>);<br><br>        <span class="hljs-comment">//补充：集合转成数组</span><br>        Integer[] arr = list.toArray(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Integer</span>[<span class="hljs-number">0</span>]);<br>        System.out.println(arr.length);<br>        System.out.println(<span class="hljs-string">&quot;转成数组：&quot;</span>+ Arrays.toString(arr));<br><br>        <span class="hljs-comment">//数组转成集合</span><br>        String[] letters = &#123;<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>,<span class="hljs-string">&quot;d&quot;</span>,<span class="hljs-string">&quot;e&quot;</span>&#125;;<br>        <span class="hljs-comment">/*</span><br><span class="hljs-comment">            数组转成集合后，集合是一个受限集合，不能对集合进行添加和删除操作</span><br><span class="hljs-comment">         */</span><br>        List&lt;String&gt; list2 = Arrays.asList(letters);<br>        System.out.println(<span class="hljs-string">&quot;转成集合：&quot;</span>+list2.toString());<br><br>        Integer[] nums = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;;<br>        List&lt;Integer&gt; list3 = Arrays.asList(nums);<br>        System.out.println(<span class="hljs-string">&quot;转成集合：&quot;</span>+list3.toString());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-3-集合总结"><a href="#7-3-集合总结" class="headerlink" title="7.3 集合总结"></a>7.3 集合总结</h2><p><img src="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220727214323.png" srcset="/img/loading.gif" lazyload alt="QQ截图20220727214323"></p>
 <p>Java JDK11在线帮助文档：<a target="_blank" rel="noopener" href="https://www.runoob.com/manual/jdk11api/">https://www.runoob.com/manual/jdk11api/</a></p>
 
               
