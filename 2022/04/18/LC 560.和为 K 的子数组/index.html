@@ -16,15 +16,15 @@
   <meta name="author" content="一腔诗意啊">
   <meta name="keywords" content="">
   
-    <meta name="description" content="LC 560.和为 K 的子数组Note解决数组问题时，如果多层循环遍历超时，多考虑前缀和的思想来减少循环次数降低时间复杂度。 题目大意给你一个整数数组 nums 和一个整数 k ，请你统计并返回 该数组中和为 k 的子数组的个数 。 题解方法1：枚举两层循环遍历，超出时间限制 方法2：前缀和+哈希表 我们可以基于方法一利用数据结构进行进一步的优化，我们知道方法一的瓶颈在于对每个 i，我们需要枚举">
+    <meta name="description" content="LC 560.和为 K 的子数组Note解决数组问题时，如果多层循环遍历超时，多考虑前缀和的思想来减少循环次数降低时间复杂度。 题目大意给你一个整数数组 nums 和一个整数 k ，请你统计并返回 该数组中和为 k 的子数组的个数 。 题解方法1：枚举 两层循环遍历，超出时间限制 方法2：前缀和+哈希表   我们可以基于方法一利用数据结构进行进一步的优化，我们知道方法一的瓶颈在于对每个 i，我们需">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LC 560.和为 K 的子数组">
 <meta property="og:url" content="https://yiqiangshiyia.cn/2022/04/18/LC%20560.%E5%92%8C%E4%B8%BA%20K%20%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
-<meta property="og:description" content="LC 560.和为 K 的子数组Note解决数组问题时，如果多层循环遍历超时，多考虑前缀和的思想来减少循环次数降低时间复杂度。 题目大意给你一个整数数组 nums 和一个整数 k ，请你统计并返回 该数组中和为 k 的子数组的个数 。 题解方法1：枚举两层循环遍历，超出时间限制 方法2：前缀和+哈希表 我们可以基于方法一利用数据结构进行进一步的优化，我们知道方法一的瓶颈在于对每个 i，我们需要枚举">
+<meta property="og:description" content="LC 560.和为 K 的子数组Note解决数组问题时，如果多层循环遍历超时，多考虑前缀和的思想来减少循环次数降低时间复杂度。 题目大意给你一个整数数组 nums 和一个整数 k ，请你统计并返回 该数组中和为 k 的子数组的个数 。 题解方法1：枚举 两层循环遍历，超出时间限制 方法2：前缀和+哈希表   我们可以基于方法一利用数据结构进行进一步的优化，我们知道方法一的瓶颈在于对每个 i，我们需">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-18T11:30:50.000Z">
-<meta property="article:modified_time" content="2022-06-08T02:17:50.876Z">
+<meta property="article:modified_time" content="2022-08-06T08:08:30.159Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="前缀和">
 <meta property="article:tag" content="哈希">
@@ -317,8 +317,10 @@
               
               <h2 id="LC-560-和为-K-的子数组"><a href="#LC-560-和为-K-的子数组" class="headerlink" title="LC 560.和为 K 的子数组"></a>LC 560.和为 K 的子数组</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>解决数组问题时，如果多层循环遍历超时，多考虑前缀和的思想来减少循环次数降低时间复杂度。</p>
 <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给你一个整数数组 nums 和一个整数 k ，请你统计并返回 该数组中和为 k 的子数组的个数 。</p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="方法1：枚举"><a href="#方法1：枚举" class="headerlink" title="方法1：枚举"></a>方法1：枚举</h4><p>两层循环遍历，超出时间限制</p>
-<h4 id="方法2：前缀和-哈希表"><a href="#方法2：前缀和-哈希表" class="headerlink" title="方法2：前缀和+哈希表"></a>方法2：前缀和+哈希表</h4><blockquote>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>方法1：枚举</strong></p>
+<p>两层循环遍历，超出时间限制</p>
+<p><strong>方法2：前缀和+哈希表</strong> </p>
+<blockquote>
 <p>我们可以基于方法一利用数据结构进行进一步的优化，我们知道方法一的瓶颈在于对每个 i，我们需要枚举所有的 j 来判断是否符合条件，这一步是否可以优化呢？答案是可以的。</p>
 <p>我们定义 pre[i] 为 0..i 里所有数的和，则 pre[i] 可以由 pre[i−1] 递推而来，即：<br>pre[i]=pre[i−1]+nums[i]</p>
 <p>那么 j..i 这个子数组和为 k 这个条件我们可以转化为<br>pre[i]−pre[j−1]==k</p>

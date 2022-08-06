@@ -16,15 +16,15 @@
   <meta name="author" content="一腔诗意啊">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.iterator迭代器1.定义和初始化每种容器都定义了自己的迭代器类型，如vector  vector::iterator it;  &#x2F;&#x2F;定义一个名为it的变量  每种容器都定义了一对名为begin和end的函数，用于返回迭代器  vector ivec;  vector::iterator it1 &#x3D; ivec.begin();  &#x2F;&#x2F;将迭代器it1指向ivec的第一个元素  vector:">
+    <meta name="description" content="1.iterator迭代器1.定义和初始化每种容器都定义了自己的迭代器类型，如vector  vector&lt;int&gt;::iterator it;  &#x2F;&#x2F;定义一个名为it的变量  每种容器都定义了一对名为begin和end的函数，用于返回迭代器  vector&lt;int&gt; ivec;  vector&lt;int&gt;::iterator it1 &#x3D; ivec.begin()">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++标准模板库（C++STL）">
 <meta property="og:url" content="https://yiqiangshiyia.cn/2022/03/04/C++%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88C++STL%EF%BC%89/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
-<meta property="og:description" content="1.iterator迭代器1.定义和初始化每种容器都定义了自己的迭代器类型，如vector  vector::iterator it;  &#x2F;&#x2F;定义一个名为it的变量  每种容器都定义了一对名为begin和end的函数，用于返回迭代器  vector ivec;  vector::iterator it1 &#x3D; ivec.begin();  &#x2F;&#x2F;将迭代器it1指向ivec的第一个元素  vector:">
+<meta property="og:description" content="1.iterator迭代器1.定义和初始化每种容器都定义了自己的迭代器类型，如vector  vector&lt;int&gt;::iterator it;  &#x2F;&#x2F;定义一个名为it的变量  每种容器都定义了一对名为begin和end的函数，用于返回迭代器  vector&lt;int&gt; ivec;  vector&lt;int&gt;::iterator it1 &#x3D; ivec.begin()">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-04T12:18:35.000Z">
-<meta property="article:modified_time" content="2022-05-07T01:44:35.793Z">
+<meta property="article:modified_time" content="2022-08-06T07:59:13.827Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="STL">
 <meta name="twitter:card" content="summary_large_image">
@@ -260,7 +260,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.6k 字
+          1.7k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
           <!-- compatible with older versions-->
-          14 分钟
+          15 分钟
         
       </span>
     
@@ -315,28 +315,28 @@
             <div class="markdown-body">
               
               <h2 id="1-iterator迭代器"><a href="#1-iterator迭代器" class="headerlink" title="1.iterator迭代器"></a>1.iterator迭代器</h2><h3 id="1-定义和初始化"><a href="#1-定义和初始化" class="headerlink" title="1.定义和初始化"></a>1.定义和初始化</h3><p>每种容器都定义了自己的迭代器类型，如vector </p>
-<p>vector<int>::iterator it;  //定义一个名为it的变量 </p>
+<p>vector&lt;int&gt;::iterator it;  //定义一个名为it的变量 </p>
 <p>每种容器都定义了一对名为begin和end的函数，用于返回迭代器 </p>
-<p>vector<int> ivec; </p>
-<p>vector<int>::iterator it1 = ivec.begin();  //将迭代器it1指向ivec的第一个元素 </p>
-<p>vector<int>::iterator it2 = ivec.end();  //将迭代器it2指向ivec容器的最后一个元素的下一个位置 end并不指向容器的任何元素  </p>
-<h3 id="2-常用操作"><a href="#2-常用操作" class="headerlink" title="2.常用操作"></a>2.常用操作</h3><p>vector<int>:: iterator it; </p>
+<p>vector&lt;int&gt; ivec; </p>
+<p>vector&lt;int&gt;::iterator it1 = ivec.begin();  //将迭代器it1指向ivec的第一个元素 </p>
+<p>vector&lt;int&gt;::iterator it2 = ivec.end();  //将迭代器it2指向ivec容器的最后一个元素的下一个位置 end并不指向容器的任何元素  </p>
+<h3 id="2-常用操作"><a href="#2-常用操作" class="headerlink" title="2.常用操作"></a>2.常用操作</h3><p>vector&lt;int&gt;:: iterator it; </p>
 <p>1.it +/- n; </p>
 <p>2.it1 +/-= it2; </p>
 <p>3.it1-it2; </p>
 <p>4.&gt;,&gt;=,&lt;,&lt;=  </p>
 <h2 id="2-vector容器"><a href="#2-vector容器" class="headerlink" title="2.vector容器"></a>2.vector容器</h2><h3 id="1-创建vector对象"><a href="#1-创建vector对象" class="headerlink" title="1.创建vector对象"></a>1.创建vector对象</h3><p>创建vector容器有三种形式 </p>
-<p>1.不指定容器的个数：vector<int> v;</p>
-<p>2.创建时指定容器的大小：vector<double> v(10);</p>
-<p>3.创建一个具有n个元素的向量容器，每个元素具有指定的初始值 vector<double> v(10,8.6)  //v向量容器，共有10个元素，每个元素的初始值为8.6  </p>
+<p>1.不指定容器的个数：vector&lt;int&gt; v;</p>
+<p>2.创建时指定容器的大小：vector&lt;double&gt; v(10);</p>
+<p>3.创建一个具有n个元素的向量容器，每个元素具有指定的初始值 vector&lt;double&gt; v(10,8.6)  //v向量容器，共有10个元素，每个元素的初始值为8.6  </p>
 <h3 id="2-尾部元素扩张"><a href="#2-尾部元素扩张" class="headerlink" title="2.尾部元素扩张"></a>2.尾部元素扩张</h3><p>v.push_back(num);  </p>
 <h3 id="3-下标方式访问vector元素"><a href="#3-下标方式访问vector元素" class="headerlink" title="3.下标方式访问vector元素"></a>3.下标方式访问vector元素</h3><p>类似于数组的访问方式。对于vector对象，可以采用下标方式随意访问它的某个元素，也可以通过下标方式对某个元素重新赋值 </p>
-<p>vector<int> v(3); </p>
+<p>vector&lt;int&gt; v(3); </p>
 <p>v[0]=2,v[1]=7,v[2]=9; </p>
 <p>cout&lt;&lt;v[0]&lt;&lt;” “&lt;&lt;v[1]&lt;&lt;” “&lt;&lt;v[2]&lt;&lt;endl;  </p>
-<h3 id="4-用迭代器访问vector容器"><a href="#4-用迭代器访问vector容器" class="headerlink" title="4.用迭代器访问vector容器"></a>4.用迭代器访问vector容器</h3><p>vector<int> v(3); </p>
+<h3 id="4-用迭代器访问vector容器"><a href="#4-用迭代器访问vector容器" class="headerlink" title="4.用迭代器访问vector容器"></a>4.用迭代器访问vector容器</h3><p>vector&lt;int&gt; v(3); </p>
 <p>v[0]=2,v[1]=7,v[2]=9; </p>
-<p>vector<int>::iterator it;  //定义迭代器 变量 </p>
+<p>vector&lt;int&gt;::iterator it;  //定义迭代器 变量 </p>
 <p>for(it=v.begin(); it!=v.end(); it++) </p>
 <p>{ cout&lt;&lt;*it&lt;&lt;” “;  //输出迭代器上的元素值 }  </p>
 <h3 id="5-插入元素"><a href="#5-插入元素" class="headerlink" title="5.插入元素"></a>5.插入元素</h3><p>insert()方法可以在vector对象的任意位置前插入一个新元素 </p>
