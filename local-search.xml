@@ -13,7 +13,7 @@
     
     <categories>
       
-      <category>解忧杂货铺</category>
+      <category>解忧杂货</category>
       
     </categories>
     
@@ -757,9 +757,9 @@
     
     <tags>
       
-      <tag>DFS</tag>
-      
       <tag>BFS</tag>
+      
+      <tag>DFS</tag>
       
     </tags>
     
