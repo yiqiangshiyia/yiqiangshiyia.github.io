@@ -33,6 +33,8 @@
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/javaweb065.jpg">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/javaweb008.jpg">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/javaweb009.jpg">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220820164650.png">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220820164756.png">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/javaweb010.jpg">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/javaweb011.jpg">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/javaweb012.jpg">
@@ -89,7 +91,7 @@
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/javaweb063.jpg">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/javaweb064.jpg">
 <meta property="article:published_time" content="2022-08-15T10:11:55.000Z">
-<meta property="article:modified_time" content="2022-08-19T13:15:19.741Z">
+<meta property="article:modified_time" content="2022-08-20T09:36:26.696Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="web">
@@ -339,7 +341,7 @@
         
         
           <!-- compatible with older versions-->
-          255 分钟
+          256 分钟
         
       </span>
     
@@ -551,13 +553,13 @@
 </ul>
 <h1 id="4-Http"><a href="#4-Http" class="headerlink" title="4. Http"></a>4. Http</h1><h2 id="4-1-什么是HTTP"><a href="#4-1-什么是HTTP" class="headerlink" title="4.1 什么是HTTP"></a>4.1 什么是HTTP</h2><p>HTTP（超文本传输协议）是一个简单的请求-响应协议，它通常运行在TCP之上。 </p>
 <ul>
-<li>文本：html，字符串，~ …. </li>
-<li>超文本：图片，音乐，视频，定位，地图……. </li>
-<li>80 </li>
+<li>文本：html，字符串，~ …</li>
+<li>超文本：图片，音乐，视频，定位，地图…</li>
+<li>默认端口：80 </li>
 </ul>
 <p>Https：安全的 </p>
 <ul>
-<li>443</li>
+<li>默认端口：443</li>
 </ul>
 <h2 id="4-2-两个时代"><a href="#4-2-两个时代" class="headerlink" title="4.2 两个时代"></a>4.2 两个时代</h2><p>http1.0 </p>
 <ul>
@@ -570,56 +572,58 @@
 <h2 id="4-3-Http请求"><a href="#4-3-Http请求" class="headerlink" title="4.3 Http请求"></a>4.3 Http请求</h2><ul>
 <li>客户端—发请求（Request）—服务器 </li>
 </ul>
-<p>百度：</p>
-<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">Request URL:https:<span class="hljs-comment">//www.baidu.com/ 请求地址</span><br>Request <span class="hljs-keyword">Method</span>:GET get方法/post方法<br>Status Code:<span class="hljs-number">200</span> OK 状态码：<span class="hljs-number">200</span><br>Remote（远程） Address:<span class="hljs-number">14.215</span>.<span class="hljs-number">177.39</span>:<span class="hljs-number">443</span><br></code></pre></td></tr></table></figure>
+<p>以百度为例：</p>
+<p><img src="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220820164650.png" srcset="/img/loading.gif" lazyload alt="QQ截图20220820164650"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">Request URL:https:<span class="hljs-comment">//www.baidu.com/  //请求地址：www.baidu.com</span><br>Request Method:GET  <span class="hljs-comment">//请求方法：get方法/post方法</span><br>Status Code:<span class="hljs-number">200</span> OK  <span class="hljs-comment">//状态码：200</span><br>Remote Address:<span class="hljs-number">14.215</span><span class="hljs-number">.177</span><span class="hljs-number">.39</span>:<span class="hljs-number">443</span><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">Accept:text/html</span><br><span class="hljs-section">Accept-Encoding:gzip, deflate, br</span><br><span class="hljs-section">Accept-Language:zh-CN,zh;q=0.9 语言</span><br><span class="hljs-section">Cache-Control:max-age=0</span><br><span class="hljs-section">Connection:keep-alive</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">Accept:text/html  <span class="hljs-comment">//类型编码</span><br>Accept-Encoding:gzip, deflate, br<br>Accept-Language:zh-CN,zh;q=<span class="hljs-number">0.9</span>  <span class="hljs-comment">//语言</span><br>Cache-Control:max-age=<span class="hljs-number">0</span><br>Connection:keep-alive<br></code></pre></td></tr></table></figure>
 
 <p><strong>1.请求行</strong></p>
 <ul>
 <li>请求行中的请求方式：GET </li>
 <li>请求方式：Get，Post，HEAD,DELETE,PUT,TRACT… <ul>
-<li>get：请求能够携带的参数比较少，大小有限制，会在浏览器的URL地址栏显示数据内容，不 安全，但高效 </li>
-<li>post：请求能够携带的参数没有限制，大小没有限制，不会在浏览器的URL地址栏显示数据内 容，安全，但不高效。</li>
+<li>get：请求能够携带的参数比较少，大小有限制，会在浏览器的URL地址栏显示数据内容，不安全，但高效 </li>
+<li>post：请求能够携带的参数没有限制，大小没有限制，不会在浏览器的URL地址栏显示数据内容，安全，但不高效。</li>
 </ul>
 </li>
 </ul>
 <p><strong>2.消息头</strong></p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ada"><span class="hljs-keyword">Accept</span>：告诉浏览器，它所支持的数据类型<br><span class="hljs-keyword">Accept</span>-Encoding：支持哪种编码格式 GBK UTF-<span class="hljs-number">8</span> GB2312 ISO8859-<span class="hljs-number">1</span><br><span class="hljs-keyword">Accept</span>-Language：告诉浏览器，它的语言环境<br>Cache-Control：缓存控制<br>Connection：告诉浏览器，请求完成是断开还是保持连接<br>HOST：主机..../.<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">Accept：告诉浏览器，它所支持的数据类型<br>Accept-Encoding：支持哪种编码格式 GBK UTF-<span class="hljs-number">8</span> GB2312 ISO8859-<span class="hljs-number">1</span><br>Accept-Language：告诉浏览器，它的语言环境<br>Cache-Control：缓存控制<br>Connection：告诉浏览器，请求完成是断开还是保持连接<br>HOST：主机..../.<br></code></pre></td></tr></table></figure>
 
 
 
 <h2 id="4-4-Http响应"><a href="#4-4-Http响应" class="headerlink" title="4.4 Http响应"></a>4.4 Http响应</h2><ul>
 <li>服务器—响应—–客户端 </li>
 </ul>
-<p>百度：</p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">Cache-Control:private 缓存控制</span><br><span class="hljs-section">Connection:Keep-Alive 连接</span><br><span class="hljs-section">Content-Encoding:gzip 编码</span><br><span class="hljs-section">Content-Type:text/html 类型</span><br></code></pre></td></tr></table></figure>
+<p>以百度为例：</p>
+<p><img src="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220820164756.png" srcset="/img/loading.gif" lazyload alt="QQ截图20220820164756"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">Cache-Control:<span class="hljs-keyword">private</span>  <span class="hljs-comment">//缓存控制</span><br>Connection:Keep-Alive  <span class="hljs-comment">//连接</span><br>Content-Encoding:gzip  <span class="hljs-comment">//编码</span><br>Content-Type:text/html  <span class="hljs-comment">//类型</span><br></code></pre></td></tr></table></figure>
 
 <p><strong>1.响应体</strong></p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ada"><span class="hljs-keyword">Accept</span>：告诉浏览器，它所支持的数据类型<br><span class="hljs-keyword">Accept</span>-Encoding：支持哪种编码格式 GBK UTF-<span class="hljs-number">8</span> GB2312 ISO8859-<span class="hljs-number">1</span><br><span class="hljs-keyword">Accept</span>-Language：告诉浏览器，它的语言环境<br>Cache-Control：缓存控制<br>Connection：告诉浏览器，请求完成是断开还是保持连接<br>HOST：主机..../.<br>Refresh：告诉客户端，多久刷新一次；<br>Location：让网页重新定位；<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">Accept：告诉浏览器，它所支持的数据类型<br>Accept-Encoding：支持哪种编码格式 GBK UTF-<span class="hljs-number">8</span> GB2312 ISO8859-<span class="hljs-number">1</span><br>Accept-Language：告诉浏览器，它的语言环境<br>Cache-Control：缓存控制<br>Connection：告诉浏览器，请求完成是断开还是保持连接<br>HOST：主机..../.<br>Refresh：告诉客户端，多久刷新一次<br>Location：让网页重新定位<br></code></pre></td></tr></table></figure>
 
 <p><strong>2.响应状态码</strong></p>
 <p>200：请求响应成功 200 </p>
 <p>3xx：请求重定向 </p>
 <ul>
-<li>重定向：你重新到我给你新位置去； </li>
+<li>重定向：你重新到我给你新位置去</li>
 </ul>
 <p>4xx：找不到资源 404 </p>
 <ul>
-<li>资源不存在； </li>
+<li>资源不存在</li>
 </ul>
-<p>5xx：服务器代码错误 500 502:网关错误</p>
+<p>5xx：服务器代码错误 500 502：网关错误</p>
 <h1 id="5-Maven"><a href="#5-Maven" class="headerlink" title="5. Maven"></a>5. Maven</h1><p><strong>我为什么要学习这个技术？</strong> </p>
 <ol>
 <li>在Javaweb开发中，需要使用大量的jar包，我们手动去导入； </li>
 <li>如何能够让一个东西自动帮我导入和配置这个jar包。 由此，Maven诞生了！</li>
 </ol>
-<h2 id="5-1-Maven项目架构管理工具"><a href="#5-1-Maven项目架构管理工具" class="headerlink" title="5.1 Maven项目架构管理工具"></a>5.1 Maven项目架构管理工具</h2><p>我们目前用来就是方便导入jar包的！ </p>
+<h2 id="5-1-Maven项目架构管理工具"><a href="#5-1-Maven项目架构管理工具" class="headerlink" title="5.1 Maven项目架构管理工具"></a>5.1 Maven项目架构管理工具</h2><p>我们目前用来就是方便导入jar包的</p>
 <p>Maven的核心思想：<strong>约定大于配置</strong></p>
 <ul>
 <li>有约束，不要去违反。</li>
 </ul>
-<p>Maven会规定好你该如何去编写我们的Java代码，必须要按照这个规范来；</p>
+<p>Maven会规定好你该如何去编写我们的Java代码，必须要按照这个规范来</p>
 <h2 id="5-2-下载安装Maven"><a href="#5-2-下载安装Maven" class="headerlink" title="5.2 下载安装Maven"></a>5.2 下载安装Maven</h2><p>官网：<a target="_blank" rel="noopener" href="https://maven.apache.org/">https://maven.apache.org/</a></p>
 <p><img src="https://img.yiqiangshiyia.cn/blog/javaweb010.jpg" srcset="/img/loading.gif" lazyload alt="javaweb010"></p>
 <p>下载完成后，解压即可</p>
@@ -644,7 +648,7 @@
 
 
 
-<h2 id="5-5-本地仓库"><a href="#5-5-本地仓库" class="headerlink" title="5.5 本地仓库"></a>5.5 本地仓库</h2><p>在本地的仓库，远程仓库； </p>
+<h2 id="5-5-本地仓库"><a href="#5-5-本地仓库" class="headerlink" title="5.5 本地仓库"></a>5.5 本地仓库</h2><p>在本地的仓库，远程仓库</p>
 <p><strong>建立一个本地仓库：</strong>localRepository</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">localRepository</span>&gt;</span>D:\Environment\apache-maven-3.6.2\mavenrepo<span class="hljs-tag">&lt;/<span class="hljs-name">localRepository</span>&gt;</span><br></code></pre></td></tr></table></figure>
 

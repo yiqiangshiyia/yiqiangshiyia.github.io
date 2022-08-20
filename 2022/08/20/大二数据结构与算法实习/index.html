@@ -1,0 +1,953 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.jpg">
+  <link rel="icon" href="/img/logo.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="一腔诗意啊">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="大二小学期数据结构与算法实习PTA 12道数据结构题目题解和AC代码 时间：2022.08.15-2022.09.05    网课  第1题 范围查询(Range)题目大意数轴上有n个点，对于任一闭区间 [a, b]，试计算落在其内的点数。要求：0 ≤ n, m ≤ 5×10^5对于每次查询的区间[a, b]，都有a ≤ b各点的坐标互异 输入格式: 第一行包括两个整数：点的总数n，查询的次数m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大二数据结构与算法实习">
+<meta property="og:url" content="https://yiqiangshiyia.cn/2022/08/20/%E5%A4%A7%E4%BA%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%AE%9E%E4%B9%A0/index.html">
+<meta property="og:site_name" content="一腔诗意啊 - 个人博客">
+<meta property="og:description" content="大二小学期数据结构与算法实习PTA 12道数据结构题目题解和AC代码 时间：2022.08.15-2022.09.05    网课  第1题 范围查询(Range)题目大意数轴上有n个点，对于任一闭区间 [a, b]，试计算落在其内的点数。要求：0 ≤ n, m ≤ 5×10^5对于每次查询的区间[a, b]，都有a ≤ b各点的坐标互异 输入格式: 第一行包括两个整数：点的总数n，查询的次数m">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/4570edbb-6efb-4450-8356-957f4f6d562e.png">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/3d494b5e-b74e-4444-ae45-12394961241f.png">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/bfdf2806-18f1-4cbe-84f2-4a03ad5737cd.png">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/1bb71727-2fd5-4d53-b6c9-3a02ab1f4e79.png">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/f3bfdbf4-e2af-4bc9-8ecb-dd7e4868991b.png">
+<meta property="article:published_time" content="2022-08-20T11:56:49.000Z">
+<meta property="article:modified_time" content="2022-08-20T12:37:02.488Z">
+<meta property="article:author" content="一腔诗意啊">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img.yiqiangshiyia.cn/blog/4570edbb-6efb-4450-8356-957f4f6d562e.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>大二数据结构与算法实习 - 一腔诗意啊 - 个人博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yiqiangshiyia.cn","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>一腔诗意啊&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                文章
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/archives/">
+                    <i class="iconfont icon-archive-fill"></i>
+                    归档
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    分类
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/tags/">
+                    <i class="iconfont icon-tags-fill"></i>
+                    标签
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/liuyan/">
+                <i class="iconfont icon-wechat2-fill"></i>
+                留言
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://travellings.link/">
+                <i class="iconfont icon-codeforces"></i>
+                开往
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/picture.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="大二数据结构与算法实习"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-20 19:56" pubdate>
+          2022年8月20日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          6.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          57 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">大二数据结构与算法实习</h1>
+            
+            <div class="markdown-body">
+              
+              <blockquote>
+<p>大二小学期数据结构与算法实习PTA 12道数据结构题目题解和AC代码</p>
+<p>时间：2022.08.15-2022.09.05    网课</p>
+</blockquote>
+<h2 id="第1题-范围查询-Range"><a href="#第1题-范围查询-Range" class="headerlink" title="第1题 范围查询(Range)"></a>第1题 范围查询(Range)</h2><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>数轴上有n个点，对于任一闭区间 [a, b]，试计算落在其内的点数。<br>要求：<br>0 ≤ n, m ≤ 5×10^5<br>对于每次查询的区间[a, b]，都有a ≤ b<br>各点的坐标互异</p>
+<p><strong>输入格式:</strong></p>
+<p>第一行包括两个整数：点的总数n，查询的次数m。<br>第二行包含n个数，为各个点的坐标。<br>以下m行，各包含两个整数：查询区间的左、右边界a和b。</p>
+<p><strong>输出格式:</strong></p>
+<p>对每次查询，输出落在闭区间[a, b]内点的个数。</p>
+<p><strong>输入样例:</strong></p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">5 </span><span class="hljs-number">2</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">3</span> <span class="hljs-number">7</span> <span class="hljs-number">9</span> <span class="hljs-number">11</span><br><span class="hljs-symbol">4 </span><span class="hljs-number">6</span><br><span class="hljs-symbol">7 </span><span class="hljs-number">12</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>输出样例：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">0<br>3<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>未遇到问题</p>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 500000</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> n,m,a,b;<br>    <span class="hljs-type">int</span> nums[N+<span class="hljs-number">10</span>];<br>    cin&gt;&gt;n&gt;&gt;m;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>        cin&gt;&gt;nums[i];<br>    &#125;<br>    <span class="hljs-keyword">while</span>(m--)&#123;<br>        cin&gt;&gt;a&gt;&gt;b;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>            <span class="hljs-keyword">if</span>(nums[i] &gt;= a &amp;&amp; nums[i] &lt;= b)&#123;<br>                ans++;<br>            &#125;<br>        &#125;<br>        cout&lt;&lt;ans&lt;&lt;endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="第2题-祖玛-Zuma"><a href="#第2题-祖玛-Zuma" class="headerlink" title="第2题 祖玛(Zuma)"></a>第2题 祖玛(Zuma)</h2><h3 id="题目大意-1"><a href="#题目大意-1" class="headerlink" title="题目大意"></a>题目大意</h3><p><img src="https://img.yiqiangshiyia.cn/blog/4570edbb-6efb-4450-8356-957f4f6d562e.png" srcset="/img/loading.gif" lazyload alt="4570edbb-6efb-4450-8356-957f4f6d562e"></p>
+<p>祖玛是一款曾经风靡全球的游戏，其玩法是：在一条轨道上初始排列着若干个彩色珠子，其中任意三个相邻的珠子不会完全同色。此后，你可以发射珠子到轨道上并加入原有序列中。一旦有三个或更多同色的珠子变成相邻，它们就会立即消失。这类消除现象可能会连锁式发生，其间你将暂时不能发射珠子。<br>开发商最近准备为玩家写一个游戏过程的回放工具。他们已经在游戏内完成了过程记录的功能，而回放功能的实现则委托你来完成。<br>游戏过程的记录中，首先是轨道上初始的珠子序列，然后是玩家接下来所做的一系列操作。你的任务是，在各次操作之后及时计算出新的珠子序列。</p>
+<p><strong>输入格式:</strong></p>
+<p>第一行是一个由大写字母’A’~’Z’组成的字符串，表示轨道上初始的珠子序列，不同的字母表示不同的颜色。<br>第二行是一个数字n，表示整个回放过程共有n次操作。<br>接下来的n行依次对应于各次操作。每次操作由一个数字k和一个大写字母Σ描述，以空格分隔。其中，Σ为新珠子的颜色。若插入前共有m颗珠子，则k ∈ [0, m]表示新珠子嵌入之后（尚未发生消除之前）在轨道上的位序。<br>要求：<br>0 ≤ n ≤ 10^4<br>0 ≤ 初始珠子数量 ≤ 10^4</p>
+<p><strong>输出格式:</strong></p>
+<p>输出共n行，依次给出各次操作（及可能随即发生的消除现象）之后轨道上的珠子序列。<br>如果轨道上已没有珠子，则以“-”表示。</p>
+<p><strong>输入样例:</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css">ACCBA<br><span class="hljs-number">5</span><br><span class="hljs-number">1</span> <span class="hljs-selector-tag">B</span><br><span class="hljs-number">0</span> <span class="hljs-selector-tag">A</span><br><span class="hljs-number">2</span> <span class="hljs-selector-tag">B</span><br><span class="hljs-number">4</span> C<br><span class="hljs-number">0</span> <span class="hljs-selector-tag">A</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>输出样例：</strong></p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">ABCCBA<br>AABCCBA<br>AABBCCBA<br><span class="hljs-bullet">-</span><br><span class="hljs-bullet"></span>A<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>未遇到问题</p>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 10000</span><br><br><span class="hljs-comment">//判断是否有三个连续重复的字母</span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">repeat</span><span class="hljs-params">(string s)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(s.<span class="hljs-built_in">size</span>() &lt; <span class="hljs-number">3</span>)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;s.<span class="hljs-built_in">size</span>()<span class="hljs-number">-2</span>; i++)&#123;<br>        <span class="hljs-keyword">if</span>(s[i] == s[i+<span class="hljs-number">1</span>] &amp;&amp; s[i+<span class="hljs-number">1</span>] == s[i+<span class="hljs-number">2</span>])&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> m,n;<br>    string str;<br>    cin&gt;&gt;str;<br>    cin&gt;&gt;n;<br>    <span class="hljs-keyword">while</span>(n--)&#123;<br>        <span class="hljs-type">int</span> index;<br>        <span class="hljs-type">char</span> ch;<br>        cin&gt;&gt;index&gt;&gt;ch;<br>        string str2 = str.<span class="hljs-built_in">substr</span>(<span class="hljs-number">0</span>,index)+ch+str.<span class="hljs-built_in">substr</span>(index,str.<span class="hljs-built_in">size</span>()-index);<br>        <span class="hljs-comment">//调用函数判断是否存在重复</span><br>        <span class="hljs-keyword">while</span>(<span class="hljs-built_in">repeat</span>(str2))&#123;<br>            <span class="hljs-comment">//去重</span><br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;str2.<span class="hljs-built_in">size</span>()<span class="hljs-number">-3</span>; i++)&#123;<br>                <span class="hljs-keyword">if</span>(str2[i] == str2[i+<span class="hljs-number">1</span>] &amp;&amp; str2[i+<span class="hljs-number">1</span>] == str2[i+<span class="hljs-number">2</span>])&#123;  <span class="hljs-comment">//如果连续三个相等</span><br>                    str2 = str2.<span class="hljs-built_in">substr</span>(<span class="hljs-number">0</span>,i)+str2.<span class="hljs-built_in">substr</span>(i+<span class="hljs-number">3</span>,str2.<span class="hljs-built_in">size</span>()<span class="hljs-number">-3</span>-i);<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">if</span>(str2[str2.<span class="hljs-built_in">size</span>()<span class="hljs-number">-3</span>] == str2[str2.<span class="hljs-built_in">size</span>()<span class="hljs-number">-2</span>] &amp;&amp; str2[str2.<span class="hljs-built_in">size</span>()<span class="hljs-number">-2</span>] == str2[str2.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>])&#123;<br>                str2 = str2.<span class="hljs-built_in">substr</span>(<span class="hljs-number">0</span>,str2.<span class="hljs-built_in">size</span>()<span class="hljs-number">-3</span>);<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span>(str2.<span class="hljs-built_in">size</span>() == <span class="hljs-number">0</span>)&#123;<br>            cout&lt;&lt;<span class="hljs-string">&quot;-&quot;</span>&lt;&lt;endl;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            cout&lt;&lt;str2&lt;&lt;endl;<br>        &#125;<br>        str = str2;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="第3题-灯塔-LightHouse"><a href="#第3题-灯塔-LightHouse" class="headerlink" title="第3题 灯塔(LightHouse)"></a>第3题 灯塔(LightHouse)</h2><h3 id="题目大意-2"><a href="#题目大意-2" class="headerlink" title="题目大意"></a>题目大意</h3><p>海上有许多灯塔，为过路船只照明。</p>
+<p><img src="https://img.yiqiangshiyia.cn/blog/3d494b5e-b74e-4444-ae45-12394961241f.png" srcset="/img/loading.gif" lazyload alt="3d494b5e-b74e-4444-ae45-12394961241f"></p>
+<p>（图一）<br>如图一所示，每个灯塔都配有一盏探照灯，照亮其东北、西南两个对顶的直角区域。探照灯的功率之大，足以覆盖任何距离。灯塔本身是如此之小，可以假定它们不会彼此遮挡。</p>
+<p><img src="https://img.yiqiangshiyia.cn/blog/bfdf2806-18f1-4cbe-84f2-4a03ad5737cd.png" srcset="/img/loading.gif" lazyload alt="bfdf2806-18f1-4cbe-84f2-4a03ad5737cd"></p>
+<p>（图二）<br>若灯塔A、B均在对方的照亮范围内，则称它们能够照亮彼此。比如在图二的实例中，蓝、红灯塔可照亮彼此，蓝、绿灯塔则不是，红、绿灯塔也不是。<br>现在，对于任何一组给定的灯塔，请计算出其中有多少对灯塔能够照亮彼此。</p>
+<p><strong>输入格式:</strong></p>
+<p>共n+1行。<br>第1行为1个整数n，表示灯塔的总数。<br>第2到n+1行每行包含2个整数x, y，分别表示各灯塔的横、纵坐标。</p>
+<p>要求：<br>1 ≤ n ≤ 4×10^6<br>灯塔的坐标x, y是整数，且不同灯塔的x, y坐标均互异<br>1 ≤ x, y ≤ 10^8</p>
+<p><strong>输出格式:</strong></p>
+<p>1个整数，表示可照亮彼此的灯塔对的数量。</p>
+<p><strong>输入样例:</strong></p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">3</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">2</span><br><span class="hljs-symbol">4 </span><span class="hljs-number">3</span><br><span class="hljs-symbol">5 </span><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>输出样例:</strong></p>
+<p>在这里给出相应的输出。例如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">1<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p><strong>problem：</strong><br>没有编译和运行错误，但是无法输入样例，控制台显示 ：</p>
+<blockquote>
+<p>Process returned -1073741571 (0xC00000FD) execution time : 2.097 s Press any</p>
+</blockquote>
+<p><strong>cause：</strong><br>#define N 4000000<br>int a[N+10][2];<br>在函数内部初始化了一个相当大的数组，导致内存溢出，从而导致整个函数（即便是在初始化这个数组之前的代码）未执行，并导致整个程序直接退出！<br><strong>solve：</strong><br>cin&gt;&gt;n;<br>int a[n+10][2];<br>避免了定义数组内存太大，导致内存溢出和浪费</p>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> n,ans = <span class="hljs-number">0</span>;<br>    cin&gt;&gt;n;<br>    <span class="hljs-type">int</span> a[n+<span class="hljs-number">10</span>][<span class="hljs-number">2</span>];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>        cin&gt;&gt;a[i][<span class="hljs-number">0</span>]&gt;&gt;a[i][<span class="hljs-number">1</span>];<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n<span class="hljs-number">-1</span>; i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=i+<span class="hljs-number">1</span>; j&lt;n; j++)&#123;<br>            <span class="hljs-keyword">if</span>((a[j][<span class="hljs-number">0</span>] - a[i][<span class="hljs-number">0</span>]) * (a[j][<span class="hljs-number">1</span>] - a[i][<span class="hljs-number">1</span>]) &gt; <span class="hljs-number">0</span>)&#123;<br>                ans++;<br>            &#125;<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;ans&lt;&lt;endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="第4题-列车调度-Train"><a href="#第4题-列车调度-Train" class="headerlink" title="第4题 列车调度(Train)"></a>第4题 列车调度(Train)</h2><h3 id="题目大意-3"><a href="#题目大意-3" class="headerlink" title="题目大意"></a>题目大意</h3><p>某列车调度站的铁道联接结构如Figure 1所示。</p>
+<p><img src="https://img.yiqiangshiyia.cn/blog/1bb71727-2fd5-4d53-b6c9-3a02ab1f4e79.png" srcset="/img/loading.gif" lazyload alt="1bb71727-2fd5-4d53-b6c9-3a02ab1f4e79"></p>
+<p>其中，A为入口，B为出口，S为中转盲端。所有铁道均为单轨单向式：列车行驶的方向只能是从A到S，再从S到B；另外，不允许超车。因为车厢可在S中驻留，所以它们从B端驶出的次序，可能与从A端驶入的次序不同。不过S的容量有限，同时驻留的车厢不得超过m节。<br>设某列车由编号依次为{1, 2, …, n}的n节车厢组成。调度员希望知道，按照以上交通规则，这些车厢能否以{a1, a2, …, an}的次序，重新排列后从B端驶出。如果可行，应该以怎样的次序操作?</p>
+<p><strong>输入格式:</strong></p>
+<p>共两行。<br>第一行为两个整数n，m。<br>第二行为以空格分隔的n个整数，保证为{1, 2, …, n}的一个排列，表示待判断可行性的驶出序列{a1，a2，…，an}。</p>
+<p>要求：<br>1 ≤ n ≤ 1,600,000<br>0 ≤ m ≤ 1,600,000</p>
+<p><strong>输出格式:</strong></p>
+<p>若驶出序列可行，则输出操作序列，其中push表示车厢从A进入S，pop表示车厢从S进入B，每个操作占一行。<br>若不可行，则输出No。</p>
+<p><strong>输入样例:</strong></p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">5 </span><span class="hljs-number">2</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">5</span> <span class="hljs-number">4</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>输出样例：</strong></p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-built_in">push</span><br><span class="hljs-built_in">pop</span><br><span class="hljs-built_in">push</span><br><span class="hljs-built_in">pop</span><br><span class="hljs-built_in">push</span><br><span class="hljs-built_in">pop</span><br><span class="hljs-built_in">push</span><br><span class="hljs-built_in">push</span><br><span class="hljs-built_in">pop</span><br><span class="hljs-built_in">pop</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><p>栈的应用：模拟出栈和进栈，将中转盲端看成一个栈，A到S：入栈，S到B：出栈，最大驻留车厢：栈的大小</p>
+<p>初始栈为空，循环遍历出栈顺序的数组。</p>
+<ul>
+<li><p>如果当前栈顶元素小于应该出栈的元素，则顺次把后面的数字入栈，记录入栈</p>
+</li>
+<li><p>如果当前栈顶元素等于应该出栈的元素，则出栈，遍历数组的指针后移 ，记录出栈</p>
+</li>
+<li><p>如果当前栈顶元素大于应该出栈的元素，则说明该出栈顺序不可能实现，输出No，然后结束程序</p>
+</li>
+</ul>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">int</span> n,m,x;<br>    cin&gt;&gt;n&gt;&gt;m;<br>    <span class="hljs-type">int</span> now = <span class="hljs-number">1</span>;<br>    stack&lt;<span class="hljs-type">int</span>&gt; st;<br>    vector&lt;string&gt; ans;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>        cin&gt;&gt;x;<br>        <span class="hljs-keyword">while</span>(now &lt;= x)&#123;<br>            st.<span class="hljs-built_in">push</span>(now);<br>            now++;<br>            ans.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;push&quot;</span>);<br>        &#125;<br>        <span class="hljs-keyword">if</span>(st.<span class="hljs-built_in">size</span>() &gt; m)&#123;<br>            cout&lt;&lt;<span class="hljs-string">&quot;No&quot;</span>&lt;&lt;endl;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(st.<span class="hljs-built_in">top</span>() == x)&#123;<br>            st.<span class="hljs-built_in">pop</span>();<br>            ans.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&quot;pop&quot;</span>);<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            cout&lt;&lt;<span class="hljs-string">&quot;No&quot;</span>&lt;&lt;endl;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;ans.<span class="hljs-built_in">size</span>(); i++)&#123;<br>        cout&lt;&lt;ans[i]&lt;&lt;endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="第5题-真二叉树重构-Proper-Rebuild"><a href="#第5题-真二叉树重构-Proper-Rebuild" class="headerlink" title="第5题 真二叉树重构(Proper Rebuild)"></a>第5题 真二叉树重构(Proper Rebuild)</h2><h3 id="题目大意-4"><a href="#题目大意-4" class="headerlink" title="题目大意"></a>题目大意</h3><p>一般来说，给定二叉树的先序遍历序列和后序遍历序列，并不能唯一确定该二叉树。</p>
+<p><img src="https://img.yiqiangshiyia.cn/blog/f3bfdbf4-e2af-4bc9-8ecb-dd7e4868991b.png" srcset="/img/loading.gif" lazyload alt="f3bfdbf4-e2af-4bc9-8ecb-dd7e4868991b"></p>
+<p>（图一）<br>比如图一中的两棵二叉树，虽然它们是不同二叉树，但是它们的先序、后序遍历序列都是相同的。<br>但是对于“真二叉树”（每个内部节点都有两个孩子的二叉树），给定它的先序、后序遍历序列足以完全确定它的结构。<br>将二叉树的n个节点用[1, n]内的整数进行编号，输入一棵真二叉树的先序、后序遍历序列，请输出它的中序遍历序列。</p>
+<p><strong>输入格式:</strong></p>
+<p>第一行为一个整数n，即二叉树中节点的个数。<br>第二、三行为已知的先序、后序遍历序列。</p>
+<p>要求：<br>1 ≤ n ≤ 4,000,000<br>输入的序列是{1,2…n}的排列，且对应于一棵合法的真二叉树</p>
+<p><strong>输出格式:</strong></p>
+<p>仅一行，给定真二叉树的中序遍历序列。</p>
+<p><strong>输入样例:</strong></p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">5</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">2</span> <span class="hljs-number">4</span> <span class="hljs-number">5</span> <span class="hljs-number">3</span><br><span class="hljs-symbol">4 </span><span class="hljs-number">5</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>输出样例：</strong></p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">4 </span><span class="hljs-number">2</span> <span class="hljs-number">5</span> <span class="hljs-number">1</span> <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h3><p>利用先序遍历和后序遍历构建一颗完整的二叉树，需要充分利用先序遍历先打印再递归左右、后序遍历是先递归左右再打印的特点建二叉树。</p>
+<p>题目给出了真二叉树的前序和后序遍历，只需对两者进行对比，就能得到根节点和左右子树，然后再对左右子树进行递归即可构建出完整的二叉树。</p>
+<p>构建出完整的二叉树后中序遍历输出</p>
+<blockquote>
+<p>这道题目还是挺好的，考察了二叉树的重构和遍历，这道题是给出前序遍历和后序遍历输出中序遍历，LC上还有一道题是给出前序遍历和中序遍历输出后序遍历：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/zhong-jian-er-cha-shu-lcof/">https://leetcode.cn/problems/zhong-jian-er-cha-shu-lcof/</a></li>
+</ul>
+<p>此外这道题在数组指针传递和二叉树构建都要好好学习一下！！！</p>
+</blockquote>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">//定义二叉树</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">treeNode</span><br>&#123;<br>    <span class="hljs-type">int</span> data;<br>    treeNode* left;<br>    treeNode* right;<br>    <span class="hljs-built_in">treeNode</span>() :<br>		<span class="hljs-built_in">left</span>(<span class="hljs-literal">NULL</span>), <span class="hljs-built_in">right</span>(<span class="hljs-literal">NULL</span>) &#123; &#125;<br>	<span class="hljs-built_in">treeNode</span>(<span class="hljs-type">int</span> e, treeNode* left = <span class="hljs-literal">NULL</span>, treeNode* right = <span class="hljs-literal">NULL</span>) :<br>		<span class="hljs-built_in">data</span>(e), <span class="hljs-built_in">left</span>(left), <span class="hljs-built_in">right</span>(right) &#123; &#125;<br>&#125;;<br><br><span class="hljs-comment">//根据先序遍历和后序遍历重构二叉树</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">rebuild</span><span class="hljs-params">(treeNode* root, <span class="hljs-type">int</span>* pre, <span class="hljs-type">int</span>* post, <span class="hljs-type">int</span> n)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>(n &lt; <span class="hljs-number">2</span>)&#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-type">int</span> postleft,preright;  <span class="hljs-comment">//定义后序遍历左子树和先序遍历的右子树根节点下标</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>        <span class="hljs-keyword">if</span>(pre[i] == post[n<span class="hljs-number">-2</span>])&#123;<br>            preright = i;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>        <span class="hljs-keyword">if</span>(pre[<span class="hljs-number">1</span>] == post[i])&#123;<br>            postleft = i;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    root-&gt;left = <span class="hljs-keyword">new</span> <span class="hljs-built_in">treeNode</span>(pre[<span class="hljs-number">1</span>]);<br>    root-&gt;right = <span class="hljs-keyword">new</span> <span class="hljs-built_in">treeNode</span>(post[n<span class="hljs-number">-2</span>]);<br>    <span class="hljs-comment">//对左右子树递归重构</span><br>    <span class="hljs-built_in">rebuild</span>(root-&gt;left, pre+<span class="hljs-number">1</span>, post, preright<span class="hljs-number">-1</span>);<br>    <span class="hljs-built_in">rebuild</span>(root-&gt;right, pre+preright, post+postleft+<span class="hljs-number">1</span>, n-postleft<span class="hljs-number">-2</span>);<br>&#125;<br><br><span class="hljs-comment">//二叉树中序遍历</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">inorder</span><span class="hljs-params">(treeNode* root)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>)&#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-built_in">inorder</span>(root-&gt;left);<br>    cout &lt;&lt; root-&gt;data &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>    <span class="hljs-built_in">inorder</span>(root-&gt;right);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> n;<br>    cin&gt;&gt;n;<br>    <span class="hljs-type">int</span> *pre = <span class="hljs-keyword">new</span> <span class="hljs-type">int</span>[n+<span class="hljs-number">10</span>];<br>    <span class="hljs-type">int</span> *post = <span class="hljs-keyword">new</span> <span class="hljs-type">int</span>[n+<span class="hljs-number">10</span>];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>        cin&gt;&gt;pre[i];<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>        cin&gt;&gt;post[i];<br>    &#125;<br>    treeNode* root = <span class="hljs-keyword">new</span> <span class="hljs-built_in">treeNode</span>(pre[<span class="hljs-number">0</span>]);<br>    <span class="hljs-built_in">rebuild</span>(root, pre, post, n);<br>    <span class="hljs-built_in">inorder</span>(root);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="第6题-旅行商-TSP"><a href="#第6题-旅行商-TSP" class="headerlink" title="第6题 旅行商(TSP)"></a>第6题 旅行商(TSP)</h2><h2 id="第7题-无线广播-Broadcast"><a href="#第7题-无线广播-Broadcast" class="headerlink" title="第7题 无线广播(Broadcast)"></a>第7题 无线广播(Broadcast)</h2><h2 id="第8题-传染链-Infectious-Chain"><a href="#第8题-传染链-Infectious-Chain" class="headerlink" title="第8题 传染链( Infectious Chain )"></a>第8题 传染链( Infectious Chain )</h2><h2 id="第9题-重名剔除-Deduplicate"><a href="#第9题-重名剔除-Deduplicate" class="headerlink" title="第9题 重名剔除(Deduplicate)"></a>第9题 重名剔除(Deduplicate)</h2><h2 id="第10题-玩具-Toy"><a href="#第10题-玩具-Toy" class="headerlink" title="第10题 玩具(Toy)"></a>第10题 玩具(Toy)</h2><h2 id="第11题-任务调度-Schedule"><a href="#第11题-任务调度-Schedule" class="headerlink" title="第11题 任务调度(Schedule)"></a>第11题 任务调度(Schedule)</h2><h2 id="第12题-循环移位-Cycle"><a href="#第12题-循环移位-Cycle" class="headerlink" title="第12题 循环移位(Cycle)"></a>第12题 循环移位(Cycle)</h2>
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%A3%E5%BF%A7%E6%9D%82%E8%B4%A7%E9%93%BA/" class="category-chain-item">解忧杂货铺</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+      
+        <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>大二数据结构与算法实习</div>
+      <div>https://yiqiangshiyia.cn/2022/08/20/大二数据结构与算法实习/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>一腔诗意啊</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月20日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/19/Java-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" title="Java-网络编程">
+                        <span class="hidden-mobile">Java-网络编程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.16/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"kt6NXqlOirxe2tk9uTDeEG2c-gzGzoHsz","appKey":"1kXDoTn2l7weKksvEbQNGwhF","path":"window.location.pathname","placeholder":"世界这么大发表一下你的看法~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://yiqiangshiyia.github.io/" target="_blank" rel="nofollow noopener"><span>一腔诗意啊</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> </a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      皖ICP备2022002052号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>皖ICP备2022002052号-1</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
