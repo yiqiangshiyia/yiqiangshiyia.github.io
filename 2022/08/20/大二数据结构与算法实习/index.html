@@ -28,8 +28,9 @@
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/bfdf2806-18f1-4cbe-84f2-4a03ad5737cd.png">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/1bb71727-2fd5-4d53-b6c9-3a02ab1f4e79.png">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/f3bfdbf4-e2af-4bc9-8ecb-dd7e4868991b.png">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.jpg">
 <meta property="article:published_time" content="2022-08-20T11:56:49.000Z">
-<meta property="article:modified_time" content="2022-08-20T12:53:20.210Z">
+<meta property="article:modified_time" content="2022-08-21T10:30:54.923Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="算法">
@@ -267,7 +268,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          6.8k 字
+          9.2k 字
         
       </span>
     
@@ -279,7 +280,7 @@
         
         
           <!-- compatible with older versions-->
-          57 分钟
+          77 分钟
         
       </span>
     
@@ -455,7 +456,49 @@
 
 
 
-<h2 id="第6题-旅行商-TSP"><a href="#第6题-旅行商-TSP" class="headerlink" title="第6题 旅行商(TSP)"></a>第6题 旅行商(TSP)</h2><h2 id="第7题-无线广播-Broadcast"><a href="#第7题-无线广播-Broadcast" class="headerlink" title="第7题 无线广播(Broadcast)"></a>第7题 无线广播(Broadcast)</h2><h2 id="第8题-传染链-Infectious-Chain"><a href="#第8题-传染链-Infectious-Chain" class="headerlink" title="第8题 传染链( Infectious Chain )"></a>第8题 传染链( Infectious Chain )</h2><h2 id="第9题-重名剔除-Deduplicate"><a href="#第9题-重名剔除-Deduplicate" class="headerlink" title="第9题 重名剔除(Deduplicate)"></a>第9题 重名剔除(Deduplicate)</h2><h2 id="第10题-玩具-Toy"><a href="#第10题-玩具-Toy" class="headerlink" title="第10题 玩具(Toy)"></a>第10题 玩具(Toy)</h2><h2 id="第11题-任务调度-Schedule"><a href="#第11题-任务调度-Schedule" class="headerlink" title="第11题 任务调度(Schedule)"></a>第11题 任务调度(Schedule)</h2><h2 id="第12题-循环移位-Cycle"><a href="#第12题-循环移位-Cycle" class="headerlink" title="第12题 循环移位(Cycle)"></a>第12题 循环移位(Cycle)</h2>
+<h2 id="第6题-旅行商-TSP"><a href="#第6题-旅行商-TSP" class="headerlink" title="第6题 旅行商(TSP)"></a>第6题 旅行商(TSP)</h2><h3 id="题目大意-5"><a href="#题目大意-5" class="headerlink" title="题目大意"></a>题目大意</h3><p>Shrek是一个大山里的邮递员，每天负责给所在地区的n个村庄派发信件。但杯具的是，由于道路狭窄，年久失修，村庄间的道路都只能单向通过，甚至有些村庄无法从任意一个村庄到达。这样我们只能希望尽可能多的村庄可以收到投递的信件。<br>Shrek希望知道如何选定一个村庄A作为起点（我们将他空投到该村庄），依次经过尽可能多的村庄，路途中的每个村庄都经过仅一次，最终到达终点村庄B，完成整个送信过程。这个任务交给你来完成。</p>
+<p><strong>输入格式:</strong></p>
+<p>第一行包括两个整数n，m，分别表示村庄的个数以及可以通行的道路的数目。<br>以下共m行，每行用两个整数v1和v2表示一条道路，两个整数分别为道路连接的村庄号，道路的方向为从v1至v2，n个村庄编号为[1, n]。</p>
+<p>要求：<br>1 ≤ n ≤ 1,000,000<br>0 ≤ m ≤ 1,000,000<br>输入保证道路之间没有形成环</p>
+<p><strong>输出格式:</strong></p>
+<p>输出一个数字，表示符合条件的最长道路经过的村庄数。</p>
+<p><strong>输入样例:</strong></p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">4 </span><span class="hljs-number">3</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">4</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">4</span><br><span class="hljs-symbol">4 </span><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>输出样例</strong></p>
+<p>在这里给出相应的输出。例如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">3<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h3><p><strong>point：</strong>图+拓扑排序</p>
+<p>做这道题前先学习了一下拓扑排序的知识</p>
+<p><strong>拓扑排序：</strong></p>
+<blockquote>
+<p>对一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%89%E5%90%91%E6%97%A0%E7%8E%AF%E5%9B%BE/10972513">有向无环图</a>(Directed Acyclic Graph简称DAG)G进行拓扑排序，是将G中所有顶点排成一个线性序列，使得图中任意一对顶点u和v，若边&lt;u,v&gt;∈E(G)，则u在线性序列中出现在v之前。通常，这样的线性序列称为满足拓扑次序(Topological Order)的序列，简称拓扑序列。简单的说，由某个集合上的一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%81%8F%E5%BA%8F/2439087">偏序</a>得到该集合上的一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%85%A8%E5%BA%8F/10577699">全序</a>，这个操作称之为拓扑排序。</p>
+<p><strong>执行步骤：</strong></p>
+<p>由AOV网构造拓扑序列的拓扑排序算法主要是循环执行以下两步，直到不存在入度为0的顶点为止。</p>
+<p>(1) 选择一个入度为0的顶点并输出之；</p>
+<p>(2) 从网中删除此顶点及所有<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%87%BA%E8%BE%B9">出边</a>。</p>
+<p>循环结束后，若输出的顶点数小于网中的顶点数，则输出“有<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9B%9E%E8%B7%AF/35792">回路</a>”信息，否则输出的顶点序列就是一种拓扑<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%BA%8F%E5%88%97/1302588">序列</a>。</p>
+<p><img src="https://img.yiqiangshiyia.cn/blog/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.jpg" srcset="/img/loading.gif" lazyload alt="拓扑排序"></p>
+</blockquote>
+<p>好了，学会了拓扑排序现在可以开始做TSP了！可是一下午连别人写的代码都没看懂！！！😭</p>
+<p><strong>解题思路：</strong></p>
+<ol>
+<li><p>拓扑排序</p>
+<p>策略：将所有入度为0的顶点入栈，弹出栈顶元素，若此元素存在入度为1的邻居，将其入栈并将此邻居的入度-1，重复直到栈空。</p>
+</li>
+<li><p>将题意与拓扑排序结合</p>
+<p>题目需要求的变量可等效地理解为求图的最大路径上的顶点数，注意到根据此题，顶点数=路径长度+1，于是问题转换为求图的最大路径长度，而图的最大路径长度就是到所有顶点的最大路径长度的最大值，如何求得到每个顶点的最大路径长度呢？我们知道拓扑排序算法将遍历图的每个入度为0的顶点的邻居，那么可采用动态规划的策略，为每个顶点增设一个长度属性，每遍历一个入度为0的顶点的邻居，此邻居的长度属性就更新为此邻居的长度属性与此入度为0的顶点的长度属性+1之间的较大者，更新后的值即当前到此邻居的最大路径长度，算法结束后，将得到到每个顶点的最大路径长度。为提升算法效率，可增设一记录图最大路径长度的变量，每次更新完一个顶点的长度属性后，就将此变量更新为此顶点的长度属性与此变量之间的较大者，算法结束后，将得到图的最大路径长度。</p>
+</li>
+</ol>
+<p>AC代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXSIZE 1000000</span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">ENode</span>&#123;<br>	<span class="hljs-type">int</span> vsub;<br>	ENode *succ;<br>&#125;;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">VNode</span>&#123;<br>	<span class="hljs-type">int</span> in,len;<br>	ENode *fstEdge;<br>&#125;;<br>VNode adjList[MAXSIZE];ENode *t;<br><span class="hljs-type">int</span> visited[MAXSIZE],stack[MAXSIZE],top=<span class="hljs-number">0</span>,maxlen=<span class="hljs-number">0</span>,n,m,v1,v2;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">GetMax</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(a&gt;b)&#123;<br>        <span class="hljs-keyword">return</span> a;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">return</span> b;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//拓扑排序</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">TSort</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>        <span class="hljs-keyword">if</span>(!adjList[i].in)&#123;<br>            stack[++top] = i;<br>        &#125;<br>	&#125;<br>	<span class="hljs-keyword">while</span>(top)&#123;<br>		<span class="hljs-type">int</span> v=stack[top--];<br>		<span class="hljs-keyword">for</span>(ENode *p=adjList[v].fstEdge;p;p=p-&gt;succ)&#123;<br>			adjList[p-&gt;vsub].len = <span class="hljs-built_in">GetMax</span>(adjList[v].len+<span class="hljs-number">1</span>,adjList[p-&gt;vsub].len);<br>			maxlen = <span class="hljs-built_in">GetMax</span>(adjList[p-&gt;vsub].len,maxlen);<br>			<span class="hljs-keyword">if</span>(!(--adjList[p-&gt;vsub].in))&#123;<br>                stack[++top] = p-&gt;vsub;<br>			&#125;<br>		&#125;<br>	&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;m; i++)&#123;<br>		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;v1,&amp;v2);<br>		t = <span class="hljs-keyword">new</span> ENode;<br>		t-&gt;vsub = v2;<br>		adjList[v2].in++;<br>		t-&gt;succ = adjList[v1].fstEdge;<br>		adjList[v1].fstEdge = t;<br>	&#125;<br>	<span class="hljs-built_in">TSort</span>();<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,maxlen+<span class="hljs-number">1</span>);<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="第7题-无线广播-Broadcast"><a href="#第7题-无线广播-Broadcast" class="headerlink" title="第7题 无线广播(Broadcast)"></a>第7题 无线广播(Broadcast)</h2><h2 id="第8题-传染链-Infectious-Chain"><a href="#第8题-传染链-Infectious-Chain" class="headerlink" title="第8题 传染链( Infectious Chain )"></a>第8题 传染链( Infectious Chain )</h2><h2 id="第9题-重名剔除-Deduplicate"><a href="#第9题-重名剔除-Deduplicate" class="headerlink" title="第9题 重名剔除(Deduplicate)"></a>第9题 重名剔除(Deduplicate)</h2><h2 id="第10题-玩具-Toy"><a href="#第10题-玩具-Toy" class="headerlink" title="第10题 玩具(Toy)"></a>第10题 玩具(Toy)</h2><h2 id="第11题-任务调度-Schedule"><a href="#第11题-任务调度-Schedule" class="headerlink" title="第11题 任务调度(Schedule)"></a>第11题 任务调度(Schedule)</h2><h2 id="第12题-循环移位-Cycle"><a href="#第12题-循环移位-Cycle" class="headerlink" title="第12题 循环移位(Cycle)"></a>第12题 循环移位(Cycle)</h2>
               
             </div>
             <hr/>
