@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/f3bfdbf4-e2af-4bc9-8ecb-dd7e4868991b.png">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.jpg">
 <meta property="article:published_time" content="2022-08-20T11:56:49.000Z">
-<meta property="article:modified_time" content="2022-08-23T04:22:39.573Z">
+<meta property="article:modified_time" content="2022-08-24T09:28:47.842Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="算法">
@@ -268,7 +268,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          12k 字
+          13k 字
         
       </span>
     
@@ -280,7 +280,7 @@
         
         
           <!-- compatible with older versions-->
-          97 分钟
+          112 分钟
         
       </span>
     
@@ -528,7 +528,31 @@
 
 
 
-<h2 id="第8题-传染链-Infectious-Chain"><a href="#第8题-传染链-Infectious-Chain" class="headerlink" title="第8题 传染链( Infectious Chain )"></a>第8题 传染链( Infectious Chain )</h2><h2 id="第9题-重名剔除-Deduplicate"><a href="#第9题-重名剔除-Deduplicate" class="headerlink" title="第9题 重名剔除(Deduplicate)"></a>第9题 重名剔除(Deduplicate)</h2><h2 id="第10题-玩具-Toy"><a href="#第10题-玩具-Toy" class="headerlink" title="第10题 玩具(Toy)"></a>第10题 玩具(Toy)</h2><h2 id="第11题-任务调度-Schedule"><a href="#第11题-任务调度-Schedule" class="headerlink" title="第11题 任务调度(Schedule)"></a>第11题 任务调度(Schedule)</h2><h2 id="第12题-循环移位-Cycle"><a href="#第12题-循环移位-Cycle" class="headerlink" title="第12题 循环移位(Cycle)"></a>第12题 循环移位(Cycle)</h2>
+<h2 id="第8题-传染链-Infectious-Chain"><a href="#第8题-传染链-Infectious-Chain" class="headerlink" title="第8题 传染链( Infectious Chain )"></a>第8题 传染链( Infectious Chain )</h2><h3 id="题目大意-7"><a href="#题目大意-7" class="headerlink" title="题目大意"></a>题目大意</h3><p>某病毒可以人传人，且传染能力极强，只要与已感染该病毒的人发生接触即刻感染。<br>现给定一些感染该病毒的人员接触关系，要求你找出其中最早最长的一条传染链。</p>
+<p><strong>输入格式:</strong></p>
+<p>输入在第一行中给出一个正整数 N（N≤10^4），即感染病毒的人员总数，从 0 到 N−1 进行编号。<br>随后N 行按照编号顺序给出人员接触信息，每行按以下格式描述该人员的接触对象：<br>k 接触人员1 …… 接触人员k<br>其中 k 是该编号人员接触的其他人总数，后面按照时间先后给出所有接触的人员编号。题目保证传染源头有且仅有一个，且已被感染人员不会与另一个感染人员再接触。</p>
+<p><strong>输出格式:</strong></p>
+<p>第一行输出从源头开始的最早最长传染链长度。<br>第二行输出从源头开始的最早最长传染链，编号之间以1个空格分隔，行首尾不得有多余空格。这里的最早最长传染链是指从源头开始的传染链上的人数最多，且被感染的时间最早。<br>所谓时间最早指的两个长度相等的传染链{a1,a2,…,an}和{b1,b2,…,bn}，存在1≤k&lt;n，对于所有的i (1≤i&lt;k)都满足ai=bi，且ak被感染的时间早于bk被感染的时间。</p>
+<p><strong>输入样例:</strong></p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">10</span><br><span class="hljs-number">0</span><br><span class="hljs-symbol">3 </span><span class="hljs-number">3</span> <span class="hljs-number">4</span> <span class="hljs-number">7</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">1</span> <span class="hljs-number">9</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">6</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">5</span><br><span class="hljs-number">0</span><br><span class="hljs-number">0</span><br><span class="hljs-number">0</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">6</span> <span class="hljs-number">0</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">8</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>输出样例：</strong></p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">4</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">1</span> <span class="hljs-number">3</span> <span class="hljs-number">6</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h3><p><strong>point：</strong></p>
+<ul>
+<li>用深度优先搜索（dfs）找出最早最长的传染链</li>
+<li>用一个vector&lt;int&gt;类型的容器来存储每一条接触信息，模拟传染前后的时间关系</li>
+<li>动态规划：在dfs时，用一个step数组记录从某一位置开始能走的最大步数，后面出现该位置时直接调用，避免了大量的重复计算</li>
+<li>用一个nxt数组找出某一位置开始找到可以走的最大的步数时进行记录，这样就可以直接对最长路径进行输出</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 10000</span><br><br><span class="hljs-type">int</span> step[N+<span class="hljs-number">10</span>];  <span class="hljs-comment">//记录从某一位置开始走能走的最大路径长度</span><br><span class="hljs-type">int</span> nxt[N+<span class="hljs-number">10</span>];<br>vector&lt;<span class="hljs-type">int</span>&gt; v[N+<span class="hljs-number">10</span>];  <span class="hljs-comment">//存储每一条接触信息</span><br><br><span class="hljs-comment">//深度优先搜索每一个index的最大路径长度</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> index)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>(v[index].<span class="hljs-built_in">size</span>() == <span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-type">int</span> steps=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;v[index].<span class="hljs-built_in">size</span>(); i++)&#123;<br>        <span class="hljs-keyword">if</span>(step[v[index][i]] &gt; steps)&#123;<br>            steps = step[v[index][i]]+<span class="hljs-number">1</span>;<br>            nxt[index] = v[index][i];<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-type">int</span> temp = <span class="hljs-built_in">dfs</span>(v[index][i])+<span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span>(temp &gt; steps)&#123;<br>                steps = temp;<br>                nxt[index] = v[index][i];<br>            &#125;<br>        &#125;<br>    &#125;<br>    step[index] = steps;<br>    <span class="hljs-keyword">return</span> steps;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> n;<br>    cin&gt;&gt;n;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)<br>    &#123;<br>        <span class="hljs-type">int</span> k;<br>        cin&gt;&gt;k;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>; j&lt;k; j++)<br>        &#123;<br>            <span class="hljs-type">int</span> t;<br>            cin&gt;&gt;t;<br>            v[i].<span class="hljs-built_in">push_back</span>(t);<br>        &#125;<br>    &#125;<br>    <span class="hljs-type">int</span> index = <span class="hljs-number">0</span>,ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>        <span class="hljs-type">int</span> temp = <span class="hljs-built_in">dfs</span>(i);<br>        <span class="hljs-keyword">if</span>(temp &gt; ans)&#123;<br>            index = i;  <span class="hljs-comment">//当前最大路径的起始点</span><br>            ans = temp;<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;ans&lt;&lt;endl;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;ans<span class="hljs-number">-1</span>; i++)<br>    &#123;<br>        cout&lt;&lt;index&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>        index = nxt[index];<br>    &#125;<br>    cout&lt;&lt;index;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="第9题-重名剔除-Deduplicate"><a href="#第9题-重名剔除-Deduplicate" class="headerlink" title="第9题 重名剔除(Deduplicate)"></a>第9题 重名剔除(Deduplicate)</h2><h2 id="第10题-玩具-Toy"><a href="#第10题-玩具-Toy" class="headerlink" title="第10题 玩具(Toy)"></a>第10题 玩具(Toy)</h2><h2 id="第11题-任务调度-Schedule"><a href="#第11题-任务调度-Schedule" class="headerlink" title="第11题 任务调度(Schedule)"></a>第11题 任务调度(Schedule)</h2><h2 id="第12题-循环移位-Cycle"><a href="#第12题-循环移位-Cycle" class="headerlink" title="第12题 循环移位(Cycle)"></a>第12题 循环移位(Cycle)</h2>
               
             </div>
             <hr/>
