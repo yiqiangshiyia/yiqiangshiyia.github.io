@@ -24,7 +24,7 @@
 <meta property="og:description" content="Note   数据结构 map unordered_map set unordered_set    实现机理 红黑树 hash表 红黑树 hash表   元素格式 key+value key+value key key   存储规律 键升序 无序 键升序 无序   元素重复 键不可,值可 键不可,值可 不可重复 不可重复   头文件 #include&lt; map&gt; #include #">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-10T12:27:28.000Z">
-<meta property="article:modified_time" content="2022-06-08T02:09:21.740Z">
+<meta property="article:modified_time" content="2022-08-25T11:05:39.697Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="STL">
 <meta name="twitter:card" content="summary_large_image">
@@ -393,7 +393,7 @@
 <blockquote>
 <p>set 是基于RBT的，因此元素是顺序存储的（默认按键值升序排列）。</p>
 </blockquote>
-<h2 id="unordered-set"><a href="#unordered-set" class="headerlink" title="unordered_set"></a>unordered_set</h2><h4 id="内部实现机理-3"><a href="#内部实现机理-3" class="headerlink" title="内部实现机理"></a><strong>内部实现机理</strong></h4><p>unordered_set的内部实现了一个 哈希表，因此， 其元素的排列顺序是无序的。</p>
+<h2 id="unordered-set"><a href="#unordered-set" class="headerlink" title="unordered_set"></a>unordered_set</h2><h4 id="内部实现机理-3"><a href="#内部实现机理-3" class="headerlink" title="内部实现机理"></a><strong>内部实现机理</strong></h4><p>unordered_set的内部实现了一个哈希表，因此， 其元素的排列顺序是无序的。</p>
 <h4 id="例子-3"><a href="#例子-3" class="headerlink" title="例子"></a>例子</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++">vector&lt;<span class="hljs-type">int</span>&gt; list = &#123; <span class="hljs-number">5</span>,<span class="hljs-number">14</span>,<span class="hljs-number">34</span>,<span class="hljs-number">22</span>,<span class="hljs-number">39</span>,<span class="hljs-number">5</span> &#125;;<br>unordered_set&lt;<span class="hljs-type">int</span>&gt; set;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = list.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>	set.<span class="hljs-built_in">insert</span>(list[i]);  <span class="hljs-comment">//倒序插入</span><br>&#125;<br><span class="hljs-keyword">for</span> (unordered_set&lt;<span class="hljs-type">int</span>&gt;::iterator i = set.<span class="hljs-built_in">begin</span>(); i != set.<span class="hljs-built_in">end</span>(); i++) &#123;<br>	cout &lt;&lt; *i &lt;&lt; endl;  <span class="hljs-comment">//输出的数是无序的且只有一个5</span><br>&#125;<br>cout &lt;&lt; <span class="hljs-string">&quot;find 39: &quot;</span> &lt;&lt; *set.<span class="hljs-built_in">find</span>(<span class="hljs-number">39</span>) &lt;&lt; endl;<br>cout &lt;&lt; <span class="hljs-string">&quot;count 14:&quot;</span> &lt;&lt; set.<span class="hljs-built_in">count</span>(<span class="hljs-number">14</span>) &lt;&lt; endl;<br></code></pre></td></tr></table></figure>
 
 <blockquote>
