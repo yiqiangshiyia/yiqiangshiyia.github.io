@@ -24,7 +24,7 @@
 <meta property="og:description" content="push_back()函数 push_back()函数的用法 函数将一个新的元素加到vector的最后面，位置为当前最后一个元素的下一个元素。  push_back()函数也同样适用于string字符串 12string str &#x3D; &quot;&quot;;str.push_back(&amp;#x27;d&amp;#x27;);  类似的： pop_back()    &#x2F;&#x2F;移除最后一个元素 clear()">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-11T15:09:04.000Z">
-<meta property="article:modified_time" content="2022-08-25T11:39:52.330Z">
+<meta property="article:modified_time" content="2022-08-30T14:28:49.514Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="字符串">
 <meta name="twitter:card" content="summary_large_image">
@@ -260,7 +260,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.2k 字
+          3.1k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
           <!-- compatible with older versions-->
-          19 分钟
+          27 分钟
         
       </span>
     
@@ -341,16 +341,25 @@
 <h2 id="toupper-函数"><a href="#toupper-函数" class="headerlink" title="toupper()函数"></a>toupper()函数</h2><p>C ++库函数 int toupper(int c) 把给定的字母转换为大写字母。</p>
 <h2 id="string-back-函数"><a href="#string-back-函数" class="headerlink" title="string.back()函数"></a>string.back()函数</h2><p>C++string.back()函数 此函数同于访问字符串的最后一个字符 。</p>
 <h2 id="find-函数"><a href="#find-函数" class="headerlink" title="find()函数"></a>find()函数</h2><p><strong>使用find，返回的是被查找元素的位置，没有则返回map.end()</strong></p>
-<p>C++ string中的find()函数，string中find()返回值是字母在母串中的位置（下标记录），如果没有找到，那么会返回一个特别的标记npos。</p>
+<p>C++ string中的find()函数，string中find()返回值是字母在母串中的位置（下标记录），如果没有找到，那么会返回 -1</p>
 <p>使用方法：find(a.begin(), a.end(), value)</p>
-<ul>
-<li><p>返回子串出现在母串中的首次出现的位置，和最后一次出现的位置</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++">flag = <span class="hljs-string">&quot;c&quot;</span>;<br>position = s.<span class="hljs-built_in">find_first_of</span>(flag);<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;s.find_first_of(flag) is :%d\n&quot;</span>,position);<br>position = s.<span class="hljs-built_in">find_last_of</span>(flag);<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;s.find_last_of(flag) is :%d\n&quot;</span>,position);<br></code></pre></td></tr></table></figure></li>
-<li><p>查找某一给定位置后的子串的位置</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//从字符串s 下标5开始，查找字符串b ,返回b 在s 中的下标</span><br>position=s.<span class="hljs-built_in">find</span>(<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-number">5</span>);<br>cout&lt;&lt;<span class="hljs-string">&quot;s.find(b,5) is : &quot;</span>&lt;&lt;position&lt;&lt;endl;<br></code></pre></td></tr></table></figure></li>
-<li><p>查找所有子串在母串中出现的位置</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//查找s 中flag 出现的所有位置。</span><br><span class="hljs-type">char</span> flag=<span class="hljs-string">&quot;a&quot;</span>;<br><span class="hljs-type">int</span> position=<span class="hljs-number">0</span>;<br><span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;<br><span class="hljs-keyword">while</span>((position=s.<span class="hljs-built_in">find</span>(flag,position))!=string::npos)<br>&#123;<br>    cout&lt;&lt;<span class="hljs-string">&quot;position  &quot;</span>&lt;&lt;i&lt;&lt;<span class="hljs-string">&quot; : &quot;</span>&lt;&lt;position&lt;&lt;endl;<br>    position++;<br>    i++;<br>&#125;<br></code></pre></td></tr></table></figure></li>
-</ul>
+<ol>
+<li><p><strong>find()</strong></p>
+<p>查找第一次出现的目标字符串（全匹配），<strong>要与子串完全匹配，否则返回-1</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	string s1 = <span class="hljs-string">&quot;abcdef&quot;</span>;<br>	string s2 = <span class="hljs-string">&quot;de&quot;</span>;<br>	<span class="hljs-type">int</span> ans = s1.<span class="hljs-built_in">find</span>(s2);<span class="hljs-comment">//在S1中查找子串S2</span><br>	cout &lt;&lt; ans &lt;&lt; endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">//输出结果：3</span><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>find_first_of()</strong> </p>
+<p>查找子串中的某个字符最先出现的位置（非全匹配），<strong>find_first_of()不是全匹配</strong>，不需要与子串完全匹配</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	string s1 = <span class="hljs-string">&quot;adedef&quot;</span>;<br>	string s2 = <span class="hljs-string">&quot;dek&quot;</span>;<br>	<span class="hljs-type">int</span> ans = s1.<span class="hljs-built_in">find_first_of</span>(s2);<span class="hljs-comment">//在S1中查找子串S2</span><br>	cout &lt;&lt; ans &lt;&lt; endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">//输出结果：1</span><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>find_last_of()</strong></p>
+<p>这个函数与find_first_of()功能差不多，只不过find_first_of()是从字符串的前面往后面搜索，而find_last_of()是从字符串的后面往前面搜索（非全匹配）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	string s1 = <span class="hljs-string">&quot;adedef&quot;</span>;<br>	string s2 = <span class="hljs-string">&quot;dek&quot;</span>;<br>	<span class="hljs-type">int</span> ans = s1.<span class="hljs-built_in">find_last_of</span>(s2);<span class="hljs-comment">//在S1中查找子串S2</span><br>	cout &lt;&lt; ans &lt;&lt; endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">//输出结果为：4</span><br></code></pre></td></tr></table></figure></li>
+<li><p>rfind()</p>
+<p>反向查找字符串，即找到最后一个与子串匹配的位置</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	string s1 = <span class="hljs-string">&quot;adedekf&quot;</span>;<br>	string s2 = <span class="hljs-string">&quot;dek&quot;</span>;<br>	<span class="hljs-type">int</span> ans = s1.<span class="hljs-built_in">rfind</span>(s2);<span class="hljs-comment">//在S1中查找子串S2</span><br>	cout &lt;&lt; ans &lt;&lt; endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">//输出结果为：3</span><br></code></pre></td></tr></table></figure></li>
+<li><p>find_first_not_of()</p>
+<p>找到第一个不与子串匹配的位置</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	string s1 = <span class="hljs-string">&quot;dadedef&quot;</span>;<br>	string s2 = <span class="hljs-string">&quot;dek&quot;</span>;<br>	<span class="hljs-type">int</span> ans = s1.<span class="hljs-built_in">find_first_not_of</span>(s2);<span class="hljs-comment">//在S1中查找子串S2</span><br>	cout &lt;&lt; ans &lt;&lt; endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">//输出结果：1</span><br></code></pre></td></tr></table></figure></li>
+</ol>
 <h2 id="count-函数"><a href="#count-函数" class="headerlink" title="count()函数"></a>count()函数</h2><p><strong>统计某个字符出现的次数</strong></p>
 <p>使用方法是 count(begin, end, ‘a’) ，其中begin指的是起始地址，end指的是结束地址，第三个参数指的是需要查找的字符</p>
 <p><strong>在unordered_set里面：count函数只会返回1或者0</strong> ，因为无重复元素</p>
@@ -367,6 +376,7 @@
 <p>2.迭代器遍历时，函数返回的是迭代器</p>
 <p>详解见博客：<a target="_blank" rel="noopener" href="http://m.biancheng.net/view/7521.html">http://m.biancheng.net/view/7521.html</a></p>
 </blockquote>
+<h2 id="strcmp-函数"><a href="#strcmp-函数" class="headerlink" title="strcmp()函数"></a>strcmp()函数</h2><p>strcmp函数是string compare（字符串比较）的缩写，用于比较两个字符串并根据比较结果返回整数。基本形式为strcmp(str1,str2)，若str1=str2，则返回零；若str1&lt;str2，则返回负数；若str1&gt;str2，则返回正数。</p>
 
               
             </div>
