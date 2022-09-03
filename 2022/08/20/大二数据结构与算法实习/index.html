@@ -16,13 +16,14 @@
   <meta name="author" content="一腔诗意啊">
   <meta name="keywords" content="">
   
-    <meta name="description" content="大二小学期数据结构与算法实习PTA 12道数据结构题目题解和AC代码 时间：2022.08.15-2022.09.05    网课  第1题 范围查询(Range)题目大意数轴上有n个点，对于任一闭区间 [a, b]，试计算落在其内的点数。要求：0 ≤ n, m ≤ 5×10^5对于每次查询的区间[a, b]，都有a ≤ b各点的坐标互异 输入格式: 第一行包括两个整数：点的总数n，查询的次数m">
+    <meta name="description" content="大二小学期数据结构与算法实习PTA 12道数据结构题目题解和AC代码 时间：2022.08.15-2022.09.05    网课   第1题 范围查询(Range)题目大意数轴上有n个点，对于任一闭区间 [a, b]，试计算落在其内的点数。要求：0 ≤ n, m ≤ 5×10^5对于每次查询的区间[a, b]，都有a ≤ b各点的坐标互异 输入格式: 第一行包括两个整数：点的总数n，查询的次数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="大二数据结构与算法实习">
 <meta property="og:url" content="https://yiqiangshiyia.cn/2022/08/20/%E5%A4%A7%E4%BA%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%AE%9E%E4%B9%A0/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
-<meta property="og:description" content="大二小学期数据结构与算法实习PTA 12道数据结构题目题解和AC代码 时间：2022.08.15-2022.09.05    网课  第1题 范围查询(Range)题目大意数轴上有n个点，对于任一闭区间 [a, b]，试计算落在其内的点数。要求：0 ≤ n, m ≤ 5×10^5对于每次查询的区间[a, b]，都有a ≤ b各点的坐标互异 输入格式: 第一行包括两个整数：点的总数n，查询的次数m">
+<meta property="og:description" content="大二小学期数据结构与算法实习PTA 12道数据结构题目题解和AC代码 时间：2022.08.15-2022.09.05    网课   第1题 范围查询(Range)题目大意数轴上有n个点，对于任一闭区间 [a, b]，试计算落在其内的点数。要求：0 ≤ n, m ≤ 5×10^5对于每次查询的区间[a, b]，都有a ≤ b各点的坐标互异 输入格式: 第一行包括两个整数：点的总数n，查询的次数">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220903162715.png">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/4570edbb-6efb-4450-8356-957f4f6d562e.png">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/3d494b5e-b74e-4444-ae45-12394961241f.png">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/bfdf2806-18f1-4cbe-84f2-4a03ad5737cd.png">
@@ -32,7 +33,7 @@
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/7020dc60-248c-483a-8bb9-d3d235e66b49.png">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/dui.jpeg">
 <meta property="article:published_time" content="2022-08-20T11:56:49.000Z">
-<meta property="article:modified_time" content="2022-09-01T07:45:53.022Z">
+<meta property="article:modified_time" content="2022-09-03T08:29:02.113Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="算法">
@@ -41,7 +42,7 @@
 <meta property="article:tag" content="图">
 <meta property="article:tag" content="拓扑排序">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://img.yiqiangshiyia.cn/blog/4570edbb-6efb-4450-8356-957f4f6d562e.png">
+<meta name="twitter:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220903162715.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -332,6 +333,7 @@
 <p>大二小学期数据结构与算法实习PTA 12道数据结构题目题解和AC代码</p>
 <p>时间：2022.08.15-2022.09.05    网课</p>
 </blockquote>
+<p><img src="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220903162715.png" srcset="/img/loading.gif" lazyload alt="QQ截图20220903162715"></p>
 <h2 id="第1题-范围查询-Range"><a href="#第1题-范围查询-Range" class="headerlink" title="第1题 范围查询(Range)"></a>第1题 范围查询(Range)</h2><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>数轴上有n个点，对于任一闭区间 [a, b]，试计算落在其内的点数。<br>要求：<br>0 ≤ n, m ≤ 5×10^5<br>对于每次查询的区间[a, b]，都有a ≤ b<br>各点的坐标互异</p>
 <p><strong>输入格式:</strong></p>
 <p>第一行包括两个整数：点的总数n，查询的次数m。<br>第二行包含n个数，为各个点的坐标。<br>以下m行，各包含两个整数：查询区间的左、右边界a和b。</p>
