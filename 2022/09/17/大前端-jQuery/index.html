@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220917224201.png">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20220917233013.png">
 <meta property="article:published_time" content="2022-09-17T14:38:25.000Z">
-<meta property="article:modified_time" content="2022-09-17T15:56:11.038Z">
+<meta property="article:modified_time" content="2022-09-18T03:09:27.338Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="jQuery">
 <meta name="twitter:card" content="summary_large_image">
@@ -431,7 +431,9 @@
 <p>jQuery对象 attr() 和 removeAttr() 方法用于操作DOM节点的属性：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;div id=<span class="hljs-string">&quot;test-div&quot;</span> name=<span class="hljs-string">&quot;Test&quot;</span> start=<span class="hljs-string">&quot;1&quot;</span>&gt;...&lt;/div&gt;<br><span class="hljs-keyword">var</span> div = $(<span class="hljs-string">&#x27;#test-div&#x27;</span>);<br>div.<span class="hljs-title function_">attr</span>(<span class="hljs-string">&#x27;data&#x27;</span>); <span class="hljs-comment">// undefined, 属性不存在</span><br>div.<span class="hljs-title function_">attr</span>(<span class="hljs-string">&#x27;name&#x27;</span>); <span class="hljs-comment">// &#x27;Test&#x27;</span><br>div.<span class="hljs-title function_">attr</span>(<span class="hljs-string">&#x27;name&#x27;</span>, <span class="hljs-string">&#x27;Hello&#x27;</span>); <span class="hljs-comment">// div的name属性变为&#x27;Hello&#x27;</span><br>div.<span class="hljs-title function_">removeAttr</span>(<span class="hljs-string">&#x27;name&#x27;</span>); <span class="hljs-comment">// 删除name属性</span><br>div.<span class="hljs-title function_">attr</span>(<span class="hljs-string">&#x27;name&#x27;</span>); <span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
 
+<blockquote>
 <p><strong>操作表单</strong></p>
+</blockquote>
 <p>对于表单元素，jQuery对象统一提供 val() 方法获取和设置对应的 value 属性：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/*</span><br><span class="hljs-comment">    &lt;input id=&quot;test-input&quot; name=&quot;email&quot; value=&quot;&quot;&gt;</span><br><span class="hljs-comment">    &lt;select id=&quot;test-select&quot; name=&quot;city&quot;&gt;</span><br><span class="hljs-comment">        &lt;option value=&quot;BJ&quot; selected&gt;Beijing&lt;/option&gt;</span><br><span class="hljs-comment">        &lt;option value=&quot;SH&quot;&gt;Shanghai&lt;/option&gt;</span><br><span class="hljs-comment">        &lt;option value=&quot;SZ&quot;&gt;Shenzhen&lt;/option&gt;</span><br><span class="hljs-comment">    &lt;/select&gt;</span><br><span class="hljs-comment">    &lt;textarea id=&quot;test-textarea&quot;&gt;Hello&lt;/textarea&gt;</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">var</span><br>	input = $(<span class="hljs-string">&#x27;#test-input&#x27;</span>),<br>    select = $(<span class="hljs-string">&#x27;#test-select&#x27;</span>),<br>	textarea = $(<span class="hljs-string">&#x27;#test-textarea&#x27;</span>);<br>input.<span class="hljs-title function_">val</span>(); <span class="hljs-comment">// &#x27;test&#x27;</span><br>input.<span class="hljs-title function_">val</span>(<span class="hljs-string">&#x27;abc@example.com&#x27;</span>); <span class="hljs-comment">// 文本框的内容已变为abc@example.com</span><br><br>select.<span class="hljs-title function_">val</span>(); <span class="hljs-comment">// &#x27;BJ&#x27;</span><br>select.<span class="hljs-title function_">val</span>(<span class="hljs-string">&#x27;SH&#x27;</span>); <span class="hljs-comment">// 选择框已变为Shanghai</span><br><br>textarea.<span class="hljs-title function_">val</span>(); <span class="hljs-comment">// &#x27;Hello&#x27;</span><br>textarea.<span class="hljs-title function_">val</span>(<span class="hljs-string">&#x27;Hi&#x27;</span>); <span class="hljs-comment">// 文本区域已更新为&#x27;Hi&#x27;</span><br></code></pre></td></tr></table></figure>
 
@@ -578,6 +580,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/09/18/%E5%A4%A7%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/" title="大前端进阶">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">大前端进阶</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
