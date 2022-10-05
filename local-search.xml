@@ -793,13 +793,13 @@
       
       <tag>字符串</tag>
       
-      <tag>二叉树</tag>
-      
-      <tag>二叉搜索树</tag>
+      <tag>BFS</tag>
       
       <tag>排序</tag>
       
-      <tag>BFS</tag>
+      <tag>二叉树</tag>
+      
+      <tag>二叉搜索树</tag>
       
     </tags>
     
@@ -903,9 +903,9 @@
       
       <tag>字符串</tag>
       
-      <tag>栈</tag>
-      
       <tag>BFS</tag>
+      
+      <tag>栈</tag>
       
       <tag>DFS</tag>
       
@@ -1032,15 +1032,15 @@
     
     <tags>
       
-      <tag>栈</tag>
-      
-      <tag>队列</tag>
+      <tag>排序</tag>
       
       <tag>二叉树</tag>
       
       <tag>二叉搜索树</tag>
       
-      <tag>排序</tag>
+      <tag>栈</tag>
+      
+      <tag>队列</tag>
       
       <tag>双指针</tag>
       
