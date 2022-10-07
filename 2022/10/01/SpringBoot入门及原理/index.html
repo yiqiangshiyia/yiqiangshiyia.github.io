@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20221001183314.png">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/IMG_20221004_163853.png">
 <meta property="article:published_time" content="2022-10-01T01:42:54.000Z">
-<meta property="article:modified_time" content="2022-10-05T13:08:18.571Z">
+<meta property="article:modified_time" content="2022-10-06T12:32:15.143Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary_large_image">
@@ -105,7 +105,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>一腔诗意啊&#39;s Blog</strong>
+      <strong>一腔诗意啊 - 个人博客</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -270,7 +270,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          15k 字
+          21k 字
         
       </span>
     
@@ -282,7 +282,7 @@
         
         
           <!-- compatible with older versions-->
-          126 分钟
+          175 分钟
         
       </span>
     
@@ -662,54 +662,194 @@
 <p>编写一个yaml配置：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">person:</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">林慕椿</span><br>  <span class="hljs-attr">age:</span> <span class="hljs-number">18</span><br>  <span class="hljs-attr">happy:</span> <span class="hljs-literal">yes</span><br>  <span class="hljs-attr">birth:</span> <span class="hljs-number">2002</span><span class="hljs-string">/02/02</span><br>  <span class="hljs-attr">maps:</span> &#123;<span class="hljs-attr">k1:</span> <span class="hljs-string">v1</span>,<span class="hljs-attr">k2:</span> <span class="hljs-string">v2</span>&#125;<br>  <span class="hljs-attr">lists:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">music</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">code</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">study</span><br>  <span class="hljs-attr">dog:</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">汪汪</span><br>    <span class="hljs-attr">age:</span> <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure></li>
 <li><p>将yaml配置文件注入到类中</p>
+<p>**@ConfigurationProperties(prefix = “person”)**作用：将配置文件中配置的每一个属性的值，映射到这个组件中，告诉SpringBoot将本类中的所有属性和配置文件中相关配置进行绑定。</p>
+<p>参数 prefix = “person” ：将配置文件中的person下面的所有属性一一对应</p>
+<p>只有这个组件是容器中的组件，才能使用容器提供的@ConfigurationProperties功能</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.study.helloworld.pojo;<br><br><span class="hljs-keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-keyword">import</span> java.util.Date;<br><span class="hljs-keyword">import</span> java.util.List;<br><span class="hljs-keyword">import</span> java.util.Map;<br><br><span class="hljs-meta">@Component</span>  <span class="hljs-comment">//注册bean到容器中</span><br><span class="hljs-meta">@ConfigurationProperties(prefix = &quot;person&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> Integer age;<br>    <span class="hljs-keyword">private</span> Boolean happy;<br>    <span class="hljs-keyword">private</span> Date birth;<br>    <span class="hljs-keyword">private</span> Map&lt;String,Object&gt; maps;<br>    <span class="hljs-keyword">private</span> List&lt;Object&gt; lists;<br>    <span class="hljs-keyword">private</span> Dog dog;<br>    <span class="hljs-comment">//有参无参构造、get、set方法、toString()方法</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
 <li><p>测试类中测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SpringBootTest</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloWorldApplicationTests</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span>  <span class="hljs-comment">//自动装配</span><br>    <span class="hljs-keyword">private</span> Person person;<br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">contextLoads</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(person);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>测试结果：</p>
+<blockquote>
+<p>Person{name=’林慕椿’, age=18, happy=true, birth=Sat Feb 02 00:00:00 CST 2002, maps={k1=v1, k2=v2}, lists=[music, code, study], dog=Dog{name=’汪汪’, age=3}}</p>
+</blockquote>
 </li>
 </ol>
 <blockquote>
+<p><strong>yaml配置文件占位符</strong></p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">person:</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">linmuchun$&#123;random.uuid&#125;</span> <span class="hljs-comment"># 随机uuid</span><br>    <span class="hljs-attr">age:</span> <span class="hljs-string">$&#123;random.int&#125;</span> <span class="hljs-comment"># 随机int</span><br>    <span class="hljs-attr">happy:</span> <span class="hljs-literal">false</span><br>    <span class="hljs-attr">birth:</span> <span class="hljs-number">2002</span><span class="hljs-string">/02/02</span><br>    <span class="hljs-attr">maps:</span> &#123;<span class="hljs-attr">k1:</span> <span class="hljs-string">v1</span>,<span class="hljs-attr">k2:</span> <span class="hljs-string">v2</span>&#125;<br>    <span class="hljs-attr">lists:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">code</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">girl</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">music</span><br>    <span class="hljs-attr">dog:</span><br>      <span class="hljs-comment"># 引用person.hello 的值，如果不存在就用 ：后面的值，即 other，然后拼接上_旺财</span><br>      <span class="hljs-attr">name:</span> <span class="hljs-string">$&#123;person.hello:other&#125;_旺财</span><br>      <span class="hljs-attr">age:</span> <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-2-properties注入配置文件"><a href="#5-2-properties注入配置文件" class="headerlink" title="5.2 properties注入配置文件"></a>5.2 properties注入配置文件</h2><blockquote>
 <p><strong>加载指定配置文件</strong></p>
 </blockquote>
-<p><strong>@PropertySource</strong> ：加载指定的配置文件</p>
+<p><strong>@PropertySource</strong>：加载指定的配置文件</p>
 <p><strong>@ConfigurationProperties</strong>：默认从全局配置文件中获取值</p>
 <ol>
-<li>在resources目录下新建一个person.properties文件</li>
-<li>在代码中指定加载person.properties文件</li>
-<li>再次输出测试一下：指定配置文件绑定成功</li>
+<li><p>在resources目录下新建一个person.properties文件</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">name</span>=<span class="hljs-string">林慕椿</span><br></code></pre></td></tr></table></figure></li>
+<li><p>在代码中指定加载person.properties文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@PropertySource(value = &quot;classpath:person.properties&quot;)</span><br><span class="hljs-meta">@Component</span> <span class="hljs-comment">//注册bean</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br>	<span class="hljs-meta">@Value(&quot;$&#123;name&#125;&quot;)</span><br>	<span class="hljs-keyword">private</span> String name;<br>	......<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>再次输出测试一下：指定配置文件绑定成功</p>
+</li>
 </ol>
 <blockquote>
-<p><strong>配置文件占位符</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>回顾properties配置</strong></p>
+<p><strong>properties注入配置文件</strong></p>
 </blockquote>
 <p>yaml方法都是最简单的方式，开发中最常用的，也是springboot所推荐的。</p>
 <p>其他实现方式：配置文件除了yml还有properties</p>
 <p><strong>测试步骤：</strong></p>
 <ol>
-<li>新建一个实体类User</li>
-<li>编辑配置文件 user.properties</li>
-<li>在User类上使用@Value来进行注入</li>
-<li>SpringBoot测试</li>
+<li><p>新建一个实体类User</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span> <span class="hljs-comment">//注册bean</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span> &#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> age;<br>    <span class="hljs-keyword">private</span> String sex;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>编辑配置文件 user.properties</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">user1.name</span>=<span class="hljs-string">kuangshen</span><br><span class="hljs-attr">user1.age</span>=<span class="hljs-string">18</span><br><span class="hljs-attr">user1.sex</span>=<span class="hljs-string">男</span><br></code></pre></td></tr></table></figure></li>
+<li><p>在User类上使用@Value来进行注入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span> <span class="hljs-comment">//注册bean</span><br><span class="hljs-meta">@PropertySource(value = &quot;classpath:user.properties&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span> &#123;<br>    <span class="hljs-comment">//直接使用@value</span><br>    <span class="hljs-meta">@Value(&quot;$&#123;user.name&#125;&quot;)</span> <span class="hljs-comment">//从配置文件中取值</span><br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-meta">@Value(&quot;#&#123;9*2&#125;&quot;)</span> <span class="hljs-comment">// #&#123;SPEL&#125; Spring表达式</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> age;<br>    <span class="hljs-meta">@Value(&quot;男&quot;)</span> <span class="hljs-comment">// 字面量</span><br>    <span class="hljs-keyword">private</span> String sex;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>SpringBoot测试</p>
+</li>
 </ol>
 <blockquote>
 <p><strong>对比</strong></p>
 </blockquote>
 <p>功能对比图：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>@ConfigurationProperties</th>
+<th>@Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>功能</td>
+<td>批量注入配置文件中的属性</td>
+<td>一个个指定</td>
+</tr>
+<tr>
+<td>松散绑定（松散语法）</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>SpEL</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>JSR303数据校验</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>复杂类型封装</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+</tbody></table>
 <ol>
-<li>@ConfigurationProperties只需要写一次即可 ， @Value则需要每个字段都添加</li>
-<li>松散绑定：这个什么意思呢? 比如我的yml中写的last-name，这个和lastName是一样的， - 后面跟 着的字母默认是大写的。这就是松散绑定。可以测试一下</li>
-<li>JSR303数据校验 ， 这个就是我们可以在字段是增加一层过滤器验证 ， 可以保证数据的合法性</li>
-<li>复杂类型封装，yml中可以封装对象 ， 使用value就不支持</li>
+<li>@ConfigurationProperties只需要写一次即可，@Value则需要每个字段都添加</li>
+<li>松散绑定：yml配置文件中写的last-name和lastName是一样的，- 后面跟着的字母默认是大写的。</li>
+<li>JSR303数据校验，这个就是可以在字段是增加一层过滤器验证，可以保证数据的合法性</li>
+<li>复杂类型封装，yml中可以封装对象，使用value就不支持</li>
 </ol>
 <p>结论： </p>
-<p>配置yml和配置properties都可以获取到值 ， 强烈推荐 yml</p>
-<p>如果我们在某个业务中，只需要获取配置文件中的某个值，可以使用一下 @value</p>
-<p>如果说，我们专门编写了一个JavaBean来和配置文件进行一一映射，就直接 @configurationProperties</p>
+<ul>
+<li>配置yml和配置properties都可以获取到值（建议yaml）</li>
+</ul>
+<ul>
+<li>如果在某个业务中，只需要获取配置文件中的某个值，可以使用 @value</li>
+</ul>
+<ul>
+<li>如果专门编写了一个JavaBean来和配置文件进行一一映射，就直接使用@ConfigurationProperties</li>
+</ul>
+<h2 id="5-3-JSR303数据校验"><a href="#5-3-JSR303数据校验" class="headerlink" title="5.3 JSR303数据校验"></a>5.3 JSR303数据校验</h2><p>SpringBoot中可以用@validated来校验数据，如果数据异常则会统一抛出异常，方便异常中心统一处理。</p>
+<p>例：添加注解让 name 只能支持 Email 格式。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span> <span class="hljs-comment">//注册bean</span><br><span class="hljs-meta">@ConfigurationProperties(prefix = &quot;person&quot;)</span><br><span class="hljs-meta">@Validated</span> <span class="hljs-comment">//数据校验</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br>	<span class="hljs-meta">@Email(message=&quot;邮箱格式错误&quot;)</span> <span class="hljs-comment">//name必须是邮箱格式</span><br>	<span class="hljs-keyword">private</span> String name;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <blockquote>
-<p><strong>JSR303数据校验</strong></p>
+<p>运行结果 ： default message [不是一个合法的电子邮件地址]</p>
 </blockquote>
-<p>SpringBoot中可以用@validated来校验数据，如果数据异常则会统一抛出异常，方便异常中心统一处理。</p>
 <p>使用数据校验，可以保证数据的正确性，下面列出一些常见的使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@NotNull(message=&quot;名字不能为空&quot;)</span><br><span class="hljs-keyword">private</span> String userName;<br><span class="hljs-meta">@Max(value=120,message=&quot;年龄最大不能查过120&quot;)</span><br><span class="hljs-keyword">private</span> <span class="hljs-type">int</span> age;<br><span class="hljs-meta">@Email(message=&quot;邮箱格式错误&quot;)</span><br><span class="hljs-keyword">private</span> String email;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs less">空检查<br><span class="hljs-variable">@Null</span> 验证对象是否为null<br><span class="hljs-variable">@NotNull</span> 验证对象是否不为null, 无法查检长度为<span class="hljs-number">0</span>的字符串<br><span class="hljs-variable">@NotBlank</span> 检查约束字符串是不是Null还有被Trim的长度是否大于<span class="hljs-number">0</span>,只对字符串,且会去掉前后空格<br><span class="hljs-variable">@NotEmpty</span> 检查约束元素是否为NULL或者是EMPTY<br><br>Booelan检查<br><span class="hljs-variable">@AssertTrue</span> 验证 Boolean 对象是否为 true<br><span class="hljs-variable">@AssertFalse</span> 验证 Boolean 对象是否为 false<br><br>长度检查<br><span class="hljs-variable">@Size</span>(min=, max=) 验证对象（Array,Collection,Map,String）长度是否在给定的范围之内<br><span class="hljs-variable">@Length</span>(min=, max=) string is between min and max included<br><br>日期检查<br><span class="hljs-variable">@Past</span> 验证 Date 和 Calendar 对象是否在当前时间之前<br><span class="hljs-variable">@Future</span> 验证 Date 和 Calendar 对象是否在当前时间之后<br><span class="hljs-variable">@Pattern</span> 验证 String 对象是否符合正则表达式的规则<br><br>......<br>除此以外，还可以自定义一些数据校验规则<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="6-多环境切换"><a href="#6-多环境切换" class="headerlink" title="6. 多环境切换"></a>6. 多环境切换</h1><p>profile是Spring对不同环境提供不同配置功能的支持，可以通过激活不同的环境版本，实现快速切换环境。</p>
+<blockquote>
+<p><strong>多配置文件</strong></p>
+</blockquote>
+<p>在主配置文件编写的时候，文件名可以是 application-{profile}.properties/yml , 用来指定多个环境版本。</p>
+<p>例如：application-test.properties 代表测试环境配置 application-dev.properties 代表开发环境配置 </p>
+<p>但是Springboot并不会直接启动这些配置文件，它默认使用application.properties主配置文件。</p>
+<p>需要通过一个配置来选择需要激活的环境： </p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment">#比如在配置文件中指定使用dev环境，我们可以通过设置不同的端口号进行测试；</span><br><span class="hljs-comment">#我们启动SpringBoot，就可以看到已经切换到dev下的配置了；</span><br><span class="hljs-attr">spring.profiles.active</span>=<span class="hljs-string">dev</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>yml的多文档块</strong> </p>
+</blockquote>
+<p>yml和properties配置文件中一样，但是使用yml去实现不需要创建多个配置文件，更加方便。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">8081</span><br><span class="hljs-comment">#选择要激活那个环境块</span><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">profiles:</span><br>    <span class="hljs-attr">active:</span> <span class="hljs-string">prod</span><br>    <br><span class="hljs-meta">---</span><br><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">8083</span><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">profiles:</span> <span class="hljs-string">dev</span> <span class="hljs-comment">#配置环境的名称</span><br>  <br><span class="hljs-meta">---</span><br><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">8084</span><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">profiles:</span> <span class="hljs-string">prod</span> <span class="hljs-comment">#配置环境的名称</span><br></code></pre></td></tr></table></figure>
+
+<p>Note：如果yml和properties同时都配置了端口，并且没有激活其他环境，默认会使用properties配置文件</p>
+<blockquote>
+<p><strong>配置文件加载位置</strong></p>
+</blockquote>
+<p>外部加载配置文件的方式很多，我们选择最常用的即可，在开发的资源文件中进行配置。</p>
+<p>官方外部配置文件说明参考文档：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config-command-line-args">Spring Boot Reference Documentation</a></p>
+<p>springboot 启动会扫描以下位置的application.properties或者application.yml文件作为Spring boot的默认配置文件。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs arduino">优先级<span class="hljs-number">1</span>：项目路径下的config文件夹配置文件<br>优先级<span class="hljs-number">2</span>：项目路径下配置文件<br>优先级<span class="hljs-number">3</span>：资源路径下的config文件夹配置文件<br>优先级<span class="hljs-number">4</span>：资源路径下配置文件<br></code></pre></td></tr></table></figure>
+
+<p>优先级由高到底，高优先级的配置会覆盖低优先级的配置。</p>
+<p>SpringBoot会从这四个位置全部加载主配置文件，互补配置。</p>
+<p>在最低级的配置文件中设置一个项目访问路径的配置来测试互补问题</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment">#配置项目的访问路径</span><br><span class="hljs-attr">server.servlet.context-path</span>=<span class="hljs-string">/lin</span><br></code></pre></td></tr></table></figure>
+
+<p>扩展：指定位置加载配置文件</p>
+<p>还可以通过spring.config.location来改变默认的配置文件位置</p>
+<p>项目打包好以后，我们可以使用命令行参数的形式，启动项目的时候来指定配置文件的新位置，相同配置，外部指定的配置文件优先级最高。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">java -jar spring-boot-config.jar --<br>spring.config.location=F:/application.properties<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="7-自动装配原理"><a href="#7-自动装配原理" class="headerlink" title="7. 自动装配原理"></a>7. 自动装配原理</h1><blockquote>
+<p><strong>配置文件到底能写什么</strong></p>
+</blockquote>
+<p>SpringBoot官方文档：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#common-application-properties">Spring Boot Reference Documentation</a></p>
+<blockquote>
+<p><strong>分析自动配置原理</strong></p>
+</blockquote>
+<p>以HttpEncodingAutoConfiguration（Http编码自动配置）为例解释自动配置原理：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//表示这是一个配置类，和以前编写的配置文件一样，也可以给容器中添加组件</span><br><span class="hljs-meta">@Configuration</span><br><br><span class="hljs-comment">//启动指定类的ConfigurationProperties功能</span><br>	<span class="hljs-comment">//进入这个HttpProperties查看，将配置文件中对应的值和HttpProperties绑定起来</span><br>	<span class="hljs-comment">//并把HttpProperties加入到IOC容器中</span><br><span class="hljs-meta">@EnableConfigurationProperties(&#123;HttpProperties.class&#125;)</span><br><br><span class="hljs-comment">//Spring底层@Conditional注解</span><br>	<span class="hljs-comment">//根据不同的条件判断，如果满足指定的条件，整个配置类里面的配置就会生效；</span><br>	<span class="hljs-comment">//这里的意思就是判断当前应用是否是web应用，如果是，当前配置类生效</span><br><span class="hljs-meta">@ConditionalOnWebApplication(</span><br><span class="hljs-meta">	type = Type.SERVLET</span><br><span class="hljs-meta">)</span><br><br><span class="hljs-comment">//判断当前项目有没有这个类CharacterEncodingFilter；SpringMVC中进行乱码解决的过滤器</span><br><span class="hljs-meta">@ConditionalOnClass(&#123;CharacterEncodingFilter.class&#125;)</span><br><br><span class="hljs-comment">//判断配置文件中是否存在某个配置：spring.http.encoding.enabled；</span><br>	<span class="hljs-comment">//如果不存在，判断也是成立的</span><br>	<span class="hljs-comment">//即使我们配置文件中不配置pring.http.encoding.enabled=true，也是默认生效的</span><br><span class="hljs-meta">@ConditionalOnProperty(</span><br><span class="hljs-meta">	prefix = &quot;spring.http.encoding&quot;,</span><br><span class="hljs-meta">	value = &#123;&quot;enabled&quot;&#125;,</span><br><span class="hljs-meta">	matchIfMissing = true</span><br><span class="hljs-meta">)</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HttpEncodingAutoConfiguration</span> &#123;<br>	<span class="hljs-comment">//他已经和SpringBoot的配置文件映射了</span><br>	<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Encoding properties;<br>	<span class="hljs-comment">//只有一个有参构造器的情况下，参数的值就会从容器中拿</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-title function_">HttpEncodingAutoConfiguration</span><span class="hljs-params">(HttpProperties properties)</span> &#123;<br>		<span class="hljs-built_in">this</span>.properties = properties.getEncoding();<br>	&#125;<br><br>    <span class="hljs-comment">//给容器中添加一个组件，这个组件的某些值需要从properties中获取</span><br>	<span class="hljs-meta">@Bean</span><br>	<span class="hljs-meta">@ConditionalOnMissingBean</span> <span class="hljs-comment">//判断容器没有这个组件？</span><br>	<span class="hljs-keyword">public</span> CharacterEncodingFilter <span class="hljs-title function_">characterEncodingFilter</span><span class="hljs-params">()</span> &#123;<br>		<span class="hljs-type">CharacterEncodingFilter</span> <span class="hljs-variable">filter</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">OrderedCharacterEncodingFilter</span>();<br>		filter.setEncoding(<span class="hljs-built_in">this</span>.properties.getCharset().name());<br>        filter.setForceRequestEncoding(<span class="hljs-built_in">this</span>.properties.shouldForce(org.springframew<br>ork.boot.autoconfigure.http.HttpProperties.Encoding.Type.REQUEST));<br>		filter.setForceResponseEncoding(<span class="hljs-built_in">this</span>.properties.shouldForce(org.springframe work.boot.autoconfigure.http.HttpProperties.Encoding.Type.RESPONSE));<br>		<span class="hljs-keyword">return</span> filter;<br>	&#125;<br>	<span class="hljs-comment">//...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>总结：</strong>根据当前不同的条件判断，决定这个配置类是否生效</p>
+<ul>
+<li>一但这个配置类生效；这个配置类就会给容器中添加各种组件。</li>
+<li>这些组件的属性是从对应的properties类中获取的，这些类里面的每一个属性又是和配置文件绑定的。</li>
+<li>所有在配置文件中能配置的属性都是在xxxxProperties类中封装着。</li>
+<li>配置文件能配置什么就可以参照某个功能对应的这个属性类。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//从配置文件中获取指定的值和bean的属性进行绑定</span><br><span class="hljs-meta">@ConfigurationProperties(prefix = &quot;spring.http&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HttpProperties</span> &#123;<br>	<span class="hljs-comment">// .....</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>精髓</strong></p>
+</blockquote>
+<ol>
+<li>SpringBoot启动会加载大量的自动配置类</li>
+<li>看需要的功能有没有在SpringBoot默认写好的自动配置类当中</li>
+<li>看这个自动配置类中到底配置了哪些组件（只要我们要用的组件存在在其中，我们就不需要再手动配置了）</li>
+<li>给容器中自动配置类添加组件的时候，会从properties类中获取某些属性。我们只需要在配置文件中 指定这些属性的值即可。</li>
+</ol>
+<p> xxxxAutoConfigurartion：自动配置类，给容器中添加组件</p>
+<p>xxxxProperties:封装配置文件中相关属性</p>
+<blockquote>
+<p><strong>@Conditional</strong></p>
+</blockquote>
+<p>……</p>
 
               
             </div>
