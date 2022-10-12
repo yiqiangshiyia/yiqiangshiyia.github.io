@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/QQ%E6%88%AA%E5%9B%BE20221001183314.png">
 <meta property="og:image" content="https://img.yiqiangshiyia.cn/blog/IMG_20221004_163853.png">
 <meta property="article:published_time" content="2022-10-01T01:42:54.000Z">
-<meta property="article:modified_time" content="2022-10-06T12:32:15.143Z">
+<meta property="article:modified_time" content="2022-10-07T13:30:30.789Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary_large_image">
@@ -282,7 +282,7 @@
         
         
           <!-- compatible with older versions-->
-          175 分钟
+          176 分钟
         
       </span>
     
@@ -779,27 +779,26 @@
 
 
 
-<h1 id="6-多环境切换"><a href="#6-多环境切换" class="headerlink" title="6. 多环境切换"></a>6. 多环境切换</h1><p>profile是Spring对不同环境提供不同配置功能的支持，可以通过激活不同的环境版本，实现快速切换环境。</p>
+<h1 id="6-多环境切换"><a href="#6-多环境切换" class="headerlink" title="6. 多环境切换"></a>6. 多环境切换</h1><h2 id="6-1-多环境切换"><a href="#6-1-多环境切换" class="headerlink" title="6.1 多环境切换"></a>6.1 多环境切换</h2><p>profile是Spring对不同环境提供不同配置功能的支持，可以通过激活不同的环境版本，实现快速切换环境。</p>
 <blockquote>
-<p><strong>多配置文件</strong></p>
+<p><strong>方式1：多配置文件</strong></p>
 </blockquote>
 <p>在主配置文件编写的时候，文件名可以是 application-{profile}.properties/yml , 用来指定多个环境版本。</p>
-<p>例如：application-test.properties 代表测试环境配置 application-dev.properties 代表开发环境配置 </p>
+<p>例如：</p>
+<p>application-test.properties 代表测试环境配置</p>
+<p>application-dev.properties 代表开发环境配置 </p>
 <p>但是Springboot并不会直接启动这些配置文件，它默认使用application.properties主配置文件。</p>
 <p>需要通过一个配置来选择需要激活的环境： </p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment">#比如在配置文件中指定使用dev环境，我们可以通过设置不同的端口号进行测试；</span><br><span class="hljs-comment">#我们启动SpringBoot，就可以看到已经切换到dev下的配置了；</span><br><span class="hljs-attr">spring.profiles.active</span>=<span class="hljs-string">dev</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment">#比如在配置文件中指定使用dev环境</span><br><span class="hljs-comment">#springboot的多环境配置，可以选择激活哪一个配置</span><br><span class="hljs-attr">spring.profiles.active</span>=<span class="hljs-string">dev</span><br><span class="hljs-comment">#我们启动SpringBoot，就可以看到已经切换到dev下的配置了</span><br></code></pre></td></tr></table></figure>
 
 <blockquote>
-<p><strong>yml的多文档块</strong> </p>
+<p><strong>方法2：yml的多文档块</strong> </p>
 </blockquote>
 <p>yml和properties配置文件中一样，但是使用yml去实现不需要创建多个配置文件，更加方便。</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">8081</span><br><span class="hljs-comment">#选择要激活那个环境块</span><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">profiles:</span><br>    <span class="hljs-attr">active:</span> <span class="hljs-string">prod</span><br>    <br><span class="hljs-meta">---</span><br><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">8083</span><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">profiles:</span> <span class="hljs-string">dev</span> <span class="hljs-comment">#配置环境的名称</span><br>  <br><span class="hljs-meta">---</span><br><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">8084</span><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">profiles:</span> <span class="hljs-string">prod</span> <span class="hljs-comment">#配置环境的名称</span><br></code></pre></td></tr></table></figure>
 
-<p>Note：如果yml和properties同时都配置了端口，并且没有激活其他环境，默认会使用properties配置文件</p>
-<blockquote>
-<p><strong>配置文件加载位置</strong></p>
-</blockquote>
-<p>外部加载配置文件的方式很多，我们选择最常用的即可，在开发的资源文件中进行配置。</p>
+<p>Note：如果yml和properties同时都配置了端口，并且没有激活其他环境，默认会使用properties配置文件。</p>
+<h2 id="6-2-配置文件加载位置"><a href="#6-2-配置文件加载位置" class="headerlink" title="6.2 配置文件加载位置"></a>6.2 配置文件加载位置</h2><p>外部加载配置文件的方式很多，我们选择最常用的即可，在开发的资源文件中进行配置。</p>
 <p>官方外部配置文件说明参考文档：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config-command-line-args">Spring Boot Reference Documentation</a></p>
 <p>springboot 启动会扫描以下位置的application.properties或者application.yml文件作为Spring boot的默认配置文件。</p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs arduino">优先级<span class="hljs-number">1</span>：项目路径下的config文件夹配置文件<br>优先级<span class="hljs-number">2</span>：项目路径下配置文件<br>优先级<span class="hljs-number">3</span>：资源路径下的config文件夹配置文件<br>优先级<span class="hljs-number">4</span>：资源路径下配置文件<br></code></pre></td></tr></table></figure>
@@ -845,11 +844,7 @@
 <li>给容器中自动配置类添加组件的时候，会从properties类中获取某些属性。我们只需要在配置文件中 指定这些属性的值即可。</li>
 </ol>
 <p> xxxxAutoConfigurartion：自动配置类，给容器中添加组件</p>
-<p>xxxxProperties:封装配置文件中相关属性</p>
-<blockquote>
-<p><strong>@Conditional</strong></p>
-</blockquote>
-<p>……</p>
+<p>xxxxProperties：封装配置文件中相关属性</p>
 
               
             </div>
@@ -936,6 +931,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/10/07/SpringBoot%20Web%E5%BC%80%E5%8F%91/" title="SpringBoot Web开发">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SpringBoot Web开发</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
