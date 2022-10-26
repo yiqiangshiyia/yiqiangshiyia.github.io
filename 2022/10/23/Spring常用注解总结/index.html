@@ -16,15 +16,15 @@
   <meta name="author" content="一腔诗意啊">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Convenient Utils And Website  Layui开源模块化前端 UI 组件库 Bootstrap中文网 Bootstrap可视化布局系统 Element UI开源组件化前端UI组件库 CleverPDF PDF在线工具 PDF.online Process On免费在线流程图思维导图">
+    <meta name="description" content="@Component@Component作用：实现bean的注入@Component三个衍生注解：为了更好的进行分层，Spring可以使用其它三个注解，功能一样，目前使用哪一个功能都一样。写上这些注解，就相当于将这个类交给Spring管理装配了。  @Controller：web层 @Service：service层 @Repository：dao层  @Controller@Controller">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Utils">
-<meta property="og:url" content="https://yiqiangshiyia.cn/2022/03/04/Utils/index.html">
+<meta property="og:title" content="Spring常用注解总结">
+<meta property="og:url" content="https://yiqiangshiyia.cn/2022/10/23/Spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
-<meta property="og:description" content="Convenient Utils And Website  Layui开源模块化前端 UI 组件库 Bootstrap中文网 Bootstrap可视化布局系统 Element UI开源组件化前端UI组件库 CleverPDF PDF在线工具 PDF.online Process On免费在线流程图思维导图">
+<meta property="og:description" content="@Component@Component作用：实现bean的注入@Component三个衍生注解：为了更好的进行分层，Spring可以使用其它三个注解，功能一样，目前使用哪一个功能都一样。写上这些注解，就相当于将这个类交给Spring管理装配了。  @Controller：web层 @Service：service层 @Repository：dao层  @Controller@Controller">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-04T09:14:56.000Z">
-<meta property="article:modified_time" content="2022-10-26T13:59:27.794Z">
+<meta property="article:published_time" content="2022-10-23T02:18:22.000Z">
+<meta property="article:modified_time" content="2022-10-23T02:39:07.346Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -32,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Utils - 一腔诗意啊 - 个人博客</title>
+  <title>Spring常用注解总结 - 一腔诗意啊 - 个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -235,7 +235,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Utils"></span>
+            <span id="subtitle" data-typed-text="Spring常用注解总结"></span>
           
         </div>
 
@@ -246,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-03-04 17:14" pubdate>
-          2022年3月4日 下午
+        <time datetime="2022-10-23 10:18" pubdate>
+          2022年10月23日 上午
         </time>
       </span>
     
@@ -259,7 +259,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          137 字
+          1.9k 字
         
       </span>
     
@@ -271,7 +271,7 @@
         
         
           <!-- compatible with older versions-->
-          2 分钟
+          17 分钟
         
       </span>
     
@@ -309,21 +309,63 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Utils</h1>
+            <h1 style="display: none">Spring常用注解总结</h1>
             
             <div class="markdown-body">
               
-              <p><strong>Convenient Utils And Website</strong></p>
+              <h2 id="Component"><a href="#Component" class="headerlink" title="@Component"></a>@Component</h2><p>@Component作用：实现bean的注入<br>@Component三个衍生注解：为了更好的进行分层，Spring可以使用其它三个注解，功能一样，目前使用哪一个功能都一样。写上这些注解，就相当于将这个类交给Spring管理装配了。</p>
 <ul>
-<li><strong><a target="_blank" rel="noopener" href="https://layuion.com/">Layui开源模块化前端 UI 组件库</a></strong></li>
-<li><strong><a target="_blank" rel="noopener" href="https://www.bootcss.com/">Bootstrap中文网</a></strong></li>
-<li><strong><a target="_blank" rel="noopener" href="https://www.bootcss.com/p/layoutit/">Bootstrap可视化布局系统</a></strong></li>
-<li><strong><a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN">Element UI开源组件化前端UI组件库</a></strong></li>
-<li><strong><a target="_blank" rel="noopener" href="https://www.cleverpdf.com/cn">CleverPDF PDF在线工具</a></strong></li>
-<li><strong><a target="_blank" rel="noopener" href="https://pdf.online/">PDF.online</a></strong></li>
-<li><strong><a target="_blank" rel="noopener" href="https://www.processon.com/">Process On免费在线流程图思维导图</a></strong></li>
+<li>@Controller：web层</li>
+<li>@Service：service层</li>
+<li>@Repository：dao层</li>
 </ul>
-
+<h2 id="Controller"><a href="#Controller" class="headerlink" title="@Controller"></a>@Controller</h2><p>@Controller的作用：声明该类是Controller层的Bean，将该类声明进入Spring容器中进行管理。</p>
+<h2 id="ResponseBody"><a href="#ResponseBody" class="headerlink" title="@ResponseBody"></a>@ResponseBody</h2><p>@ResponseBody的作用：表明该类的所有方法的返回值都直接进行提交而不经过视图解析器，且返回值的数据自动封装为json的数据格式。</p>
+<h2 id="RestController"><a href="#RestController" class="headerlink" title="@RestController"></a>@RestController</h2><p>@RestController的作用相当于@Controller加@ResponseBody共同作用的结果，支持Restful风格的数据提交方式。</p>
+<h2 id="RequestMapping"><a href="#RequestMapping" class="headerlink" title="@RequestMapping"></a>@RequestMapping</h2><p>@RequestMapping注解用于映射url到控制器类或一个特定的处理程序方法。可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。<br>方法级别的注解变体有如下几个：<br>@GetMapping<br>@PostMapping<br>@PutMapping<br>@DeleteMapping<br>@PatchMapping</p>
+<h2 id="Autowired"><a href="#Autowired" class="headerlink" title="@Autowired"></a>@Autowired</h2><blockquote>
+<p>Bean自动装配注解</p>
+<ul>
+<li>@Autowired</li>
+<li>@Qualifier</li>
+<li>@Resource</li>
+</ul>
+</blockquote>
+<p>@Autowired是一种注解，可以对成员变量、方法和构造函数进行标注，来完成自动装配的工作，@Autowired可以标注在对象属性上和set方法上，当标注在属性上的时候，属性上对应的set方法可以省略不写，spring会在IOC容器中按照属性类型寻找如找到一个则进行注入，如找到多个或没找到会报错。<br>使用 @Autowired 可以不用编写set方法了，前提：自动装配的属性在IOC（Spring）容器中存在，且符合名字byName</p>
+<h2 id="Qualifier"><a href="#Qualifier" class="headerlink" title="@Qualifier"></a>@Qualifier</h2><p>@Qualifier，在使用Spring框架中@Autowired标签时默认情况下使用 @Autowired 注释进行自动注入时，Spring 容器中匹配的候选 Bean 数目必须有且仅有一个。</p>
+<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="@Configuration"></a>@Configuration</h2><p>@Configuration注解的作用：声明一个类为配置类，用于取代bean.xml配置文件注册bean对象，可以在这个类中管理创建Bean。<br>@Configuration注解主要标注在某个类上，相当于xml配置文件中的&lt;beans&gt;<br>@Bean注解主要标注在某个方法上，相当于xml配置文件中的&lt;bean&gt;</p>
+<h2 id="Bean"><a href="#Bean" class="headerlink" title="@Bean"></a>@Bean</h2><p>@Bean注解用于告诉方法，产生一个Bean对象，然后这个Bean对象交给Spring管理。 产生这个Bean对象的方法Spring只会调用一次，随后这个Spring将会将这个Bean对象放在自己的IOC容器中。</p>
+<h2 id="Bean和-Component的区别"><a href="#Bean和-Component的区别" class="headerlink" title="@Bean和@Component的区别"></a>@Bean和@Component的区别</h2><blockquote>
+<p><strong>注解作用：</strong></p>
+</blockquote>
+<ul>
+<li>@Component注解表明一个类会作为组件类，并告知Spring要为这个类创建bean。</li>
+<li>@Bean注解告诉Spring这个方法将会返回一个对象，这个对象要注册为Spring应用上下文中的bean。通常方法体中包含了最终产生bean实例的逻辑。</li>
+</ul>
+<blockquote>
+<p><strong>两者对比：</strong></p>
+</blockquote>
+<ul>
+<li><p>相同点：</p>
+<ul>
+<li>两者的结果都是为spring容器注册Bean。</li>
+</ul>
+</li>
+<li><p>不同点：</p>
+<ul>
+<li><p>@Component 通常是通过类路径扫描来自动侦测以及自动装配到Spring容器中。</p>
+</li>
+<li><p>@Bean 注解通常是我们在标有该注解的方法中定义产生这个bean的逻辑。</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>理解：</strong></p>
+</blockquote>
+<p>@Component （@Controller @Service @Respository）作用于类上，只有在我们的SpringBoot应用程序启用了组件扫描并且包含了被注解的类时才有效。通过组件扫描，Spring将扫描整个类路径，并将所有@Component注释类添加到Spring Context，这里有的不足就是会把整个类当成bean注册到spring 容器上，如果这个类中并不是所有方法都需要注册为bean的话，会出现不需要的方法都注册成为bean，这时候必须确保这些不需要的方法也能注册为bean或者在扫描中加filter 过滤这些不需要的bean,否者spring将无法成功启动。</p>
+<p>@Bean相对来说就更加灵活了，它可以独立加在方法上，按需注册到spring容器，而且如果你要用到第三方类库里面某个方法的时候，你就只能用@Bean把这个方法注册到spring容器，因为用@Component你需要配置组件扫描到这个第三方类路径而且还要在别人源代码加上这个注解，很明显是不现实的。</p>
+<h2 id="Scope"><a href="#Scope" class="headerlink" title="@Scope"></a>@Scope</h2>
               
             </div>
             <hr/>
@@ -340,7 +382,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%A7%A3%E5%BF%A7%E6%9D%82%E8%B4%A7/" class="category-chain-item">解忧杂货</a>
+  <a href="/categories/Java/" class="category-chain-item">Java</a>
   
   
 
@@ -360,8 +402,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Utils</div>
-      <div>https://yiqiangshiyia.cn/2022/03/04/Utils/</div>
+      <div>Spring常用注解总结</div>
+      <div>https://yiqiangshiyia.cn/2022/10/23/Spring常用注解总结/</div>
     </div>
     <div class="license-meta">
       
@@ -373,7 +415,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年3月4日</div>
+          <div>2022年10月23日</div>
         </div>
       
       
@@ -403,15 +445,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/04/C++%20vector%E5%AE%B9%E5%99%A8%E6%B5%85%E6%9E%90/" title="C++ vector容器浅析">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">C++ vector容器浅析</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/10/22/%E5%A4%A7%E5%89%8D%E7%AB%AF-Vue/" title="大前端-Vue">
+                        <span class="hidden-mobile">大前端-Vue</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
