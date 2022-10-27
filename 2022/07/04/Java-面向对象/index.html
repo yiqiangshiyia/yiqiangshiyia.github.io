@@ -16,15 +16,13 @@
   <meta name="author" content="一腔诗意啊">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Java数组Java数组数组的创建： 123456789101112&#x2F;*格式1：元素类型[] 数组名 &#x3D; new 元素类型[元素个数或数组长度];示例：*&#x2F;int[] arr &#x3D; new int[5];&#x2F;*格式2：元素类型[] 数组名 &#x3D; new 元素类型[]&amp;#123;元素，元素，……&amp;#125;;*&#x2F;int[] arr &#x3D; new int[]&amp;#123;3,5,1,7&amp;#125;;int[]">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java-基础知识">
-<meta property="og:url" content="https://yiqiangshiyia.cn/2022/07/04/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="Java-面向对象">
+<meta property="og:url" content="https://yiqiangshiyia.cn/2022/07/04/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/index.html">
 <meta property="og:site_name" content="一腔诗意啊 - 个人博客">
-<meta property="og:description" content="Java数组Java数组数组的创建： 123456789101112&#x2F;*格式1：元素类型[] 数组名 &#x3D; new 元素类型[元素个数或数组长度];示例：*&#x2F;int[] arr &#x3D; new int[5];&#x2F;*格式2：元素类型[] 数组名 &#x3D; new 元素类型[]&amp;#123;元素，元素，……&amp;#125;;*&#x2F;int[] arr &#x3D; new int[]&amp;#123;3,5,1,7&amp;#125;;int[]">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-07-04T09:30:12.000Z">
-<meta property="article:modified_time" content="2022-07-24T09:32:36.805Z">
+<meta property="article:published_time" content="2022-07-04T12:22:52.000Z">
+<meta property="article:modified_time" content="2022-10-27T12:25:45.453Z">
 <meta property="article:author" content="一腔诗意啊">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +31,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Java-基础知识 - 一腔诗意啊 - 个人博客</title>
+  <title>Java-面向对象 - 一腔诗意啊 - 个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -236,7 +234,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Java-基础知识"></span>
+            <span id="subtitle" data-typed-text="Java-面向对象"></span>
           
         </div>
 
@@ -247,8 +245,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-04 17:30" pubdate>
-          2022年7月4日 下午
+        <time datetime="2022-07-04 20:22" pubdate>
+          2022年7月4日 晚上
         </time>
       </span>
     
@@ -260,7 +258,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.5k 字
+          0 字
         
       </span>
     
@@ -272,7 +270,7 @@
         
         
           <!-- compatible with older versions-->
-          13 分钟
+          1 分钟
         
       </span>
     
@@ -310,49 +308,11 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Java-基础知识</h1>
+            <h1 style="display: none">Java-面向对象</h1>
             
             <div class="markdown-body">
               
-              <h1 id="Java数组"><a href="#Java数组" class="headerlink" title="Java数组"></a>Java数组</h1><h2 id="Java数组-1"><a href="#Java数组-1" class="headerlink" title="Java数组"></a>Java数组</h2><p><strong>数组的创建：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/*格式1：</span><br><span class="hljs-comment">元素类型[] 数组名 = new 元素类型[元素个数或数组长度];</span><br><span class="hljs-comment">示例：</span><br><span class="hljs-comment">*/</span><br><span class="hljs-type">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">5</span>];<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">格式2：</span><br><span class="hljs-comment">元素类型[] 数组名 = new 元素类型[]&#123;元素，元素，……&#125;;</span><br><span class="hljs-comment">*/</span><br><span class="hljs-type">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">7</span>&#125;;<br><span class="hljs-type">int</span>[] arr = &#123;<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">7</span>&#125;;<br><br></code></pre></td></tr></table></figure>
-
-<p><strong>数组的遍历：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//方式一：for循环</span><br> <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">listFor</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-type">int</span>[] arrs = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>&#125;;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; arrs.length; i++) &#123;<br>            System.out.print(arrs[i]+<span class="hljs-string">&quot; &quot;</span>);<br>        &#125;<br>    &#125;   <br><span class="hljs-comment">//方式二：for-each</span><br> <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">listFor</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-type">int</span>[] arrs = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>&#125;;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> arr : arrs) &#123;<br>            System.out.print(arr+<span class="hljs-string">&quot; &quot;</span>);<br>        &#125;<br>    &#125;<br><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>菜鸟笔记：<a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-array.html">https://www.runoob.com/java/java-array.html</a></li>
-</ul>
-<h2 id="Arrays类"><a href="#Arrays类" class="headerlink" title="Arrays类"></a>Arrays类</h2><p>java.util.Arrays 类能方便地操作数组，它提供的所有方法都是静态的。</p>
-<p><strong>具有以下功能：</strong></p>
-<ul>
-<li>给数组赋值：通过 fill 方法。</li>
-<li>对数组排序：通过 sort 方法,按升序。</li>
-<li>比较数组：通过 equals 方法比较数组中元素值是否相等。</li>
-<li>查找数组元素：通过 binarySearch 方法能对排序好的数组进行二分查找法操作。</li>
-</ul>
-<p><strong>实现方法：</strong></p>
-<ul>
-<li><p><strong>public static void fill(int[] a, int val)</strong></p>
-<p>将指定的 int 值分配给指定 int 型数组指定范围中的每个元素。同样的方法适用于所有的其他基本数据类型（Byte，short，Int等）。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;;<br>Arrays.fill(arr,<span class="hljs-number">5</span>);<br></code></pre></td></tr></table></figure></li>
-<li><p><strong>public static void sort(Object[] a)</strong></p>
-<p>对指定对象数组根据其元素的自然顺序进行升序排列。同样的方法适用于所有的其他基本数据类型（Byte，short，Int等）。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">4</span>&#125;;<br>Arrays.sort(arr);<br></code></pre></td></tr></table></figure></li>
-<li><p><strong>public static boolean equals(long[] a, long[] a2)</strong></p>
-<p>如果两个指定的 long 型数组彼此相等，则返回 true。如果两个数组包含相同数量的元素，并且两个数组中的所有相应元素对都是相等的，则认为这两个数组是相等的。换句话说，如果两个数组以相同顺序包含相同的元素，则两个数组是相等的。同样的方法适用于所有的其他基本数据类型（Byte，short，Int等）。</p>
-</li>
-<li><p><strong>public static int binarySearch(Object[] a, Object key)</strong></p>
-<p>用二分查找算法在给定数组中搜索给定值的对象(Byte,Int,double等)。数组在调用前必须排序好的。如果查找值包含在数组中，则返回搜索键的索引；否则返回 (-(<em>插入点</em>) - 1)。</p>
-</li>
-</ul>
-<h1 id="Java字符串"><a href="#Java字符串" class="headerlink" title="Java字符串"></a>Java字符串</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><ul>
-<li>菜鸟笔记：<a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-string.html">https://www.runoob.com/java/java-string.html</a></li>
-</ul>
-<h2 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h2><ul>
-<li>菜鸟笔记：<a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-stringbuffer.html">https://www.runoob.com/java/java-stringbuffer.html</a></li>
-</ul>
-
+              
               
             </div>
             <hr/>
@@ -396,8 +356,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Java-基础知识</div>
-      <div>https://yiqiangshiyia.cn/2022/07/04/Java-基础知识/</div>
+      <div>Java-面向对象</div>
+      <div>https://yiqiangshiyia.cn/2022/07/04/Java-面向对象/</div>
     </div>
     <div class="license-meta">
       
@@ -439,9 +399,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/07/04/Java-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/" title="Java-集合框架">
+                      <a href="/2022/07/10/Java-%E5%B8%B8%E7%94%A8%E7%B1%BB/" title="Java-常用类">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Java-集合框架</span>
+                        <span class="hidden-mobile">Java-常用类</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
